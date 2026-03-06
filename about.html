@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Meet Caden Hillier — Founder & CEO of Mainstay Digital. Connecticut-based entrepreneur building premium websites and AI business systems." />
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta property="og:title" content="About Caden Hillier — Mainstay Digital" />
+  <meta property="og:description" content="Meet the founder behind Mainstay Digital. Premium websites and AI business management, built in Connecticut." />
+  <meta property="og:image" content="https://mainstayhq.com/og-image.png" />
+  <meta property="og:url" content="https://mainstayhq.com/about" />
+  <meta property="og:type" content="website" />
+  <title>About — Caden Hillier | Mainstay Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#070708;
+      --bg2:#0d0e11;
+      --bg3:#121316;
+      --panel:#131417;
+      --line:rgba(255,255,255,.10);
+      --line2:rgba(255,255,255,.14);
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.68);
+      --muted2:rgba(255,255,255,.46);
+      --gold:#c7a56a;
+      --gold2:#ead2a4;
+      --gold3:#f5e7c8;
+      --shadow:0 30px 100px rgba(0,0,0,.38);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{max-width:1320px;margin:0 auto;padding:0 28px}
+
+    /* ─── HEADER ─── */
+    .header{position:sticky;top:0;z-index:10;background:rgba(7,7,8,.84);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:18px}
+    .brand{font-size:17px;font-weight:600;letter-spacing:.18em}
+    .domain{margin-top:4px;font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted2)}
+    .nav{display:flex;align-items:center;gap:30px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+    .nav a:hover{color:#fff}
+    .nav a.active{color:#fff}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:15px 28px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:.2s ease}
+    .btn-outline{border:1px solid rgba(255,255,255,.15);padding:10px 20px}
+    .btn-outline:hover{background:#fff;color:#000}
+    .btn-secondary{border:1px solid rgba(255,255,255,.15);color:#fff}
+    .btn-secondary:hover{background:rgba(255,255,255,.05)}
+    .hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px}
+    .hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.2s}
+    .mobile-nav{display:none;flex-direction:column;padding:0 28px 20px;gap:16px;font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+    .mobile-nav.open{display:flex}
+    .mobile-nav a:hover{color:#fff}
+
+    /* ─── ABOUT HERO ─── */
+    .about-hero{padding:100px 0 80px;border-bottom:1px solid var(--line)}
+    .about-grid{display:grid;grid-template-columns:400px 1fr;gap:80px;align-items:start}
+    .photo-wrap{position:relative}
+    .photo-wrap img{width:100%;border-radius:20px;display:block;filter:grayscale(15%)}
+    .photo-wrap::after{content:"";position:absolute;inset:-8px;border-radius:26px;border:1px solid rgba(199,165,106,.2);pointer-events:none}
+    .photo-label{margin-top:20px;text-align:center;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted2)}
+    .eyebrow{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted2)}
+    .about-name{margin:20px 0 0;font-family:'Playfair Display',serif;font-size:56px;font-weight:600;letter-spacing:-.04em;line-height:1.05}
+    .about-title{margin:12px 0 0;font-size:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+    .about-bio{margin:36px 0 0}
+    .about-bio p{font-size:18px;line-height:1.9;color:var(--muted);margin:0 0 24px}
+    .about-bio strong{color:#fff;font-weight:600}
+
+    /* ─── STATS BAR ─── */
+    .founder-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;padding-top:40px;border-top:1px solid var(--line)}
+    .f-stat{text-align:center;padding:28px 16px;border-radius:20px;border:1px solid var(--line);background:rgba(255,255,255,.02)}
+    .f-stat-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:600;letter-spacing:-.03em;color:var(--gold2)}
+    .f-stat-label{margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2)}
+
+    /* ─── PHILOSOPHY ─── */
+    .philosophy{padding:100px 0;border-bottom:1px solid var(--line)}
+    .phil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px}
+    .phil-card{padding:38px;border-radius:24px;border:1px solid var(--line);background:rgba(255,255,255,.02)}
+    .phil-num{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+    .phil-card h3{font-family:'Playfair Display',serif;font-size:24px;font-weight:600;letter-spacing:-.02em;margin:0 0 16px}
+    .phil-card p{font-size:16px;line-height:1.85;color:var(--muted);margin:0}
+
+    /* ─── CTA ─── */
+    .about-cta{padding:100px 0;text-align:center}
+    .about-cta h2{font-family:'Playfair Display',serif;font-size:46px;font-weight:600;letter-spacing:-.04em;margin:0 0 16px}
+    .about-cta p{font-size:18px;line-height:1.8;color:var(--muted);margin:0 auto 40px;max-width:600px}
+
+    /* ─── FOOTER ─── */
+    .footer{border-top:1px solid var(--line);padding:48px 0 32px}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;border-top:1px solid var(--line);margin-top:28px}
+    .footer-copy{font-size:12px;color:rgba(255,255,255,.3)}
+    .footer-legal{display:flex;gap:24px;font-size:12px;color:rgba(255,255,255,.3)}
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 980px){
+      .nav{display:none}
+      .hamburger{display:flex}
+      .nav-cta{display:none}
+      .about-grid{grid-template-columns:1fr;gap:48px}
+      .photo-wrap{max-width:360px;margin:0 auto}
+      .about-name{font-size:42px}
+      .phil-grid{grid-template-columns:1fr}
+    }
+    @media (max-width: 640px){
+      .container{padding:0 18px}
+      .about-hero{padding:60px 0 50px}
+      .about-name{font-size:36px}
+      .about-cta h2{font-size:34px}
+      .founder-stats{grid-template-columns:1fr}
+      .philosophy{padding:60px 0}
+      .about-cta{padding:60px 0}
+      .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container nav-wrap">
+      <a href="/">
+        <div class="brand">MAINSTAY DIGITAL</div>
+        <div class="domain">mainstayhq.com</div>
+      </a>
+      <nav class="nav">
+        <a href="/#capabilities">What We Do</a>
+        <a href="/#ai-management">AI Management</a>
+        <a href="/#work">Our Work</a>
+        <a href="/#packages">Pricing</a>
+        <a class="active" href="/about">About</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+      <a class="btn btn-outline nav-cta" href="/#contact">Book a Consultation</a>
+      <button class="hamburger" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="/#capabilities" onclick="closeMobileNav()">What We Do</a>
+      <a href="/#ai-management" onclick="closeMobileNav()">AI Management</a>
+      <a href="/#work" onclick="closeMobileNav()">Our Work</a>
+      <a href="/#packages" onclick="closeMobileNav()">Pricing</a>
+      <a href="/about" onclick="closeMobileNav()">About</a>
+      <a href="/#contact" onclick="closeMobileNav()">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ═══ ABOUT HERO ═══ -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <div class="photo-wrap">
+            <img src="caden.jpg" alt="Caden Hillier — Founder & CEO of Mainstay Digital" />
+          </div>
+          <div class="photo-label">Madison, Connecticut</div>
+        </div>
+        <div>
+          <div class="eyebrow">Meet the Founder</div>
+          <h1 class="about-name">Caden Hillier</h1>
+          <div class="about-title">Founder & CEO</div>
+          <div class="about-bio">
+            <p>I started building websites when I was 15. Not because someone told me to — because I saw businesses around me losing customers to bad first impressions online. A great restaurant with a website from 2009. A law firm that looked like a scam. Real businesses with real reputations, getting undercut by how they showed up on a screen.</p>
+            <p>That problem hasn't gone away. If anything, it's gotten worse. Now you're not just competing with the business down the street — you're competing with every business a customer can find in three seconds on their phone. <strong>Your website is your first handshake, your storefront, and your sales pitch all at once.</strong> Most businesses are losing that moment without even knowing it.</p>
+            <p>Mainstay Digital exists to fix that. We build websites that make businesses look as strong as they actually are — and we pair them with AI systems that handle the repetitive work that slows teams down. No templates. No page builders. Every site is built from scratch to match how your business actually operates.</p>
+            <p>I run every project personally. When you work with Mainstay, you're working with me — not a junior designer, not an outsourced team, not a chatbot. <strong>I answer the phone, I write the code, I make sure it's right.</strong></p>
+          </div>
+          <div class="founder-stats">
+            <div class="f-stat"><div class="f-stat-num">47+</div><div class="f-stat-label">Websites Built</div></div>
+            <div class="f-stat"><div class="f-stat-num">100%</div><div class="f-stat-label">Satisfaction Rate</div></div>
+            <div class="f-stat"><div class="f-stat-num">14</div><div class="f-stat-label">Day Avg. Delivery</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PHILOSOPHY ═══ -->
+  <section class="philosophy">
+    <div class="container">
+      <div class="eyebrow">How I Work</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:46px;font-weight:600;letter-spacing:-.04em;margin:20px 0 0">No shortcuts. No handoffs. No excuses.</h2>
+      <div class="phil-grid">
+        <div class="phil-card">
+          <div class="phil-num">01</div>
+          <h3>One point of contact</h3>
+          <p>You talk to me. Not a project manager, not a support inbox. I handle strategy, design, development, and delivery. That means fewer miscommunications, faster turnarounds, and someone who actually cares whether it's right.</p>
+        </div>
+        <div class="phil-card">
+          <div class="phil-num">02</div>
+          <h3>Built from scratch, every time</h3>
+          <p>No Squarespace. No WordPress templates with a logo swap. Every line of code is written for your business. That's how you get a site that loads fast, looks different from your competitors, and actually converts visitors into customers.</p>
+        </div>
+        <div class="phil-card">
+          <div class="phil-num">03</div>
+          <h3>AI that actually works</h3>
+          <p>I don't sell AI as a buzzword. I build systems that answer your customers at 2am, follow up on leads you'd forget about, and handle the work your team doesn't have time for. Real automation, not a chatbot that says "I'll get back to you."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="about-cta">
+    <div class="container">
+      <h2>Let's talk about your business.</h2>
+      <p>15 minutes. No pitch, no pressure. Just a conversation about where you are and where you want to be.</p>
+      <a class="btn btn-secondary" href="/#contact" style="font-size:12px;padding:18px 36px">Book a Free Strategy Call</a>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2026 Mainstay Digital. All rights reserved.</div>
+        <div class="footer-legal">
+          <a href="mailto:hello@mainstayhq.com?subject=Privacy%20Policy%20Request">Privacy</a>
+          <a href="mailto:hello@mainstayhq.com?subject=Terms%20of%20Service%20Request">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script>
+document.getElementById('menuToggle').addEventListener('click',function(){
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+function closeMobileNav(){document.getElementById('mobileNav').classList.remove('open')}
+</script>
+</body>
+</html>
