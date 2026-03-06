@@ -168,6 +168,26 @@
     .site-obsidian .so-visual{border-radius:4px;min-height:220px;background:linear-gradient(160deg,#141210,#1a1714);position:relative;overflow:hidden;border:1px solid rgba(199,165,106,.08)}
     .site-obsidian .so-visual::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 40% 30%,rgba(199,165,106,.08),transparent 60%),radial-gradient(circle at 80% 80%,rgba(100,80,50,.06),transparent 40%)}
     .site-obsidian .so-visual-label{position:absolute;bottom:16px;left:16px;font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(199,165,106,.35)}
+    .site-obsidian .so-estate{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:36px}
+    .site-obsidian .so-building{position:relative;width:65%;height:60%}
+    .site-obsidian .so-bld-main{position:absolute;bottom:0;left:15%;width:70%;height:100%;background:linear-gradient(180deg,#1c1915,#171411);border:1px solid rgba(199,165,106,.12);border-bottom:none}
+    .site-obsidian .so-bld-roof{position:absolute;bottom:100%;left:15%;width:70%;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:18px solid #1c1915}
+    .site-obsidian .so-bld-wing-l{position:absolute;bottom:0;left:0;width:20%;height:55%;background:#161310;border:1px solid rgba(199,165,106,.08);border-bottom:none;border-right:none}
+    .site-obsidian .so-bld-wing-r{position:absolute;bottom:0;right:0;width:20%;height:55%;background:#161310;border:1px solid rgba(199,165,106,.08);border-bottom:none;border-left:none}
+    .site-obsidian .so-win-row{position:absolute;left:20%;width:60%;display:flex;justify-content:space-evenly}
+    .site-obsidian .so-win{width:10px;height:14px;background:rgba(199,165,106,.12);border:1px solid rgba(199,165,106,.2)}
+    .site-obsidian .so-win.lit{background:rgba(199,165,106,.25);box-shadow:0 0 6px rgba(199,165,106,.15)}
+    .site-obsidian .so-door{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:16px;height:22px;background:rgba(199,165,106,.18);border:1px solid rgba(199,165,106,.25);border-bottom:none;border-radius:8px 8px 0 0}
+    .site-obsidian .so-ground{position:absolute;bottom:0;left:0;width:100%;height:36px;background:linear-gradient(180deg,transparent,rgba(199,165,106,.04))}
+    .site-obsidian .so-ground::after{content:"";position:absolute;bottom:12px;left:0;width:100%;height:1px;background:rgba(199,165,106,.08)}
+    .site-obsidian .so-tree{position:absolute;bottom:36px}
+    .site-obsidian .so-tree-trunk{width:3px;height:14px;background:rgba(199,165,106,.15);margin:0 auto}
+    .site-obsidian .so-tree-top{width:16px;height:22px;background:rgba(199,165,106,.06);border-radius:50% 50% 4px 4px;border:1px solid rgba(199,165,106,.08)}
+    .site-obsidian .so-price-tag{position:absolute;top:14px;right:14px;background:rgba(199,165,106,.08);border:1px solid rgba(199,165,106,.15);border-radius:3px;padding:4px 8px;font-size:9px;font-weight:700;color:rgba(199,165,106,.6);letter-spacing:.05em}
+    .site-obsidian .so-floorplan{position:absolute;top:14px;left:14px;display:flex;flex-direction:column;gap:2px}
+    .site-obsidian .so-fp-row{display:flex;gap:2px}
+    .site-obsidian .so-fp-cell{width:8px;height:6px;border:1px solid rgba(199,165,106,.1)}
+    .site-obsidian .so-fp-cell.fill{background:rgba(199,165,106,.06)}
     .site-obsidian .so-featured{padding:0 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}
     .site-obsidian .so-prop{border:1px solid rgba(255,255,255,.05);padding:16px;background:rgba(255,255,255,.015)}
     .site-obsidian .so-prop-price{font-size:16px;font-weight:600;letter-spacing:-.02em;color:rgba(199,165,106,.7)}
@@ -195,9 +215,26 @@
     .site-solara .ss-ctas{display:flex;gap:10px;margin-top:18px}
     .site-solara .ss-btn-green{padding:11px 22px;border-radius:12px;background:#1a5237;color:#e8f5ee;font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase}
     .site-solara .ss-btn-outline{padding:11px 22px;border-radius:12px;border:1.5px solid rgba(26,82,55,.15);color:#1a5237;font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase}
-    .site-solara .ss-hero-img{border-radius:20px;min-height:200px;background:linear-gradient(160deg,#d4e8dc,#a8d4b8);position:relative;overflow:hidden}
-    .site-solara .ss-hero-img::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,rgba(26,82,55,.08),transparent 60%)}
-    .site-solara .ss-hero-img::after{content:"";position:absolute;top:50%;left:50%;width:60px;height:60px;transform:translate(-50%,-50%);border:2px solid rgba(26,82,55,.12);border-radius:999px}
+    .site-solara .ss-hero-img{border-radius:20px;min-height:200px;background:linear-gradient(160deg,#e8f0ea,#d4e8dc);position:relative;overflow:hidden}
+    .site-solara .ss-hero-img::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 60%,rgba(26,82,55,.05),transparent 60%)}
+    .site-solara .ss-vi{position:absolute;display:flex;flex-direction:column;align-items:center;top:50%;left:50%;transform:translate(-50%,-50%);gap:6px}
+    .site-solara .ss-vi-person{width:40px;height:80px;position:relative}
+    .site-solara .ss-vi-head{width:18px;height:18px;border-radius:999px;border:2px solid rgba(26,82,55,.2);margin:0 auto}
+    .site-solara .ss-vi-body{width:24px;height:40px;border:2px solid rgba(26,82,55,.2);border-radius:12px 12px 8px 8px;margin:4px auto 0;position:relative}
+    .site-solara .ss-vi-pulse{position:absolute;top:-4px;right:-30px;display:flex;align-items:center;gap:1px;height:20px}
+    .site-solara .ss-vi-bar{width:2px;background:rgba(45,138,86,.35);border-radius:1px}
+    .site-solara .ss-vi-label{font-size:6px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(26,82,55,.35)}
+    .site-solara .ss-card-tl{position:absolute;top:14px;left:14px;background:#fff;border-radius:10px;padding:8px 10px;box-shadow:0 2px 8px rgba(0,0,0,.04);border:1px solid rgba(26,82,55,.06)}
+    .site-solara .ss-card-tr{position:absolute;top:14px;right:14px;background:#fff;border-radius:10px;padding:8px 10px;box-shadow:0 2px 8px rgba(0,0,0,.04);border:1px solid rgba(26,82,55,.06)}
+    .site-solara .ss-card-bl{position:absolute;bottom:14px;left:14px;background:#fff;border-radius:10px;padding:8px 10px;box-shadow:0 2px 8px rgba(0,0,0,.04);border:1px solid rgba(26,82,55,.06)}
+    .site-solara .ss-card-br{position:absolute;bottom:14px;right:14px;background:#fff;border-radius:10px;padding:6px 10px;box-shadow:0 2px 8px rgba(0,0,0,.04);border:1px solid rgba(26,82,55,.06)}
+    .site-solara .ss-mc-title{font-size:5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(26,82,55,.4);margin-bottom:3px}
+    .site-solara .ss-mc-val{font-size:11px;font-weight:700;color:#1a5237}
+    .site-solara .ss-mc-sub{font-size:5px;color:rgba(26,82,55,.4);margin-top:1px}
+    .site-solara .ss-mc-dots{display:flex;gap:2px;margin-top:3px}
+    .site-solara .ss-mc-dot{width:4px;height:4px;border-radius:999px;background:rgba(45,138,86,.15)}
+    .site-solara .ss-mc-dot.active{background:rgba(45,138,86,.5)}
+    .site-solara .ss-connect-line{position:absolute;width:1px;background:rgba(26,82,55,.08)}
     .site-solara .ss-services{padding:0 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
     .site-solara .ss-svc{border:1px solid rgba(0,0,0,.05);border-radius:16px;padding:20px;background:#fff;position:relative;overflow:hidden}
     .site-solara .ss-svc::before{content:"";position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,#2d8a56,#1a5237);border-radius:0 2px 2px 0}
@@ -229,8 +266,21 @@
     .site-atlas .sa2-cta{margin-top:18px;display:inline-flex;padding:11px 24px;border-radius:10px;background:linear-gradient(135deg,#2563eb,#1d4ed8);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;box-shadow:0 4px 20px rgba(37,99,235,.25)}
     .site-atlas .sa2-visual{border-radius:16px;min-height:200px;background:#0a0f1c;border:1px solid rgba(59,130,246,.08);position:relative;overflow:hidden}
     .site-atlas .sa2-visual::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 29px,rgba(59,130,246,.03) 29px,rgba(59,130,246,.03) 30px),repeating-linear-gradient(90deg,transparent,transparent 29px,rgba(59,130,246,.03) 29px,rgba(59,130,246,.03) 30px)}
-    .site-atlas .sa2-visual::after{content:"";position:absolute;top:50%;left:50%;width:100px;height:100px;transform:translate(-50%,-50%);border:1px solid rgba(59,130,246,.1);border-radius:999px}
-    .site-atlas .sa2-visual-dot{position:absolute;width:6px;height:6px;border-radius:999px;background:rgba(59,130,246,.3)}
+    .site-atlas .sa2-node{position:absolute;width:8px;height:8px;border-radius:999px;background:rgba(59,130,246,.2);border:1px solid rgba(59,130,246,.35)}
+    .site-atlas .sa2-node.bright{background:rgba(59,130,246,.4);box-shadow:0 0 8px rgba(59,130,246,.25)}
+    .site-atlas .sa2-node-label{position:absolute;font-size:5px;font-weight:600;letter-spacing:.1em;color:rgba(59,130,246,.35);white-space:nowrap;transform:translateY(-12px)}
+    .site-atlas .sa2-edge{position:absolute;height:1px;background:rgba(59,130,246,.08);transform-origin:left center}
+    .site-atlas .sa2-chart-box{position:absolute;bottom:14px;left:14px;right:14px;height:55px;border:1px solid rgba(59,130,246,.06);border-radius:8px;background:rgba(59,130,246,.02);padding:6px 8px;display:flex;flex-direction:column}
+    .site-atlas .sa2-chart-title{font-size:5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(59,130,246,.3);margin-bottom:4px}
+    .site-atlas .sa2-chart-bars{display:flex;align-items:flex-end;gap:3px;flex:1}
+    .site-atlas .sa2-cbar{flex:1;background:rgba(59,130,246,.12);border-radius:2px 2px 0 0;min-width:0}
+    .site-atlas .sa2-cbar.hi{background:rgba(59,130,246,.3)}
+    .site-atlas .sa2-fund-tag{position:absolute;top:14px;right:14px;background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.12);border-radius:6px;padding:5px 8px}
+    .site-atlas .sa2-fund-val{font-size:10px;font-weight:700;color:rgba(59,130,246,.7)}
+    .site-atlas .sa2-fund-lbl{font-size:5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(59,130,246,.3);margin-top:1px}
+    .site-atlas .sa2-irr-tag{position:absolute;top:14px;left:14px;background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.12);border-radius:6px;padding:5px 8px}
+    .site-atlas .sa2-irr-val{font-size:10px;font-weight:700;color:rgba(59,130,246,.7)}
+    .site-atlas .sa2-irr-lbl{font-size:5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(59,130,246,.3);margin-top:1px}
     .site-atlas .sa2-cards{padding:0 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
     .site-atlas .sa2-card{border:1px solid rgba(255,255,255,.04);border-radius:14px;padding:18px;background:rgba(255,255,255,.015);position:relative;overflow:hidden}
     .site-atlas .sa2-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(59,130,246,.2),transparent)}
@@ -547,7 +597,32 @@
                         <div class="so-copy">Ultra-private luxury brokerage connecting select buyers with extraordinary estates across the Eastern seaboard.</div>
                         <div class="so-cta">Request Private Access →</div>
                       </div>
-                      <div class="so-visual"><span class="so-visual-label">Featured Estate</span></div>
+                      <div class="so-visual">
+                        <span class="so-visual-label">Featured Estate</span>
+                        <div class="so-price-tag">$12.8M</div>
+                        <div class="so-floorplan">
+                          <div class="so-fp-row"><div class="so-fp-cell fill"></div><div class="so-fp-cell fill"></div><div class="so-fp-cell"></div></div>
+                          <div class="so-fp-row"><div class="so-fp-cell fill"></div><div class="so-fp-cell"></div><div class="so-fp-cell fill"></div></div>
+                          <div class="so-fp-row"><div class="so-fp-cell"></div><div class="so-fp-cell fill"></div><div class="so-fp-cell fill"></div></div>
+                        </div>
+                        <div class="so-estate">
+                          <div class="so-building">
+                            <div class="so-bld-roof"></div>
+                            <div class="so-bld-main">
+                              <div class="so-win-row" style="top:15%"><div class="so-win lit"></div><div class="so-win"></div><div class="so-win lit"></div><div class="so-win"></div></div>
+                              <div class="so-win-row" style="top:42%"><div class="so-win"></div><div class="so-win lit"></div><div class="so-win"></div><div class="so-win lit"></div></div>
+                              <div class="so-win-row" style="top:68%"><div class="so-win lit"></div><div class="so-win lit"></div><div class="so-win"></div><div class="so-win"></div></div>
+                              <div class="so-door"></div>
+                            </div>
+                            <div class="so-bld-wing-l"></div>
+                            <div class="so-bld-wing-r"></div>
+                          </div>
+                        </div>
+                        <div class="so-ground"></div>
+                        <div class="so-tree" style="left:8%"><div class="so-tree-top"></div><div class="so-tree-trunk"></div></div>
+                        <div class="so-tree" style="right:10%"><div class="so-tree-top"></div><div class="so-tree-trunk"></div></div>
+                        <div class="so-tree" style="left:3%"><div class="so-tree-top" style="width:12px;height:18px"></div><div class="so-tree-trunk" style="height:10px"></div></div>
+                      </div>
                     </div>
                   </div>
                   <div class="so-featured">
@@ -610,7 +685,47 @@
                         <div class="ss-copy">Modern primary and integrative care with same-day appointments, transparent pricing, and providers who listen.</div>
                         <div class="ss-ctas"><div class="ss-btn-green">Book Today</div><div class="ss-btn-outline">Our Approach</div></div>
                       </div>
-                      <div class="ss-hero-img"></div>
+                      <div class="ss-hero-img">
+                        <div class="ss-card-tl">
+                          <div class="ss-mc-title">Heart Rate</div>
+                          <div class="ss-mc-val">72 <span style="font-size:6px;font-weight:500;color:rgba(26,82,55,.4)">bpm</span></div>
+                          <div class="ss-mc-dots"><div class="ss-mc-dot active"></div><div class="ss-mc-dot active"></div><div class="ss-mc-dot active"></div><div class="ss-mc-dot"></div><div class="ss-mc-dot"></div></div>
+                        </div>
+                        <div class="ss-card-tr">
+                          <div class="ss-mc-title">Sleep Score</div>
+                          <div class="ss-mc-val">94</div>
+                          <div class="ss-mc-sub">Excellent</div>
+                        </div>
+                        <div class="ss-vi">
+                          <div class="ss-vi-person">
+                            <div class="ss-vi-head"></div>
+                            <div class="ss-vi-body">
+                              <div class="ss-vi-pulse">
+                                <div class="ss-vi-bar" style="height:4px"></div>
+                                <div class="ss-vi-bar" style="height:10px"></div>
+                                <div class="ss-vi-bar" style="height:16px"></div>
+                                <div class="ss-vi-bar" style="height:8px"></div>
+                                <div class="ss-vi-bar" style="height:14px"></div>
+                                <div class="ss-vi-bar" style="height:6px"></div>
+                                <div class="ss-vi-bar" style="height:12px"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ss-vi-label">Wellness Index</div>
+                        </div>
+                        <div class="ss-card-bl">
+                          <div class="ss-mc-title">Blood Pressure</div>
+                          <div class="ss-mc-val" style="font-size:9px">118/76</div>
+                          <div class="ss-mc-sub">Normal Range</div>
+                        </div>
+                        <div class="ss-card-br">
+                          <div class="ss-mc-title">Next Visit</div>
+                          <div class="ss-mc-val" style="font-size:8px">Mar 14</div>
+                          <div class="ss-mc-sub">Annual Wellness</div>
+                        </div>
+                        <div class="ss-connect-line" style="top:40px;left:50%;height:30px"></div>
+                        <div class="ss-connect-line" style="bottom:40px;left:50%;height:30px"></div>
+                      </div>
                     </div>
                   </div>
                   <div class="ss-services">
@@ -657,10 +772,36 @@
                         <div class="sa2-cta">Submit Your Deck</div>
                       </div>
                       <div class="sa2-visual">
-                        <div class="sa2-visual-dot" style="top:20%;left:30%"></div>
-                        <div class="sa2-visual-dot" style="top:60%;left:70%"></div>
-                        <div class="sa2-visual-dot" style="top:40%;left:50%"></div>
-                        <div class="sa2-visual-dot" style="top:75%;left:25%"></div>
+                        <div class="sa2-irr-tag"><div class="sa2-irr-val">3.2x</div><div class="sa2-irr-lbl">Avg MOIC</div></div>
+                        <div class="sa2-fund-tag"><div class="sa2-fund-val">41%</div><div class="sa2-fund-lbl">Net IRR</div></div>
+                        <div class="sa2-node bright" style="top:28%;left:35%"><span class="sa2-node-label">Series A</span></div>
+                        <div class="sa2-node" style="top:22%;left:58%"><span class="sa2-node-label">Seed</span></div>
+                        <div class="sa2-node bright" style="top:38%;left:72%"><span class="sa2-node-label">Series B</span></div>
+                        <div class="sa2-node" style="top:45%;left:48%"></div>
+                        <div class="sa2-node" style="top:32%;left:22%"></div>
+                        <div class="sa2-node bright" style="top:48%;left:30%"></div>
+                        <div class="sa2-edge" style="top:30%;left:37%;width:80px;transform:rotate(-8deg)"></div>
+                        <div class="sa2-edge" style="top:26%;left:55%;width:65px;transform:rotate(25deg)"></div>
+                        <div class="sa2-edge" style="top:40%;left:50%;width:85px;transform:rotate(5deg)"></div>
+                        <div class="sa2-edge" style="top:35%;left:25%;width:40px;transform:rotate(-15deg)"></div>
+                        <div class="sa2-edge" style="top:46%;left:33%;width:55px;transform:rotate(10deg)"></div>
+                        <div class="sa2-chart-box">
+                          <div class="sa2-chart-title">Fund III Deployment by Quarter</div>
+                          <div class="sa2-chart-bars">
+                            <div class="sa2-cbar" style="height:25%"></div>
+                            <div class="sa2-cbar" style="height:40%"></div>
+                            <div class="sa2-cbar hi" style="height:65%"></div>
+                            <div class="sa2-cbar" style="height:50%"></div>
+                            <div class="sa2-cbar hi" style="height:80%"></div>
+                            <div class="sa2-cbar hi" style="height:100%"></div>
+                            <div class="sa2-cbar" style="height:70%"></div>
+                            <div class="sa2-cbar hi" style="height:90%"></div>
+                            <div class="sa2-cbar" style="height:55%"></div>
+                            <div class="sa2-cbar" style="height:45%"></div>
+                            <div class="sa2-cbar hi" style="height:75%"></div>
+                            <div class="sa2-cbar" style="height:60%"></div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
