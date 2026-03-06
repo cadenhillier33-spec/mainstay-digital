@@ -165,15 +165,12 @@
     .site-obsidian .so-title{margin-top:16px;font-size:30px;font-weight:500;letter-spacing:-.04em;line-height:1.1;font-family:'Playfair Display',serif;color:#f0ece4}
     .site-obsidian .so-copy{margin-top:14px;font-size:12px;line-height:1.85;color:rgba(255,255,255,.38)}
     .site-obsidian .so-cta{margin-top:20px;display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border:1px solid rgba(199,165,106,.25);border-radius:0;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(199,165,106,.8);background:rgba(199,165,106,.05)}
-    .site-obsidian .so-visual{border-radius:4px;min-height:220px;background:linear-gradient(135deg,#2a2010 0%,#3d2f18 30%,#4a3820 50%,#3d2f18 70%,#2a2010 100%);position:relative;overflow:hidden;border:1px solid rgba(199,165,106,.25)}
-    .site-obsidian .so-visual::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 60%,rgba(199,165,106,.25),transparent 60%),radial-gradient(circle at 30% 30%,rgba(199,165,106,.15),transparent 50%)}
-    .site-obsidian .so-visual-label{position:absolute;bottom:10px;left:12px;font-size:7px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(199,165,106,.7)}
-    .site-obsidian .so-img-frame{position:absolute;top:20px;left:15px;right:15px;bottom:35px;border:1px solid rgba(199,165,106,.35);border-radius:2px;background:linear-gradient(180deg,rgba(199,165,106,.08) 0%,rgba(199,165,106,.02) 100%)}
-    .site-obsidian .so-img-frame::before{content:"";position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(0deg,rgba(199,165,106,.18),transparent)}
-    .site-obsidian .so-img-frame::after{content:"";position:absolute;top:15%;left:20%;right:20%;height:30%;border:1px solid rgba(199,165,106,.2);border-radius:1px}
-    .site-obsidian .so-img-price{position:absolute;top:12px;right:12px;background:rgba(199,165,106,.9);color:#0a0a0a;font-size:11px;font-weight:800;padding:4px 10px;border-radius:2px;letter-spacing:.02em}
-    .site-obsidian .so-img-specs{position:absolute;bottom:8px;left:15px;color:rgba(199,165,106,.8);font-size:8px;font-weight:600;letter-spacing:.1em}
-    .site-obsidian .so-img-tag{position:absolute;top:12px;left:12px;border:1px solid rgba(199,165,106,.5);color:rgba(199,165,106,.8);font-size:6px;font-weight:700;padding:2px 6px;border-radius:1px;letter-spacing:.15em;text-transform:uppercase}
+    .site-obsidian .so-visual{border-radius:4px;min-height:220px;background:url('house.jpg') center/cover no-repeat;position:relative;overflow:hidden;border:1px solid rgba(199,165,106,.25)}
+    .site-obsidian .so-visual::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.15) 40%,rgba(0,0,0,.05) 100%)}
+    .site-obsidian .so-visual-label{position:absolute;bottom:10px;left:12px;font-size:7px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(199,165,106,.9);z-index:1;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+    .site-obsidian .so-img-price{position:absolute;top:12px;right:12px;background:rgba(199,165,106,.95);color:#0a0a0a;font-size:11px;font-weight:800;padding:4px 10px;border-radius:2px;letter-spacing:.02em;z-index:1}
+    .site-obsidian .so-img-specs{position:absolute;bottom:8px;left:15px;color:rgba(255,255,255,.9);font-size:8px;font-weight:600;letter-spacing:.1em;z-index:1;text-shadow:0 1px 3px rgba(0,0,0,.7)}
+    .site-obsidian .so-img-tag{position:absolute;top:12px;left:12px;border:1px solid rgba(199,165,106,.7);color:rgba(199,165,106,.95);font-size:6px;font-weight:700;padding:2px 6px;border-radius:1px;letter-spacing:.15em;text-transform:uppercase;z-index:1;background:rgba(0,0,0,.4);backdrop-filter:blur(4px)}
     .site-obsidian .so-featured{padding:0 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}
     .site-obsidian .so-prop{border:1px solid rgba(255,255,255,.06);padding:16px;background:rgba(255,255,255,.02)}
     .site-obsidian .so-prop-price{font-size:16px;font-weight:600;letter-spacing:-.02em;color:rgba(199,165,106,.75)}
@@ -582,7 +579,6 @@
                       </div>
                       <div class="so-visual">
                         <span class="so-visual-label">Featured Estate</span>
-                        <div class="so-img-frame"></div>
                         <div class="so-img-tag">Exclusive</div>
                         <div class="so-img-price">$12.8M</div>
                         <div class="so-img-specs">9 Lighthouse Point · 7 BD · 9 BA · 11,200 SQFT</div>
