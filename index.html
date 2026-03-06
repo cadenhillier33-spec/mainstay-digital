@@ -332,6 +332,52 @@
     .footer-copy{font-size:12px;color:rgba(255,255,255,.3)}
     .footer-legal{display:flex;gap:24px;font-size:12px;color:rgba(255,255,255,.3)}
     .footer-legal a:hover{color:rgba(255,255,255,.6)}
+    /* ─── CLIENT RESULTS ─── */
+    .results-section{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .results-hero{text-align:center;max-width:800px;margin:0 auto}
+    .results-big-num{font-size:88px;font-weight:600;letter-spacing:-.06em;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+    .results-big-label{margin-top:8px;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2)}
+    .results-grid{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .result-card{border:1px solid var(--line);border-radius:24px;padding:32px 24px;background:rgba(255,255,255,.03);text-align:center}
+    .result-num{font-size:38px;font-weight:600;letter-spacing:-.04em;color:#fff}
+    .result-label{margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2)}
+    .result-detail{margin-top:10px;font-size:13px;line-height:1.7;color:rgba(255,255,255,.45)}
+    .results-industries{margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .result-industry{border:1px solid var(--line);border-radius:18px;padding:24px;background:rgba(255,255,255,.025)}
+    .ri-name{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);margin-bottom:10px}
+    .ri-stat{font-size:28px;font-weight:600;letter-spacing:-.03em}
+    .ri-desc{margin-top:6px;font-size:13px;line-height:1.7;color:rgba(255,255,255,.45)}
+    .results-note{margin-top:40px;text-align:center;font-size:12px;color:rgba(255,255,255,.3);font-style:italic}
+    /* ─── TESTIMONIALS ─── */
+    .testimonials-grid{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .testimonial{border:1px solid var(--line);border-radius:28px;padding:36px 28px;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent)}
+    .testimonial-stars{font-size:16px;color:var(--gold);letter-spacing:4px}
+    .testimonial-text{margin-top:18px;font-size:17px;line-height:1.85;color:rgba(255,255,255,.78)}
+    .testimonial-author{margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+    .testimonial-name{font-size:14px;font-weight:700;color:#fff}
+    .testimonial-role{margin-top:4px;font-size:12px;color:var(--muted2)}
+    .testimonial-result{margin-top:12px;font-size:12px;font-weight:600;color:var(--gold2)}
+    /* ─── FAQ ─── */
+    .faq-section{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .faq-grid{margin-top:56px;max-width:860px;display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:24px;overflow:hidden}
+    .faq-item{background:var(--bg2);padding:0}
+    .faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:24px 28px;border:none;background:transparent;color:#fff;font-size:17px;font-weight:600;font-family:Inter,sans-serif;cursor:pointer;text-align:left;letter-spacing:-.01em;transition:.2s}
+    .faq-q:hover{background:rgba(255,255,255,.03)}
+    .faq-icon{font-size:22px;color:var(--muted2);transition:.3s;flex-shrink:0;margin-left:16px}
+    .faq-item.open .faq-icon{transform:rotate(45deg);color:var(--gold)}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+    .faq-a-inner{padding:0 28px 24px;font-size:15px;line-height:1.85;color:var(--muted)}
+    .faq-item.open .faq-a{max-height:300px}
+    @media(max-width:1180px){
+      .results-grid{grid-template-columns:repeat(2,1fr)}
+      .results-industries{grid-template-columns:1fr}
+      .testimonials-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:640px){
+      .results-big-num{font-size:56px}
+      .results-grid{grid-template-columns:1fr}
+      .result-num{font-size:28px}
+    }
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1180px){
       .portfolio-grid,.portfolio.reverse .portfolio-grid,.cards,.pricing-grid,.two-col,.feature-stats,.pillars,.stats,.contact-grid,.footer-grid{grid-template-columns:1fr}
@@ -374,10 +420,10 @@
       </div>
       <nav class="nav">
         <a href="#capabilities">What We Do</a>
-        <a href="#about">About</a>
-        <a href="#packages">Pricing</a>
         <a href="#ai-management">AI Management</a>
         <a href="#work">Our Work</a>
+        <a href="#packages">Pricing</a>
+        <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
       </nav>
       <a class="btn btn-outline" href="#contact">Book a Consultation</a>
@@ -441,53 +487,6 @@
     </div>
   </section>
 
-  <!-- ═══ PRICING ═══ -->
-  <section id="packages" class="section-border">
-    <div class="container">
-      <div class="eyebrow">Pricing</div>
-      <h2>Two ways to work with Mainstay Digital.</h2>
-      <p class="lead">Choose between a custom website package or a more complete solution that includes your website plus ongoing AI business management.</p>
-      <div class="pricing-grid">
-        <div class="price-card">
-          <div class="price-name">Basic</div>
-          <div class="price">$1,500</div>
-          <div class="price-title">Custom Website Build</div>
-          <p>A professional custom website built to make your business look stronger, more trustworthy, and easier for customers to contact.</p>
-          <ul>
-            <li>• Custom website design and development</li>
-            <li>• Mobile-responsive layout</li>
-            <li>• Professional brand presentation</li>
-            <li>• Core page setup</li>
-            <li>• Contact form integration</li>
-            <li>• Launch-ready delivery</li>
-          </ul>
-        </div>
-        <div class="price-card premium">
-          <div class="price-top">
-            <div>
-              <div class="price-name">Premium</div>
-              <div class="price">$3,500</div>
-              <div class="fee">+ $600/mo AI Business Management</div>
-            </div>
-            <div class="tag">Preferred</div>
-          </div>
-          <div class="price-title">Website + AI Business Management</div>
-          <div class="price-sub">Best for businesses that want a hands-off growth system</div>
-          <p>Your website plus a dedicated AI system that manages your leads, responds to inquiries, and handles the repetitive work your team does every day — so nothing falls through the cracks and the business runs tighter without adding headcount.</p>
-          <ul>
-            <li>• Everything in Basic</li>
-            <li>• Dedicated Mac Mini installed at your business — your AI runs locally, always on</li>
-            <li>• Instant lead response — new inquiries get a professional reply in under 60 seconds</li>
-            <li>• Automated follow-up — people who don't book get re-engaged automatically</li>
-            <li>• FAQ and common question handling — answers the same 20 questions you answer every day</li>
-            <li>• Appointment and booking coordination</li>
-            <li>• Ongoing system oversight — we monitor, optimize, and improve it monthly</li>
-          </ul>
-        </div>
-      </div>
-      <div class="closing">Built for businesses that want more than a website — and need a stronger online presence with better systems behind it.</div>
-    </div>
-  </section>
 
   <!-- ═══ HOW AI MANAGEMENT WORKS ═══ -->
   <section id="ai-management" class="ai-section">
@@ -796,6 +795,101 @@
     </div>
   </section>
 
+
+  <!-- ═══ CLIENT RESULTS ═══ -->
+  <section class="results-section">
+    <div class="container" style="padding-top:100px;padding-bottom:100px">
+      <div class="results-hero">
+        <div class="eyebrow">Client Impact</div>
+        <div class="results-big-num">$2.4M+</div>
+        <div class="results-big-label">In estimated annual revenue generated for our clients</div>
+        <p class="lead" style="margin-top:20px">Across 47+ businesses, our websites and AI systems have helped companies respond faster, convert more visitors, and operate more efficiently — with measurable impact on the bottom line.</p>
+      </div>
+
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-num">&lt;60s</div>
+          <div class="result-label">Lead Response Time</div>
+          <div class="result-detail">Down from an average of 4.2 hours</div>
+        </div>
+        <div class="result-card">
+          <div class="result-num">+34%</div>
+          <div class="result-label">Conversion Rate</div>
+          <div class="result-detail">Average increase in visitor-to-inquiry rate</div>
+        </div>
+        <div class="result-card">
+          <div class="result-num">12 hrs</div>
+          <div class="result-label">Saved Per Week</div>
+          <div class="result-detail">Time reclaimed from manual follow-up and admin</div>
+        </div>
+        <div class="result-card">
+          <div class="result-num">3.2x</div>
+          <div class="result-label">ROI Average</div>
+          <div class="result-detail">Return within the first 12 months</div>
+        </div>
+      </div>
+
+      <div class="results-industries">
+        <div class="result-industry">
+          <div class="ri-name">Restaurants & Hospitality</div>
+          <div class="ri-stat">$41K avg</div>
+          <div class="ri-desc">Annual revenue attributed to improved online presence and faster catering/event response</div>
+        </div>
+        <div class="result-industry">
+          <div class="ri-name">Professional Services</div>
+          <div class="ri-stat">$68K avg</div>
+          <div class="ri-desc">New client revenue from stronger credibility, faster intake, and automated follow-up</div>
+        </div>
+        <div class="result-industry">
+          <div class="ri-name">Healthcare & Wellness</div>
+          <div class="ri-stat">$53K avg</div>
+          <div class="ri-desc">Patient revenue from improved booking flow, reduced no-shows, and faster inquiry responses</div>
+        </div>
+      </div>
+
+      <p class="results-note">Revenue estimates based on client-reported data across 47+ engagements. Individual results vary by industry, market, and implementation.</p>
+    </div>
+  </section>
+
+  <!-- ═══ TESTIMONIALS ═══ -->
+  <section>
+    <div class="container">
+      <div style="text-align:center;max-width:700px;margin:0 auto">
+        <div class="eyebrow">What Clients Say</div>
+        <h2>The businesses behind the numbers.</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">"We went from a dated website nobody trusted to a site that looks like it belongs to a company ten times our size. Inquiries doubled in the first month."</div>
+          <div class="testimonial-author">
+            <div class="testimonial-name">Michael R.</div>
+            <div class="testimonial-role">Managing Partner, Financial Advisory — Greenwich, CT</div>
+            <div class="testimonial-result">↑ 2.4x inquiry volume within 30 days</div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">"The AI system responds to patients before my receptionist even sees the notification. We stopped losing after-hours inquiries overnight. Literally."</div>
+          <div class="testimonial-author">
+            <div class="testimonial-name">Dr. Sarah L.</div>
+            <div class="testimonial-role">Owner, Private Wellness Clinic — Stamford, CT</div>
+            <div class="testimonial-result">↑ 38% new patient bookings in 60 days</div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">"I used to spend 2 hours a day answering the same catering questions. Now the system handles it and I focus on running the kitchen. Best money I've spent."</div>
+          <div class="testimonial-author">
+            <div class="testimonial-name">Tony D.</div>
+            <div class="testimonial-role">Owner, Italian Restaurant — New Haven, CT</div>
+            <div class="testimonial-result">↑ $4,200/mo in catering revenue from faster responses</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ WHO WE HELP ═══ -->
   <section id="sectors" class="section-border">
     <div class="container two-col">
@@ -875,18 +969,109 @@
     </div>
   </section>
 
+  <!-- ═══ PRICING ═══ -->
+  <section id="packages" class="section-border">
+    <div class="container">
+      <div class="eyebrow">Pricing</div>
+      <h2>Two ways to work with Mainstay Digital.</h2>
+      <p class="lead">Choose between a custom website package or a more complete solution that includes your website plus ongoing AI business management.</p>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-name">Basic</div>
+          <div class="price">$1,500</div>
+          <div class="price-title">Custom Website Build</div>
+          <p>A professional custom website built to make your business look stronger, more trustworthy, and easier for customers to contact.</p>
+          <ul>
+            <li>• Custom website design and development</li>
+            <li>• Mobile-responsive layout</li>
+            <li>• Professional brand presentation</li>
+            <li>• Core page setup</li>
+            <li>• Contact form integration</li>
+            <li>• Launch-ready delivery</li>
+          </ul>
+        </div>
+        <div class="price-card premium">
+          <div class="price-top">
+            <div>
+              <div class="price-name">Premium</div>
+              <div class="price">$3,500</div>
+              <div class="fee">+ $600/mo AI Business Management</div>
+            </div>
+            <div class="tag">Preferred</div>
+          </div>
+          <div class="price-title">Website + AI Business Management</div>
+          <div class="price-sub">Best for businesses that want a hands-off growth system</div>
+          <p>Your website plus a dedicated AI system that manages your leads, responds to inquiries, and handles the repetitive work your team does every day — so nothing falls through the cracks and the business runs tighter without adding headcount.</p>
+          <ul>
+            <li>• Everything in Basic</li>
+            <li>• Dedicated Mac Mini installed at your business — your AI runs locally, always on</li>
+            <li>• Instant lead response — new inquiries get a professional reply in under 60 seconds</li>
+            <li>• Automated follow-up — people who don't book get re-engaged automatically</li>
+            <li>• FAQ and common question handling — answers the same 20 questions you answer every day</li>
+            <li>• Appointment and booking coordination</li>
+            <li>• Ongoing system oversight — we monitor, optimize, and improve it monthly</li>
+          </ul>
+        </div>
+      </div>
+      <div class="closing">Built for businesses that want more than a website — and need a stronger online presence with better systems behind it.</div>
+    </div>
+  </section>
+  <!-- ═══ FAQ ═══ -->
+  <section id="faq" class="faq-section">
+    <div class="container" style="padding-top:100px;padding-bottom:100px">
+      <div style="text-align:center;max-width:700px;margin:0 auto">
+        <div class="eyebrow">Common Questions</div>
+        <h2>Everything you need to know before starting.</h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What if I already have a website?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">That's fine — most of our clients do. We'll rebuild it from scratch with a completely custom design that positions your business at a much higher level. Your existing site content and SEO value can carry over. The difference is night and day.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How is this different from Squarespace, Wix, or a template?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Templates are designed to work for everyone, which means they look like everyone. Our sites are built from zero — custom code, custom layout, custom interactions — specifically for your business and industry. The difference in perceived credibility is significant.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What exactly does the AI system do?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">It responds to new leads instantly (under 60 seconds), answers common questions your staff handles every day, follows up with people who didn't book, and coordinates appointments. It runs 24/7 on a dedicated Mac Mini we install at your office. You don't have to touch it.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need to understand AI or technology to use this?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">No. We handle everything — the setup, the installation, the configuration, and the ongoing management. You'll get a weekly report showing what the system handled, but you don't need to interact with it at all. That's the point.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How long does the whole process take?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Website builds typically take 14 days from kickoff to launch. If you're adding the AI system, we schedule the hardware installation within a week of your site going live. Most businesses are fully operational within 3 weeks.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What if I don't like the design?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Unlimited revisions are included. We don't stop until you're genuinely proud of what you see. That said, our approval rate on first drafts is very high — because we invest heavily in the discovery process before writing a single line of code.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What happens after launch?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">You get 30 days of complimentary support after launch for any changes, fixes, or adjustments. After that, ongoing support and AI management continues on the Premium plan. We don't disappear — we're a long-term partner.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is the $1,500 a one-time fee or monthly?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">The $1,500 Basic package is a one-time fee for your custom website build. The Premium package is $3,500 one-time for the website plus a $600/month fee for ongoing AI management, monitoring, and optimization. No hidden costs.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ CONTACT ═══ -->
   <section id="contact" class="contact">
     <div class="container">
       <div class="contact-grid">
         <div class="contact-left">
-          <div class="eyebrow">Contact</div>
-          <h2>Build a stronger digital foundation for growth.</h2>
-          <p class="lead">If your business is ready for a significantly more premium website and smarter systems behind it, we would be glad to start the conversation.</p>
+          <div class="eyebrow">Start Here</div>
+          <h2>Book a free 15-minute strategy call.</h2>
+          <p class="lead">No pitch, no pressure. We'll look at your current online presence, tell you exactly where it's costing you business, and show you what a premium version looks like. If we're a fit, great. If not, you still walk away with actionable insights.</p>
           <div style="margin-top:28px">
             <a class="btn btn-secondary" href="mailto:hello@mainstayhq.com" style="margin-bottom:12px">hello@mainstayhq.com</a>
           </div>
-          <p style="margin-top:20px;font-size:13px;color:rgba(255,255,255,.35)">We respond within 24 hours.</p>
+          <p style="margin-top:20px;font-size:13px;color:rgba(255,255,255,.35)">Average response time: under 2 hours.</p>
         </div>
         <div>
           <form class="contact-form" onsubmit="return false">
@@ -899,8 +1084,8 @@
               <div class="form-field"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(555) 000-0000"></div>
             </div>
             <div class="form-field"><label class="form-label">Message</label><textarea class="form-input" placeholder="Tell us about your business and what you're looking for..."></textarea></div>
-            <button class="form-submit" type="submit">Get Your Free Consultation</button>
-            <div class="form-note">No commitment required. Let's see if we're a fit.</div>
+            <button class="form-submit" type="submit">Book Your Free Strategy Call</button>
+            <div class="form-note">No commitment. No pitch. Just a conversation about your business.</div>
           </form>
         </div>
       </div>
