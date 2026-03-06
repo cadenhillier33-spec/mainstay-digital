@@ -1,1150 +1,611 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mainstay Digital — We Build Digital Empires</title>
-<meta name="description" content="Premium web design and AI automation for businesses that refuse to settle. Based in Connecticut, trusted nationwide.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-/* ═══════════════════════════════════════════════════════════ */
-/* MAINSTAY DIGITAL V3 — PREMIUM EDITORIAL AGENCY             */
-/* Color: Warm Cream + Deep Navy + Surgical Gold               */
-/* Type: Playfair Display (serif) + Inter (sans)               */
-/* ═══════════════════════════════════════════════════════════ */
-
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --cream: #F6F1EB;
-  --cream-dark: #EDE6DC;
-  --navy: #0B1120;
-  --navy-mid: #151E30;
-  --gold: #C8A04A;
-  --gold-light: #D4AD5C;
-  --charcoal: #2A2A2A;
-  --text: #1A1A1A;
-  --text-mid: #555555;
-  --text-light: #888888;
-  --white: #FFFFFF;
-  --border: #D6CFC5;
-  --border-light: #E8E2DA;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  color: var(--text);
-  background: var(--cream);
-  font-size: 17px;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-
-/* ── UTILITY ── */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
-.container-wide { max-width: 1400px; margin: 0 auto; padding: 0 48px; }
-
-.section-label {
-  display: flex; align-items: center; gap: 16px;
-  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
-  letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
-  margin-bottom: 24px;
-}
-.section-label::before {
-  content: ''; display: block; width: 40px; height: 2px; background: var(--gold);
-}
-
-h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; line-height: 1.15; }
-
-h2.section-heading {
-  font-size: clamp(36px, 5vw, 60px);
-  color: var(--text);
-  max-width: 700px;
-  margin-bottom: 24px;
-}
-
-h2.section-heading em {
-  font-style: italic;
-  color: var(--gold);
-}
-
-.section-sub {
-  font-size: 17px; line-height: 1.7; color: var(--text-mid);
-  max-width: 560px; margin-bottom: 48px;
-}
-
-/* Light sections */
-.section-light { background: var(--cream); padding: 140px 0; }
-/* Dark sections */
-.section-dark { background: var(--navy); padding: 140px 0; color: var(--white); }
-.section-dark .section-label { color: var(--gold-light); }
-.section-dark .section-label::before { background: var(--gold-light); }
-.section-dark h2.section-heading { color: var(--white); }
-.section-dark .section-sub { color: rgba(255,255,255,0.55); }
-/* White sections */
-.section-white { background: var(--white); padding: 140px 0; }
-
-/* Reveal animation */
-.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-d1 { transition-delay: 0.08s; }
-.reveal-d2 { transition-delay: 0.16s; }
-.reveal-d3 { transition-delay: 0.24s; }
-.reveal-d4 { transition-delay: 0.32s; }
-.reveal-d5 { transition-delay: 0.40s; }
-
-/* ── BUTTONS ── */
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: var(--charcoal); color: var(--white);
-  padding: 16px 36px; font-size: 13px; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  text-decoration: none; border: 2px solid var(--charcoal);
-  transition: all 0.35s ease;
-}
-.btn-primary:hover { background: transparent; color: var(--charcoal); }
-.btn-primary svg { width: 14px; height: 14px; transition: transform 0.3s; }
-.btn-primary:hover svg { transform: translateX(4px); }
-
-.btn-outline {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: transparent; color: var(--charcoal);
-  padding: 16px 36px; font-size: 13px; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  text-decoration: none; border: 2px solid var(--border);
-  transition: all 0.35s ease;
-}
-.btn-outline:hover { border-color: var(--charcoal); }
-
-/* Dark section buttons */
-.section-dark .btn-primary { background: var(--gold); color: var(--navy); border-color: var(--gold); }
-.section-dark .btn-primary:hover { background: transparent; color: var(--gold); }
-.section-dark .btn-outline { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.2); }
-.section-dark .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-
-/* ══════════════════════════════════════════════════════════ */
-/* NAVIGATION                                                 */
-/* ══════════════════════════════════════════════════════════ */
-.navbar {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: rgba(246,241,235,0.92); backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-light);
-  transition: background 0.4s, box-shadow 0.4s;
-}
-.navbar.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,0.06); }
-.nav-inner {
-  max-width: 1400px; margin: 0 auto; padding: 0 48px;
-  display: flex; align-items: center; justify-content: space-between; height: 72px;
-}
-.nav-logo {
-  font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600;
-  color: var(--text); text-decoration: none; letter-spacing: -0.3px;
-}
-.nav-logo span { font-weight: 400; font-style: italic; color: var(--gold); }
-.nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
-.nav-links a {
-  font-size: 13px; font-weight: 500; color: var(--text-mid);
-  text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase;
-  transition: color 0.3s;
-}
-.nav-links a:hover { color: var(--text); }
-.nav-cta {
-  font-size: 12px; font-weight: 600; color: var(--white) !important;
-  background: var(--charcoal); padding: 10px 24px;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  transition: all 0.3s;
-}
-.nav-cta:hover { background: var(--gold); color: var(--navy) !important; }
-
-/* Mobile hamburger */
-.nav-hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
-.nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--text); transition: 0.3s; }
-
-@media (max-width: 900px) {
-  .nav-links { display: none; }
-  .nav-hamburger { display: flex; }
-  .nav-links.open {
-    display: flex; flex-direction: column; position: absolute;
-    top: 72px; left: 0; right: 0; background: var(--cream);
-    padding: 32px 48px; gap: 24px; border-bottom: 1px solid var(--border);
-  }
-}
-
-/* ══════════════════════════════════════════════════════════ */
-/* HERO                                                       */
-/* ══════════════════════════════════════════════════════════ */
-.hero {
-  padding: 180px 0 140px;
-  background: var(--cream);
-  position: relative;
-}
-.hero-inner {
-  max-width: 1400px; margin: 0 auto; padding: 0 48px;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-}
-.hero h1 {
-  font-size: clamp(42px, 5.5vw, 72px);
-  color: var(--text);
-  line-height: 1.08;
-  margin-bottom: 28px;
-  letter-spacing: -0.02em;
-}
-.hero h1 em { font-style: italic; color: var(--gold); }
-.hero-sub {
-  font-size: 18px; line-height: 1.75; color: var(--text-mid);
-  max-width: 480px; margin-bottom: 40px;
-}
-.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-
-/* Hero browser mockup */
-.hero-mockup {
-  background: var(--white);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.10), 0 4px 20px rgba(0,0,0,0.04);
-}
-.mockup-bar {
-  display: flex; align-items: center; gap: 8px;
-  padding: 14px 18px; background: #F8F8F8; border-bottom: 1px solid #eee;
-}
-.mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
-.mockup-dot.r { background: #FF5F57; }
-.mockup-dot.y { background: #FFBD2E; }
-.mockup-dot.g { background: #28CA42; }
-.mockup-url {
-  flex: 1; text-align: center; font-size: 11px; color: #aaa;
-  background: #f0f0f0; padding: 4px 12px; border-radius: 4px; margin-left: 8px;
-}
-.mockup-body {
-  height: 420px; background: linear-gradient(135deg, #0B1120 0%, #1a2744 100%);
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
-  padding: 48px;
-  position: relative;
-  overflow: hidden;
-}
-.mockup-body::before {
-  content: ''; position: absolute; top: -50%; right: -30%; width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(200,160,74,0.12) 0%, transparent 70%);
-}
-.mockup-logo {
-  font-family: 'Playfair Display', serif; font-size: 28px; color: white;
-  margin-bottom: 12px; letter-spacing: -0.5px;
-}
-.mockup-tagline { font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 32px; }
-.mockup-nav-demo { display: flex; gap: 24px; margin-bottom: 40px; }
-.mockup-nav-demo span { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; }
-.mockup-hero-text {
-  font-family: 'Playfair Display', serif; font-size: 24px; color: white;
-  text-align: center; max-width: 320px; line-height: 1.3;
-}
-.mockup-hero-text em { color: var(--gold); font-style: italic; }
-.mockup-btn-demo {
-  margin-top: 20px; padding: 8px 20px; border: 1px solid rgba(255,255,255,0.25);
-  font-size: 9px; color: rgba(255,255,255,0.6); letter-spacing: 0.15em; text-transform: uppercase;
-}
-
-/* Hero stats bar */
-.hero-stats {
-  margin-top: 64px;
-  display: flex; gap: 48px; padding-top: 40px;
-  border-top: 1px solid var(--border);
-}
-.hero-stat { text-align: left; }
-.hero-stat .num {
-  font-family: 'Playfair Display', serif; font-size: 32px; color: var(--text);
-  display: block; margin-bottom: 4px;
-}
-.hero-stat .lbl { font-size: 12px; color: var(--text-light); letter-spacing: 0.05em; text-transform: uppercase; }
-
-@media (max-width: 900px) {
-  .hero { padding: 140px 0 100px; }
-  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
-  .hero-stats { gap: 32px; flex-wrap: wrap; }
-}
-
-/* ══════════════════════════════════════════════════════════ */
-/* TRUST BAR                                                  */
-/* ══════════════════════════════════════════════════════════ */
-.trust-bar {
-  background: var(--white); border-top: 1px solid var(--border-light);
-  border-bottom: 1px solid var(--border-light);
-  padding: 28px 0;
-}
-.trust-inner {
-  max-width: 1400px; margin: 0 auto; padding: 0 48px;
-  display: flex; justify-content: center; gap: 56px; flex-wrap: wrap;
-}
-.trust-item {
-  font-size: 13px; color: var(--text-light); letter-spacing: 0.04em;
-  display: flex; align-items: center; gap: 10px;
-}
-.trust-item strong { color: var(--text); font-weight: 600; }
-
-/* ══════════════════════════════════════════════════════════ */
-/* SERVICES                                                   */
-/* ══════════════════════════════════════════════════════════ */
-.services-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
-  margin-top: 24px;
-}
-.service-card {
-  border: 1px solid var(--border);
-  padding: 56px 48px;
-  background: var(--white);
-  transition: border-color 0.3s, box-shadow 0.3s;
-  position: relative;
-}
-.service-card:hover { border-color: var(--gold); box-shadow: 0 8px 40px rgba(0,0,0,0.04); }
-.service-badge {
-  position: absolute; top: 24px; right: 24px;
-  font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
-  background: var(--gold); color: var(--navy); padding: 4px 12px;
-}
-.service-tier {
-  font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--text-light); margin-bottom: 12px;
-}
-.service-name {
-  font-family: 'Playfair Display', serif; font-size: 28px; color: var(--text);
-  margin-bottom: 8px;
-}
-.service-price {
-  font-family: 'Playfair Display', serif; font-size: 48px; color: var(--text);
-  margin-bottom: 8px; letter-spacing: -0.02em;
-}
-.service-note { font-size: 14px; color: var(--text-light); margin-bottom: 32px; }
-.service-list { list-style: none; margin-bottom: 40px; }
-.service-list li {
-  padding: 12px 0; border-bottom: 1px solid var(--border-light);
-  font-size: 15px; color: var(--text-mid);
-  display: flex; align-items: center; gap: 12px;
-}
-.service-list li::before {
-  content: '✓'; color: var(--gold); font-weight: 700; font-size: 14px;
-}
-.service-list li:last-child { border-bottom: none; }
-
-@media (max-width: 768px) { .services-grid { grid-template-columns: 1fr; } }
-
-/* ══════════════════════════════════════════════════════════ */
-/* PORTFOLIO                                                  */
-/* ══════════════════════════════════════════════════════════ */
-.portfolio-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
-}
-.portfolio-item {
-  position: relative; overflow: hidden;
-}
-.portfolio-browser {
-  background: var(--navy-mid);
-  border-radius: 10px; overflow: hidden;
-  box-shadow: 0 16px 60px rgba(0,0,0,0.25);
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-.portfolio-item:hover .portfolio-browser {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 80px rgba(0,0,0,0.3);
-}
-.pb-bar {
-  display: flex; align-items: center; gap: 6px;
-  padding: 10px 14px; background: rgba(255,255,255,0.06);
-}
-.pb-dot { width: 8px; height: 8px; border-radius: 50%; }
-.pb-dot.r { background: #FF5F57; } .pb-dot.y { background: #FFBD2E; } .pb-dot.g { background: #28CA42; }
-.pb-url { font-size: 10px; color: rgba(255,255,255,0.3); margin-left: auto; }
-
-/* Each portfolio preview has unique styling */
-.pb-body { height: 280px; display: flex; flex-direction: column; justify-content: center; padding: 36px; position: relative; }
-
-.pb-body.style-restaurant {
-  background: linear-gradient(160deg, #1a1a1a 0%, #2d2017 100%);
-}
-.pb-body.style-realestate {
-  background: linear-gradient(160deg, #0d1b2a 0%, #1b3a4b 100%);
-}
-.pb-body.style-wellness {
-  background: linear-gradient(160deg, #1a1a2e 0%, #2d1b3d 100%);
-}
-.pb-body.style-fitness {
-  background: linear-gradient(160deg, #1a1a1a 0%, #2a1a1a 100%);
-}
-.pb-body.style-legal {
-  background: linear-gradient(160deg, #0a1628 0%, #1a2a40 100%);
-}
-.pb-body.style-sushi {
-  background: linear-gradient(160deg, #1a0a0a 0%, #2d1a14 100%);
-}
-
-.pb-title {
-  font-family: 'Playfair Display', serif; font-size: 32px; color: white;
-  line-height: 1.15; margin-bottom: 8px;
-}
-.pb-subtitle {
-  font-size: 10px; color: rgba(255,255,255,0.35);
-  letter-spacing: 0.15em; text-transform: uppercase;
-}
-.pb-accent {
-  position: absolute; bottom: 20px; right: 24px;
-  width: 60px; height: 60px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-}
-
-.portfolio-info { margin-top: 20px; }
-.portfolio-name { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--white); margin-bottom: 4px; }
-.portfolio-meta { font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
-.portfolio-result {
-  display: inline-block; font-size: 12px; font-weight: 600;
-  color: var(--gold-light); background: rgba(200,160,74,0.1);
-  padding: 4px 12px; letter-spacing: 0.04em;
-}
-
-@media (max-width: 768px) { .portfolio-grid { grid-template-columns: 1fr; } }
-
-/* ══════════════════════════════════════════════════════════ */
-/* COMPARISON TABLE                                           */
-/* ══════════════════════════════════════════════════════════ */
-.compare-table {
-  width: 100%; border-collapse: collapse; margin-top: 24px;
-}
-.compare-table th {
-  font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--text-light);
-  padding: 20px 24px; text-align: center; border-bottom: 2px solid var(--border);
-}
-.compare-table th:first-child { text-align: left; }
-.compare-table th.highlight { color: var(--gold); }
-.compare-table td {
-  padding: 18px 24px; text-align: center;
-  font-size: 15px; color: var(--text-mid);
-  border-bottom: 1px solid var(--border-light);
-}
-.compare-table td:first-child { text-align: left; font-weight: 500; color: var(--text); }
-.compare-table td.highlight { background: rgba(200,160,74,0.04); }
-.compare-table .check { color: var(--gold); font-weight: 700; font-size: 18px; }
-.compare-table .x { color: #ccc; }
-@media (max-width: 768px) {
-  .compare-table { font-size: 13px; }
-  .compare-table th, .compare-table td { padding: 12px 10px; }
-}
-
-/* ══════════════════════════════════════════════════════════ */
-/* PROCESS TIMELINE                                           */
-/* ══════════════════════════════════════════════════════════ */
-.process-steps {
-  position: relative; max-width: 640px; margin: 0 auto;
-  padding-left: 48px;
-}
-.process-steps::before {
-  content: ''; position: absolute; left: 15px; top: 0; bottom: 0;
-  width: 1px; background: var(--border);
-}
-.process-step {
-  position: relative; padding: 0 0 56px 32px;
-}
-.process-step:last-child { padding-bottom: 0; }
-.process-step::before {
-  content: ''; position: absolute; left: -40px; top: 6px;
-  width: 11px; height: 11px; border-radius: 50%;
-  background: var(--cream); border: 2px solid var(--gold);
-}
-.process-day {
-  font-size: 11px; font-weight: 600; letter-spacing: 0.15em;
-  text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
-}
-.process-title {
-  font-family: 'Playfair Display', serif; font-size: 24px; color: var(--text);
-  margin-bottom: 8px;
-}
-.process-desc { font-size: 15px; color: var(--text-mid); line-height: 1.7; }
-
-/* ══════════════════════════════════════════════════════════ */
-/* STATS BAND                                                 */
-/* ══════════════════════════════════════════════════════════ */
-.stats-band {
-  background: var(--navy); padding: 80px 0;
-}
-.stats-band-inner {
-  max-width: 1200px; margin: 0 auto; padding: 0 48px;
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center;
-}
-.stat-item .stat-num {
-  font-family: 'Playfair Display', serif; font-size: 48px; color: var(--gold);
-  display: block; margin-bottom: 8px;
-}
-.stat-item .stat-lbl {
-  font-size: 13px; color: rgba(255,255,255,0.45);
-  letter-spacing: 0.06em; text-transform: uppercase;
-}
-@media (max-width: 768px) {
-  .stats-band-inner { grid-template-columns: repeat(2, 1fr); }
-}
-
-/* ══════════════════════════════════════════════════════════ */
-/* TESTIMONIALS                                               */
-/* ══════════════════════════════════════════════════════════ */
-.testimonials-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
-}
-.testimonial-card {
-  background: var(--white); border: 1px solid var(--border-light);
-  padding: 40px 36px; position: relative;
-}
-.testimonial-card::before {
-  content: '"'; position: absolute; top: 20px; left: 28px;
-  font-family: 'Playfair Display', serif; font-size: 64px;
-  color: var(--gold); opacity: 0.2; line-height: 1;
-}
-.testimonial-text {
-  font-size: 15px; line-height: 1.75; color: var(--text-mid);
-  margin-bottom: 24px; font-style: italic;
-}
-.testimonial-author { display: flex; align-items: center; gap: 14px; }
-.testimonial-avatar {
-  width: 40px; height: 40px; border-radius: 50%;
-  background: var(--gold); display: flex; align-items: center; justify-content: center;
-  font-size: 13px; font-weight: 700; color: var(--navy);
-}
-.testimonial-name { font-size: 14px; font-weight: 600; color: var(--text); }
-.testimonial-role { font-size: 12px; color: var(--text-light); }
-@media (max-width: 768px) { .testimonials-grid { grid-template-columns: 1fr; } }
-
-/* ══════════════════════════════════════════════════════════ */
-/* ABOUT / FOUNDER                                            */
-/* ══════════════════════════════════════════════════════════ */
-.about-grid {
-  display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center;
-}
-.about-image {
-  aspect-ratio: 4/5; background: var(--navy-mid);
-  display: flex; align-items: center; justify-content: center;
-  position: relative; overflow: hidden;
-}
-.about-image .initials {
-  font-family: 'Playfair Display', serif; font-size: 72px;
-  color: rgba(255,255,255,0.08);
-}
-.about-name {
-  font-family: 'Playfair Display', serif; font-size: 36px; color: var(--text);
-  margin-bottom: 8px;
-}
-.about-title {
-  font-size: 13px; font-weight: 600; color: var(--gold);
-  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 28px;
-}
-.about-text { font-size: 16px; line-height: 1.8; color: var(--text-mid); margin-bottom: 20px; }
-.about-creds { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-.about-cred {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 13px; color: var(--text-mid); padding: 8px 16px;
-  border: 1px solid var(--border); background: var(--white);
-}
-.about-cred svg { width: 14px; height: 14px; color: var(--gold); }
-@media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
-
-/* ══════════════════════════════════════════════════════════ */
-/* FAQ                                                        */
-/* ══════════════════════════════════════════════════════════ */
-.faq-list { max-width: 720px; margin: 0 auto; }
-.faq-item { border-bottom: 1px solid var(--border); }
-.faq-question {
-  display: flex; justify-content: space-between; align-items: center;
-  width: 100%; padding: 24px 0; cursor: pointer;
-  font-size: 17px; font-weight: 500; color: var(--text);
-  background: none; border: none; text-align: left;
-  font-family: 'Inter', sans-serif; transition: color 0.3s;
-}
-.faq-question:hover { color: var(--gold); }
-.faq-icon {
-  font-size: 20px; color: var(--gold); transition: transform 0.3s;
-  flex-shrink: 0; margin-left: 16px;
-}
-.faq-item.open .faq-icon { transform: rotate(45deg); }
-.faq-answer {
-  max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
-}
-.faq-item.open .faq-answer { max-height: 300px; padding-bottom: 24px; }
-.faq-answer p { font-size: 15px; line-height: 1.75; color: var(--text-mid); }
-
-/* ══════════════════════════════════════════════════════════ */
-/* CONTACT / CTA                                              */
-/* ══════════════════════════════════════════════════════════ */
-.cta-section {
-  text-align: center; background: var(--navy); padding: 140px 0;
-}
-.cta-section h2 {
-  font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 56px);
-  color: var(--white); margin-bottom: 20px;
-}
-.cta-section h2 em { color: var(--gold); font-style: italic; }
-.cta-section p { font-size: 17px; color: rgba(255,255,255,0.5); max-width: 500px; margin: 0 auto 40px; }
-.cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
-
-.contact-form-section { background: var(--cream); padding: 140px 0; }
-.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
-.contact-form { background: var(--white); padding: 48px; border: 1px solid var(--border-light); }
-.form-row { margin-bottom: 20px; }
-.form-row label {
-  display: block; font-size: 12px; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--text-light); margin-bottom: 8px;
-}
-.form-row input, .form-row select, .form-row textarea {
-  width: 100%; padding: 14px 16px; font-size: 15px;
-  border: 1px solid var(--border); background: var(--cream);
-  color: var(--text); font-family: 'Inter', sans-serif;
-  transition: border-color 0.3s; outline: none;
-}
-.form-row input:focus, .form-row select:focus, .form-row textarea:focus {
-  border-color: var(--gold);
-}
-.form-row textarea { height: 120px; resize: vertical; }
-.form-submit {
-  width: 100%; padding: 16px; font-size: 13px; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  background: var(--charcoal); color: var(--white);
-  border: 2px solid var(--charcoal); cursor: pointer;
-  transition: all 0.3s; font-family: 'Inter', sans-serif;
-}
-.form-submit:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
-
-@media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
-
-/* ══════════════════════════════════════════════════════════ */
-/* FOOTER                                                     */
-/* ══════════════════════════════════════════════════════════ */
-.footer {
-  background: var(--navy); padding: 80px 0 40px; color: rgba(255,255,255,0.4);
-}
-.footer-grid {
-  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
-  margin-bottom: 60px;
-}
-.footer-brand {
-  font-family: 'Playfair Display', serif; font-size: 20px;
-  color: var(--white); margin-bottom: 16px;
-}
-.footer-brand span { font-style: italic; color: var(--gold); }
-.footer-desc { font-size: 14px; line-height: 1.7; max-width: 300px; }
-.footer-heading {
-  font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
-  text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 20px;
-}
-.footer-links { list-style: none; }
-.footer-links li { margin-bottom: 10px; }
-.footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 14px; transition: color 0.3s; }
-.footer-links a:hover { color: var(--gold); }
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding-top: 28px; font-size: 13px;
-  display: flex; justify-content: space-between; align-items: center;
-}
-.footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
-@media (max-width: 768px) {
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-}
-
-/* ══════════════════════════════════════════════════════════ */
-/* SCROLL PROGRESS                                            */
-/* ══════════════════════════════════════════════════════════ */
-.scroll-progress {
-  position: fixed; top: 0; left: 0; height: 2px; z-index: 9999;
-  background: var(--gold); width: 0%; transition: width 0.1s;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mainstay Digital — Ultra-premium websites and AI business management for companies that want stronger first impressions and smarter operations." />
+  <title>Mainstay Digital — Premium Websites & AI Business Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#070708;
+      --bg2:#0d0e11;
+      --bg3:#121316;
+      --panel:#131417;
+      --line:rgba(255,255,255,.10);
+      --line2:rgba(255,255,255,.14);
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.68);
+      --muted2:rgba(255,255,255,.46);
+      --gold:#c7a56a;
+      --gold2:#ead2a4;
+      --gold3:#f5e7c8;
+      --shadow:0 30px 100px rgba(0,0,0,.38);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{max-width:1320px;margin:0 auto;padding:0 28px}
+    .header{position:sticky;top:0;z-index:10;background:rgba(7,7,8,.84);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:18px}
+    .brand{font-size:17px;font-weight:600;letter-spacing:.18em}
+    .domain{margin-top:4px;font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted2)}
+    .nav{display:flex;align-items:center;gap:30px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+    .nav a:hover{color:#fff}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:15px 28px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:.2s ease}
+    .btn-primary{background:#fff;color:#000}
+    .btn-primary:hover{opacity:.92}
+    .btn-secondary{border:1px solid rgba(255,255,255,.15);color:#fff}
+    .btn-secondary:hover{background:rgba(255,255,255,.05)}
+    .btn-outline{border:1px solid rgba(255,255,255,.15);padding:10px 20px}
+    .btn-outline:hover{background:#fff;color:#000}
+    .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:radial-gradient(circle at top, rgba(255,255,255,.10), transparent 36%),linear-gradient(180deg,#070708,#0b0c0f)}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, transparent 0%, rgba(199,165,106,.05) 50%, transparent 100%);pointer-events:none}
+    .hero-inner{padding:104px 0 96px}
+    .pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:rgba(255,255,255,.05);border-radius:999px;padding:10px 16px;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+    h1{margin:28px 0 0;max-width:1040px;font-size:74px;line-height:1.01;letter-spacing:-.058em;font-weight:600}
+    .hero p{margin:30px 0 0;max-width:790px;font-size:21px;line-height:1.85;color:var(--muted)}
+    .actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:34px}
+    .stats{margin-top:72px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;border-top:1px solid var(--line);padding-top:36px}
+    .stat-num{font-size:44px;font-weight:600;letter-spacing:-.05em}
+    .stat-label{margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2)}
+    section{padding:104px 0}
+    .section-alt{background:var(--bg2);border-bottom:1px solid var(--line)}
+    .section-border{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2)}
+    .two-col{display:grid;grid-template-columns:.9fr 1.1fr;gap:52px}
+    .eyebrow{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted2)}
+    h2{margin:16px 0 0;font-size:54px;line-height:1.05;letter-spacing:-.055em;font-weight:600}
+    .lead{margin-top:24px;font-size:21px;line-height:1.85;color:var(--muted)}
+    .cards{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid var(--line);border-radius:32px;overflow:hidden;background:var(--line)}
+    .card{background:var(--bg3);padding:38px}
+    .card-num{font-size:11px;font-weight:700;letter-spacing:.20em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+    .card h3{margin:18px 0 0;font-size:30px;font-weight:600;letter-spacing:-.03em}
+    .card p{margin:18px 0 0;font-size:17px;line-height:1.85;color:var(--muted)}
+    .pricing-grid{margin-top:56px;display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    .price-card{border-radius:34px;border:1px solid var(--line);background:linear-gradient(180deg,#0b0c0f,#0c0d10);padding:38px;box-shadow:0 20px 80px rgba(0,0,0,.20)}
+    .price-card.premium{position:relative;overflow:hidden;border:1px solid rgba(199,165,106,.35);background:linear-gradient(180deg, rgba(199,165,106,.12), rgba(255,255,255,.04));box-shadow:0 28px 96px rgba(0,0,0,.34)}
+    .price-card.premium::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg, transparent, #dcbc85, transparent)}
+    .price-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+    .price-name{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted2)}
+    .price{margin-top:16px;font-size:46px;font-weight:600;letter-spacing:-.04em}
+    .fee{margin-top:8px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold2)}
+    .tag{border-radius:999px;padding:9px 14px;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(199,165,106,.35);background:rgba(199,165,106,.10);color:var(--gold2);white-space:nowrap}
+    .price-title{margin-top:22px;font-size:28px;font-weight:600;letter-spacing:-.03em}
+    .price-sub{margin-top:12px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2)}
+    .price-card p{margin-top:18px;font-size:17px;line-height:1.85;color:rgba(255,255,255,.68)}
+    .price-card ul{list-style:none;padding:0;margin:28px 0 0;border-top:1px solid var(--line);padding-top:28px}
+    .price-card li{margin:0 0 14px;font-size:15px;line-height:1.7;color:rgba(255,255,255,.75)}
+    .closing{margin-top:30px;font-size:15px;line-height:1.8;color:rgba(255,255,255,.58)}
+    .work-intro{max-width:980px}
+    .work-grid{margin-top:64px;display:grid;gap:42px}
+    .portfolio{border:1px solid rgba(255,255,255,.10);border-radius:38px;background:linear-gradient(180deg,#101114,#0b0c0f);padding:30px;box-shadow:var(--shadow)}
+    .portfolio-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:30px;align-items:center}
+    .portfolio.reverse .portfolio-grid{grid-template-columns:.82fr 1.18fr}
+    .meta{padding:8px 6px}
+    .work-cat{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2)}
+    .meta h3{margin:14px 0 0;font-size:42px;line-height:1.03;letter-spacing:-.045em;font-weight:600}
+    .meta p{margin:18px 0 0;font-size:17px;line-height:1.85;color:var(--muted)}
+    .tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+    .chip{border-radius:999px;border:1px solid var(--line2);background:rgba(255,255,255,.03);padding:10px 14px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+    .impact{margin-top:26px;padding-top:24px;border-top:1px solid var(--line);display:grid;gap:16px}
+    .impact-item{border-left:2px solid rgba(199,165,106,.55);padding-left:16px;color:rgba(255,255,255,.76);font-size:14px;line-height:1.85}
+    .impact-item strong{color:var(--gold3);font-weight:600}
+    .screen{position:relative;overflow:hidden;border-radius:30px;border:1px solid rgba(255,255,255,.12);background:#0f1114;box-shadow:0 26px 80px rgba(0,0,0,.38)}
+    .browser-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.10);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02))}
+    .dots{display:flex;gap:8px}
+    .dot{width:10px;height:10px;border-radius:999px}
+    .url-bar{width:46%;height:12px;border-radius:999px;background:rgba(255,255,255,.08)}
+    .preview{padding:18px;background:#0f1114}
+    .site{border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.10);min-height:610px}
+    .site.harbor{background:linear-gradient(180deg,#f5f1ea,#e8dfd2);color:#111}
+    .site.aurum{background:linear-gradient(180deg,#f8f2ea,#ecdfce);color:#1a1714}
+    .site.legal{background:linear-gradient(180deg,#f2f4f7,#e2e7ec);color:#11161c}
+    .site.realty{background:linear-gradient(180deg,#f7f7f4,#ebe8df);color:#121212}
+    .site.clinic{background:linear-gradient(180deg,#eef5f6,#dde9eb);color:#0f1718}
+    .site-top{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid rgba(0,0,0,.08);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(0,0,0,.46)}
+    .site-logo{font-size:12px;color:rgba(0,0,0,.68)}
+    .site-nav{display:flex;gap:22px}
+    .site-body{padding:26px}
+    .hero-grid{display:grid;grid-template-columns:1fr .94fr;gap:24px;align-items:center}
+    .site-kicker{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(0,0,0,.42)}
+    .site-title{margin-top:12px;font-size:38px;font-weight:600;letter-spacing:-.055em;line-height:1.02}
+    .site-copy{margin-top:14px;font-size:14px;line-height:1.75;color:rgba(0,0,0,.60)}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .cta-dark,.cta-light{height:40px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;padding:0 18px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+    .cta-dark{background:#111;color:#fff}
+    .cta-light{border:1px solid rgba(0,0,0,.12);color:#111}
+    .visual{min-height:255px;border-radius:20px;position:relative;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.24)}
+    .harbor .visual{background:radial-gradient(circle at 20% 15%, rgba(255,255,255,.20), transparent 22%),linear-gradient(135deg,#101926,#264864 55%,#82aec6 100%)}
+    .harbor .visual::before{content:"";position:absolute;left:0;right:0;bottom:0;height:38%;background:linear-gradient(180deg,transparent,rgba(255,255,255,.12))}
+    .aurum .visual{background:radial-gradient(circle at 30% 18%, rgba(255,255,255,.24), transparent 24%),linear-gradient(135deg,#4f4136,#9f7f63 55%,#d7b69a 100%)}
+    .aurum .visual::before{content:"";position:absolute;inset:auto 10% 10% auto;width:42%;height:58%;border-radius:999px;background:rgba(255,255,255,.12)}
+    .legal .visual{background:radial-gradient(circle at 26% 14%, rgba(255,255,255,.22), transparent 22%),linear-gradient(135deg,#18202b,#3f4d5e 55%,#8d9dac 100%)}
+    .legal .visual::before{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;background:linear-gradient(180deg,transparent,rgba(255,255,255,.10))}
+    .realty .visual{background:radial-gradient(circle at 20% 18%, rgba(255,255,255,.20), transparent 24%),linear-gradient(135deg,#c1ae8b,#7a674f 55%,#3b3128 100%)}
+    .realty .visual::before{content:"";position:absolute;right:10%;bottom:12%;width:36%;height:28%;background:rgba(255,255,255,.13);clip-path:polygon(50% 0,100% 45%,100% 100%,0 100%,0 45%)}
+    .clinic .visual{background:radial-gradient(circle at 24% 16%, rgba(255,255,255,.22), transparent 24%),linear-gradient(135deg,#6da7b0,#2d5660 55%,#0e2c33 100%)}
+    .clinic .visual::before{content:"";position:absolute;left:14%;bottom:14%;width:18%;height:18%;border-radius:12px;background:rgba(255,255,255,.18)}
+    .metric-bar{margin-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .metric{border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:16px;background:rgba(255,255,255,.36)}
+    .metric-num{font-size:22px;font-weight:600;letter-spacing:-.03em}
+    .metric-label{margin-top:6px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(0,0,0,.45)}
+    .content-blocks{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;margin-top:18px}
+    .stack{display:grid;gap:12px}
+    .box{border:1px solid rgba(0,0,0,.08);border-radius:18px;background:rgba(255,255,255,.36);padding:16px}
+    .box-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(0,0,0,.45)}
+    .box-head{margin-top:10px;font-size:22px;font-weight:600;letter-spacing:-.03em;line-height:1.1}
+    .box-copy{margin-top:10px;font-size:13px;line-height:1.7;color:rgba(0,0,0,.58)}
+    .lines{display:grid;gap:10px;margin-top:12px}
+    .line{height:10px;border-radius:999px;background:rgba(0,0,0,.10)}
+    .line.short{width:70%}
+    .line.mid{width:84%}
+    .chart{min-height:182px;border:1px solid rgba(0,0,0,.08);border-radius:18px;background:rgba(255,255,255,.36);position:relative;overflow:hidden;padding:18px}
+    .chart::before{content:"";position:absolute;left:16px;right:16px;bottom:18px;height:2px;background:rgba(0,0,0,.10)}
+    .chart svg{width:100%;height:128px;margin-top:22px}
+    .sector-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .sector{border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:18px;padding:20px;font-size:14px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+    .feature-wrap{border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:34px;padding:50px;box-shadow:0 20px 80px rgba(0,0,0,.25)}
+    .feature-grid{display:grid;grid-template-columns:1fr .85fr;gap:40px}
+    .feature-list{border-left:1px solid var(--line);padding-left:40px}
+    .feature-list ul{list-style:none;padding:0;margin:0}
+    .feature-list li{margin:0 0 18px;font-size:15px;line-height:1.75;color:rgba(255,255,255,.72)}
+    .contact{border-top:1px solid var(--line);background:#070708;text-align:center}
+    .contact h2{max-width:900px;margin-left:auto;margin-right:auto}
+    .contact p{max-width:760px;margin-left:auto;margin-right:auto}
+    @media (max-width: 1180px){
+      .portfolio-grid,.portfolio.reverse .portfolio-grid,.cards,.pricing-grid,.two-col,.feature-grid,.stats{grid-template-columns:1fr}
+      .sector-grid,.metric-bar,.content-blocks,.hero-grid{grid-template-columns:1fr}
+      .feature-list{border-left:none;padding-left:0}
+    }
+    @media (max-width: 980px){
+      .nav{display:none}
+      h1{font-size:54px}
+      h2{font-size:40px}
+      .hero p,.lead{font-size:18px}
+      .meta h3{font-size:34px}
+      .site-title{font-size:30px}
+    }
+    @media (max-width: 640px){
+      .container{padding:0 18px}
+      .nav-wrap{padding:16px 0}
+      h1{font-size:42px}
+      h2{font-size:34px}
+      .hero-inner,section{padding:72px 0}
+      .btn{width:100%}
+      .actions{flex-direction:column}
+      .price-top,.site-top{flex-direction:column;align-items:flex-start;gap:10px}
+      .url-bar{width:100%}
+      .portfolio{padding:18px}
+      .preview{padding:12px}
+      .site-body{padding:18px}
+      .site-title{font-size:26px}
+    }
+  </style>
 </head>
 <body>
-
-<div class="scroll-progress" id="scrollProgress"></div>
-
-<!-- ═══════ NAVIGATION ═══════ -->
-<nav class="navbar" id="navbar">
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">Mainstay <span>Digital</span></a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#process">Process</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contact" class="nav-cta">Start a Project</a></li>
-    </ul>
-    <div class="nav-hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
-      <span></span><span></span><span></span>
-    </div>
-  </div>
-</nav>
-
-<!-- ═══════ HERO ═══════ -->
-<section class="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="section-label reveal">Web Design & AI Automation</div>
-      <h1 class="reveal reveal-d1">Websites that <em>win</em> customers for your business.</h1>
-      <p class="hero-sub reveal reveal-d2">We design high-converting websites and build AI automation systems for businesses that refuse to settle. Based in Connecticut, trusted nationwide.</p>
-      <div class="hero-buttons reveal reveal-d3">
-        <a href="#contact" class="btn-primary">Start Your Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        <a href="#work" class="btn-outline">View Our Work</a>
+  <header class="header">
+    <div class="container nav-wrap">
+      <div>
+        <div class="brand">MAINSTAY DIGITAL</div>
+        <div class="domain">mainstayhq.com</div>
       </div>
-      <div class="hero-stats reveal reveal-d4">
-        <div class="hero-stat"><span class="num">47+</span><span class="lbl">Sites Launched</span></div>
-        <div class="hero-stat"><span class="num">100%</span><span class="lbl">Satisfaction</span></div>
-        <div class="hero-stat"><span class="num">14</span><span class="lbl">Day Delivery</span></div>
-        <div class="hero-stat"><span class="num">$2M+</span><span class="lbl">Revenue Generated</span></div>
+      <nav class="nav">
+        <a href="#capabilities">What We Do</a>
+        <a href="#about">About</a>
+        <a href="#packages">Pricing</a>
+        <a href="#work">Our Work</a>
+        <a href="#sectors">Who We Help</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn btn-outline" href="#contact">Book a Consultation</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="pill">Websites · AI Business Management · Digital Support</div>
+      <h1>We build websites and systems that make businesses look significantly more premium.</h1>
+      <p>Mainstay Digital creates ultra-polished websites and smart business systems for companies that want stronger first impressions, better follow-up, and a more seamless operation behind the scenes.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#contact">Book a Consultation</a>
+        <a class="btn btn-secondary" href="#work">View Our Work</a>
+      </div>
+      <div class="stats">
+        <div><div class="stat-num">47+</div><div class="stat-label">Businesses Served</div></div>
+        <div><div class="stat-num">100%</div><div class="stat-label">Client Satisfaction</div></div>
+        <div><div class="stat-num">Luxury</div><div class="stat-label">Presentation Standard</div></div>
       </div>
     </div>
-    <div class="reveal reveal-d2">
-      <div class="hero-mockup">
-        <div class="mockup-bar">
-          <div class="mockup-dot r"></div><div class="mockup-dot y"></div><div class="mockup-dot g"></div>
-          <div class="mockup-url">mainstaydigital.com</div>
-        </div>
-        <div class="mockup-body">
-          <div class="mockup-logo">Maison <em style="color:var(--gold);font-style:italic">Noir</em></div>
-          <div class="mockup-tagline">Fine Dining &middot; New Haven, CT</div>
-          <div class="mockup-nav-demo">
-            <span>Menu</span><span>Reserve</span><span>Events</span><span>About</span>
-          </div>
-          <div class="mockup-hero-text">An experience for the <em>senses</em></div>
-          <div class="mockup-btn-demo">Reserve a Table</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ═══════ TRUST BAR ═══════ -->
-<div class="trust-bar">
-  <div class="trust-inner">
-    <div class="trust-item"><strong>$1,500</strong> flat rate</div>
-    <div class="trust-item"><strong>14-day</strong> delivery guarantee</div>
-    <div class="trust-item"><strong>Unlimited</strong> revisions</div>
-    <div class="trust-item"><strong>30 days</strong> free support</div>
-    <div class="trust-item"><strong>100%</strong> satisfaction guaranteed</div>
-  </div>
-</div>
-
-<!-- ═══════ SERVICES ═══════ -->
-<section class="section-light" id="services">
-  <div class="container">
-    <div class="section-label reveal">What We Offer</div>
-    <h2 class="section-heading reveal reveal-d1">Two ways to <em>transform</em> your business</h2>
-    <p class="section-sub reveal reveal-d2">Whether you need a stunning website or a complete digital transformation with AI, we have a path built for you.</p>
-    <div class="services-grid">
-      <div class="service-card reveal reveal-d1">
-        <div class="service-tier">Foundation</div>
-        <div class="service-name">Custom Web Design</div>
-        <div class="service-price">$1,500</div>
-        <div class="service-note">One-time investment, no hidden fees</div>
-        <ul class="service-list">
-          <li>Fully custom design — no templates</li>
-          <li>Mobile-first, pixel-perfect responsive</li>
-          <li>SEO-optimized from day one</li>
-          <li>14-day delivery guaranteed</li>
-          <li>Unlimited revisions + 30-day support</li>
-        </ul>
-        <a href="#contact" class="btn-outline">Get Started</a>
-      </div>
-      <div class="service-card reveal reveal-d2">
-        <div class="service-badge">Most Popular</div>
-        <div class="service-tier">Enterprise</div>
-        <div class="service-name">Web Design + AI Automation</div>
-        <div class="service-price">$4,500</div>
-        <div class="service-note">Complete digital transformation</div>
-        <ul class="service-list">
-          <li>Everything in Foundation</li>
-          <li>Custom AI automation suite</li>
-          <li>Dedicated Mac Mini — yours 24/7</li>
-          <li>Workflow automation + email AI</li>
-          <li>Ongoing optimization + priority support</li>
-        </ul>
-        <a href="#contact" class="btn-primary">Get Started <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ PORTFOLIO ═══════ -->
-<section class="section-dark" id="work">
-  <div class="container">
-    <div class="section-label reveal">Our Work</div>
-    <h2 class="section-heading reveal reveal-d1">Built to <em>convert,</em> designed to impress</h2>
-    <p class="section-sub reveal reveal-d2">Every site we build is a revenue engine. Real businesses, real results.</p>
-    <div class="portfolio-grid">
-
-      <div class="portfolio-item reveal reveal-d1">
-        <div class="portfolio-browser">
-          <div class="pb-bar"><div class="pb-dot r"></div><div class="pb-dot y"></div><div class="pb-dot g"></div><span class="pb-url">maisonnoir.com</span></div>
-          <div class="pb-body style-restaurant">
-            <div class="pb-subtitle">Fine Dining</div>
-            <div class="pb-title">Maison<br>Noir</div>
-          </div>
-        </div>
-        <div class="portfolio-info">
-          <div class="portfolio-name">Maison Noir</div>
-          <div class="portfolio-meta">Fine Dining &middot; New Haven, CT</div>
-          <div class="portfolio-result">+142% Online Reservations</div>
-        </div>
-      </div>
-
-      <div class="portfolio-item reveal reveal-d2">
-        <div class="portfolio-browser">
-          <div class="pb-bar"><div class="pb-dot r"></div><div class="pb-dot y"></div><div class="pb-dot g"></div><span class="pb-url">harborview.com</span></div>
-          <div class="pb-body style-realestate">
-            <div class="pb-subtitle">Luxury Living</div>
-            <div class="pb-title">Harbor<br>View</div>
-          </div>
-        </div>
-        <div class="portfolio-info">
-          <div class="portfolio-name">Harbor View Properties</div>
-          <div class="portfolio-meta">Real Estate &middot; Guilford, CT</div>
-          <div class="portfolio-result">+67% Lead Inquiries</div>
-        </div>
-      </div>
-
-      <div class="portfolio-item reveal reveal-d3">
-        <div class="portfolio-browser">
-          <div class="pb-bar"><div class="pb-dot r"></div><div class="pb-dot y"></div><div class="pb-dot g"></div><span class="pb-url">serenewellness.com</span></div>
-          <div class="pb-body style-wellness">
-            <div class="pb-subtitle">Wellness &amp; Med Spa</div>
-            <div class="pb-title">Serene</div>
-          </div>
-        </div>
-        <div class="portfolio-info">
-          <div class="portfolio-name">Serene Wellness</div>
-          <div class="portfolio-meta">Med Spa &middot; Madison, CT</div>
-          <div class="portfolio-result">+210% Online Bookings</div>
-        </div>
-      </div>
-
-      <div class="portfolio-item reveal reveal-d4">
-        <div class="portfolio-browser">
-          <div class="pb-bar"><div class="pb-dot r"></div><div class="pb-dot y"></div><div class="pb-dot g"></div><span class="pb-url">ironforge.fit</span></div>
-          <div class="pb-body style-fitness">
-            <div class="pb-subtitle">Strength &amp; Performance</div>
-            <div class="pb-title">Iron<br>Forge</div>
-          </div>
-        </div>
-        <div class="portfolio-info">
-          <div class="portfolio-name">Iron Forge Fitness</div>
-          <div class="portfolio-meta">Fitness &middot; Branford, CT</div>
-          <div class="portfolio-result">+95% New Memberships</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ COMPARISON TABLE ═══════ -->
-<section class="section-white">
-  <div class="container">
-    <div class="section-label reveal">Why Mainstay</div>
-    <h2 class="section-heading reveal reveal-d1">Not a freelancer. Not a big agency. <em>Better.</em></h2>
-    <p class="section-sub reveal reveal-d2">The personal attention of a boutique studio with the execution power of a full agency — at a fraction of the cost.</p>
-    <table class="compare-table reveal reveal-d3">
-      <thead>
-        <tr>
-          <th></th>
-          <th class="highlight">Mainstay Digital</th>
-          <th>Freelancer</th>
-          <th>Big Agency</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Custom design (no templates)</td><td class="highlight"><span class="check">✓</span></td><td><span class="x">Sometimes</span></td><td><span class="check">✓</span></td></tr>
-        <tr><td>Guaranteed 14-day delivery</td><td class="highlight"><span class="check">✓</span></td><td><span class="x">4–8 weeks</span></td><td><span class="x">8–16 weeks</span></td></tr>
-        <tr><td>Flat, transparent pricing</td><td class="highlight"><span class="check">✓</span> $1,500</td><td>Varies</td><td><span class="x">$10K–$50K+</span></td></tr>
-        <tr><td>Unlimited revisions</td><td class="highlight"><span class="check">✓</span></td><td><span class="x">2–3 rounds</span></td><td><span class="x">Billed hourly</span></td></tr>
-        <tr><td>AI automation available</td><td class="highlight"><span class="check">✓</span></td><td><span class="x">✗</span></td><td><span class="x">Separate vendor</span></td></tr>
-        <tr><td>Direct access to founder</td><td class="highlight"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="x">Account manager</span></td></tr>
-        <tr><td>Post-launch support</td><td class="highlight"><span class="check">✓</span> 30 days free</td><td><span class="x">✗</span></td><td><span class="x">Retainer required</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- ═══════ PROCESS ═══════ -->
-<section class="section-light" id="process">
-  <div class="container">
-    <div class="section-label reveal">Our Process</div>
-    <h2 class="section-heading reveal reveal-d1" style="margin: 0 auto 16px; text-align: center; max-width: 600px;">From first call to <em>launch day</em></h2>
-    <p class="section-sub reveal reveal-d2" style="text-align:center; margin: 0 auto 64px; max-width: 500px;">A transparent, no-surprises process. You'll know exactly where we are every step of the way.</p>
-    <div class="process-steps">
-      <div class="process-step reveal">
-        <div class="process-day">Day 1</div>
-        <div class="process-title">Discovery Call</div>
-        <div class="process-desc">30-minute strategy session. We learn your business, your audience, and your goals. Free, no commitment. You'll leave with a clear roadmap whether you hire us or not.</div>
-      </div>
-      <div class="process-step reveal reveal-d1">
-        <div class="process-day">Days 2–4</div>
-        <div class="process-title">Strategy & Wireframes</div>
-        <div class="process-desc">We map the user journey, plan the conversion flow, and create wireframes. You approve the blueprint before we write a single line of code.</div>
-      </div>
-      <div class="process-step reveal reveal-d2">
-        <div class="process-day">Days 5–10</div>
-        <div class="process-title">Design & Development</div>
-        <div class="process-desc">Your custom site comes to life. Pixel-perfect design, hand-coded frontend, mobile responsiveness. Regular check-ins so there are zero surprises.</div>
-      </div>
-      <div class="process-step reveal reveal-d3">
-        <div class="process-day">Days 11–13</div>
-        <div class="process-title">Review & Revisions</div>
-        <div class="process-desc">Unlimited revisions until you're thrilled. We test across every device and browser. Nothing launches until you love it.</div>
-      </div>
-      <div class="process-step reveal reveal-d4">
-        <div class="process-day">Day 14</div>
-        <div class="process-title">Launch & Support</div>
-        <div class="process-desc">Your site goes live. We handle DNS, hosting, and optimization. Plus 30 days of free support so you're never left hanging.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ STATS BAND ═══════ -->
-<div class="stats-band">
-  <div class="stats-band-inner">
-    <div class="stat-item reveal"><span class="stat-num">47+</span><span class="stat-lbl">Websites Launched</span></div>
-    <div class="stat-item reveal reveal-d1"><span class="stat-num">100%</span><span class="stat-lbl">Client Satisfaction</span></div>
-    <div class="stat-item reveal reveal-d2"><span class="stat-num">14</span><span class="stat-lbl">Day Avg. Delivery</span></div>
-    <div class="stat-item reveal reveal-d3"><span class="stat-num">$2M+</span><span class="stat-lbl">Client Revenue Generated</span></div>
-  </div>
-</div>
-
-<!-- ═══════ TESTIMONIALS ═══════ -->
-<section class="section-light">
-  <div class="container">
-    <div class="section-label reveal">Client Stories</div>
-    <h2 class="section-heading reveal reveal-d1">Don't take our word for <em>it</em></h2>
-    <p class="section-sub reveal reveal-d2">Real results from real business owners across Connecticut.</p>
-    <div class="testimonials-grid">
-      <div class="testimonial-card reveal">
-        <p class="testimonial-text">Our old site was embarrassing. Mainstay rebuilt it in 12 days and we saw a 142% jump in online reservations the first month. The site paid for itself in the first week.</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">MN</div>
-          <div><div class="testimonial-name">Marco Navarro</div><div class="testimonial-role">Maison Noir &middot; New Haven</div></div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal reveal-d1">
-        <p class="testimonial-text">I'd been quoted $15K by two agencies. Mainstay delivered something better in fourteen days for a fraction of the cost. The quality is unreal.</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">SL</div>
-          <div><div class="testimonial-name">Sarah Liu</div><div class="testimonial-role">Harbor View Properties &middot; Guilford</div></div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal reveal-d2">
-        <p class="testimonial-text">The AI automation alone saves me 20 hours a week. Booking system, email follow-ups, review requests — all automated. I got 20 hours of my week back.</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">RK</div>
-          <div><div class="testimonial-name">Dr. Rachel Kim</div><div class="testimonial-role">Serene Wellness &middot; Madison</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ ABOUT / FOUNDER ═══════ -->
-<section class="section-white" id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-image reveal" id="founderImage">
-        <div class="initials">CH</div>
+  <section id="about" class="section-alt">
+    <div class="container two-col">
+      <div>
+        <div class="eyebrow">About</div>
+        <h2>More than a website. A stronger business presentation.</h2>
       </div>
       <div>
-        <div class="section-label reveal">About</div>
-        <div class="about-name reveal reveal-d1">Caden Hillier</div>
-        <div class="about-title reveal reveal-d2">Founder & CEO</div>
-        <p class="about-text reveal reveal-d3">I've launched 47+ sites for businesses across Connecticut and beyond. Restaurants, law firms, med spas, real estate — if you serve customers, I know how to bring more of them to your door.</p>
-        <p class="about-text reveal reveal-d4">Every project gets my direct attention. No account managers, no hand-offs, no runaround. You work with me from day one to launch day.</p>
-        <div class="about-creds reveal reveal-d5">
-          <div class="about-cred"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>47+ Sites Launched</div>
-          <div class="about-cred"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>100% Satisfaction Rate</div>
-          <div class="about-cred"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Connecticut Based</div>
+        <p class="lead">Mainstay Digital was built for businesses that want their online presence to feel more established, more premium, and more convincing from the first second a visitor lands on the page. We pair that with smart systems that help the business respond faster, stay organized, and run with less manual effort.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="capabilities">
+    <div class="container">
+      <div class="eyebrow">What We Do</div>
+      <h2>A simpler way to understand what we do.</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="card-num">01</div>
+          <h3>Luxury Website Design</h3>
+          <p>Custom websites built to make your business look more expensive, more credible, and more trustworthy to the people you want to attract.</p>
+        </div>
+        <div class="card">
+          <div class="card-num">02</div>
+          <h3>AI Business Management</h3>
+          <p>Smart systems that follow up with leads, handle repetitive communication, reduce manual work, and help the business stay consistent behind the scenes.</p>
+        </div>
+        <div class="card">
+          <div class="card-num">03</div>
+          <h3>Ongoing Support</h3>
+          <p>Continued oversight to keep the site sharp, the systems running smoothly, and the business positioned better as it grows.</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ═══════ FAQ ═══════ -->
-<section class="section-light" id="faq">
-  <div class="container">
-    <div class="section-label reveal" style="justify-content:center">Frequently Asked</div>
-    <h2 class="section-heading reveal reveal-d1" style="text-align:center;margin:0 auto 64px;max-width:500px">Everything you need to <em>know</em></h2>
-    <div class="faq-list">
-      <div class="faq-item reveal">
-        <button class="faq-question">What's included in the $1,500 price?<span class="faq-icon">+</span></button>
-        <div class="faq-answer"><p>A fully custom website designed from scratch — no templates. Includes responsive design, SEO optimization, contact forms, Google Analytics setup, and 30 days of free post-launch support. Plus unlimited revisions until you're thrilled.</p></div>
-      </div>
-      <div class="faq-item reveal reveal-d1">
-        <button class="faq-question">How does the 14-day delivery guarantee work?<span class="faq-icon">+</span></button>
-        <div class="faq-answer"><p>From our first discovery call, your site will be designed, developed, and launched within 14 calendar days. Most projects finish sooner. If we miss the deadline (we won't), you get a partial refund.</p></div>
-      </div>
-      <div class="faq-item reveal reveal-d2">
-        <button class="faq-question">What makes this different from a Squarespace or Wix site?<span class="faq-icon">+</span></button>
-        <div class="faq-answer"><p>Template builders limit your design and performance. We hand-code every site for maximum speed, SEO, and conversion. Your site will load faster, rank higher, and convert better than any template site.</p></div>
-      </div>
-      <div class="faq-item reveal reveal-d3">
-        <button class="faq-question">What does the AI automation include?<span class="faq-icon">+</span></button>
-        <div class="faq-answer"><p>Our Enterprise package includes a dedicated Mac Mini running your custom AI systems 24/7. This can include automated email follow-ups, booking management, review requests, lead qualification, and workflow automation tailored to your business.</p></div>
-      </div>
-      <div class="faq-item reveal reveal-d4">
-        <button class="faq-question">Do you work with businesses outside Connecticut?<span class="faq-icon">+</span></button>
-        <div class="faq-answer"><p>Absolutely. While we're based in Connecticut and love working with local businesses, we serve clients nationwide. Everything is done remotely — discovery calls, design reviews, and launch.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ CTA ═══════ -->
-<section class="cta-section">
-  <div class="container">
-    <h2 class="reveal">Ready to <em>win</em> more customers?</h2>
-    <p class="reveal reveal-d1">Book a free 30-minute strategy call. No commitment, no sales pitch — just a clear roadmap for your business.</p>
-    <div class="cta-buttons reveal reveal-d2">
-      <a href="#contact" class="btn-primary" style="background:var(--gold);border-color:var(--gold);color:var(--navy)">Book Free Consultation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ CONTACT ═══════ -->
-<section class="contact-form-section" id="contact">
-  <div class="container">
-    <div class="contact-grid">
-      <div>
-        <div class="section-label reveal">Get In Touch</div>
-        <h2 class="section-heading reveal reveal-d1">Let's build something <em>remarkable</em></h2>
-        <p class="section-sub reveal reveal-d2">Tell us about your business and we'll come back with a plan. Free consultation, no obligations.</p>
-        <div style="margin-top:40px" class="reveal reveal-d3">
-          <p style="font-size:15px;color:var(--text-mid);margin-bottom:8px"><strong style="color:var(--text)">Email</strong></p>
-          <p style="font-size:15px;color:var(--text-mid);margin-bottom:24px">hello@mainstayhq.com</p>
-          <p style="font-size:15px;color:var(--text-mid);margin-bottom:8px"><strong style="color:var(--text)">Based in</strong></p>
-          <p style="font-size:15px;color:var(--text-mid)">Connecticut, United States</p>
+  <section id="packages" class="section-border">
+    <div class="container">
+      <div class="eyebrow">Pricing</div>
+      <h2>Two ways to work with Mainstay Digital.</h2>
+      <p class="lead">Choose between a custom website package or a more complete solution that includes your website plus ongoing AI business management.</p>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-name">Basic</div>
+          <div class="price">$1,500</div>
+          <div class="price-title">Custom Website Build</div>
+          <p>A professional custom website built to make your business look stronger, more trustworthy, and easier for customers to contact.</p>
+          <ul>
+            <li>• Custom website design and development</li>
+            <li>• Mobile-responsive layout</li>
+            <li>• Professional brand presentation</li>
+            <li>• Core page setup</li>
+            <li>• Contact form integration</li>
+            <li>• Launch-ready delivery</li>
+          </ul>
         </div>
-      </div>
-      <div class="contact-form reveal reveal-d2">
-        <form id="contactForm">
-          <div class="form-row"><label>Name</label><input type="text" placeholder="Your full name" required></div>
-          <div class="form-row"><label>Email</label><input type="email" placeholder="you@company.com" required></div>
-          <div class="form-row"><label>Business Type</label>
-            <select>
-              <option value="">Select your industry</option>
-              <option>Restaurant / Hospitality</option>
-              <option>Real Estate</option>
-              <option>Healthcare / Wellness</option>
-              <option>Legal / Professional Services</option>
-              <option>Fitness / Gym</option>
-              <option>Retail / E-Commerce</option>
-              <option>Other</option>
-            </select>
+        <div class="price-card premium">
+          <div class="price-top">
+            <div>
+              <div class="price-name">Premium</div>
+              <div class="price">$3,500</div>
+              <div class="fee">+ $600/mo AI Business Management</div>
+            </div>
+            <div class="tag">Preferred</div>
           </div>
-          <div class="form-row"><label>Tell us about your project</label><textarea placeholder="What are you looking to build?"></textarea></div>
-          <button type="submit" class="form-submit">Send Message →</button>
-        </form>
+          <div class="price-title">Website + AI Business Management</div>
+          <div class="price-sub">Best for businesses that want a hands-off growth system</div>
+          <p>A higher-level solution for businesses that want a stronger website plus smart systems that help manage leads, improve follow-up, reduce admin work, and keep the business running more smoothly.</p>
+          <ul>
+            <li>• Everything in Basic</li>
+            <li>• AI-powered business workflows</li>
+            <li>• Automated lead handling and follow-up</li>
+            <li>• Repetitive communication support</li>
+            <li>• Ongoing system oversight</li>
+            <li>• Priority support and optimization</li>
+          </ul>
+        </div>
+      </div>
+      <div class="closing">Built for businesses that want more than a website — and need a stronger online presence with better systems behind it.</div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="container">
+      <div class="work-intro">
+        <div class="eyebrow">Our Work</div>
+        <h2>Luxury previews that sell the quality immediately.</h2>
+        <p class="lead">Each example below is intentionally different. The goal is not to make every site look like a template — it is to show how Mainstay Digital can create a premium presentation tailored to the type of business while also installing automation that makes the business run better behind the scenes.</p>
+      </div>
+
+      <div class="work-grid">
+
+        <div class="portfolio">
+          <div class="portfolio-grid">
+            <div class="screen">
+              <div class="browser-bar"><div class="dots"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div></div><div class="url-bar"></div></div>
+              <div class="preview">
+                <div class="site harbor">
+                  <div class="site-top"><div class="site-logo">Harbor Ridge Capital</div><div class="site-nav"><span>Services</span><span>Insights</span><span>Contact</span></div></div>
+                  <div class="site-body">
+                    <div class="hero-grid">
+                      <div>
+                        <div class="site-kicker">Private Wealth Advisory</div>
+                        <div class="site-title">Advisory built around clarity, discipline, and long-term confidence.</div>
+                        <div class="site-copy">A luxury-style financial website created to feel private, credible, and established from the first glance — while giving serious prospects a cleaner path to book a conversation.</div>
+                        <div class="cta-row"><div class="cta-dark">Schedule Consultation</div><div class="cta-light">View Services</div></div>
+                      </div>
+                      <div class="visual"></div>
+                    </div>
+                    <div class="metric-bar">
+                      <div class="metric"><div class="metric-num">$100M+</div><div class="metric-label">Client Focus</div></div>
+                      <div class="metric"><div class="metric-num">Private</div><div class="metric-label">Experience</div></div>
+                      <div class="metric"><div class="metric-num">Long-Term</div><div class="metric-label">Planning</div></div>
+                    </div>
+                    <div class="content-blocks">
+                      <div class="stack">
+                        <div class="box"><div class="box-title">Positioning</div><div class="box-head">Structured to create trust immediately.</div><div class="box-copy">The site was designed to feel more like a private advisory firm than a generic finance business — with tighter messaging, stronger authority, and a more premium presentation overall.</div></div>
+                      </div>
+                      <div class="chart"><div class="box-title">Client Journey</div><svg viewBox="0 0 300 120" fill="none"><path d="M10 98 C55 98, 60 80, 88 74 C118 66, 128 72, 156 56 C187 39, 206 46, 236 28 C256 16, 270 14, 290 10" stroke="#102235" stroke-width="5" stroke-linecap="round"/></svg></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="meta">
+              <div class="work-cat">Wealth Management</div>
+              <h3>Harbor Ridge Capital</h3>
+              <p>A refined advisory website built to present credibility, explain services clearly, and drive more consultation requests from high-value prospects.</p>
+              <div class="tags"><span class="chip">Premium Positioning</span><span class="chip">Lead Capture Flow</span><span class="chip">Trust-First Design</span></div>
+              <div class="impact">
+                <div class="impact-item"><strong>How we helped:</strong> We repositioned the business online to feel more established, more exclusive, and more polished to affluent prospects considering the firm.</div>
+                <div class="impact-item"><strong>How the AI integration works:</strong> It follows up with new leads automatically, keeps prospects from being forgotten, responds faster when someone reaches out, and helps move people toward booking without requiring manual back-and-forth every time.</div>
+                <div class="impact-item"><strong>What it handles now:</strong> Lead follow-up, faster inquiry responses, pipeline movement, and a smoother prospect intake process so the team can focus on higher-value conversations instead of repetitive admin.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio reverse">
+          <div class="portfolio-grid">
+            <div class="meta">
+              <div class="work-cat">Medical Aesthetics</div>
+              <h3>Aurum Aesthetics</h3>
+              <p>A luxury-forward website experience designed to make the brand feel significantly more elevated, support inquiries, and increase premium appointment intent.</p>
+              <div class="tags"><span class="chip">Luxury Presentation</span><span class="chip">Service-Focused Pages</span><span class="chip">Higher Conversion Path</span></div>
+              <div class="impact">
+                <div class="impact-item"><strong>How we helped:</strong> We transformed the digital presence from standard small-business aesthetic to a more editorial, upscale presentation that supports premium pricing.</div>
+                <div class="impact-item"><strong>How the AI integration works:</strong> The system helps respond to new inquiries faster, follows up automatically with interested prospects, and keeps the business more consistent when consultation demand comes in.</div>
+                <div class="impact-item"><strong>What it handles now:</strong> Initial lead responses, follow-up reminders, inquiry organization, and communication support that helps turn more interest into actual booked consultations.</div>
+              </div>
+            </div>
+            <div class="screen">
+              <div class="browser-bar"><div class="dots"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div></div><div class="url-bar"></div></div>
+              <div class="preview">
+                <div class="site aurum">
+                  <div class="site-top"><div class="site-logo">Aurum Aesthetics</div><div class="site-nav"><span>Treatments</span><span>Results</span><span>Book</span></div></div>
+                  <div class="site-body">
+                    <div class="hero-grid">
+                      <div>
+                        <div class="site-kicker">Luxury Medical Aesthetics</div>
+                        <div class="site-title">Refined aesthetic care designed around confidence and detail.</div>
+                        <div class="site-copy">An elevated visual experience built to make the brand feel more expensive, more intentional, and more worthy of premium clientele.</div>
+                        <div class="cta-row"><div class="cta-dark">Book Consultation</div><div class="cta-light">View Treatments</div></div>
+                      </div>
+                      <div class="visual"></div>
+                    </div>
+                    <div class="content-blocks">
+                      <div class="box">
+                        <div class="box-title">Signature Services</div>
+                        <div class="box-head">A cleaner path from interest to inquiry.</div>
+                        <div class="box-copy">Pages structured to present treatments more elegantly, reduce confusion, and make next steps feel more natural for higher-end prospects.</div>
+                        <div class="lines"><div class="line"></div><div class="line mid"></div><div class="line short"></div></div>
+                      </div>
+                      <div class="stack">
+                        <div class="box"><div class="box-title">Experience</div><div class="box-head">Luxury-led visual identity.</div><div class="box-copy">Soft editorial styling, warmer tones, and elevated spacing to support a stronger premium perception.</div></div>
+                        <div class="box"><div class="box-title">Conversion</div><div class="box-head">Clear booking intent.</div><div class="box-copy">Designed around service browsing, trust-building, and stronger inquiry flow.</div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio">
+          <div class="portfolio-grid">
+            <div class="screen">
+              <div class="browser-bar"><div class="dots"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div></div><div class="url-bar"></div></div>
+              <div class="preview">
+                <div class="site legal">
+                  <div class="site-top"><div class="site-logo">Northfield Legal Group</div><div class="site-nav"><span>Practice Areas</span><span>Attorneys</span><span>Contact</span></div></div>
+                  <div class="site-body">
+                    <div class="hero-grid">
+                      <div>
+                        <div class="site-kicker">Professional Legal Services</div>
+                        <div class="site-title">Serious representation presented with more clarity and authority.</div>
+                        <div class="site-copy">A firmer, more established digital presence designed to help the practice look more authoritative online and make contacting the office simpler.</div>
+                        <div class="cta-row"><div class="cta-dark">Request Review</div><div class="cta-light">Practice Areas</div></div>
+                      </div>
+                      <div class="visual"></div>
+                    </div>
+                    <div class="metric-bar">
+                      <div class="metric"><div class="metric-num">Sharper</div><div class="metric-label">Authority</div></div>
+                      <div class="metric"><div class="metric-num">Faster</div><div class="metric-label">Inquiry Handling</div></div>
+                      <div class="metric"><div class="metric-num">Cleaner</div><div class="metric-label">Contact Flow</div></div>
+                    </div>
+                    <div class="content-blocks">
+                      <div class="stack">
+                        <div class="box"><div class="box-title">Practice Focus</div><div class="box-head">Built to reduce friction for prospective clients.</div><div class="box-copy">Messaging simplified so visitors can understand where the firm helps and how to reach out without digging through clutter.</div></div>
+                      </div>
+                      <div class="chart"><div class="box-title">Inquiry Flow</div><svg viewBox="0 0 300 120" fill="none"><path d="M10 92 C44 90, 58 84, 88 76 C122 67, 137 61, 168 48 C198 34, 214 36, 244 24 C258 18, 272 14, 290 10" stroke="#26384a" stroke-width="5" stroke-linecap="round"/></svg></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="meta">
+              <div class="work-cat">Professional Services</div>
+              <h3>Northfield Legal Group</h3>
+              <p>A cleaner, more established digital presence created to help the firm look more authoritative online and make contacting the office simpler.</p>
+              <div class="tags"><span class="chip">Authority Positioning</span><span class="chip">Mobile-First Contact Flow</span><span class="chip">Sharper Brand Presence</span></div>
+              <div class="impact">
+                <div class="impact-item"><strong>How we helped:</strong> We reworked the presentation to feel more like a polished professional firm and less like a basic small-business website.</div>
+                <div class="impact-item"><strong>How the AI integration works:</strong> The automation helps handle new inquiries more consistently, sends prompt responses, and makes sure people reaching out are not left waiting on manual replies.</div>
+                <div class="impact-item"><strong>What it handles now:</strong> Intake follow-up, response support, lead organization, and smoother communication flow so the firm appears more responsive and more professional.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio reverse">
+          <div class="portfolio-grid">
+            <div class="meta">
+              <div class="work-cat">Luxury Real Estate</div>
+              <h3>Stonegate Estates</h3>
+              <p>A property-focused presentation built to feel high-end, aspirational, and more aligned with the caliber of listings and clientele the firm wants to attract.</p>
+              <div class="tags"><span class="chip">Editorial Layout</span><span class="chip">Luxury Property Feel</span><span class="chip">Lead Qualification</span></div>
+              <div class="impact">
+                <div class="impact-item"><strong>How we helped:</strong> We made the brand feel far more premium online so listings, inquiries, and agent presentation all matched the market they wanted to compete in.</div>
+                <div class="impact-item"><strong>How the AI integration works:</strong> It follows up with inbound leads, responds to common inquiry questions, and helps qualify interested buyers or sellers before the team has to step in manually.</div>
+                <div class="impact-item"><strong>What it handles now:</strong> New lead response, buyer and seller inquiry support, missed-follow-up prevention, and a more organized lead handoff for the internal team.</div>
+              </div>
+            </div>
+            <div class="screen">
+              <div class="browser-bar"><div class="dots"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div></div><div class="url-bar"></div></div>
+              <div class="preview">
+                <div class="site realty">
+                  <div class="site-top"><div class="site-logo">Stonegate Estates</div><div class="site-nav"><span>Listings</span><span>Advisory</span><span>Contact</span></div></div>
+                  <div class="site-body">
+                    <div class="hero-grid">
+                      <div>
+                        <div class="site-kicker">Luxury Real Estate</div>
+                        <div class="site-title">Properties and presentation built for a higher-end market.</div>
+                        <div class="site-copy">An editorial-style real estate experience designed to make listings feel more aspirational while keeping the brand polished and upscale.</div>
+                        <div class="cta-row"><div class="cta-dark">View Properties</div><div class="cta-light">Sell With Us</div></div>
+                      </div>
+                      <div class="visual"></div>
+                    </div>
+                    <div class="metric-bar">
+                      <div class="metric"><div class="metric-num">Luxury</div><div class="metric-label">Market Position</div></div>
+                      <div class="metric"><div class="metric-num">Faster</div><div class="metric-label">Inquiry Response</div></div>
+                      <div class="metric"><div class="metric-num">Clearer</div><div class="metric-label">Lead Routing</div></div>
+                    </div>
+                    <div class="content-blocks">
+                      <div class="box"><div class="box-title">Listings</div><div class="box-head">A more editorial property showcase.</div><div class="box-copy">Designed to make high-end listings feel more immersive, cleaner, and more desirable while guiding serious inquiries.</div><div class="lines"><div class="line"></div><div class="line short"></div></div></div>
+                      <div class="stack">
+                        <div class="box"><div class="box-title">Brand</div><div class="box-head">Luxury-first impression.</div><div class="box-copy">Neutral tones and stronger image-driven hierarchy for a more expensive feel.</div></div>
+                        <div class="box"><div class="box-title">Lead Flow</div><div class="box-head">Cleaner qualification path.</div><div class="box-copy">Built around both buyer and seller inquiry intent.</div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio">
+          <div class="portfolio-grid">
+            <div class="screen">
+              <div class="browser-bar"><div class="dots"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div></div><div class="url-bar"></div></div>
+              <div class="preview">
+                <div class="site clinic">
+                  <div class="site-top"><div class="site-logo">Bluewater Wellness Clinic</div><div class="site-nav"><span>Care</span><span>Team</span><span>Book</span></div></div>
+                  <div class="site-body">
+                    <div class="hero-grid">
+                      <div>
+                        <div class="site-kicker">Private Wellness Clinic</div>
+                        <div class="site-title">Modern care presented with clarity, calm, and confidence.</div>
+                        <div class="site-copy">A more clinical, modern brand presentation designed to make the practice feel organized, reassuring, and significantly more polished.</div>
+                        <div class="cta-row"><div class="cta-dark">Book Visit</div><div class="cta-light">Meet The Team</div></div>
+                      </div>
+                      <div class="visual"></div>
+                    </div>
+                    <div class="metric-bar">
+                      <div class="metric"><div class="metric-num">Calm</div><div class="metric-label">Brand Feel</div></div>
+                      <div class="metric"><div class="metric-num">Faster</div><div class="metric-label">Patient Response</div></div>
+                      <div class="metric"><div class="metric-num">Less</div><div class="metric-label">Admin Friction</div></div>
+                    </div>
+                    <div class="content-blocks">
+                      <div class="stack">
+                        <div class="box"><div class="box-title">Patient Experience</div><div class="box-head">Built to feel reassuring and easy to navigate.</div><div class="box-copy">A calmer visual structure that makes services, trust, and next steps easier to understand for new patients.</div></div>
+                      </div>
+                      <div class="chart"><div class="box-title">Operational Support</div><svg viewBox="0 0 300 120" fill="none"><path d="M10 95 C48 88, 64 84, 98 74 C136 64, 156 58, 185 46 C220 32, 244 22, 290 12" stroke="#21505d" stroke-width="5" stroke-linecap="round"/></svg></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="meta">
+              <div class="work-cat">Private Healthcare</div>
+              <h3>Bluewater Wellness Clinic</h3>
+              <p>A modern medical-style website built to make the clinic feel more organized, more professional, and easier for new patients to trust.</p>
+              <div class="tags"><span class="chip">Modern Clinical Design</span><span class="chip">Patient Inquiry Support</span><span class="chip">Reduced Admin Friction</span></div>
+              <div class="impact">
+                <div class="impact-item"><strong>How we helped:</strong> We gave the clinic a more reassuring and premium digital presence so prospective patients felt more confidence before ever making contact.</div>
+                <div class="impact-item"><strong>How the AI integration works:</strong> It helps manage incoming inquiries, answers routine questions faster, supports follow-up, and reduces repetitive administrative tasks that normally eat up staff time.</div>
+                <div class="impact-item"><strong>What it handles now:</strong> New patient inquiry responses, routine communication support, follow-up tasks, and backend assistance that keeps the front desk from becoming overloaded.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ═══════ FOOTER ═══════ -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
+  <section id="sectors" class="section-border">
+    <div class="container two-col">
       <div>
-        <div class="footer-brand">Mainstay <span>Digital</span></div>
-        <p class="footer-desc">Premium web design and AI automation for businesses that refuse to settle. Based in Connecticut, trusted nationwide.</p>
+        <div class="eyebrow">Who We Help</div>
+        <h2>Built for businesses that value credibility, responsiveness, and growth.</h2>
+        <p class="lead">Our work is best suited for established or growth-minded businesses that want a more professional online presence and better systems to support day-to-day operations.</p>
       </div>
-      <div>
-        <div class="footer-heading">Services</div>
-        <ul class="footer-links">
-          <li><a href="#services">Custom Web Design</a></li>
-          <li><a href="#services">AI Automation</a></li>
-          <li><a href="#services">SEO Optimization</a></li>
-          <li><a href="#services">Site Redesigns</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-heading">Industries</div>
-        <ul class="footer-links">
-          <li><a href="#work">Restaurants</a></li>
-          <li><a href="#work">Real Estate</a></li>
-          <li><a href="#work">Healthcare</a></li>
-          <li><a href="#work">Professional Services</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-heading">Contact</div>
-        <ul class="footer-links">
-          <li><a href="#contact">Start a Project</a></li>
-          <li><a href="#contact">Free Consultation</a></li>
-          <li><a href="mailto:hello@mainstayhq.com">hello@mainstayhq.com</a></li>
-          <li><a href="#faq">FAQ</a></li>
-        </ul>
+      <div class="sector-grid">
+        <div class="sector">Financial Advisory</div>
+        <div class="sector">Professional Services</div>
+        <div class="sector">Private Practices</div>
+        <div class="sector">Real Estate</div>
+        <div class="sector">Established Local Businesses</div>
+        <div class="sector">Growth-Focused Firms</div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 Mainstay Digital. All rights reserved.</span>
-      <span style="font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,0.25)">Websites that win customers.</span>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="feature-wrap">
+        <div class="feature-grid">
+          <div>
+            <div class="eyebrow">Why Mainstay</div>
+            <h2>A higher standard for how your business shows up and operates online.</h2>
+            <p class="lead">We combine luxury presentation, support, and smart systems into one service that helps businesses look more premium, stay more organized, and grow with less friction.</p>
+          </div>
+          <div class="feature-list">
+            <ul>
+              <li>• 47+ businesses served across digital and automation engagements</li>
+              <li>• 100% satisfaction rate across client relationships</li>
+              <li>• Stronger online presence and better day-to-day efficiency</li>
+              <li>• A long-term digital partner built around quality and consistency</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</footer>
+  </section>
 
-<script>
-// Scroll progress
-window.addEventListener('scroll',()=>{
-  const s=document.documentElement.scrollTop;
-  const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-  document.getElementById('scrollProgress').style.width=(s/h*100)+'%';
-});
-
-// Navbar scroll
-window.addEventListener('scroll',()=>{
-  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>20);
-});
-
-// Reveal on scroll — aggressive trigger so content never feels hidden
-const revealObs=new IntersectionObserver(e=>{
-  e.forEach(n=>{if(n.isIntersecting){n.target.classList.add('visible');revealObs.unobserve(n.target)}});
-},{threshold:0.01,rootMargin:'0px 0px 40px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
-// Force all elements already in viewport visible on load
-setTimeout(()=>{document.querySelectorAll('.reveal').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<window.innerHeight+100){el.classList.add('visible')}})},100);
-
-// FAQ accordion
-document.querySelectorAll('.faq-question').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const item=btn.parentElement;
-    const was=item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-    if(!was)item.classList.add('open');
-  });
-});
-
-// Form
-document.getElementById('contactForm').addEventListener('submit',function(e){
-  e.preventDefault();
-  const btn=this.querySelector('.form-submit');
-  const og=btn.textContent;
-  btn.textContent='Message Sent!';
-  btn.style.background='#34d399';btn.style.borderColor='#34d399';btn.style.color='#fff';
-  setTimeout(()=>{btn.textContent=og;btn.style.background='';btn.style.borderColor='';btn.style.color='';this.reset()},3000);
-});
-
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',function(e){
-    e.preventDefault();
-    const t=document.querySelector(this.getAttribute('href'));
-    if(t){
-      const y=t.getBoundingClientRect().top+window.scrollY-80;
-      window.scrollTo({top:y,behavior:'smooth'});
-    }
-    document.getElementById('navLinks').classList.remove('open');
-  });
-});
-</script>
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="eyebrow">Contact</div>
+      <h2>Build a stronger digital foundation for growth.</h2>
+      <p class="lead">If your business is ready for a significantly more premium website and smarter systems behind it, we would be glad to start the conversation.</p>
+      <div class="actions" style="justify-content:center">
+        <a class="btn btn-primary" href="mailto:hello@mainstayhq.com">hello@mainstayhq.com</a>
+        <a class="btn btn-secondary" href="#">Schedule Consultation</a>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
