@@ -165,42 +165,17 @@
     .site-obsidian .so-title{margin-top:16px;font-size:30px;font-weight:500;letter-spacing:-.04em;line-height:1.1;font-family:'Playfair Display',serif;color:#f0ece4}
     .site-obsidian .so-copy{margin-top:14px;font-size:12px;line-height:1.85;color:rgba(255,255,255,.38)}
     .site-obsidian .so-cta{margin-top:20px;display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border:1px solid rgba(199,165,106,.25);border-radius:0;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(199,165,106,.8);background:rgba(199,165,106,.05)}
-    .site-obsidian .so-visual{border-radius:4px;min-height:220px;background:linear-gradient(135deg,#1a1611 0%,#231d14 40%,#2a2118 60%,#1a1611 100%);position:relative;overflow:hidden;border:1px solid rgba(199,165,106,.15)}
-    .site-obsidian .so-visual::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 80%,rgba(199,165,106,.12),transparent 50%),radial-gradient(circle at 30% 30%,rgba(199,165,106,.06),transparent 40%)}
-    .site-obsidian .so-visual-label{position:absolute;bottom:10px;left:12px;font-size:7px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(199,165,106,.5)}
+    .site-obsidian .so-visual{border-radius:4px;min-height:220px;background:linear-gradient(135deg,#2a2010 0%,#3d2f18 30%,#4a3820 50%,#3d2f18 70%,#2a2010 100%);position:relative;overflow:hidden;border:1px solid rgba(199,165,106,.25)}
+    .site-obsidian .so-visual::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 60%,rgba(199,165,106,.25),transparent 60%),radial-gradient(circle at 30% 30%,rgba(199,165,106,.15),transparent 50%)}
+    .site-obsidian .so-visual-label{position:absolute;bottom:10px;left:12px;font-size:7px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(199,165,106,.7)}
+    .site-obsidian .so-img-frame{position:absolute;top:20px;left:15px;right:15px;bottom:35px;border:1px solid rgba(199,165,106,.35);border-radius:2px;background:linear-gradient(180deg,rgba(199,165,106,.08) 0%,rgba(199,165,106,.02) 100%)}
+    .site-obsidian .so-img-frame::before{content:"";position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(0deg,rgba(199,165,106,.18),transparent)}
+    .site-obsidian .so-img-frame::after{content:"";position:absolute;top:15%;left:20%;right:20%;height:30%;border:1px solid rgba(199,165,106,.2);border-radius:1px}
+    .site-obsidian .so-img-price{position:absolute;top:12px;right:12px;background:rgba(199,165,106,.9);color:#0a0a0a;font-size:11px;font-weight:800;padding:4px 10px;border-radius:2px;letter-spacing:.02em}
+    .site-obsidian .so-img-specs{position:absolute;bottom:8px;left:15px;color:rgba(199,165,106,.8);font-size:8px;font-weight:600;letter-spacing:.1em}
+    .site-obsidian .so-img-tag{position:absolute;top:12px;left:12px;border:1px solid rgba(199,165,106,.5);color:rgba(199,165,106,.8);font-size:6px;font-weight:700;padding:2px 6px;border-radius:1px;letter-spacing:.15em;text-transform:uppercase}
     .site-obsidian .so-price-tag{position:absolute;top:10px;right:10px;background:rgba(199,165,106,.15);border:1px solid rgba(199,165,106,.3);border-radius:3px;padding:4px 8px;font-size:9px;font-weight:700;color:rgba(199,165,106,.85);letter-spacing:.05em}
-    .site-obsidian .so-mansion{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);width:80%}
-    .site-obsidian .so-m-base{height:70px;background:linear-gradient(180deg,#2a231a,#221c13);border:1px solid rgba(199,165,106,.25);border-bottom:none;position:relative}
-    .site-obsidian .so-m-roof{height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:22px solid #2a231a;margin:0 -1px;position:relative}
-    .site-obsidian .so-m-roof::after{content:"";position:absolute;top:10px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:10px solid rgba(199,165,106,.3)}
-    .site-obsidian .so-m-wing{position:absolute;bottom:0;width:28%;height:45px;background:#241e15;border:1px solid rgba(199,165,106,.2);border-bottom:none}
-    .site-obsidian .so-m-wing.left{left:-28%;border-right:none}
-    .site-obsidian .so-m-wing.right{right:-28%;border-left:none}
-    .site-obsidian .so-m-windows{position:absolute;top:12px;left:10%;right:10%;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
-    .site-obsidian .so-m-win{height:18px;background:rgba(199,165,106,.08);border:1px solid rgba(199,165,106,.2)}
-    .site-obsidian .so-m-win.glow{background:rgba(199,165,106,.35);box-shadow:0 0 12px rgba(199,165,106,.2),inset 0 0 6px rgba(199,165,106,.15)}
-    .site-obsidian .so-m-windows2{position:absolute;top:38px;left:10%;right:10%;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
-    .site-obsidian .so-m-door{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:14px;height:24px;background:rgba(199,165,106,.45);border:1px solid rgba(199,165,106,.5);border-bottom:none;border-radius:7px 7px 0 0;box-shadow:0 0 10px rgba(199,165,106,.2)}
-    .site-obsidian .so-m-columns{position:absolute;bottom:0;left:35%;right:35%;display:flex;justify-content:space-between}
-    .site-obsidian .so-m-col{width:3px;height:28px;background:rgba(199,165,106,.3);border-radius:1px}
-    .site-obsidian .so-ground-line{position:absolute;bottom:30px;left:5%;right:5%;height:1px;background:rgba(199,165,106,.2)}
-    .site-obsidian .so-ground-fill{position:absolute;bottom:0;left:0;right:0;height:30px;background:linear-gradient(180deg,transparent,rgba(10,8,5,.6))}
-    .site-obsidian .so-landscape{position:absolute;bottom:30px}
-    .site-obsidian .so-tree-shape{width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:20px solid rgba(199,165,106,.15)}
-    .site-obsidian .so-tree-stem{width:2px;height:8px;background:rgba(199,165,106,.2);margin:0 auto}
-    .site-obsidian .so-specs-overlay{position:absolute;top:10px;left:10px;font-size:6px;line-height:1.6;color:rgba(199,165,106,.4);letter-spacing:.05em}
-    .site-obsidian .so-featured{padding:0 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}
-    .site-obsidian .so-prop{border:1px solid rgba(255,255,255,.05);padding:16px;background:rgba(255,255,255,.015)}
-    .site-obsidian .so-prop-price{font-size:16px;font-weight:600;letter-spacing:-.02em;color:rgba(199,165,106,.7)}
-    .site-obsidian .so-prop-addr{margin-top:6px;font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.04em}
-    .site-obsidian .so-prop-specs{margin-top:4px;font-size:8px;color:rgba(255,255,255,.2);letter-spacing:.08em;text-transform:uppercase}
-    .site-obsidian .so-bottom{padding:14px 28px 28px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.04);margin:14px 28px 0;padding:14px 0 0}
-    .site-obsidian .so-metric{text-align:center}
-    .site-obsidian .so-metric-num{font-size:18px;font-weight:500;letter-spacing:-.02em;color:rgba(199,165,106,.6);font-family:'Playfair Display',serif}
-    .site-obsidian .so-metric-lbl{margin-top:4px;font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.2)}
-    .site-obsidian .so-divider{width:1px;height:36px;background:rgba(255,255,255,.06)}
-
-    /* ── SITE 2: Solara Health — Clean Emerald Wellness ── */
+    
     .site-solara{border-radius:24px;overflow:hidden;min-height:620px;background:#fafbfa;color:#0f1a14;font-family:Inter,sans-serif}
     .site-solara .ss-nav{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;border-bottom:1px solid rgba(0,0,0,.05)}
     .site-solara .ss-logo{display:flex;align-items:center;gap:10px}
@@ -216,22 +191,22 @@
     .site-solara .ss-ctas{display:flex;gap:10px;margin-top:18px}
     .site-solara .ss-btn-green{padding:11px 22px;border-radius:12px;background:#1a5237;color:#e8f5ee;font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase}
     .site-solara .ss-btn-outline{padding:11px 22px;border-radius:12px;border:1.5px solid rgba(26,82,55,.15);color:#1a5237;font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase}
-    .site-solara .ss-hero-img{border-radius:20px;min-height:200px;background:linear-gradient(160deg,#e8f0ea,#c8dece);position:relative;overflow:hidden}
-    .site-solara .ss-hero-img::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(45,138,86,.08),transparent 50%)}
-    .site-solara .ss-card-tl{position:absolute;top:12px;left:12px;background:#fff;border-radius:10px;padding:10px 12px;box-shadow:0 4px 16px rgba(0,0,0,.08);border:1px solid rgba(26,82,55,.12)}
-    .site-solara .ss-card-tr{position:absolute;top:12px;right:12px;background:#fff;border-radius:10px;padding:10px 12px;box-shadow:0 4px 16px rgba(0,0,0,.08);border:1px solid rgba(26,82,55,.12)}
-    .site-solara .ss-card-bl{position:absolute;bottom:12px;left:12px;background:#fff;border-radius:10px;padding:10px 12px;box-shadow:0 4px 16px rgba(0,0,0,.08);border:1px solid rgba(26,82,55,.12)}
-    .site-solara .ss-card-br{position:absolute;bottom:12px;right:12px;background:#fff;border-radius:10px;padding:10px 12px;box-shadow:0 4px 16px rgba(0,0,0,.08);border:1px solid rgba(26,82,55,.12)}
+    .site-solara .ss-hero-img{border-radius:20px;min-height:200px;background:linear-gradient(160deg,#dceade,#b5d4be);position:relative;overflow:hidden}
+    .site-solara .ss-hero-img::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(45,138,86,.15),transparent 60%)}
+    .site-solara .ss-card-tl{position:absolute;top:12px;left:12px;background:#fff;border-radius:10px;padding:10px 12px;box-shadow:0 4px 16px rgba(0,0,0,.08);border:1px solid rgba(26,82,55,.18)}
+    .site-solara .ss-card-tr{position:absolute;top:12px;right:12px;background:#fff;border-radius:10px;padding:10px 12px;box-shadow:0 4px 16px rgba(0,0,0,.08);border:1px solid rgba(26,82,55,.18)}
+    .site-solara .ss-card-bl{position:absolute;bottom:12px;left:12px;background:#fff;border-radius:10px;padding:10px 12px;box-shadow:0 4px 16px rgba(0,0,0,.08);border:1px solid rgba(26,82,55,.18)}
+    .site-solara .ss-card-br{position:absolute;bottom:12px;right:12px;background:#fff;border-radius:10px;padding:10px 12px;box-shadow:0 4px 16px rgba(0,0,0,.08);border:1px solid rgba(26,82,55,.18)}
     .site-solara .ss-mc-title{font-size:6px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(26,82,55,.55);margin-bottom:3px}
     .site-solara .ss-mc-val{font-size:14px;font-weight:700;color:#1a5237}
     .site-solara .ss-mc-sub{font-size:6px;color:rgba(26,82,55,.5);margin-top:2px}
     .site-solara .ss-mc-dots{display:flex;gap:3px;margin-top:4px}
     .site-solara .ss-mc-dot{width:5px;height:5px;border-radius:999px;background:rgba(45,138,86,.2)}
     .site-solara .ss-mc-dot.active{background:#2d8a56}
-    .site-solara .ss-center-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:999px;background:rgba(255,255,255,.85);box-shadow:0 4px 20px rgba(26,82,55,.12);display:flex;align-items:center;justify-content:center}
-    .site-solara .ss-center-icon svg{width:24px;height:24px}
-    .site-solara .ss-pulse-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;border-radius:999px;border:1px solid rgba(45,138,86,.15)}
-    .site-solara .ss-pulse-ring2{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:110px;height:110px;border-radius:999px;border:1px solid rgba(45,138,86,.08)}
+    .site-solara .ss-center-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:999px;background:#fff;box-shadow:0 4px 24px rgba(26,82,55,.2),0 0 0 8px rgba(45,138,86,.08);display:flex;align-items:center;justify-content:center}
+    .site-solara .ss-center-icon svg{width:28px;height:28px}
+    .site-solara .ss-pulse-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90px;height:90px;border-radius:999px;border:2px solid rgba(45,138,86,.2)}
+    .site-solara .ss-pulse-ring2{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:120px;height:120px;border-radius:999px;border:1.5px solid rgba(45,138,86,.12)}
     .site-solara .ss-connect{position:absolute;background:rgba(45,138,86,.12)}
     .site-solara .ss-services{padding:0 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
     .site-solara .ss-svc{border:1px solid rgba(0,0,0,.05);border-radius:16px;padding:20px;background:#fff;position:relative;overflow:hidden}
@@ -262,8 +237,8 @@
     .site-atlas .sa2-title{margin-top:16px;font-size:28px;font-weight:700;letter-spacing:-.04em;line-height:1.12;color:#e4e8f0}
     .site-atlas .sa2-copy{margin-top:12px;font-size:12px;line-height:1.8;color:rgba(255,255,255,.35)}
     .site-atlas .sa2-cta{margin-top:18px;display:inline-flex;padding:11px 24px;border-radius:10px;background:linear-gradient(135deg,#2563eb,#1d4ed8);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;box-shadow:0 4px 20px rgba(37,99,235,.25)}
-    .site-atlas .sa2-visual{border-radius:16px;min-height:200px;background:#080d1a;border:1px solid rgba(59,130,246,.12);position:relative;overflow:hidden}
-    .site-atlas .sa2-visual::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 29px,rgba(59,130,246,.06) 29px,rgba(59,130,246,.06) 30px),repeating-linear-gradient(90deg,transparent,transparent 29px,rgba(59,130,246,.06) 29px,rgba(59,130,246,.06) 30px)}
+    .site-atlas .sa2-visual{border-radius:16px;min-height:200px;background:#0c1225;border:1px solid rgba(59,130,246,.18);position:relative;overflow:hidden}
+    .site-atlas .sa2-visual::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 29px,rgba(59,130,246,.1) 29px,rgba(59,130,246,.1) 30px),repeating-linear-gradient(90deg,transparent,transparent 29px,rgba(59,130,246,.1) 29px,rgba(59,130,246,.1) 30px)}
     .site-atlas .sa2-node{position:absolute;width:10px;height:10px;border-radius:999px;background:rgba(59,130,246,.3);border:1.5px solid rgba(59,130,246,.55)}
     .site-atlas .sa2-node.bright{background:rgba(59,130,246,.55);box-shadow:0 0 14px rgba(59,130,246,.4),0 0 4px rgba(59,130,246,.6)}
     .site-atlas .sa2-node-label{position:absolute;font-size:6px;font-weight:700;letter-spacing:.1em;color:rgba(59,130,246,.6);white-space:nowrap;transform:translateY(-14px)}
@@ -597,29 +572,10 @@
                       </div>
                       <div class="so-visual">
                         <span class="so-visual-label">Featured Estate</span>
-                        <div class="so-price-tag">$12.8M</div>
-                        <div class="so-specs-overlay">7 BD · 9 BA<br>11,200 SQFT<br>Waterfront</div>
-                        <div class="so-mansion">
-                          <div class="so-m-roof"></div>
-                          <div class="so-m-base">
-                            <div class="so-m-wing left"></div>
-                            <div class="so-m-wing right"></div>
-                            <div class="so-m-windows">
-                              <div class="so-m-win glow"></div><div class="so-m-win"></div><div class="so-m-win glow"></div><div class="so-m-win"></div><div class="so-m-win glow"></div>
-                            </div>
-                            <div class="so-m-windows2">
-                              <div class="so-m-win"></div><div class="so-m-win glow"></div><div class="so-m-win"></div><div class="so-m-win glow"></div><div class="so-m-win"></div>
-                            </div>
-                            <div class="so-m-columns"><div class="so-m-col"></div><div class="so-m-col"></div></div>
-                            <div class="so-m-door"></div>
-                          </div>
-                        </div>
-                        <div class="so-ground-line"></div>
-                        <div class="so-ground-fill"></div>
-                        <div class="so-landscape" style="left:6%"><div class="so-tree-shape"></div><div class="so-tree-stem"></div></div>
-                        <div class="so-landscape" style="right:8%"><div class="so-tree-shape"></div><div class="so-tree-stem"></div></div>
-                        <div class="so-landscape" style="left:2%"><div class="so-tree-shape" style="border-bottom-width:14px;border-left-width:5px;border-right-width:5px"></div><div class="so-tree-stem" style="height:5px"></div></div>
-                        <div class="so-landscape" style="right:2%"><div class="so-tree-shape" style="border-bottom-width:16px;border-left-width:6px;border-right-width:6px"></div><div class="so-tree-stem" style="height:6px"></div></div>
+                        <div class="so-img-frame"></div>
+                        <div class="so-img-tag">Exclusive</div>
+                        <div class="so-img-price">$12.8M</div>
+                        <div class="so-img-specs">9 Lighthouse Point · 7 BD · 9 BA · 11,200 SQFT</div>
                       </div>
                     </div>
                   </div>
