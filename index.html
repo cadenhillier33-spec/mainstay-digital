@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Mainstay Digital — Ultra-premium websites and AI business management for companies that want stronger first impressions and smarter operations." />
   <link rel="icon" type="image/png" href="favicon.png">
+  <meta property="og:title" content="Mainstay Digital — Premium Websites & AI Business Management" />
+  <meta property="og:description" content="Ultra-premium websites and AI business management for companies that want stronger first impressions and smarter operations." />
+  <meta property="og:image" content="https://mainstayhq.com/og-image.png" />
+  <meta property="og:url" content="https://mainstayhq.com" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mainstay Digital — Premium Websites & AI Business Management" />
+  <meta name="twitter:description" content="Ultra-premium websites and AI business management for companies that want stronger first impressions and smarter operations." />
+  <meta name="twitter:image" content="https://mainstayhq.com/og-image.png" />
   <title>Mainstay Digital — Premium Websites & AI Business Management</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +35,7 @@
       --shadow:0 30px 100px rgba(0,0,0,.38);
     }
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
     body{
       margin:0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -373,8 +382,15 @@
       .sector-grid{grid-template-columns:1fr}
       .form-row{grid-template-columns:1fr}
     }
+    .hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px}
+    .hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.2s}
+    .mobile-nav{display:none;flex-direction:column;padding:0 28px 20px;gap:16px;font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+    .mobile-nav.open{display:flex}
+    .mobile-nav a:hover{color:#fff}
     @media (max-width: 980px){
       .nav{display:none}
+      .hamburger{display:flex}
+      .nav-cta{display:none}
       h1{font-size:54px}
       h2{font-size:40px}
       .hero p,.lead{font-size:18px}
@@ -415,8 +431,17 @@
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="btn btn-outline" href="#contact">Book a Consultation</a>
+      <a class="btn btn-outline nav-cta" href="#contact">Book a Consultation</a>
+      <button class="hamburger" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="#capabilities" onclick="closeMobileNav()">What We Do</a>
+      <a href="#ai-management" onclick="closeMobileNav()">AI Management</a>
+      <a href="#work" onclick="closeMobileNav()">Our Work</a>
+      <a href="#packages" onclick="closeMobileNav()">Pricing</a>
+      <a href="#faq" onclick="closeMobileNav()">FAQ</a>
+      <a href="#contact" onclick="closeMobileNav()">Contact</a>
+    </nav>
   </header>
 
   <!-- ═══ HERO ═══ -->
@@ -985,6 +1010,7 @@
             <li>• Contact form integration</li>
             <li>• Launch-ready delivery</li>
           </ul>
+          <a class="btn btn-secondary" href="#contact" style="width:100%;margin-top:24px;text-align:center">Get Started</a>
         </div>
         <div class="price-card premium">
           <div class="price-top">
@@ -1007,6 +1033,7 @@
             <li>• Appointment and booking coordination</li>
             <li>• Ongoing system oversight — we monitor, optimize, and improve it monthly</li>
           </ul>
+          <a class="btn btn-primary" href="#contact" style="width:100%;margin-top:24px;text-align:center;background:linear-gradient(135deg,var(--gold),#a88c55);color:#0a0a0a">Get Started</a>
         </div>
       </div>
       <div class="closing">Built for businesses that want more than a website — and need a stronger online presence with better systems behind it.</div>
@@ -1066,22 +1093,24 @@
           <p class="lead">No pitch, no pressure. We'll look at your current online presence, tell you exactly where it's costing you business, and show you what a premium version looks like. If we're a fit, great. If not, you still walk away with actionable insights.</p>
           <div style="margin-top:28px">
             <a class="btn btn-secondary" href="mailto:hello@mainstayhq.com" style="margin-bottom:12px">hello@mainstayhq.com</a>
+            <a class="btn btn-secondary" href="tel:+12036714631" style="margin-bottom:12px">(203) 671-4631</a>
           </div>
           <p style="margin-top:20px;font-size:13px;color:rgba(255,255,255,.35)">Average response time: under 2 hours.</p>
         </div>
         <div>
-          <form class="contact-form" onsubmit="return false">
+          <form class="contact-form" id="contactForm">
             <div class="form-row">
-              <div class="form-field"><label class="form-label">Name</label><input class="form-input" type="text" placeholder="Your full name"></div>
-              <div class="form-field"><label class="form-label">Business</label><input class="form-input" type="text" placeholder="Company name"></div>
+              <div class="form-field"><label class="form-label">Name</label><input class="form-input" name="name" type="text" placeholder="Your full name" required></div>
+              <div class="form-field"><label class="form-label">Business</label><input class="form-input" name="business" type="text" placeholder="Company name"></div>
             </div>
             <div class="form-row">
-              <div class="form-field"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="you@company.com"></div>
-              <div class="form-field"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(555) 000-0000"></div>
+              <div class="form-field"><label class="form-label">Email</label><input class="form-input" name="email" type="email" placeholder="you@company.com" required></div>
+              <div class="form-field"><label class="form-label">Phone</label><input class="form-input" name="phone" type="tel" placeholder="(555) 000-0000"></div>
             </div>
-            <div class="form-field"><label class="form-label">Message</label><textarea class="form-input" placeholder="Tell us about your business and what you're looking for..."></textarea></div>
+            <div class="form-field"><label class="form-label">Message</label><textarea class="form-input" name="message" placeholder="Tell us about your business and what you're looking for..."></textarea></div>
             <button class="form-submit" type="submit">Book Your Free Strategy Call</button>
             <div class="form-note">No commitment. No pitch. Just a conversation about your business.</div>
+            <div class="form-success" id="formSuccess" style="display:none;text-align:center;padding:20px;color:var(--gold2);font-size:16px;font-weight:600">Thank you! We'll be in touch within 24 hours.</div>
           </form>
         </div>
       </div>
@@ -1117,6 +1146,7 @@
           <div class="footer-col-title">Contact</div>
           <ul class="footer-links">
             <li><a href="mailto:hello@mainstayhq.com">hello@mainstayhq.com</a></li>
+            <li><a href="tel:+12036714631">(203) 671-4631</a></li>
             <li><a href="#contact">Book a Consultation</a></li>
           </ul>
         </div>
@@ -1124,11 +1154,30 @@
       <div class="footer-bottom">
         <div class="footer-copy">&copy; 2026 Mainstay Digital. All rights reserved.</div>
         <div class="footer-legal">
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
+          <a href="mailto:hello@mainstayhq.com?subject=Privacy%20Policy%20Request">Privacy</a>
+          <a href="mailto:hello@mainstayhq.com?subject=Terms%20of%20Service%20Request">Terms</a>
         </div>
       </div>
     </div>
   </footer>
+<script>
+// Mobile nav toggle
+document.getElementById('menuToggle').addEventListener('click',function(){
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+function closeMobileNav(){document.getElementById('mobileNav').classList.remove('open')}
+
+// Contact form → mailto fallback with formatted body
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const f=this;
+  const name=f.name.value,biz=f.business.value,email=f.email.value,phone=f.phone.value,msg=f.message.value;
+  const subject=encodeURIComponent('New Lead from mainstayhq.com: '+name);
+  const body=encodeURIComponent('Name: '+name+'\nBusiness: '+(biz||'N/A')+'\nEmail: '+email+'\nPhone: '+(phone||'N/A')+'\n\nMessage:\n'+(msg||'(No message)'));
+  window.location.href='mailto:hello@mainstayhq.com?subject='+subject+'&body='+body;
+  f.style.display='none';
+  document.getElementById('formSuccess').style.display='block';
+});
+</script>
 </body>
 </html>
