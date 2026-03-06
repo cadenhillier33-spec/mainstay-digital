@@ -7,7 +7,7 @@
   <title>Mainstay Digital — Premium Websites & AI Business Management</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
       --bg:#070708;
@@ -49,11 +49,26 @@
     .btn-secondary:hover{background:rgba(255,255,255,.05)}
     .btn-outline{border:1px solid rgba(255,255,255,.15);padding:10px 20px}
     .btn-outline:hover{background:#fff;color:#000}
-    .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:radial-gradient(circle at top, rgba(255,255,255,.10), transparent 36%),linear-gradient(180deg,#070708,#0b0c0f)}
-    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, transparent 0%, rgba(199,165,106,.05) 50%, transparent 100%);pointer-events:none}
-    .hero-inner{padding:104px 0 96px}
+    /* ─── HERO ─── */
+    .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:var(--bg)}
+    .hero::before{content:"";position:absolute;inset:0;background:
+      radial-gradient(ellipse 900px 600px at 20% 20%, rgba(199,165,106,.08), transparent),
+      radial-gradient(ellipse 600px 800px at 80% 60%, rgba(59,130,246,.06), transparent),
+      radial-gradient(circle at 50% 0%, rgba(255,255,255,.06), transparent 42%);
+      pointer-events:none}
+    .hero-grid-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+    .hero-grid-bg::before{content:"";position:absolute;inset:-50%;width:200%;height:200%;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size:80px 80px;
+      transform:perspective(500px) rotateX(60deg);
+      transform-origin:center 40%;
+      mask-image:radial-gradient(ellipse 70% 50% at 50% 40%, black, transparent)}
+    .hero-inner{position:relative;padding:114px 0 106px}
     .pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:rgba(255,255,255,.05);border-radius:999px;padding:10px 16px;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.6)}
     h1{margin:28px 0 0;max-width:1040px;font-size:74px;line-height:1.01;letter-spacing:-.058em;font-weight:600}
+    h1 .accent{background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .hero p{margin:30px 0 0;max-width:790px;font-size:21px;line-height:1.85;color:var(--muted)}
     .actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:34px}
     .stats{margin-top:72px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;border-top:1px solid var(--line);padding-top:36px}
@@ -86,6 +101,7 @@
     .price-card ul{list-style:none;padding:0;margin:28px 0 0;border-top:1px solid var(--line);padding-top:28px}
     .price-card li{margin:0 0 14px;font-size:15px;line-height:1.7;color:rgba(255,255,255,.75)}
     .closing{margin-top:30px;font-size:15px;line-height:1.8;color:rgba(255,255,255,.58)}
+    /* ─── PORTFOLIO ─── */
     .work-intro{max-width:980px}
     .work-grid{margin-top:64px;display:grid;gap:42px}
     .portfolio{border:1px solid rgba(255,255,255,.10);border-radius:38px;background:linear-gradient(180deg,#101114,#0b0c0f);padding:30px;box-shadow:var(--shadow)}
@@ -105,67 +121,194 @@
     .dots{display:flex;gap:8px}
     .dot{width:10px;height:10px;border-radius:999px}
     .url-bar{width:46%;height:12px;border-radius:999px;background:rgba(255,255,255,.08)}
-    .preview{padding:18px;background:#0f1114}
-    .site{border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.10);min-height:610px}
-    .site.harbor{background:linear-gradient(180deg,#f5f1ea,#e8dfd2);color:#111}
-    .site.aurum{background:linear-gradient(180deg,#f8f2ea,#ecdfce);color:#1a1714}
-    .site.legal{background:linear-gradient(180deg,#f2f4f7,#e2e7ec);color:#11161c}
-    .site.realty{background:linear-gradient(180deg,#f7f7f4,#ebe8df);color:#121212}
-    .site.clinic{background:linear-gradient(180deg,#eef5f6,#dde9eb);color:#0f1718}
-    .site-top{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid rgba(0,0,0,.08);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(0,0,0,.46)}
-    .site-logo{font-size:12px;color:rgba(0,0,0,.68)}
-    .site-nav{display:flex;gap:22px}
-    .site-body{padding:26px}
-    .hero-grid{display:grid;grid-template-columns:1fr .94fr;gap:24px;align-items:center}
-    .site-kicker{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(0,0,0,.42)}
-    .site-title{margin-top:12px;font-size:38px;font-weight:600;letter-spacing:-.055em;line-height:1.02}
-    .site-copy{margin-top:14px;font-size:14px;line-height:1.75;color:rgba(0,0,0,.60)}
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-    .cta-dark,.cta-light{height:40px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;padding:0 18px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
-    .cta-dark{background:#111;color:#fff}
-    .cta-light{border:1px solid rgba(0,0,0,.12);color:#111}
-    .visual{min-height:255px;border-radius:20px;position:relative;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.24)}
-    .harbor .visual{background:radial-gradient(circle at 20% 15%, rgba(255,255,255,.20), transparent 22%),linear-gradient(135deg,#101926,#264864 55%,#82aec6 100%)}
-    .harbor .visual::before{content:"";position:absolute;left:0;right:0;bottom:0;height:38%;background:linear-gradient(180deg,transparent,rgba(255,255,255,.12))}
-    .aurum .visual{background:radial-gradient(circle at 30% 18%, rgba(255,255,255,.24), transparent 24%),linear-gradient(135deg,#4f4136,#9f7f63 55%,#d7b69a 100%)}
-    .aurum .visual::before{content:"";position:absolute;inset:auto 10% 10% auto;width:42%;height:58%;border-radius:999px;background:rgba(255,255,255,.12)}
-    .legal .visual{background:radial-gradient(circle at 26% 14%, rgba(255,255,255,.22), transparent 22%),linear-gradient(135deg,#18202b,#3f4d5e 55%,#8d9dac 100%)}
-    .legal .visual::before{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;background:linear-gradient(180deg,transparent,rgba(255,255,255,.10))}
-    .realty .visual{background:radial-gradient(circle at 20% 18%, rgba(255,255,255,.20), transparent 24%),linear-gradient(135deg,#c1ae8b,#7a674f 55%,#3b3128 100%)}
-    .realty .visual::before{content:"";position:absolute;right:10%;bottom:12%;width:36%;height:28%;background:rgba(255,255,255,.13);clip-path:polygon(50% 0,100% 45%,100% 100%,0 100%,0 45%)}
-    .clinic .visual{background:radial-gradient(circle at 24% 16%, rgba(255,255,255,.22), transparent 24%),linear-gradient(135deg,#6da7b0,#2d5660 55%,#0e2c33 100%)}
-    .clinic .visual::before{content:"";position:absolute;left:14%;bottom:14%;width:18%;height:18%;border-radius:12px;background:rgba(255,255,255,.18)}
-    .metric-bar{margin-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .metric{border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:16px;background:rgba(255,255,255,.36)}
-    .metric-num{font-size:22px;font-weight:600;letter-spacing:-.03em}
-    .metric-label{margin-top:6px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(0,0,0,.45)}
-    .content-blocks{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;margin-top:18px}
-    .stack{display:grid;gap:12px}
-    .box{border:1px solid rgba(0,0,0,.08);border-radius:18px;background:rgba(255,255,255,.36);padding:16px}
-    .box-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(0,0,0,.45)}
-    .box-head{margin-top:10px;font-size:22px;font-weight:600;letter-spacing:-.03em;line-height:1.1}
-    .box-copy{margin-top:10px;font-size:13px;line-height:1.7;color:rgba(0,0,0,.58)}
-    .lines{display:grid;gap:10px;margin-top:12px}
-    .line{height:10px;border-radius:999px;background:rgba(0,0,0,.10)}
-    .line.short{width:70%}
-    .line.mid{width:84%}
-    .chart{min-height:182px;border:1px solid rgba(0,0,0,.08);border-radius:18px;background:rgba(255,255,255,.36);position:relative;overflow:hidden;padding:18px}
-    .chart::before{content:"";position:absolute;left:16px;right:16px;bottom:18px;height:2px;background:rgba(0,0,0,.10)}
-    .chart svg{width:100%;height:128px;margin-top:22px}
+
+    /* ── SITE 1: Harbor Ridge — Dark Mode Finance ── */
+    .site-harbor{border-radius:24px;overflow:hidden;min-height:620px;background:#0a0f1a;color:#e8eaf0;font-family:Inter,sans-serif}
+    .site-harbor .sh-nav{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .site-harbor .sh-logo{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+    .site-harbor .sh-links{display:flex;gap:20px;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+    .site-harbor .sh-hero{padding:40px 24px 28px;display:grid;grid-template-columns:1fr .9fr;gap:24px;align-items:center}
+    .site-harbor .sh-kicker{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(139,167,204,.7)}
+    .site-harbor .sh-title{margin-top:12px;font-size:32px;font-weight:600;letter-spacing:-.04em;line-height:1.08;font-family:'Playfair Display',serif}
+    .site-harbor .sh-copy{margin-top:14px;font-size:12px;line-height:1.75;color:rgba(255,255,255,.5)}
+    .site-harbor .sh-cta{margin-top:18px;display:inline-flex;padding:10px 20px;border-radius:999px;background:linear-gradient(135deg,#1a3a5c,#264f7a);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c8ddf0}
+    .site-harbor .sh-visual{border-radius:20px;min-height:220px;background:linear-gradient(180deg,#0d1a2d,#162d4a);position:relative;overflow:hidden}
+    .site-harbor .sh-visual::before{content:"";position:absolute;inset:0;background:
+      radial-gradient(circle at 30% 40%, rgba(38,79,122,.6), transparent 50%),
+      radial-gradient(circle at 70% 70%, rgba(20,50,90,.5), transparent 40%)}
+    .site-harbor .sh-visual::after{content:"";position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(0deg,rgba(10,15,26,.9),transparent)}
+    .site-harbor .sh-stats{padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:4px}
+    .site-harbor .sh-stat{border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:16px;background:rgba(255,255,255,.03)}
+    .site-harbor .sh-stat-num{font-size:20px;font-weight:600;letter-spacing:-.02em;color:#8bb3d8}
+    .site-harbor .sh-stat-lbl{margin-top:4px;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+    .site-harbor .sh-cols{padding:16px 24px 24px;display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
+    .site-harbor .sh-card{border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px;background:rgba(255,255,255,.025)}
+    .site-harbor .sh-card-title{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+    .site-harbor .sh-card-head{margin-top:8px;font-size:18px;font-weight:600;letter-spacing:-.02em;line-height:1.2}
+    .site-harbor .sh-card-copy{margin-top:8px;font-size:11px;line-height:1.7;color:rgba(255,255,255,.45)}
+    .site-harbor .sh-chart{border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px;background:rgba(255,255,255,.025);display:flex;flex-direction:column;justify-content:space-between}
+    .site-harbor .sh-chart svg{width:100%;height:100px}
+
+    /* ── SITE 2: Aurum — Warm Editorial Luxury ── */
+    .site-aurum{border-radius:24px;overflow:hidden;min-height:620px;background:#faf5ee;color:#1a1714;font-family:Inter,sans-serif}
+    .site-aurum .sa-nav{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid rgba(0,0,0,.06)}
+    .site-aurum .sa-logo{font-size:14px;font-weight:600;letter-spacing:.08em;font-family:'Playfair Display',serif;color:#6b5840}
+    .site-aurum .sa-links{display:flex;gap:20px;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(0,0,0,.4)}
+    .site-aurum .sa-hero{padding:36px 24px;text-align:center}
+    .site-aurum .sa-kicker{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#a68b65}
+    .site-aurum .sa-title{margin-top:14px;font-size:36px;font-weight:600;letter-spacing:-.04em;line-height:1.08;font-family:'Playfair Display',serif;max-width:420px;margin-left:auto;margin-right:auto}
+    .site-aurum .sa-copy{margin-top:14px;font-size:13px;line-height:1.75;color:rgba(0,0,0,.5);max-width:380px;margin-left:auto;margin-right:auto}
+    .site-aurum .sa-ctas{display:flex;gap:10px;justify-content:center;margin-top:18px}
+    .site-aurum .sa-btn-dark{padding:10px 22px;border-radius:999px;background:#1a1714;color:#faf5ee;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+    .site-aurum .sa-btn-light{padding:10px 22px;border-radius:999px;border:1px solid rgba(0,0,0,.12);color:#1a1714;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+    .site-aurum .sa-banner{margin:0 24px;border-radius:20px;min-height:160px;background:linear-gradient(135deg,#c9a97a,#8b6f4e);position:relative;overflow:hidden}
+    .site-aurum .sa-banner::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 60% 40%, rgba(255,255,255,.15), transparent 50%)}
+    .site-aurum .sa-banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.15))}
+    .site-aurum .sa-services{padding:20px 24px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .site-aurum .sa-svc{border:1px solid rgba(0,0,0,.06);border-radius:16px;padding:18px;background:rgba(255,255,255,.6);text-align:center}
+    .site-aurum .sa-svc-icon{width:36px;height:36px;border-radius:999px;background:linear-gradient(135deg,#d4b07a,#a68b5b);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff}
+    .site-aurum .sa-svc-name{font-size:12px;font-weight:700;letter-spacing:.06em}
+    .site-aurum .sa-svc-sub{margin-top:6px;font-size:10px;line-height:1.6;color:rgba(0,0,0,.45)}
+    .site-aurum .sa-trust{margin:0 24px 24px;border:1px solid rgba(0,0,0,.06);border-radius:16px;padding:18px;background:rgba(255,255,255,.5);display:flex;align-items:center;gap:16px}
+    .site-aurum .sa-trust-stars{font-size:16px;color:#c9a97a;letter-spacing:2px}
+    .site-aurum .sa-trust-text{font-size:12px;line-height:1.6;color:rgba(0,0,0,.55)}
+    .site-aurum .sa-trust-text strong{color:#1a1714}
+
+    /* ── SITE 3: Northfield Legal — Slate Authority ── */
+    .site-legal{border-radius:24px;overflow:hidden;min-height:620px;background:#f0f2f5;color:#11161c;font-family:Inter,sans-serif}
+    .site-legal .sl-nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:#1c2433;color:#c5ccda}
+    .site-legal .sl-logo{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+    .site-legal .sl-links{display:flex;gap:20px;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+    .site-legal .sl-topbar{background:#243044;padding:10px 24px;display:flex;align-items:center;justify-content:space-between}
+    .site-legal .sl-topbar-text{font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+    .site-legal .sl-topbar-cta{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#7ba0c9;cursor:pointer}
+    .site-legal .sl-hero{padding:32px 24px;display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:start}
+    .site-legal .sl-kicker{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(0,0,0,.38)}
+    .site-legal .sl-title{margin-top:10px;font-size:30px;font-weight:700;letter-spacing:-.03em;line-height:1.1;color:#1c2433}
+    .site-legal .sl-copy{margin-top:12px;font-size:12px;line-height:1.75;color:rgba(0,0,0,.5)}
+    .site-legal .sl-cta{margin-top:16px;display:inline-flex;padding:10px 20px;border-radius:6px;background:#1c2433;color:#e0e4ec;font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase}
+    .site-legal .sl-sidebar{display:grid;gap:10px}
+    .site-legal .sl-side-card{border:1px solid rgba(0,0,0,.08);border-radius:10px;padding:14px;background:#fff}
+    .site-legal .sl-side-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(0,0,0,.35)}
+    .site-legal .sl-side-val{margin-top:6px;font-size:16px;font-weight:700;letter-spacing:-.02em;color:#1c2433}
+    .site-legal .sl-areas{padding:0 24px 24px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .site-legal .sl-area{border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:16px;background:#fff}
+    .site-legal .sl-area-name{font-size:13px;font-weight:700;letter-spacing:-.01em;color:#1c2433}
+    .site-legal .sl-area-desc{margin-top:6px;font-size:10px;line-height:1.6;color:rgba(0,0,0,.45)}
+    .site-legal .sl-bar{margin:0 24px 24px;border-radius:12px;background:#1c2433;padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
+    .site-legal .sl-bar-text{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+    .site-legal .sl-bar-cta{font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:#7ba0c9}
+
+    /* ── SITE 4: Stonegate — Earth-Tone Real Estate ── */
+    .site-realty{border-radius:24px;overflow:hidden;min-height:620px;background:#f4f1eb;color:#1e1c18;font-family:Inter,sans-serif}
+    .site-realty .sr-nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid rgba(0,0,0,.06)}
+    .site-realty .sr-logo{font-size:13px;font-weight:600;letter-spacing:.1em;font-family:'Playfair Display',serif;color:#5a4e3c}
+    .site-realty .sr-links{display:flex;gap:20px;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.38)}
+    .site-realty .sr-featured{margin:0 24px;margin-top:20px;border-radius:20px;min-height:200px;background:linear-gradient(135deg,#8b7b62,#5a4e3c);position:relative;overflow:hidden}
+    .site-realty .sr-featured::before{content:"";position:absolute;inset:0;background:
+      radial-gradient(circle at 40% 50%, rgba(255,255,255,.08), transparent 40%),
+      linear-gradient(180deg, transparent 40%, rgba(0,0,0,.35))}
+    .site-realty .sr-featured-overlay{position:absolute;bottom:0;left:0;right:0;padding:24px;color:#fff}
+    .site-realty .sr-featured-tag{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);padding:6px 12px;border-radius:999px;display:inline-block;color:rgba(255,255,255,.85)}
+    .site-realty .sr-featured-title{margin-top:10px;font-size:24px;font-weight:600;letter-spacing:-.03em;line-height:1.15;font-family:'Playfair Display',serif}
+    .site-realty .sr-featured-meta{margin-top:8px;font-size:10px;color:rgba(255,255,255,.65);letter-spacing:.06em}
+    .site-realty .sr-listings{padding:18px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .site-realty .sr-listing{border:1px solid rgba(0,0,0,.06);border-radius:14px;overflow:hidden;background:#fff}
+    .site-realty .sr-listing-img{height:80px;background:linear-gradient(135deg,#c1ae8b,#8b7b62)}
+    .site-realty .sr-listing:nth-child(2) .sr-listing-img{background:linear-gradient(135deg,#a09078,#6b5d4a)}
+    .site-realty .sr-listing:nth-child(3) .sr-listing-img{background:linear-gradient(135deg,#b8a584,#7a6b55)}
+    .site-realty .sr-listing-info{padding:12px}
+    .site-realty .sr-listing-price{font-size:14px;font-weight:700;letter-spacing:-.02em}
+    .site-realty .sr-listing-addr{margin-top:4px;font-size:10px;color:rgba(0,0,0,.45);line-height:1.4}
+    .site-realty .sr-listing-specs{margin-top:6px;font-size:9px;color:rgba(0,0,0,.35);letter-spacing:.04em}
+    .site-realty .sr-bottom{padding:0 24px 24px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .site-realty .sr-stat-card{border:1px solid rgba(0,0,0,.06);border-radius:14px;padding:16px;background:#fff;text-align:center}
+    .site-realty .sr-stat-num{font-size:22px;font-weight:700;letter-spacing:-.02em;color:#5a4e3c}
+    .site-realty .sr-stat-lbl{margin-top:4px;font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.35)}
+
+    /* ── SITE 5: Bluewater — Clean Clinical Modern ── */
+    .site-clinic{border-radius:24px;overflow:hidden;min-height:620px;background:#ffffff;color:#0f1718;font-family:Inter,sans-serif}
+    .site-clinic .sc-nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid #e8ecee}
+    .site-clinic .sc-logo{font-size:12px;font-weight:700;letter-spacing:.08em;color:#1a6e7a}
+    .site-clinic .sc-links{display:flex;gap:20px;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.38)}
+    .site-clinic .sc-hero{padding:36px 24px 20px}
+    .site-clinic .sc-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+    .site-clinic .sc-kicker{display:inline-flex;align-items:center;gap:6px;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#1a6e7a}
+    .site-clinic .sc-kicker-dot{width:6px;height:6px;border-radius:999px;background:#1a6e7a}
+    .site-clinic .sc-title{margin-top:12px;font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.12;color:#0f1718}
+    .site-clinic .sc-copy{margin-top:12px;font-size:12px;line-height:1.75;color:rgba(0,0,0,.5)}
+    .site-clinic .sc-ctas{display:flex;gap:10px;margin-top:16px}
+    .site-clinic .sc-btn-teal{padding:10px 20px;border-radius:10px;background:#1a6e7a;color:#fff;font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase}
+    .site-clinic .sc-btn-ghost{padding:10px 20px;border-radius:10px;border:1px solid #d4dde0;color:#0f1718;font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase}
+    .site-clinic .sc-hero-visual{border-radius:18px;min-height:180px;background:linear-gradient(135deg,#e0f2f4,#b8dce2);position:relative;overflow:hidden}
+    .site-clinic .sc-hero-visual::before{content:"";position:absolute;inset:0;background:
+      radial-gradient(circle at 50% 50%, rgba(26,110,122,.12), transparent 50%);
+    }
+    .site-clinic .sc-hero-visual::after{content:"+ + +";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:36px;letter-spacing:16px;color:rgba(26,110,122,.18);font-weight:300}
+    .site-clinic .sc-services{padding:0 24px 16px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .site-clinic .sc-svc{border:1px solid #e8ecee;border-radius:12px;padding:16px;background:#f8fafb}
+    .site-clinic .sc-svc-bar{height:4px;border-radius:2px;background:#1a6e7a;margin-bottom:10px;width:30px}
+    .site-clinic .sc-svc-name{font-size:12px;font-weight:700;letter-spacing:-.01em}
+    .site-clinic .sc-svc-desc{margin-top:6px;font-size:10px;line-height:1.6;color:rgba(0,0,0,.45)}
+    .site-clinic .sc-metrics{margin:0 24px 16px;border:1px solid #e8ecee;border-radius:14px;padding:16px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;background:#f8fafb}
+    .site-clinic .sc-met-num{font-size:20px;font-weight:700;letter-spacing:-.02em;color:#1a6e7a}
+    .site-clinic .sc-met-lbl{margin-top:3px;font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.35)}
+    .site-clinic .sc-trust{margin:0 24px 24px;border:1px solid #e8ecee;border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:14px;background:#f8fafb}
+    .site-clinic .sc-trust-badge{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#1a6e7a,#2a9eae);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:700;flex-shrink:0}
+    .site-clinic .sc-trust-text{font-size:12px;line-height:1.6;color:rgba(0,0,0,.55)}
+    .site-clinic .sc-trust-text strong{color:#0f1718}
+
+    /* ─── WHO WE HELP ─── */
     .sector-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    .sector{border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:18px;padding:20px;font-size:14px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.75)}
-    .feature-wrap{border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:34px;padding:50px;box-shadow:0 20px 80px rgba(0,0,0,.25)}
-    .feature-grid{display:grid;grid-template-columns:1fr .85fr;gap:40px}
-    .feature-list{border-left:1px solid var(--line);padding-left:40px}
-    .feature-list ul{list-style:none;padding:0;margin:0}
-    .feature-list li{margin:0 0 18px;font-size:15px;line-height:1.75;color:rgba(255,255,255,.72)}
-    .contact{border-top:1px solid var(--line);background:#070708;text-align:center}
-    .contact h2{max-width:900px;margin-left:auto;margin-right:auto}
-    .contact p{max-width:760px;margin-left:auto;margin-right:auto}
+    .sector{border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:18px;padding:24px;transition:.2s ease}
+    .sector:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16)}
+    .sector-icon{font-size:28px;margin-bottom:14px}
+    .sector-name{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+    .sector-desc{margin-top:8px;font-size:13px;line-height:1.7;color:rgba(255,255,255,.48)}
+    /* ─── WHY MAINSTAY ─── */
+    .feature-wrap{border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:34px;padding:60px;box-shadow:0 20px 80px rgba(0,0,0,.25)}
+    .feature-stats{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .f-stat{text-align:center;padding:24px 16px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.03)}
+    .f-stat-num{font-size:36px;font-weight:600;letter-spacing:-.04em;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .f-stat-label{margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2)}
+    .pillars{margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .pillar{border:1px solid var(--line);border-radius:20px;padding:28px;background:rgba(255,255,255,.025)}
+    .pillar-num{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+    .pillar h4{font-size:20px;font-weight:600;letter-spacing:-.02em;margin:0}
+    .pillar p{margin:12px 0 0;font-size:14px;line-height:1.75;color:var(--muted)}
+    /* ─── CONTACT ─── */
+    .contact{border-top:1px solid var(--line);background:#070708}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+    .contact-left h2{max-width:500px}
+    .contact-form{display:grid;gap:16px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .form-field{display:flex;flex-direction:column;gap:6px}
+    .form-label{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2)}
+    .form-input{padding:14px 18px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:#fff;font-size:15px;font-family:Inter,sans-serif;outline:none;transition:.2s}
+    .form-input:focus{border-color:rgba(199,165,106,.5);background:rgba(255,255,255,.06)}
+    .form-input::placeholder{color:rgba(255,255,255,.25)}
+    textarea.form-input{min-height:120px;resize:vertical}
+    .form-submit{margin-top:8px;width:100%;padding:16px;border-radius:12px;border:none;background:linear-gradient(135deg,var(--gold),#a88c55);color:#0a0a0a;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;font-family:Inter,sans-serif;transition:.2s}
+    .form-submit:hover{opacity:.9}
+    .form-note{font-size:12px;color:rgba(255,255,255,.35);text-align:center}
+    /* ─── FOOTER ─── */
+    .footer{border-top:1px solid var(--line);background:var(--bg);padding:56px 0 32px}
+    .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px}
+    .footer-brand{font-size:15px;font-weight:600;letter-spacing:.16em}
+    .footer-desc{margin-top:12px;font-size:13px;line-height:1.7;color:rgba(255,255,255,.4)}
+    .footer-col-title{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:16px}
+    .footer-links{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+    .footer-links li a{font-size:13px;color:rgba(255,255,255,.55);transition:.2s}
+    .footer-links li a:hover{color:#fff}
+    .footer-bottom{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+    .footer-copy{font-size:12px;color:rgba(255,255,255,.3)}
+    .footer-legal{display:flex;gap:24px;font-size:12px;color:rgba(255,255,255,.3)}
+    .footer-legal a:hover{color:rgba(255,255,255,.6)}
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 1180px){
-      .portfolio-grid,.portfolio.reverse .portfolio-grid,.cards,.pricing-grid,.two-col,.feature-grid,.stats{grid-template-columns:1fr}
-      .sector-grid,.metric-bar,.content-blocks,.hero-grid{grid-template-columns:1fr}
-      .feature-list{border-left:none;padding-left:0}
+      .portfolio-grid,.portfolio.reverse .portfolio-grid,.cards,.pricing-grid,.two-col,.feature-stats,.pillars,.stats,.contact-grid,.footer-grid{grid-template-columns:1fr}
+      .sector-grid{grid-template-columns:1fr}
+      .form-row{grid-template-columns:1fr}
     }
     @media (max-width: 980px){
       .nav{display:none}
@@ -173,7 +316,8 @@
       h2{font-size:40px}
       .hero p,.lead{font-size:18px}
       .meta h3{font-size:34px}
-      .site-title{font-size:30px}
+      .feature-stats{grid-template-columns:repeat(2,1fr)}
+      .pillars{grid-template-columns:1fr}
     }
     @media (max-width: 640px){
       .container{padding:0 18px}
@@ -183,12 +327,13 @@
       .hero-inner,section{padding:72px 0}
       .btn{width:100%}
       .actions{flex-direction:column}
-      .price-top,.site-top{flex-direction:column;align-items:flex-start;gap:10px}
+      .price-top{flex-direction:column;align-items:flex-start;gap:10px}
       .url-bar{width:100%}
       .portfolio{padding:18px}
-      .preview{padding:12px}
-      .site-body{padding:18px}
-      .site-title{font-size:26px}
+      .feature-wrap{padding:28px}
+      .feature-stats{grid-template-columns:1fr}
+      .f-stat-num{font-size:28px}
+      .footer-bottom{flex-direction:column;gap:12px;text-align:center}
     }
   </style>
 </head>
@@ -211,10 +356,12 @@
     </div>
   </header>
 
+  <!-- ═══ HERO ═══ -->
   <section class="hero">
+    <div class="hero-grid-bg"></div>
     <div class="container hero-inner">
       <div class="pill">Websites · AI Business Management · Digital Support</div>
-      <h1>We build websites and systems that make businesses look significantly more premium.</h1>
+      <h1>We build websites and systems that make businesses look <span class="accent">significantly more premium.</span></h1>
       <p>Mainstay Digital creates ultra-polished websites and smart business systems for companies that want stronger first impressions, better follow-up, and a more seamless operation behind the scenes.</p>
       <div class="actions">
         <a class="btn btn-primary" href="#contact">Book a Consultation</a>
@@ -228,6 +375,7 @@
     </div>
   </section>
 
+  <!-- ═══ ABOUT ═══ -->
   <section id="about" class="section-alt">
     <div class="container two-col">
       <div>
@@ -240,6 +388,7 @@
     </div>
   </section>
 
+  <!-- ═══ WHAT WE DO ═══ -->
   <section id="capabilities">
     <div class="container">
       <div class="eyebrow">What We Do</div>
@@ -264,6 +413,7 @@
     </div>
   </section>
 
+  <!-- ═══ PRICING ═══ -->
   <section id="packages" class="section-border">
     <div class="container">
       <div class="eyebrow">Pricing</div>
@@ -310,43 +460,48 @@
     </div>
   </section>
 
+  <!-- ═══ OUR WORK ═══ -->
   <section id="work">
     <div class="container">
       <div class="work-intro">
         <div class="eyebrow">Our Work</div>
-        <h2>Luxury previews that sell the quality immediately.</h2>
-        <p class="lead">Each example below is intentionally different. The goal is not to make every site look like a template — it is to show how Mainstay Digital can create a premium presentation tailored to the type of business while also installing automation that makes the business run better behind the scenes.</p>
+        <h2>Five industries. Five completely different presentations.</h2>
+        <p class="lead">Every project below was built from scratch with a unique design language tailored to the industry, audience, and brand positioning. No templates. No recycled layouts.</p>
       </div>
 
       <div class="work-grid">
 
+        <!-- ── 1. HARBOR RIDGE — Dark Finance ── -->
         <div class="portfolio">
           <div class="portfolio-grid">
             <div class="screen">
               <div class="browser-bar"><div class="dots"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div></div><div class="url-bar"></div></div>
-              <div class="preview">
-                <div class="site harbor">
-                  <div class="site-top"><div class="site-logo">Harbor Ridge Capital</div><div class="site-nav"><span>Services</span><span>Insights</span><span>Contact</span></div></div>
-                  <div class="site-body">
-                    <div class="hero-grid">
-                      <div>
-                        <div class="site-kicker">Private Wealth Advisory</div>
-                        <div class="site-title">Advisory built around clarity, discipline, and long-term confidence.</div>
-                        <div class="site-copy">A luxury-style financial website created to feel private, credible, and established from the first glance — while giving serious prospects a cleaner path to book a conversation.</div>
-                        <div class="cta-row"><div class="cta-dark">Schedule Consultation</div><div class="cta-light">View Services</div></div>
-                      </div>
-                      <div class="visual"></div>
+              <div style="padding:4px;background:#0f1114">
+                <div class="site-harbor">
+                  <div class="sh-nav"><div class="sh-logo">Harbor Ridge Capital</div><div class="sh-links"><span>Services</span><span>Insights</span><span>Contact</span></div></div>
+                  <div class="sh-hero">
+                    <div>
+                      <div class="sh-kicker">Private Wealth Advisory</div>
+                      <div class="sh-title">Advisory built around clarity, discipline, and long-term confidence.</div>
+                      <div class="sh-copy">Luxury-style financial presence designed to feel private, credible, and established from the first glance.</div>
+                      <div class="sh-cta">Schedule Consultation</div>
                     </div>
-                    <div class="metric-bar">
-                      <div class="metric"><div class="metric-num">$100M+</div><div class="metric-label">Client Focus</div></div>
-                      <div class="metric"><div class="metric-num">Private</div><div class="metric-label">Experience</div></div>
-                      <div class="metric"><div class="metric-num">Long-Term</div><div class="metric-label">Planning</div></div>
+                    <div class="sh-visual"></div>
+                  </div>
+                  <div class="sh-stats">
+                    <div class="sh-stat"><div class="sh-stat-num">$100M+</div><div class="sh-stat-lbl">Client Focus</div></div>
+                    <div class="sh-stat"><div class="sh-stat-num">Private</div><div class="sh-stat-lbl">Experience</div></div>
+                    <div class="sh-stat"><div class="sh-stat-num">Long-Term</div><div class="sh-stat-lbl">Planning</div></div>
+                  </div>
+                  <div class="sh-cols">
+                    <div class="sh-card">
+                      <div class="sh-card-title">Positioning</div>
+                      <div class="sh-card-head">Structured to create trust immediately.</div>
+                      <div class="sh-card-copy">Designed to feel like a private advisory firm with tighter messaging and stronger authority.</div>
                     </div>
-                    <div class="content-blocks">
-                      <div class="stack">
-                        <div class="box"><div class="box-title">Positioning</div><div class="box-head">Structured to create trust immediately.</div><div class="box-copy">The site was designed to feel more like a private advisory firm than a generic finance business — with tighter messaging, stronger authority, and a more premium presentation overall.</div></div>
-                      </div>
-                      <div class="chart"><div class="box-title">Client Journey</div><svg viewBox="0 0 300 120" fill="none"><path d="M10 98 C55 98, 60 80, 88 74 C118 66, 128 72, 156 56 C187 39, 206 46, 236 28 C256 16, 270 14, 290 10" stroke="#102235" stroke-width="5" stroke-linecap="round"/></svg></div>
+                    <div class="sh-chart">
+                      <div class="sh-card-title">Client Journey</div>
+                      <svg viewBox="0 0 200 100" fill="none"><path d="M5 85 C30 82,40 70,65 58 C90 46,100 50,130 35 C155 22,170 18,195 8" stroke="#3a6a9c" stroke-width="3" stroke-linecap="round" opacity=".7"/><path d="M5 90 C35 88,50 78,80 68 C110 58,125 55,155 42 C175 33,185 28,195 22" stroke="#1a3a5c" stroke-width="2.5" stroke-linecap="round" opacity=".4"/></svg>
                     </div>
                   </div>
                 </div>
@@ -355,57 +510,49 @@
             <div class="meta">
               <div class="work-cat">Wealth Management</div>
               <h3>Harbor Ridge Capital</h3>
-              <p>A refined advisory website built to present credibility, explain services clearly, and drive more consultation requests from high-value prospects.</p>
-              <div class="tags"><span class="chip">Premium Positioning</span><span class="chip">Lead Capture Flow</span><span class="chip">Trust-First Design</span></div>
+              <p>A dark-mode financial presence built to feel institutional, private, and commanding — designed for high-net-worth prospects who expect substance over flash.</p>
+              <div class="tags"><span class="chip">Dark Mode UI</span><span class="chip">Institutional Feel</span><span class="chip">Trust Architecture</span></div>
               <div class="impact">
-                <div class="impact-item"><strong>How we helped:</strong> We repositioned the business online to feel more established, more exclusive, and more polished to affluent prospects considering the firm.</div>
-                <div class="impact-item"><strong>How the AI integration works:</strong> It follows up with new leads automatically, keeps prospects from being forgotten, responds faster when someone reaches out, and helps move people toward booking without requiring manual back-and-forth every time.</div>
-                <div class="impact-item"><strong>What it handles now:</strong> Lead follow-up, faster inquiry responses, pipeline movement, and a smoother prospect intake process so the team can focus on higher-value conversations instead of repetitive admin.</div>
+                <div class="impact-item"><strong>How we helped:</strong> Repositioned the business online to feel more established, exclusive, and polished to affluent prospects.</div>
+                <div class="impact-item"><strong>AI integration:</strong> Automated lead follow-up, pipeline movement, and inquiry responses so the team focuses on high-value conversations.</div>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- ── 2. AURUM — Warm Editorial ── -->
         <div class="portfolio reverse">
           <div class="portfolio-grid">
             <div class="meta">
               <div class="work-cat">Medical Aesthetics</div>
               <h3>Aurum Aesthetics</h3>
-              <p>A luxury-forward website experience designed to make the brand feel significantly more elevated, support inquiries, and increase premium appointment intent.</p>
-              <div class="tags"><span class="chip">Luxury Presentation</span><span class="chip">Service-Focused Pages</span><span class="chip">Higher Conversion Path</span></div>
+              <p>A warm, editorial luxury experience that elevates the brand above every competitor in the space — centered design, gold accents, and a premium booking flow.</p>
+              <div class="tags"><span class="chip">Editorial Luxury</span><span class="chip">Centered Layout</span><span class="chip">Service Showcase</span></div>
               <div class="impact">
-                <div class="impact-item"><strong>How we helped:</strong> We transformed the digital presence from standard small-business aesthetic to a more editorial, upscale presentation that supports premium pricing.</div>
-                <div class="impact-item"><strong>How the AI integration works:</strong> The system helps respond to new inquiries faster, follows up automatically with interested prospects, and keeps the business more consistent when consultation demand comes in.</div>
-                <div class="impact-item"><strong>What it handles now:</strong> Initial lead responses, follow-up reminders, inquiry organization, and communication support that helps turn more interest into actual booked consultations.</div>
+                <div class="impact-item"><strong>How we helped:</strong> Transformed a standard small-business aesthetic into an upscale editorial presentation that supports premium pricing.</div>
+                <div class="impact-item"><strong>AI integration:</strong> Fast inquiry responses, automated follow-up, and consultation booking support that converts interest into appointments.</div>
               </div>
             </div>
             <div class="screen">
               <div class="browser-bar"><div class="dots"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div></div><div class="url-bar"></div></div>
-              <div class="preview">
-                <div class="site aurum">
-                  <div class="site-top"><div class="site-logo">Aurum Aesthetics</div><div class="site-nav"><span>Treatments</span><span>Results</span><span>Book</span></div></div>
-                  <div class="site-body">
-                    <div class="hero-grid">
-                      <div>
-                        <div class="site-kicker">Luxury Medical Aesthetics</div>
-                        <div class="site-title">Refined aesthetic care designed around confidence and detail.</div>
-                        <div class="site-copy">An elevated visual experience built to make the brand feel more expensive, more intentional, and more worthy of premium clientele.</div>
-                        <div class="cta-row"><div class="cta-dark">Book Consultation</div><div class="cta-light">View Treatments</div></div>
-                      </div>
-                      <div class="visual"></div>
-                    </div>
-                    <div class="content-blocks">
-                      <div class="box">
-                        <div class="box-title">Signature Services</div>
-                        <div class="box-head">A cleaner path from interest to inquiry.</div>
-                        <div class="box-copy">Pages structured to present treatments more elegantly, reduce confusion, and make next steps feel more natural for higher-end prospects.</div>
-                        <div class="lines"><div class="line"></div><div class="line mid"></div><div class="line short"></div></div>
-                      </div>
-                      <div class="stack">
-                        <div class="box"><div class="box-title">Experience</div><div class="box-head">Luxury-led visual identity.</div><div class="box-copy">Soft editorial styling, warmer tones, and elevated spacing to support a stronger premium perception.</div></div>
-                        <div class="box"><div class="box-title">Conversion</div><div class="box-head">Clear booking intent.</div><div class="box-copy">Designed around service browsing, trust-building, and stronger inquiry flow.</div></div>
-                      </div>
-                    </div>
+              <div style="padding:4px;background:#0f1114">
+                <div class="site-aurum">
+                  <div class="sa-nav"><div class="sa-logo">Aurum Aesthetics</div><div class="sa-links"><span>Treatments</span><span>Results</span><span>Book</span></div></div>
+                  <div class="sa-hero">
+                    <div class="sa-kicker">Luxury Medical Aesthetics</div>
+                    <div class="sa-title">Refined aesthetic care designed around confidence and detail.</div>
+                    <div class="sa-copy">An elevated visual experience built to feel more expensive, more intentional, and more worthy of premium clientele.</div>
+                    <div class="sa-ctas"><div class="sa-btn-dark">Book Consultation</div><div class="sa-btn-light">View Treatments</div></div>
+                  </div>
+                  <div class="sa-banner"></div>
+                  <div class="sa-services">
+                    <div class="sa-svc"><div class="sa-svc-icon">✦</div><div class="sa-svc-name">Facial Sculpting</div><div class="sa-svc-sub">Non-invasive contouring</div></div>
+                    <div class="sa-svc"><div class="sa-svc-icon">◇</div><div class="sa-svc-name">Skin Revival</div><div class="sa-svc-sub">Advanced rejuvenation</div></div>
+                    <div class="sa-svc"><div class="sa-svc-icon">○</div><div class="sa-svc-name">Body Wellness</div><div class="sa-svc-sub">Holistic treatments</div></div>
+                  </div>
+                  <div class="sa-trust">
+                    <div class="sa-trust-stars">★★★★★</div>
+                    <div class="sa-trust-text"><strong>4.9 average</strong> from 200+ verified patient reviews</div>
                   </div>
                 </div>
               </div>
@@ -413,92 +560,84 @@
           </div>
         </div>
 
+        <!-- ── 3. NORTHFIELD — Slate Authority ── -->
         <div class="portfolio">
           <div class="portfolio-grid">
             <div class="screen">
               <div class="browser-bar"><div class="dots"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div></div><div class="url-bar"></div></div>
-              <div class="preview">
-                <div class="site legal">
-                  <div class="site-top"><div class="site-logo">Northfield Legal Group</div><div class="site-nav"><span>Practice Areas</span><span>Attorneys</span><span>Contact</span></div></div>
-                  <div class="site-body">
-                    <div class="hero-grid">
-                      <div>
-                        <div class="site-kicker">Professional Legal Services</div>
-                        <div class="site-title">Serious representation presented with more clarity and authority.</div>
-                        <div class="site-copy">A firmer, more established digital presence designed to help the practice look more authoritative online and make contacting the office simpler.</div>
-                        <div class="cta-row"><div class="cta-dark">Request Review</div><div class="cta-light">Practice Areas</div></div>
-                      </div>
-                      <div class="visual"></div>
+              <div style="padding:4px;background:#0f1114">
+                <div class="site-legal">
+                  <div class="sl-nav"><div class="sl-logo">Northfield Legal Group</div><div class="sl-links"><span>Practice Areas</span><span>Attorneys</span><span>Contact</span></div></div>
+                  <div class="sl-topbar"><div class="sl-topbar-text">Confidential Case Evaluations Available</div><div class="sl-topbar-cta">Request Review →</div></div>
+                  <div class="sl-hero">
+                    <div>
+                      <div class="sl-kicker">Professional Legal Services</div>
+                      <div class="sl-title">Serious representation. Presented with authority.</div>
+                      <div class="sl-copy">A firmer, more established digital presence designed to make contacting the office simpler and more immediate.</div>
+                      <div class="sl-cta">Request Case Review</div>
                     </div>
-                    <div class="metric-bar">
-                      <div class="metric"><div class="metric-num">Sharper</div><div class="metric-label">Authority</div></div>
-                      <div class="metric"><div class="metric-num">Faster</div><div class="metric-label">Inquiry Handling</div></div>
-                      <div class="metric"><div class="metric-num">Cleaner</div><div class="metric-label">Contact Flow</div></div>
-                    </div>
-                    <div class="content-blocks">
-                      <div class="stack">
-                        <div class="box"><div class="box-title">Practice Focus</div><div class="box-head">Built to reduce friction for prospective clients.</div><div class="box-copy">Messaging simplified so visitors can understand where the firm helps and how to reach out without digging through clutter.</div></div>
-                      </div>
-                      <div class="chart"><div class="box-title">Inquiry Flow</div><svg viewBox="0 0 300 120" fill="none"><path d="M10 92 C44 90, 58 84, 88 76 C122 67, 137 61, 168 48 C198 34, 214 36, 244 24 C258 18, 272 14, 290 10" stroke="#26384a" stroke-width="5" stroke-linecap="round"/></svg></div>
+                    <div class="sl-sidebar">
+                      <div class="sl-side-card"><div class="sl-side-label">Experience</div><div class="sl-side-val">25+ Years</div></div>
+                      <div class="sl-side-card"><div class="sl-side-label">Cases Won</div><div class="sl-side-val">1,200+</div></div>
+                      <div class="sl-side-card"><div class="sl-side-label">Practice Areas</div><div class="sl-side-val">6 Specialties</div></div>
                     </div>
                   </div>
+                  <div class="sl-areas">
+                    <div class="sl-area"><div class="sl-area-name">Business Litigation</div><div class="sl-area-desc">Contract disputes and commercial claims</div></div>
+                    <div class="sl-area"><div class="sl-area-name">Estate Planning</div><div class="sl-area-desc">Trusts, wills, and asset protection</div></div>
+                    <div class="sl-area"><div class="sl-area-name">Real Estate Law</div><div class="sl-area-desc">Transactions and zoning matters</div></div>
+                    <div class="sl-area"><div class="sl-area-name">Corporate Advisory</div><div class="sl-area-desc">Formation, compliance, M&A support</div></div>
+                  </div>
+                  <div class="sl-bar"><div class="sl-bar-text">Schedule your confidential consultation</div><div class="sl-bar-cta">Get Started →</div></div>
                 </div>
               </div>
             </div>
             <div class="meta">
               <div class="work-cat">Professional Services</div>
               <h3>Northfield Legal Group</h3>
-              <p>A cleaner, more established digital presence created to help the firm look more authoritative online and make contacting the office simpler.</p>
-              <div class="tags"><span class="chip">Authority Positioning</span><span class="chip">Mobile-First Contact Flow</span><span class="chip">Sharper Brand Presence</span></div>
+              <p>A dark-header, slate-body law firm site with sidebar stats, practice area cards, and a document-style authority that commands immediate credibility.</p>
+              <div class="tags"><span class="chip">Dark Header</span><span class="chip">Sidebar Stats</span><span class="chip">Practice Grid</span></div>
               <div class="impact">
-                <div class="impact-item"><strong>How we helped:</strong> We reworked the presentation to feel more like a polished professional firm and less like a basic small-business website.</div>
-                <div class="impact-item"><strong>How the AI integration works:</strong> The automation helps handle new inquiries more consistently, sends prompt responses, and makes sure people reaching out are not left waiting on manual replies.</div>
-                <div class="impact-item"><strong>What it handles now:</strong> Intake follow-up, response support, lead organization, and smoother communication flow so the firm appears more responsive and more professional.</div>
+                <div class="impact-item"><strong>How we helped:</strong> Reworked the firm's presentation from basic to institutional — structured, authoritative, no wasted space.</div>
+                <div class="impact-item"><strong>AI integration:</strong> Intake follow-up, response support, and communication flow that makes the firm appear more responsive and professional.</div>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- ── 4. STONEGATE — Earth-Tone Real Estate ── -->
         <div class="portfolio reverse">
           <div class="portfolio-grid">
             <div class="meta">
               <div class="work-cat">Luxury Real Estate</div>
               <h3>Stonegate Estates</h3>
-              <p>A property-focused presentation built to feel high-end, aspirational, and more aligned with the caliber of listings and clientele the firm wants to attract.</p>
-              <div class="tags"><span class="chip">Editorial Layout</span><span class="chip">Luxury Property Feel</span><span class="chip">Lead Qualification</span></div>
+              <p>A property-forward presentation with featured listing hero, thumbnail gallery, and earth-tone palette that makes every listing feel aspirational and high-end.</p>
+              <div class="tags"><span class="chip">Property Hero</span><span class="chip">Listing Gallery</span><span class="chip">Aspirational Design</span></div>
               <div class="impact">
-                <div class="impact-item"><strong>How we helped:</strong> We made the brand feel far more premium online so listings, inquiries, and agent presentation all matched the market they wanted to compete in.</div>
-                <div class="impact-item"><strong>How the AI integration works:</strong> It follows up with inbound leads, responds to common inquiry questions, and helps qualify interested buyers or sellers before the team has to step in manually.</div>
-                <div class="impact-item"><strong>What it handles now:</strong> New lead response, buyer and seller inquiry support, missed-follow-up prevention, and a more organized lead handoff for the internal team.</div>
+                <div class="impact-item"><strong>How we helped:</strong> Made the brand feel far more premium so listings, inquiries, and agent presentation all match the luxury market.</div>
+                <div class="impact-item"><strong>AI integration:</strong> Automated lead response, buyer/seller inquiry support, and organized handoff so no prospect falls through the cracks.</div>
               </div>
             </div>
             <div class="screen">
               <div class="browser-bar"><div class="dots"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div></div><div class="url-bar"></div></div>
-              <div class="preview">
-                <div class="site realty">
-                  <div class="site-top"><div class="site-logo">Stonegate Estates</div><div class="site-nav"><span>Listings</span><span>Advisory</span><span>Contact</span></div></div>
-                  <div class="site-body">
-                    <div class="hero-grid">
-                      <div>
-                        <div class="site-kicker">Luxury Real Estate</div>
-                        <div class="site-title">Properties and presentation built for a higher-end market.</div>
-                        <div class="site-copy">An editorial-style real estate experience designed to make listings feel more aspirational while keeping the brand polished and upscale.</div>
-                        <div class="cta-row"><div class="cta-dark">View Properties</div><div class="cta-light">Sell With Us</div></div>
-                      </div>
-                      <div class="visual"></div>
+              <div style="padding:4px;background:#0f1114">
+                <div class="site-realty">
+                  <div class="sr-nav"><div class="sr-logo">Stonegate Estates</div><div class="sr-links"><span>Listings</span><span>Advisory</span><span>Contact</span></div></div>
+                  <div class="sr-featured">
+                    <div class="sr-featured-overlay">
+                      <div class="sr-featured-tag">Featured Listing</div>
+                      <div class="sr-featured-title">14 Coastal Ridge Drive</div>
+                      <div class="sr-featured-meta">5 Bed · 4 Bath · 6,200 sq ft · $4.2M</div>
                     </div>
-                    <div class="metric-bar">
-                      <div class="metric"><div class="metric-num">Luxury</div><div class="metric-label">Market Position</div></div>
-                      <div class="metric"><div class="metric-num">Faster</div><div class="metric-label">Inquiry Response</div></div>
-                      <div class="metric"><div class="metric-num">Clearer</div><div class="metric-label">Lead Routing</div></div>
-                    </div>
-                    <div class="content-blocks">
-                      <div class="box"><div class="box-title">Listings</div><div class="box-head">A more editorial property showcase.</div><div class="box-copy">Designed to make high-end listings feel more immersive, cleaner, and more desirable while guiding serious inquiries.</div><div class="lines"><div class="line"></div><div class="line short"></div></div></div>
-                      <div class="stack">
-                        <div class="box"><div class="box-title">Brand</div><div class="box-head">Luxury-first impression.</div><div class="box-copy">Neutral tones and stronger image-driven hierarchy for a more expensive feel.</div></div>
-                        <div class="box"><div class="box-title">Lead Flow</div><div class="box-head">Cleaner qualification path.</div><div class="box-copy">Built around both buyer and seller inquiry intent.</div></div>
-                      </div>
-                    </div>
+                  </div>
+                  <div class="sr-listings">
+                    <div class="sr-listing"><div class="sr-listing-img"></div><div class="sr-listing-info"><div class="sr-listing-price">$2.8M</div><div class="sr-listing-addr">8 Harbor View Ct</div><div class="sr-listing-specs">4 Bed · 3 Bath · 4,100 sqft</div></div></div>
+                    <div class="sr-listing"><div class="sr-listing-img"></div><div class="sr-listing-info"><div class="sr-listing-price">$1.9M</div><div class="sr-listing-addr">22 Stone Mill Rd</div><div class="sr-listing-specs">3 Bed · 2 Bath · 3,200 sqft</div></div></div>
+                    <div class="sr-listing"><div class="sr-listing-img"></div><div class="sr-listing-info"><div class="sr-listing-price">$3.5M</div><div class="sr-listing-addr">5 Summit Terrace</div><div class="sr-listing-specs">5 Bed · 4 Bath · 5,800 sqft</div></div></div>
+                  </div>
+                  <div class="sr-bottom">
+                    <div class="sr-stat-card"><div class="sr-stat-num">$340M+</div><div class="sr-stat-lbl">Sold Volume</div></div>
+                    <div class="sr-stat-card"><div class="sr-stat-num">12 Days</div><div class="sr-stat-lbl">Avg. Time to Offer</div></div>
                   </div>
                 </div>
               </div>
@@ -506,34 +645,38 @@
           </div>
         </div>
 
+        <!-- ── 5. BLUEWATER — Clean Clinical ── -->
         <div class="portfolio">
           <div class="portfolio-grid">
             <div class="screen">
               <div class="browser-bar"><div class="dots"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div></div><div class="url-bar"></div></div>
-              <div class="preview">
-                <div class="site clinic">
-                  <div class="site-top"><div class="site-logo">Bluewater Wellness Clinic</div><div class="site-nav"><span>Care</span><span>Team</span><span>Book</span></div></div>
-                  <div class="site-body">
-                    <div class="hero-grid">
+              <div style="padding:4px;background:#0f1114">
+                <div class="site-clinic">
+                  <div class="sc-nav"><div class="sc-logo">Bluewater Wellness</div><div class="sc-links"><span>Care</span><span>Team</span><span>Book</span></div></div>
+                  <div class="sc-hero">
+                    <div class="sc-hero-inner">
                       <div>
-                        <div class="site-kicker">Private Wellness Clinic</div>
-                        <div class="site-title">Modern care presented with clarity, calm, and confidence.</div>
-                        <div class="site-copy">A more clinical, modern brand presentation designed to make the practice feel organized, reassuring, and significantly more polished.</div>
-                        <div class="cta-row"><div class="cta-dark">Book Visit</div><div class="cta-light">Meet The Team</div></div>
+                        <div class="sc-kicker"><div class="sc-kicker-dot"></div> Private Wellness Clinic</div>
+                        <div class="sc-title">Modern care presented with clarity, calm, and confidence.</div>
+                        <div class="sc-copy">A clinical, modern brand presentation designed to feel organized, reassuring, and significantly more polished.</div>
+                        <div class="sc-ctas"><div class="sc-btn-teal">Book Visit</div><div class="sc-btn-ghost">Meet The Team</div></div>
                       </div>
-                      <div class="visual"></div>
+                      <div class="sc-hero-visual"></div>
                     </div>
-                    <div class="metric-bar">
-                      <div class="metric"><div class="metric-num">Calm</div><div class="metric-label">Brand Feel</div></div>
-                      <div class="metric"><div class="metric-num">Faster</div><div class="metric-label">Patient Response</div></div>
-                      <div class="metric"><div class="metric-num">Less</div><div class="metric-label">Admin Friction</div></div>
-                    </div>
-                    <div class="content-blocks">
-                      <div class="stack">
-                        <div class="box"><div class="box-title">Patient Experience</div><div class="box-head">Built to feel reassuring and easy to navigate.</div><div class="box-copy">A calmer visual structure that makes services, trust, and next steps easier to understand for new patients.</div></div>
-                      </div>
-                      <div class="chart"><div class="box-title">Operational Support</div><svg viewBox="0 0 300 120" fill="none"><path d="M10 95 C48 88, 64 84, 98 74 C136 64, 156 58, 185 46 C220 32, 244 22, 290 12" stroke="#21505d" stroke-width="5" stroke-linecap="round"/></svg></div>
-                    </div>
+                  </div>
+                  <div class="sc-services">
+                    <div class="sc-svc"><div class="sc-svc-bar"></div><div class="sc-svc-name">Primary Care</div><div class="sc-svc-desc">Annual exams & preventive health</div></div>
+                    <div class="sc-svc"><div class="sc-svc-bar"></div><div class="sc-svc-name">Integrative</div><div class="sc-svc-desc">Functional & holistic approaches</div></div>
+                    <div class="sc-svc"><div class="sc-svc-bar"></div><div class="sc-svc-name">Lab & Diagnostics</div><div class="sc-svc-desc">On-site testing & results</div></div>
+                  </div>
+                  <div class="sc-metrics">
+                    <div><div class="sc-met-num">15K+</div><div class="sc-met-lbl">Patients</div></div>
+                    <div><div class="sc-met-num">Same Day</div><div class="sc-met-lbl">Appointments</div></div>
+                    <div><div class="sc-met-num">4.9★</div><div class="sc-met-lbl">Rating</div></div>
+                  </div>
+                  <div class="sc-trust">
+                    <div class="sc-trust-badge">✓</div>
+                    <div class="sc-trust-text"><strong>Board-certified physicians</strong> with 20+ years of combined clinical experience</div>
                   </div>
                 </div>
               </div>
@@ -541,12 +684,11 @@
             <div class="meta">
               <div class="work-cat">Private Healthcare</div>
               <h3>Bluewater Wellness Clinic</h3>
-              <p>A modern medical-style website built to make the clinic feel more organized, more professional, and easier for new patients to trust.</p>
-              <div class="tags"><span class="chip">Modern Clinical Design</span><span class="chip">Patient Inquiry Support</span><span class="chip">Reduced Admin Friction</span></div>
+              <p>A white-background clinical site with teal accents, service cards with color bars, metrics strip, and trust badge — clean, modern, and immediately credible.</p>
+              <div class="tags"><span class="chip">White + Teal</span><span class="chip">Service Cards</span><span class="chip">Trust Signals</span></div>
               <div class="impact">
-                <div class="impact-item"><strong>How we helped:</strong> We gave the clinic a more reassuring and premium digital presence so prospective patients felt more confidence before ever making contact.</div>
-                <div class="impact-item"><strong>How the AI integration works:</strong> It helps manage incoming inquiries, answers routine questions faster, supports follow-up, and reduces repetitive administrative tasks that normally eat up staff time.</div>
-                <div class="impact-item"><strong>What it handles now:</strong> New patient inquiry responses, routine communication support, follow-up tasks, and backend assistance that keeps the front desk from becoming overloaded.</div>
+                <div class="impact-item"><strong>How we helped:</strong> Created a reassuring, premium digital presence so prospective patients feel confident before making contact.</div>
+                <div class="impact-item"><strong>AI integration:</strong> Patient inquiry responses, routine communication support, and admin task reduction that keeps the front desk from being overloaded.</div>
               </div>
             </div>
           </div>
@@ -556,6 +698,7 @@
     </div>
   </section>
 
+  <!-- ═══ WHO WE HELP ═══ -->
   <section id="sectors" class="section-border">
     <div class="container two-col">
       <div>
@@ -564,48 +707,149 @@
         <p class="lead">Our work is best suited for established or growth-minded businesses that want a more professional online presence and better systems to support day-to-day operations.</p>
       </div>
       <div class="sector-grid">
-        <div class="sector">Financial Advisory</div>
-        <div class="sector">Professional Services</div>
-        <div class="sector">Private Practices</div>
-        <div class="sector">Real Estate</div>
-        <div class="sector">Established Local Businesses</div>
-        <div class="sector">Growth-Focused Firms</div>
+        <div class="sector">
+          <div class="sector-icon">◆</div>
+          <div class="sector-name">Financial Advisory</div>
+          <div class="sector-desc">Wealth managers, RIAs, and private advisory firms that need a presentation matching the caliber of their clients.</div>
+        </div>
+        <div class="sector">
+          <div class="sector-icon">⬡</div>
+          <div class="sector-name">Professional Services</div>
+          <div class="sector-desc">Law firms, consultancies, and accounting practices that want authority and credibility online.</div>
+        </div>
+        <div class="sector">
+          <div class="sector-icon">✦</div>
+          <div class="sector-name">Private Practices</div>
+          <div class="sector-desc">Medical, dental, and wellness clinics that want a modern, trustworthy patient experience.</div>
+        </div>
+        <div class="sector">
+          <div class="sector-icon">△</div>
+          <div class="sector-name">Real Estate</div>
+          <div class="sector-desc">Brokerages, developers, and luxury agents who need listings and brand to feel high-end.</div>
+        </div>
+        <div class="sector">
+          <div class="sector-icon">◎</div>
+          <div class="sector-name">Established Local Businesses</div>
+          <div class="sector-desc">Restaurants, hospitality, and service businesses ready to upgrade from a basic web presence.</div>
+        </div>
+        <div class="sector">
+          <div class="sector-icon">▲</div>
+          <div class="sector-name">Growth-Focused Firms</div>
+          <div class="sector-desc">Startups and scaling companies that want to look bigger, more credible, and more established than they are.</div>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- ═══ WHY MAINSTAY ═══ -->
   <section>
     <div class="container">
       <div class="feature-wrap">
-        <div class="feature-grid">
-          <div>
-            <div class="eyebrow">Why Mainstay</div>
-            <h2>A higher standard for how your business shows up and operates online.</h2>
-            <p class="lead">We combine luxury presentation, support, and smart systems into one service that helps businesses look more premium, stay more organized, and grow with less friction.</p>
+        <div style="text-align:center;max-width:800px;margin:0 auto">
+          <div class="eyebrow">Why Mainstay</div>
+          <h2>A higher standard for how your business shows up online.</h2>
+          <p class="lead">We combine luxury design, smart automation, and ongoing support into one service that makes businesses look premium and operate more efficiently.</p>
+        </div>
+        <div class="feature-stats">
+          <div class="f-stat"><div class="f-stat-num">47+</div><div class="f-stat-label">Sites Launched</div></div>
+          <div class="f-stat"><div class="f-stat-num">100%</div><div class="f-stat-label">Satisfaction</div></div>
+          <div class="f-stat"><div class="f-stat-num">14 Days</div><div class="f-stat-label">Avg. Delivery</div></div>
+          <div class="f-stat"><div class="f-stat-num">$2M+</div><div class="f-stat-label">Client Revenue</div></div>
+        </div>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-num">01</div>
+            <h4>Premium by Default</h4>
+            <p>Every project starts at the luxury tier. We don't do budget work, cookie-cutter layouts, or anything that looks like a template.</p>
           </div>
-          <div class="feature-list">
-            <ul>
-              <li>• 47+ businesses served across digital and automation engagements</li>
-              <li>• 100% satisfaction rate across client relationships</li>
-              <li>• Stronger online presence and better day-to-day efficiency</li>
-              <li>• A long-term digital partner built around quality and consistency</li>
-            </ul>
+          <div class="pillar">
+            <div class="pillar-num">02</div>
+            <h4>Systems That Scale</h4>
+            <p>AI automation that handles lead follow-up, communication, and admin tasks — so the business runs smoother as it grows.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">03</div>
+            <h4>Long-Term Partner</h4>
+            <p>We don't disappear after launch. Ongoing support, optimization, and system oversight keep everything sharp and evolving.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ═══ CONTACT ═══ -->
   <section id="contact" class="contact">
     <div class="container">
-      <div class="eyebrow">Contact</div>
-      <h2>Build a stronger digital foundation for growth.</h2>
-      <p class="lead">If your business is ready for a significantly more premium website and smarter systems behind it, we would be glad to start the conversation.</p>
-      <div class="actions" style="justify-content:center">
-        <a class="btn btn-primary" href="mailto:hello@mainstayhq.com">hello@mainstayhq.com</a>
-        <a class="btn btn-secondary" href="#">Schedule Consultation</a>
+      <div class="contact-grid">
+        <div class="contact-left">
+          <div class="eyebrow">Contact</div>
+          <h2>Build a stronger digital foundation for growth.</h2>
+          <p class="lead">If your business is ready for a significantly more premium website and smarter systems behind it, we would be glad to start the conversation.</p>
+          <div style="margin-top:28px">
+            <a class="btn btn-secondary" href="mailto:hello@mainstayhq.com" style="margin-bottom:12px">hello@mainstayhq.com</a>
+          </div>
+          <p style="margin-top:20px;font-size:13px;color:rgba(255,255,255,.35)">We respond within 24 hours.</p>
+        </div>
+        <div>
+          <form class="contact-form" onsubmit="return false">
+            <div class="form-row">
+              <div class="form-field"><label class="form-label">Name</label><input class="form-input" type="text" placeholder="Your full name"></div>
+              <div class="form-field"><label class="form-label">Business</label><input class="form-input" type="text" placeholder="Company name"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-field"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="you@company.com"></div>
+              <div class="form-field"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(555) 000-0000"></div>
+            </div>
+            <div class="form-field"><label class="form-label">Message</label><textarea class="form-input" placeholder="Tell us about your business and what you're looking for..."></textarea></div>
+            <button class="form-submit" type="submit">Get Your Free Consultation</button>
+            <div class="form-note">No commitment required. Let's see if we're a fit.</div>
+          </form>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">MAINSTAY DIGITAL</div>
+          <p class="footer-desc">Ultra-premium websites and AI business management for companies that demand a higher standard online.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Services</div>
+          <ul class="footer-links">
+            <li><a href="#capabilities">Website Design</a></li>
+            <li><a href="#capabilities">AI Business Management</a></li>
+            <li><a href="#capabilities">Ongoing Support</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Industries</div>
+          <ul class="footer-links">
+            <li><a href="#sectors">Financial Advisory</a></li>
+            <li><a href="#sectors">Professional Services</a></li>
+            <li><a href="#sectors">Healthcare</a></li>
+            <li><a href="#sectors">Real Estate</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <ul class="footer-links">
+            <li><a href="mailto:hello@mainstayhq.com">hello@mainstayhq.com</a></li>
+            <li><a href="#contact">Book a Consultation</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2026 Mainstay Digital. All rights reserved.</div>
+        <div class="footer-legal">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
