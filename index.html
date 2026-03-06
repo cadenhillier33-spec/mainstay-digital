@@ -90,7 +90,7 @@ h2.section-heading em {
 .section-white { background: var(--white); padding: 140px 0; }
 
 /* Reveal animation */
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 .reveal-d1 { transition-delay: 0.08s; }
 .reveal-d2 { transition-delay: 0.16s; }
@@ -1105,13 +1105,13 @@ window.addEventListener('scroll',()=>{
   document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>20);
 });
 
-// Reveal on scroll
+// Reveal on scroll — aggressive trigger so content never feels hidden
 const revealObs=new IntersectionObserver(e=>{
   e.forEach(n=>{if(n.isIntersecting){n.target.classList.add('visible');revealObs.unobserve(n.target)}});
-},{threshold:0.05,rootMargin:'0px 0px -20px 0px'});
+},{threshold:0.01,rootMargin:'0px 0px 40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
-// Force hero elements visible after short delay (fallback for initial viewport)
-setTimeout(()=>{document.querySelectorAll('.hero .reveal').forEach(el=>el.classList.add('visible'))},150);
+// Force all elements already in viewport visible on load
+setTimeout(()=>{document.querySelectorAll('.reveal').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<window.innerHeight+100){el.classList.add('visible')}})},100);
 
 // FAQ accordion
 document.querySelectorAll('.faq-question').forEach(btn=>{
