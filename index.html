@@ -101,6 +101,34 @@
     .price-card ul{list-style:none;padding:0;margin:28px 0 0;border-top:1px solid var(--line);padding-top:28px}
     .price-card li{margin:0 0 14px;font-size:15px;line-height:1.7;color:rgba(255,255,255,.75)}
     .closing{margin-top:30px;font-size:15px;line-height:1.8;color:rgba(255,255,255,.58)}
+    /* ─── HOW AI WORKS ─── */
+    .ai-section{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .ai-intro{max-width:740px}
+    .ai-intro .lead{margin-top:20px}
+    .ai-steps{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .ai-step{border:1px solid var(--line2);border-radius:24px;padding:32px 28px;background:linear-gradient(180deg,rgba(255,255,255,.025),transparent);position:relative}
+    .ai-step-num{width:36px;height:36px;border-radius:999px;background:linear-gradient(135deg,var(--gold),#a88b54);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#070708}
+    .ai-step h4{margin:18px 0 0;font-size:22px;font-weight:600;letter-spacing:-.02em}
+    .ai-step p{margin:12px 0 0;font-size:15px;line-height:1.85;color:var(--muted)}
+    .ai-usecases{margin-top:56px}
+    .ai-usecases-title{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2);margin-bottom:28px}
+    .usecase-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .usecase{border:1px solid var(--line);border-radius:18px;padding:24px 26px;background:rgba(255,255,255,.02)}
+    .usecase-industry{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);margin-bottom:10px}
+    .usecase-scenario{font-size:15px;line-height:1.85;color:rgba(255,255,255,.8)}
+    .usecase-scenario strong{color:#fff;font-weight:600}
+    .ai-hardware{margin-top:56px;border:1px solid rgba(199,165,106,.2);border-radius:28px;padding:40px 36px;background:linear-gradient(135deg,rgba(199,165,106,.06),transparent 60%);display:grid;grid-template-columns:.42fr .58fr;gap:40px;align-items:center}
+    .ai-hw-badge{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2)}
+    .ai-hw-title{margin-top:14px;font-size:32px;font-weight:600;letter-spacing:-.03em;line-height:1.1}
+    .ai-hw-copy{margin-top:16px;font-size:16px;line-height:1.85;color:var(--muted)}
+    .ai-hw-list{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+    .ai-hw-list li{font-size:15px;line-height:1.75;color:rgba(255,255,255,.78);padding-left:24px;position:relative}
+    .ai-hw-list li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700}
+    @media(max-width:980px){
+      .ai-steps{grid-template-columns:1fr}
+      .usecase-grid{grid-template-columns:1fr}
+      .ai-hardware{grid-template-columns:1fr}
+    }
     /* ─── PORTFOLIO ─── */
     .work-intro{max-width:980px}
     .work-grid{margin-top:64px;display:grid;gap:42px}
@@ -348,8 +376,8 @@
         <a href="#capabilities">What We Do</a>
         <a href="#about">About</a>
         <a href="#packages">Pricing</a>
+        <a href="#ai-management">AI Management</a>
         <a href="#work">Our Work</a>
-        <a href="#sectors">Who We Help</a>
         <a href="#contact">Contact</a>
       </nav>
       <a class="btn btn-outline" href="#contact">Book a Consultation</a>
@@ -402,7 +430,7 @@
         <div class="card">
           <div class="card-num">02</div>
           <h3>AI Business Management</h3>
-          <p>Smart systems that follow up with leads, handle repetitive communication, reduce manual work, and help the business stay consistent behind the scenes.</p>
+          <p>We install a dedicated system in your business that responds to leads in under 60 seconds, answers common questions automatically, follows up with people who didn't book, and handles the repetitive admin you're doing manually right now. It runs 24/7 — even when you're closed.</p>
         </div>
         <div class="card">
           <div class="card-num">03</div>
@@ -445,18 +473,88 @@
           </div>
           <div class="price-title">Website + AI Business Management</div>
           <div class="price-sub">Best for businesses that want a hands-off growth system</div>
-          <p>A higher-level solution for businesses that want a stronger website plus smart systems that help manage leads, improve follow-up, reduce admin work, and keep the business running more smoothly.</p>
+          <p>Your website plus a dedicated AI system that manages your leads, responds to inquiries, and handles the repetitive work your team does every day — so nothing falls through the cracks and the business runs tighter without adding headcount.</p>
           <ul>
             <li>• Everything in Basic</li>
-            <li>• AI-powered business workflows</li>
-            <li>• Automated lead handling and follow-up</li>
-            <li>• Repetitive communication support</li>
-            <li>• Ongoing system oversight</li>
-            <li>• Priority support and optimization</li>
+            <li>• Dedicated Mac Mini installed at your business — your AI runs locally, always on</li>
+            <li>• Instant lead response — new inquiries get a professional reply in under 60 seconds</li>
+            <li>• Automated follow-up — people who don't book get re-engaged automatically</li>
+            <li>• FAQ and common question handling — answers the same 20 questions you answer every day</li>
+            <li>• Appointment and booking coordination</li>
+            <li>• Ongoing system oversight — we monitor, optimize, and improve it monthly</li>
           </ul>
         </div>
       </div>
       <div class="closing">Built for businesses that want more than a website — and need a stronger online presence with better systems behind it.</div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW AI MANAGEMENT WORKS ═══ -->
+  <section id="ai-management" class="ai-section">
+    <div class="container" style="padding-top:100px;padding-bottom:100px">
+      <div class="ai-intro">
+        <div class="eyebrow">AI Business Management</div>
+        <h2>What it actually means — in plain English.</h2>
+        <p class="lead">You don't need to understand AI to use it. We handle the entire setup, installation, and ongoing management. Here's what happens after we turn it on.</p>
+      </div>
+
+      <div class="ai-steps">
+        <div class="ai-step">
+          <div class="ai-step-num">1</div>
+          <h4>We come to you.</h4>
+          <p>We install a dedicated Mac Mini at your office. This is your business's personal AI system — it runs locally, stays on 24/7, and is completely managed by us. You don't touch it.</p>
+        </div>
+        <div class="ai-step">
+          <div class="ai-step-num">2</div>
+          <h4>We connect it to your business.</h4>
+          <p>We wire it into the tools you already use — your website, email, phone system, booking software, review platforms. Whatever your customers use to reach you, we connect it.</p>
+        </div>
+        <div class="ai-step">
+          <div class="ai-step-num">3</div>
+          <h4>It starts working immediately.</h4>
+          <p>New leads get responded to in under 60 seconds. Common questions get answered automatically. People who don't book get followed up with. And you get a weekly report of everything it handled.</p>
+        </div>
+      </div>
+
+      <div class="ai-usecases">
+        <div class="ai-usecases-title">Real examples — by industry</div>
+        <div class="usecase-grid">
+          <div class="usecase">
+            <div class="usecase-industry">Restaurant</div>
+            <p class="usecase-scenario">A customer fills out your catering inquiry form at 11pm. Instead of waiting until tomorrow, <strong>they get a professional response in 45 seconds</strong> with your catering menu, pricing, and a link to book a tasting — while your staff is home asleep.</p>
+          </div>
+          <div class="usecase">
+            <div class="usecase-industry">Medical Practice</div>
+            <p class="usecase-scenario">A new patient submits an appointment request. <strong>They're immediately sent intake forms, insurance info needed, and directions to your office</strong> — no receptionist needed. Patients who cancel get re-engaged with alternative time slots automatically.</p>
+          </div>
+          <div class="usecase">
+            <div class="usecase-industry">Real Estate</div>
+            <p class="usecase-scenario">Someone clicks "Schedule a Showing" on one of your listings at 9pm. <strong>They get a response confirming their time slot, the property address, and your agent's direct line</strong> — before a competitor's agent even sees the inquiry.</p>
+          </div>
+          <div class="usecase">
+            <div class="usecase-industry">Law Firm</div>
+            <p class="usecase-scenario">A potential client fills out your "Free Consultation" form. <strong>They immediately receive a professional intake questionnaire and a calendar link</strong> to schedule their call — while your paralegal focuses on active cases instead of triaging inbound.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-hardware">
+        <div>
+          <div class="ai-hw-badge">The Hardware</div>
+          <h3 class="ai-hw-title">Your own dedicated Mac Mini. Installed by us.</h3>
+          <p class="ai-hw-copy">This isn't a cloud service you log into. We physically install a Mac Mini at your office that runs your AI system 24/7. It's fast, private, and entirely managed by our team.</p>
+        </div>
+        <div>
+          <ul class="ai-hw-list">
+            <li>Installed on-site at your business — we come to you</li>
+            <li>Runs 24/7, even when your office is closed</li>
+            <li>Your data stays on your machine — not on someone else's server</li>
+            <li>We manage all updates, monitoring, and optimization remotely</li>
+            <li>No software for you to learn — it works in the background</li>
+            <li>Weekly performance reports sent directly to you</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -765,7 +863,7 @@
           <div class="pillar">
             <div class="pillar-num">02</div>
             <h4>Systems That Scale</h4>
-            <p>AI automation that handles lead follow-up, communication, and admin tasks — so the business runs smoother as it grows.</p>
+            <p>A dedicated AI system installed at your business that responds to leads, answers common questions, and handles repetitive admin — so you grow without adding headcount.</p>
           </div>
           <div class="pillar">
             <div class="pillar-num">03</div>
