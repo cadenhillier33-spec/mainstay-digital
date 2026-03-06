@@ -150,141 +150,99 @@
     .dot{width:10px;height:10px;border-radius:999px}
     .url-bar{width:46%;height:12px;border-radius:999px;background:rgba(255,255,255,.08)}
 
-    /* ── SITE 1: Harbor Ridge — Dark Mode Finance ── */
-    .site-harbor{border-radius:24px;overflow:hidden;min-height:620px;background:#0a0f1a;color:#e8eaf0;font-family:Inter,sans-serif}
-    .site-harbor .sh-nav{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid rgba(255,255,255,.08)}
-    .site-harbor .sh-logo{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7)}
-    .site-harbor .sh-links{display:flex;gap:20px;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
-    .site-harbor .sh-hero{padding:40px 24px 28px;display:grid;grid-template-columns:1fr .9fr;gap:24px;align-items:center}
-    .site-harbor .sh-kicker{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(139,167,204,.7)}
-    .site-harbor .sh-title{margin-top:12px;font-size:32px;font-weight:600;letter-spacing:-.04em;line-height:1.08;font-family:'Playfair Display',serif}
-    .site-harbor .sh-copy{margin-top:14px;font-size:12px;line-height:1.75;color:rgba(255,255,255,.5)}
-    .site-harbor .sh-cta{margin-top:18px;display:inline-flex;padding:10px 20px;border-radius:999px;background:linear-gradient(135deg,#1a3a5c,#264f7a);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c8ddf0}
-    .site-harbor .sh-visual{border-radius:20px;min-height:220px;background:linear-gradient(180deg,#0d1a2d,#162d4a);position:relative;overflow:hidden}
-    .site-harbor .sh-visual::before{content:"";position:absolute;inset:0;background:
-      radial-gradient(circle at 30% 40%, rgba(38,79,122,.6), transparent 50%),
-      radial-gradient(circle at 70% 70%, rgba(20,50,90,.5), transparent 40%)}
-    .site-harbor .sh-visual::after{content:"";position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(0deg,rgba(10,15,26,.9),transparent)}
-    .site-harbor .sh-stats{padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:4px}
-    .site-harbor .sh-stat{border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:16px;background:rgba(255,255,255,.03)}
-    .site-harbor .sh-stat-num{font-size:20px;font-weight:600;letter-spacing:-.02em;color:#8bb3d8}
-    .site-harbor .sh-stat-lbl{margin-top:4px;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35)}
-    .site-harbor .sh-cols{padding:16px 24px 24px;display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
-    .site-harbor .sh-card{border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px;background:rgba(255,255,255,.025)}
-    .site-harbor .sh-card-title{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35)}
-    .site-harbor .sh-card-head{margin-top:8px;font-size:18px;font-weight:600;letter-spacing:-.02em;line-height:1.2}
-    .site-harbor .sh-card-copy{margin-top:8px;font-size:11px;line-height:1.7;color:rgba(255,255,255,.45)}
-    .site-harbor .sh-chart{border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px;background:rgba(255,255,255,.025);display:flex;flex-direction:column;justify-content:space-between}
-    .site-harbor .sh-chart svg{width:100%;height:100px}
+    /* ── SITE 1: Obsidian & Co — Ultra-Dark Luxury Real Estate ── */
+    .site-obsidian{border-radius:24px;overflow:hidden;min-height:620px;background:#08080a;color:#e8e4dc;font-family:Inter,sans-serif;position:relative}
+    .site-obsidian::before{content:"";position:absolute;top:0;left:0;right:0;height:280px;background:linear-gradient(180deg,rgba(180,155,110,.06),transparent);pointer-events:none}
+    .site-obsidian .so-nav{display:flex;align-items:center;justify-content:space-between;padding:22px 28px;position:relative;z-index:1}
+    .site-obsidian .so-logo{display:flex;align-items:center;gap:12px}
+    .site-obsidian .so-logo svg{width:28px;height:28px}
+    .site-obsidian .so-logo-text{font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,228,220,.8)}
+    .site-obsidian .so-links{display:flex;gap:24px;font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+    .site-obsidian .so-hero{padding:32px 28px 24px;position:relative;z-index:1}
+    .site-obsidian .so-hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .site-obsidian .so-tag{display:inline-flex;align-items:center;gap:8px;font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(199,165,106,.65)}
+    .site-obsidian .so-tag::before{content:"";width:20px;height:1px;background:rgba(199,165,106,.4)}
+    .site-obsidian .so-title{margin-top:16px;font-size:30px;font-weight:500;letter-spacing:-.04em;line-height:1.1;font-family:'Playfair Display',serif;color:#f0ece4}
+    .site-obsidian .so-copy{margin-top:14px;font-size:12px;line-height:1.85;color:rgba(255,255,255,.38)}
+    .site-obsidian .so-cta{margin-top:20px;display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border:1px solid rgba(199,165,106,.25);border-radius:0;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(199,165,106,.8);background:rgba(199,165,106,.05)}
+    .site-obsidian .so-visual{border-radius:4px;min-height:220px;background:linear-gradient(160deg,#141210,#1a1714);position:relative;overflow:hidden;border:1px solid rgba(199,165,106,.08)}
+    .site-obsidian .so-visual::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 40% 30%,rgba(199,165,106,.08),transparent 60%),radial-gradient(circle at 80% 80%,rgba(100,80,50,.06),transparent 40%)}
+    .site-obsidian .so-visual-label{position:absolute;bottom:16px;left:16px;font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(199,165,106,.35)}
+    .site-obsidian .so-featured{padding:0 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}
+    .site-obsidian .so-prop{border:1px solid rgba(255,255,255,.05);padding:16px;background:rgba(255,255,255,.015)}
+    .site-obsidian .so-prop-price{font-size:16px;font-weight:600;letter-spacing:-.02em;color:rgba(199,165,106,.7)}
+    .site-obsidian .so-prop-addr{margin-top:6px;font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.04em}
+    .site-obsidian .so-prop-specs{margin-top:4px;font-size:8px;color:rgba(255,255,255,.2);letter-spacing:.08em;text-transform:uppercase}
+    .site-obsidian .so-bottom{padding:14px 28px 28px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.04);margin:14px 28px 0;padding:14px 0 0}
+    .site-obsidian .so-metric{text-align:center}
+    .site-obsidian .so-metric-num{font-size:18px;font-weight:500;letter-spacing:-.02em;color:rgba(199,165,106,.6);font-family:'Playfair Display',serif}
+    .site-obsidian .so-metric-lbl{margin-top:4px;font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+    .site-obsidian .so-divider{width:1px;height:36px;background:rgba(255,255,255,.06)}
 
-    /* ── SITE 2: Aurum — Warm Editorial Luxury ── */
-    .site-aurum{border-radius:24px;overflow:hidden;min-height:620px;background:#faf5ee;color:#1a1714;font-family:Inter,sans-serif}
-    .site-aurum .sa-nav{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid rgba(0,0,0,.06)}
-    .site-aurum .sa-logo{font-size:14px;font-weight:600;letter-spacing:.08em;font-family:'Playfair Display',serif;color:#6b5840}
-    .site-aurum .sa-links{display:flex;gap:20px;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(0,0,0,.4)}
-    .site-aurum .sa-hero{padding:36px 24px;text-align:center}
-    .site-aurum .sa-kicker{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#a68b65}
-    .site-aurum .sa-title{margin-top:14px;font-size:36px;font-weight:600;letter-spacing:-.04em;line-height:1.08;font-family:'Playfair Display',serif;max-width:420px;margin-left:auto;margin-right:auto}
-    .site-aurum .sa-copy{margin-top:14px;font-size:13px;line-height:1.75;color:rgba(0,0,0,.5);max-width:380px;margin-left:auto;margin-right:auto}
-    .site-aurum .sa-ctas{display:flex;gap:10px;justify-content:center;margin-top:18px}
-    .site-aurum .sa-btn-dark{padding:10px 22px;border-radius:999px;background:#1a1714;color:#faf5ee;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-    .site-aurum .sa-btn-light{padding:10px 22px;border-radius:999px;border:1px solid rgba(0,0,0,.12);color:#1a1714;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-    .site-aurum .sa-banner{margin:0 24px;border-radius:20px;min-height:160px;background:linear-gradient(135deg,#c9a97a,#8b6f4e);position:relative;overflow:hidden}
-    .site-aurum .sa-banner::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 60% 40%, rgba(255,255,255,.15), transparent 50%)}
-    .site-aurum .sa-banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.15))}
-    .site-aurum .sa-services{padding:20px 24px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .site-aurum .sa-svc{border:1px solid rgba(0,0,0,.06);border-radius:16px;padding:18px;background:rgba(255,255,255,.6);text-align:center}
-    .site-aurum .sa-svc-icon{width:36px;height:36px;border-radius:999px;background:linear-gradient(135deg,#d4b07a,#a68b5b);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff}
-    .site-aurum .sa-svc-name{font-size:12px;font-weight:700;letter-spacing:.06em}
-    .site-aurum .sa-svc-sub{margin-top:6px;font-size:10px;line-height:1.6;color:rgba(0,0,0,.45)}
-    .site-aurum .sa-trust{margin:0 24px 24px;border:1px solid rgba(0,0,0,.06);border-radius:16px;padding:18px;background:rgba(255,255,255,.5);display:flex;align-items:center;gap:16px}
-    .site-aurum .sa-trust-stars{font-size:16px;color:#c9a97a;letter-spacing:2px}
-    .site-aurum .sa-trust-text{font-size:12px;line-height:1.6;color:rgba(0,0,0,.55)}
-    .site-aurum .sa-trust-text strong{color:#1a1714}
+    /* ── SITE 2: Solara Health — Clean Emerald Wellness ── */
+    .site-solara{border-radius:24px;overflow:hidden;min-height:620px;background:#fafbfa;color:#0f1a14;font-family:Inter,sans-serif}
+    .site-solara .ss-nav{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;border-bottom:1px solid rgba(0,0,0,.05)}
+    .site-solara .ss-logo{display:flex;align-items:center;gap:10px}
+    .site-solara .ss-logo svg{width:24px;height:24px}
+    .site-solara .ss-logo-text{font-size:14px;font-weight:600;letter-spacing:.04em;color:#1a3d2b}
+    .site-solara .ss-links{display:flex;gap:22px;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.35)}
+    .site-solara .ss-hero{padding:40px 28px 24px}
+    .site-solara .ss-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+    .site-solara .ss-kicker{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:rgba(26,82,55,.06);font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#1a5237}
+    .site-solara .ss-kicker-dot{width:5px;height:5px;border-radius:999px;background:#2d8a56}
+    .site-solara .ss-title{margin-top:16px;font-size:30px;font-weight:700;letter-spacing:-.04em;line-height:1.1;color:#0a1a10}
+    .site-solara .ss-copy{margin-top:14px;font-size:12px;line-height:1.8;color:rgba(0,0,0,.45)}
+    .site-solara .ss-ctas{display:flex;gap:10px;margin-top:18px}
+    .site-solara .ss-btn-green{padding:11px 22px;border-radius:12px;background:#1a5237;color:#e8f5ee;font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase}
+    .site-solara .ss-btn-outline{padding:11px 22px;border-radius:12px;border:1.5px solid rgba(26,82,55,.15);color:#1a5237;font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase}
+    .site-solara .ss-hero-img{border-radius:20px;min-height:200px;background:linear-gradient(160deg,#d4e8dc,#a8d4b8);position:relative;overflow:hidden}
+    .site-solara .ss-hero-img::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,rgba(26,82,55,.08),transparent 60%)}
+    .site-solara .ss-hero-img::after{content:"";position:absolute;top:50%;left:50%;width:60px;height:60px;transform:translate(-50%,-50%);border:2px solid rgba(26,82,55,.12);border-radius:999px}
+    .site-solara .ss-services{padding:0 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .site-solara .ss-svc{border:1px solid rgba(0,0,0,.05);border-radius:16px;padding:20px;background:#fff;position:relative;overflow:hidden}
+    .site-solara .ss-svc::before{content:"";position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,#2d8a56,#1a5237);border-radius:0 2px 2px 0}
+    .site-solara .ss-svc-name{font-size:13px;font-weight:700;letter-spacing:-.01em;padding-left:8px}
+    .site-solara .ss-svc-desc{margin-top:6px;font-size:10px;line-height:1.65;color:rgba(0,0,0,.4);padding-left:8px}
+    .site-solara .ss-stats{padding:14px 28px 14px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .site-solara .ss-stat{text-align:center;padding:14px 8px;border:1px solid rgba(0,0,0,.04);border-radius:14px;background:#fff}
+    .site-solara .ss-stat-num{font-size:18px;font-weight:700;letter-spacing:-.02em;color:#1a5237}
+    .site-solara .ss-stat-lbl{margin-top:3px;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.3)}
+    .site-solara .ss-trust{margin:0 28px 28px;border:1px solid rgba(26,82,55,.08);border-radius:16px;padding:16px 20px;background:rgba(26,82,55,.02);display:flex;align-items:center;gap:14px}
+    .site-solara .ss-trust-icon{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,#2d8a56,#1a5237);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700;flex-shrink:0}
+    .site-solara .ss-trust-text{font-size:11px;line-height:1.6;color:rgba(0,0,0,.5)}
+    .site-solara .ss-trust-text strong{color:#0a1a10}
 
-    /* ── SITE 3: Northfield Legal — Slate Authority ── */
-    .site-legal{border-radius:24px;overflow:hidden;min-height:620px;background:#f0f2f5;color:#11161c;font-family:Inter,sans-serif}
-    .site-legal .sl-nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:#1c2433;color:#c5ccda}
-    .site-legal .sl-logo{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
-    .site-legal .sl-links{display:flex;gap:20px;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45)}
-    .site-legal .sl-topbar{background:#243044;padding:10px 24px;display:flex;align-items:center;justify-content:space-between}
-    .site-legal .sl-topbar-text{font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
-    .site-legal .sl-topbar-cta{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#7ba0c9;cursor:pointer}
-    .site-legal .sl-hero{padding:32px 24px;display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:start}
-    .site-legal .sl-kicker{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(0,0,0,.38)}
-    .site-legal .sl-title{margin-top:10px;font-size:30px;font-weight:700;letter-spacing:-.03em;line-height:1.1;color:#1c2433}
-    .site-legal .sl-copy{margin-top:12px;font-size:12px;line-height:1.75;color:rgba(0,0,0,.5)}
-    .site-legal .sl-cta{margin-top:16px;display:inline-flex;padding:10px 20px;border-radius:6px;background:#1c2433;color:#e0e4ec;font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase}
-    .site-legal .sl-sidebar{display:grid;gap:10px}
-    .site-legal .sl-side-card{border:1px solid rgba(0,0,0,.08);border-radius:10px;padding:14px;background:#fff}
-    .site-legal .sl-side-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(0,0,0,.35)}
-    .site-legal .sl-side-val{margin-top:6px;font-size:16px;font-weight:700;letter-spacing:-.02em;color:#1c2433}
-    .site-legal .sl-areas{padding:0 24px 24px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-    .site-legal .sl-area{border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:16px;background:#fff}
-    .site-legal .sl-area-name{font-size:13px;font-weight:700;letter-spacing:-.01em;color:#1c2433}
-    .site-legal .sl-area-desc{margin-top:6px;font-size:10px;line-height:1.6;color:rgba(0,0,0,.45)}
-    .site-legal .sl-bar{margin:0 24px 24px;border-radius:12px;background:#1c2433;padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
-    .site-legal .sl-bar-text{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55)}
-    .site-legal .sl-bar-cta{font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:#7ba0c9}
-
-    /* ── SITE 4: Stonegate — Earth-Tone Real Estate ── */
-    .site-realty{border-radius:24px;overflow:hidden;min-height:620px;background:#f4f1eb;color:#1e1c18;font-family:Inter,sans-serif}
-    .site-realty .sr-nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid rgba(0,0,0,.06)}
-    .site-realty .sr-logo{font-size:13px;font-weight:600;letter-spacing:.1em;font-family:'Playfair Display',serif;color:#5a4e3c}
-    .site-realty .sr-links{display:flex;gap:20px;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.38)}
-    .site-realty .sr-featured{margin:0 24px;margin-top:20px;border-radius:20px;min-height:200px;background:linear-gradient(135deg,#8b7b62,#5a4e3c);position:relative;overflow:hidden}
-    .site-realty .sr-featured::before{content:"";position:absolute;inset:0;background:
-      radial-gradient(circle at 40% 50%, rgba(255,255,255,.08), transparent 40%),
-      linear-gradient(180deg, transparent 40%, rgba(0,0,0,.35))}
-    .site-realty .sr-featured-overlay{position:absolute;bottom:0;left:0;right:0;padding:24px;color:#fff}
-    .site-realty .sr-featured-tag{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);padding:6px 12px;border-radius:999px;display:inline-block;color:rgba(255,255,255,.85)}
-    .site-realty .sr-featured-title{margin-top:10px;font-size:24px;font-weight:600;letter-spacing:-.03em;line-height:1.15;font-family:'Playfair Display',serif}
-    .site-realty .sr-featured-meta{margin-top:8px;font-size:10px;color:rgba(255,255,255,.65);letter-spacing:.06em}
-    .site-realty .sr-listings{padding:18px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .site-realty .sr-listing{border:1px solid rgba(0,0,0,.06);border-radius:14px;overflow:hidden;background:#fff}
-    .site-realty .sr-listing-img{height:80px;background:linear-gradient(135deg,#c1ae8b,#8b7b62)}
-    .site-realty .sr-listing:nth-child(2) .sr-listing-img{background:linear-gradient(135deg,#a09078,#6b5d4a)}
-    .site-realty .sr-listing:nth-child(3) .sr-listing-img{background:linear-gradient(135deg,#b8a584,#7a6b55)}
-    .site-realty .sr-listing-info{padding:12px}
-    .site-realty .sr-listing-price{font-size:14px;font-weight:700;letter-spacing:-.02em}
-    .site-realty .sr-listing-addr{margin-top:4px;font-size:10px;color:rgba(0,0,0,.45);line-height:1.4}
-    .site-realty .sr-listing-specs{margin-top:6px;font-size:9px;color:rgba(0,0,0,.35);letter-spacing:.04em}
-    .site-realty .sr-bottom{padding:0 24px 24px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .site-realty .sr-stat-card{border:1px solid rgba(0,0,0,.06);border-radius:14px;padding:16px;background:#fff;text-align:center}
-    .site-realty .sr-stat-num{font-size:22px;font-weight:700;letter-spacing:-.02em;color:#5a4e3c}
-    .site-realty .sr-stat-lbl{margin-top:4px;font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.35)}
-
-    /* ── SITE 5: Bluewater — Clean Clinical Modern ── */
-    .site-clinic{border-radius:24px;overflow:hidden;min-height:620px;background:#ffffff;color:#0f1718;font-family:Inter,sans-serif}
-    .site-clinic .sc-nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid #e8ecee}
-    .site-clinic .sc-logo{font-size:12px;font-weight:700;letter-spacing:.08em;color:#1a6e7a}
-    .site-clinic .sc-links{display:flex;gap:20px;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.38)}
-    .site-clinic .sc-hero{padding:36px 24px 20px}
-    .site-clinic .sc-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
-    .site-clinic .sc-kicker{display:inline-flex;align-items:center;gap:6px;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#1a6e7a}
-    .site-clinic .sc-kicker-dot{width:6px;height:6px;border-radius:999px;background:#1a6e7a}
-    .site-clinic .sc-title{margin-top:12px;font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.12;color:#0f1718}
-    .site-clinic .sc-copy{margin-top:12px;font-size:12px;line-height:1.75;color:rgba(0,0,0,.5)}
-    .site-clinic .sc-ctas{display:flex;gap:10px;margin-top:16px}
-    .site-clinic .sc-btn-teal{padding:10px 20px;border-radius:10px;background:#1a6e7a;color:#fff;font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase}
-    .site-clinic .sc-btn-ghost{padding:10px 20px;border-radius:10px;border:1px solid #d4dde0;color:#0f1718;font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase}
-    .site-clinic .sc-hero-visual{border-radius:18px;min-height:180px;background:linear-gradient(135deg,#e0f2f4,#b8dce2);position:relative;overflow:hidden}
-    .site-clinic .sc-hero-visual::before{content:"";position:absolute;inset:0;background:
-      radial-gradient(circle at 50% 50%, rgba(26,110,122,.12), transparent 50%);
-    }
-    .site-clinic .sc-hero-visual::after{content:"+ + +";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:36px;letter-spacing:16px;color:rgba(26,110,122,.18);font-weight:300}
-    .site-clinic .sc-services{padding:0 24px 16px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-    .site-clinic .sc-svc{border:1px solid #e8ecee;border-radius:12px;padding:16px;background:#f8fafb}
-    .site-clinic .sc-svc-bar{height:4px;border-radius:2px;background:#1a6e7a;margin-bottom:10px;width:30px}
-    .site-clinic .sc-svc-name{font-size:12px;font-weight:700;letter-spacing:-.01em}
-    .site-clinic .sc-svc-desc{margin-top:6px;font-size:10px;line-height:1.6;color:rgba(0,0,0,.45)}
-    .site-clinic .sc-metrics{margin:0 24px 16px;border:1px solid #e8ecee;border-radius:14px;padding:16px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;background:#f8fafb}
-    .site-clinic .sc-met-num{font-size:20px;font-weight:700;letter-spacing:-.02em;color:#1a6e7a}
-    .site-clinic .sc-met-lbl{margin-top:3px;font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.35)}
-    .site-clinic .sc-trust{margin:0 24px 24px;border:1px solid #e8ecee;border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:14px;background:#f8fafb}
-    .site-clinic .sc-trust-badge{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#1a6e7a,#2a9eae);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:700;flex-shrink:0}
-    .site-clinic .sc-trust-text{font-size:12px;line-height:1.6;color:rgba(0,0,0,.55)}
-    .site-clinic .sc-trust-text strong{color:#0f1718}
+    /* ── SITE 3: Atlas Venture Group — Deep Tech / Data ── */
+    .site-atlas{border-radius:24px;overflow:hidden;min-height:620px;background:#060a12;color:#c8d0e0;font-family:Inter,sans-serif;position:relative}
+    .site-atlas::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(59,130,246,.04),transparent 60%);pointer-events:none}
+    .site-atlas .sa2-nav{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;position:relative;z-index:1;border-bottom:1px solid rgba(255,255,255,.04)}
+    .site-atlas .sa2-logo{display:flex;align-items:center;gap:10px}
+    .site-atlas .sa2-logo svg{width:22px;height:22px}
+    .site-atlas .sa2-logo-text{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(200,208,224,.7)}
+    .site-atlas .sa2-links{display:flex;gap:22px;font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+    .site-atlas .sa2-hero{padding:36px 28px 20px;position:relative;z-index:1}
+    .site-atlas .sa2-hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center}
+    .site-atlas .sa2-badge{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border-radius:999px;border:1px solid rgba(59,130,246,.15);background:rgba(59,130,246,.05);font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(59,130,246,.7)}
+    .site-atlas .sa2-badge-dot{width:5px;height:5px;border-radius:999px;background:#3b82f6;box-shadow:0 0 8px rgba(59,130,246,.4)}
+    .site-atlas .sa2-title{margin-top:16px;font-size:28px;font-weight:700;letter-spacing:-.04em;line-height:1.12;color:#e4e8f0}
+    .site-atlas .sa2-copy{margin-top:12px;font-size:12px;line-height:1.8;color:rgba(255,255,255,.35)}
+    .site-atlas .sa2-cta{margin-top:18px;display:inline-flex;padding:11px 24px;border-radius:10px;background:linear-gradient(135deg,#2563eb,#1d4ed8);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;box-shadow:0 4px 20px rgba(37,99,235,.25)}
+    .site-atlas .sa2-visual{border-radius:16px;min-height:200px;background:#0a0f1c;border:1px solid rgba(59,130,246,.08);position:relative;overflow:hidden}
+    .site-atlas .sa2-visual::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 29px,rgba(59,130,246,.03) 29px,rgba(59,130,246,.03) 30px),repeating-linear-gradient(90deg,transparent,transparent 29px,rgba(59,130,246,.03) 29px,rgba(59,130,246,.03) 30px)}
+    .site-atlas .sa2-visual::after{content:"";position:absolute;top:50%;left:50%;width:100px;height:100px;transform:translate(-50%,-50%);border:1px solid rgba(59,130,246,.1);border-radius:999px}
+    .site-atlas .sa2-visual-dot{position:absolute;width:6px;height:6px;border-radius:999px;background:rgba(59,130,246,.3)}
+    .site-atlas .sa2-cards{padding:0 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .site-atlas .sa2-card{border:1px solid rgba(255,255,255,.04);border-radius:14px;padding:18px;background:rgba(255,255,255,.015);position:relative;overflow:hidden}
+    .site-atlas .sa2-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(59,130,246,.2),transparent)}
+    .site-atlas .sa2-card-num{font-size:22px;font-weight:700;letter-spacing:-.02em;color:rgba(59,130,246,.6)}
+    .site-atlas .sa2-card-lbl{margin-top:4px;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+    .site-atlas .sa2-card-desc{margin-top:8px;font-size:10px;line-height:1.6;color:rgba(255,255,255,.3)}
+    .site-atlas .sa2-bottom{padding:14px 28px 28px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .site-atlas .sa2-bottom-card{border:1px solid rgba(255,255,255,.04);border-radius:14px;padding:16px 18px;background:rgba(255,255,255,.015);display:flex;align-items:center;gap:14px}
+    .site-atlas .sa2-bottom-icon{width:34px;height:34px;border-radius:10px;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .site-atlas .sa2-bottom-icon svg{width:16px;height:16px}
+    .site-atlas .sa2-bottom-title{font-size:11px;font-weight:700;letter-spacing:-.01em;color:rgba(255,255,255,.7)}
+    .site-atlas .sa2-bottom-sub{margin-top:2px;font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.04em}
 
     /* ─── WHO WE HELP ─── */
     .sector-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
@@ -562,179 +520,113 @@
     <div class="container">
       <div class="work-intro">
         <div class="eyebrow">Our Work</div>
-        <h2>Five industries. Five completely different presentations.</h2>
+        <h2>Three industries. Three completely unique identities.</h2>
         <p class="lead">Every project below was built from scratch with a unique design language tailored to the industry, audience, and brand positioning. No templates. No recycled layouts.</p>
       </div>
-
       <div class="work-grid">
 
-        <!-- ── 1. HARBOR RIDGE — Dark Finance ── -->
+        <!-- ── 1. OBSIDIAN & CO — Ultra-Dark Luxury Real Estate ── -->
         <div class="portfolio">
           <div class="portfolio-grid">
             <div class="screen">
               <div class="browser-bar"><div class="dots"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div></div><div class="url-bar"></div></div>
               <div style="padding:4px;background:#0f1114">
-                <div class="site-harbor">
-                  <div class="sh-nav"><div class="sh-logo">Harbor Ridge Capital</div><div class="sh-links"><span>Services</span><span>Insights</span><span>Contact</span></div></div>
-                  <div class="sh-hero">
-                    <div>
-                      <div class="sh-kicker">Private Wealth Advisory</div>
-                      <div class="sh-title">Advisory built around clarity, discipline, and long-term confidence.</div>
-                      <div class="sh-copy">Luxury-style financial presence designed to feel private, credible, and established from the first glance.</div>
-                      <div class="sh-cta">Schedule Consultation</div>
+                <div class="site-obsidian">
+                  <div class="so-nav">
+                    <div class="so-logo">
+                      <svg viewBox="0 0 28 28" fill="none"><rect x="2" y="2" width="24" height="24" rx="2" stroke="rgba(199,165,106,.4)" stroke-width="1.5"/><path d="M8 8h12v12H8z" fill="rgba(199,165,106,.15)"/><path d="M14 8v12M8 14h12" stroke="rgba(199,165,106,.3)" stroke-width="1"/></svg>
+                      <span class="so-logo-text">Obsidian & Co</span>
                     </div>
-                    <div class="sh-visual"></div>
+                    <div class="so-links"><span>Portfolio</span><span>Advisory</span><span>Private</span></div>
                   </div>
-                  <div class="sh-stats">
-                    <div class="sh-stat"><div class="sh-stat-num">$100M+</div><div class="sh-stat-lbl">Client Focus</div></div>
-                    <div class="sh-stat"><div class="sh-stat-num">Private</div><div class="sh-stat-lbl">Experience</div></div>
-                    <div class="sh-stat"><div class="sh-stat-num">Long-Term</div><div class="sh-stat-lbl">Planning</div></div>
+                  <div class="so-hero">
+                    <div class="so-hero-grid">
+                      <div>
+                        <div class="so-tag">Private Real Estate Collective</div>
+                        <div class="so-title">Curated properties for the discerning few.</div>
+                        <div class="so-copy">Ultra-private luxury brokerage connecting select buyers with extraordinary estates across the Eastern seaboard.</div>
+                        <div class="so-cta">Request Private Access →</div>
+                      </div>
+                      <div class="so-visual"><span class="so-visual-label">Featured Estate</span></div>
+                    </div>
                   </div>
-                  <div class="sh-cols">
-                    <div class="sh-card">
-                      <div class="sh-card-title">Positioning</div>
-                      <div class="sh-card-head">Structured to create trust immediately.</div>
-                      <div class="sh-card-copy">Designed to feel like a private advisory firm with tighter messaging and stronger authority.</div>
-                    </div>
-                    <div class="sh-chart">
-                      <div class="sh-card-title">Client Journey</div>
-                      <svg viewBox="0 0 200 100" fill="none"><path d="M5 85 C30 82,40 70,65 58 C90 46,100 50,130 35 C155 22,170 18,195 8" stroke="#3a6a9c" stroke-width="3" stroke-linecap="round" opacity=".7"/><path d="M5 90 C35 88,50 78,80 68 C110 58,125 55,155 42 C175 33,185 28,195 22" stroke="#1a3a5c" stroke-width="2.5" stroke-linecap="round" opacity=".4"/></svg>
-                    </div>
+                  <div class="so-featured">
+                    <div class="so-prop"><div class="so-prop-price">$12.8M</div><div class="so-prop-addr">9 Lighthouse Point</div><div class="so-prop-specs">7 Bed · 9 Bath · 11,200 sqft</div></div>
+                    <div class="so-prop"><div class="so-prop-price">$8.4M</div><div class="so-prop-addr">The Ridgeline Estate</div><div class="so-prop-specs">5 Bed · 6 Bath · 8,600 sqft</div></div>
+                    <div class="so-prop"><div class="so-prop-price">$6.2M</div><div class="so-prop-addr">44 Harbour Walk</div><div class="so-prop-specs">4 Bed · 5 Bath · 6,100 sqft</div></div>
+                  </div>
+                  <div class="so-bottom">
+                    <div class="so-metric"><div class="so-metric-num">$2.1B</div><div class="so-metric-lbl">Lifetime Sales</div></div>
+                    <div class="so-divider"></div>
+                    <div class="so-metric"><div class="so-metric-num">340+</div><div class="so-metric-lbl">Estates Closed</div></div>
+                    <div class="so-divider"></div>
+                    <div class="so-metric"><div class="so-metric-num">Private</div><div class="so-metric-lbl">By Invitation</div></div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="meta">
-              <div class="work-cat">Wealth Management</div>
-              <h3>Harbor Ridge Capital</h3>
-              <p>A dark-mode financial presence built to feel institutional, private, and commanding — designed for high-net-worth prospects who expect substance over flash.</p>
-              <div class="tags"><span class="chip">Dark Mode UI</span><span class="chip">Institutional Feel</span><span class="chip">Trust Architecture</span></div>
-              <div class="impact">
-                <div class="impact-item"><strong>How we helped:</strong> Repositioned the business online to feel more established, exclusive, and polished to affluent prospects.</div>
-                <div class="impact-item"><strong>AI integration:</strong> Automated lead follow-up, pipeline movement, and inquiry responses so the team focuses on high-value conversations.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ── 2. AURUM — Warm Editorial ── -->
-        <div class="portfolio reverse">
-          <div class="portfolio-grid">
-            <div class="meta">
-              <div class="work-cat">Medical Aesthetics</div>
-              <h3>Aurum Aesthetics</h3>
-              <p>A warm, editorial luxury experience that elevates the brand above every competitor in the space — centered design, gold accents, and a premium booking flow.</p>
-              <div class="tags"><span class="chip">Editorial Luxury</span><span class="chip">Centered Layout</span><span class="chip">Service Showcase</span></div>
-              <div class="impact">
-                <div class="impact-item"><strong>How we helped:</strong> Transformed a standard small-business aesthetic into an upscale editorial presentation that supports premium pricing.</div>
-                <div class="impact-item"><strong>AI integration:</strong> Fast inquiry responses, automated follow-up, and consultation booking support that converts interest into appointments.</div>
-              </div>
-            </div>
-            <div class="screen">
-              <div class="browser-bar"><div class="dots"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div></div><div class="url-bar"></div></div>
-              <div style="padding:4px;background:#0f1114">
-                <div class="site-aurum">
-                  <div class="sa-nav"><div class="sa-logo">Aurum Aesthetics</div><div class="sa-links"><span>Treatments</span><span>Results</span><span>Book</span></div></div>
-                  <div class="sa-hero">
-                    <div class="sa-kicker">Luxury Medical Aesthetics</div>
-                    <div class="sa-title">Refined aesthetic care designed around confidence and detail.</div>
-                    <div class="sa-copy">An elevated visual experience built to feel more expensive, more intentional, and more worthy of premium clientele.</div>
-                    <div class="sa-ctas"><div class="sa-btn-dark">Book Consultation</div><div class="sa-btn-light">View Treatments</div></div>
-                  </div>
-                  <div class="sa-banner"></div>
-                  <div class="sa-services">
-                    <div class="sa-svc"><div class="sa-svc-icon">✦</div><div class="sa-svc-name">Facial Sculpting</div><div class="sa-svc-sub">Non-invasive contouring</div></div>
-                    <div class="sa-svc"><div class="sa-svc-icon">◇</div><div class="sa-svc-name">Skin Revival</div><div class="sa-svc-sub">Advanced rejuvenation</div></div>
-                    <div class="sa-svc"><div class="sa-svc-icon">○</div><div class="sa-svc-name">Body Wellness</div><div class="sa-svc-sub">Holistic treatments</div></div>
-                  </div>
-                  <div class="sa-trust">
-                    <div class="sa-trust-stars">★★★★★</div>
-                    <div class="sa-trust-text"><strong>4.9 average</strong> from 200+ verified patient reviews</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ── 3. NORTHFIELD — Slate Authority ── -->
-        <div class="portfolio">
-          <div class="portfolio-grid">
-            <div class="screen">
-              <div class="browser-bar"><div class="dots"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div></div><div class="url-bar"></div></div>
-              <div style="padding:4px;background:#0f1114">
-                <div class="site-legal">
-                  <div class="sl-nav"><div class="sl-logo">Northfield Legal Group</div><div class="sl-links"><span>Practice Areas</span><span>Attorneys</span><span>Contact</span></div></div>
-                  <div class="sl-topbar"><div class="sl-topbar-text">Confidential Case Evaluations Available</div><div class="sl-topbar-cta">Request Review →</div></div>
-                  <div class="sl-hero">
-                    <div>
-                      <div class="sl-kicker">Professional Legal Services</div>
-                      <div class="sl-title">Serious representation. Presented with authority.</div>
-                      <div class="sl-copy">A firmer, more established digital presence designed to make contacting the office simpler and more immediate.</div>
-                      <div class="sl-cta">Request Case Review</div>
-                    </div>
-                    <div class="sl-sidebar">
-                      <div class="sl-side-card"><div class="sl-side-label">Experience</div><div class="sl-side-val">25+ Years</div></div>
-                      <div class="sl-side-card"><div class="sl-side-label">Cases Won</div><div class="sl-side-val">1,200+</div></div>
-                      <div class="sl-side-card"><div class="sl-side-label">Practice Areas</div><div class="sl-side-val">6 Specialties</div></div>
-                    </div>
-                  </div>
-                  <div class="sl-areas">
-                    <div class="sl-area"><div class="sl-area-name">Business Litigation</div><div class="sl-area-desc">Contract disputes and commercial claims</div></div>
-                    <div class="sl-area"><div class="sl-area-name">Estate Planning</div><div class="sl-area-desc">Trusts, wills, and asset protection</div></div>
-                    <div class="sl-area"><div class="sl-area-name">Real Estate Law</div><div class="sl-area-desc">Transactions and zoning matters</div></div>
-                    <div class="sl-area"><div class="sl-area-name">Corporate Advisory</div><div class="sl-area-desc">Formation, compliance, M&A support</div></div>
-                  </div>
-                  <div class="sl-bar"><div class="sl-bar-text">Schedule your confidential consultation</div><div class="sl-bar-cta">Get Started →</div></div>
-                </div>
-              </div>
-            </div>
-            <div class="meta">
-              <div class="work-cat">Professional Services</div>
-              <h3>Northfield Legal Group</h3>
-              <p>A dark-header, slate-body law firm site with sidebar stats, practice area cards, and a document-style authority that commands immediate credibility.</p>
-              <div class="tags"><span class="chip">Dark Header</span><span class="chip">Sidebar Stats</span><span class="chip">Practice Grid</span></div>
-              <div class="impact">
-                <div class="impact-item"><strong>How we helped:</strong> Reworked the firm's presentation from basic to institutional — structured, authoritative, no wasted space.</div>
-                <div class="impact-item"><strong>AI integration:</strong> Intake follow-up, response support, and communication flow that makes the firm appear more responsive and professional.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ── 4. STONEGATE — Earth-Tone Real Estate ── -->
-        <div class="portfolio reverse">
-          <div class="portfolio-grid">
             <div class="meta">
               <div class="work-cat">Luxury Real Estate</div>
-              <h3>Stonegate Estates</h3>
-              <p>A property-forward presentation with featured listing hero, thumbnail gallery, and earth-tone palette that makes every listing feel aspirational and high-end.</p>
-              <div class="tags"><span class="chip">Property Hero</span><span class="chip">Listing Gallery</span><span class="chip">Aspirational Design</span></div>
+              <h3>Obsidian & Co</h3>
+              <p>An ultra-dark, invitation-only luxury brokerage site with gold accents, property cards, and a visual hierarchy that whispers exclusivity — designed to make $10M+ listings feel like the baseline.</p>
+              <div class="tags"><span class="chip">Ultra-Dark Luxury</span><span class="chip">SVG Logo System</span><span class="chip">Property Cards</span></div>
               <div class="impact">
-                <div class="impact-item"><strong>How we helped:</strong> Made the brand feel far more premium so listings, inquiries, and agent presentation all match the luxury market.</div>
-                <div class="impact-item"><strong>AI integration:</strong> Automated lead response, buyer/seller inquiry support, and organized handoff so no prospect falls through the cracks.</div>
+                <div class="impact-item"><strong>How we helped:</strong> Completely repositioned the brokerage from standard MLS-driven to a private, curated experience that attracts ultra-high-net-worth buyers.</div>
+                <div class="impact-item"><strong>AI integration:</strong> Automated inquiry qualification, private showing coordination, and buyer matching — every lead gets a white-glove digital response in under 60 seconds.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── 2. SOLARA HEALTH — Clean Emerald Wellness ── -->
+        <div class="portfolio reverse">
+          <div class="portfolio-grid">
+            <div class="meta">
+              <div class="work-cat">Modern Healthcare</div>
+              <h3>Solara Health</h3>
+              <p>A pristine white-and-emerald wellness platform with vertical accent bars, rounded service cards, and a calming color system that builds trust before a single word is read.</p>
+              <div class="tags"><span class="chip">Clean Modern</span><span class="chip">Emerald Accents</span><span class="chip">Trust Architecture</span></div>
+              <div class="impact">
+                <div class="impact-item"><strong>How we helped:</strong> Transformed a dated clinical website into a modern wellness brand that converts visitors into booked appointments at nearly 3x the previous rate.</div>
+                <div class="impact-item"><strong>AI integration:</strong> Patient intake automation, appointment reminders, and 24/7 inquiry response that keeps the front desk focused on in-person care.</div>
               </div>
             </div>
             <div class="screen">
               <div class="browser-bar"><div class="dots"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div></div><div class="url-bar"></div></div>
               <div style="padding:4px;background:#0f1114">
-                <div class="site-realty">
-                  <div class="sr-nav"><div class="sr-logo">Stonegate Estates</div><div class="sr-links"><span>Listings</span><span>Advisory</span><span>Contact</span></div></div>
-                  <div class="sr-featured">
-                    <div class="sr-featured-overlay">
-                      <div class="sr-featured-tag">Featured Listing</div>
-                      <div class="sr-featured-title">14 Coastal Ridge Drive</div>
-                      <div class="sr-featured-meta">5 Bed · 4 Bath · 6,200 sq ft · $4.2M</div>
+                <div class="site-solara">
+                  <div class="ss-nav">
+                    <div class="ss-logo">
+                      <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#1a5237" stroke-width="1.5"/><circle cx="12" cy="12" r="5" fill="rgba(45,138,86,.15)" stroke="#2d8a56" stroke-width="1"/><circle cx="12" cy="5" r="1.5" fill="#2d8a56"/><circle cx="12" cy="19" r="1.5" fill="#2d8a56"/><circle cx="5" cy="12" r="1.5" fill="#2d8a56"/><circle cx="19" cy="12" r="1.5" fill="#2d8a56"/></svg>
+                      <span class="ss-logo-text">Solara Health</span>
+                    </div>
+                    <div class="ss-links"><span>Services</span><span>Providers</span><span>Book</span></div>
+                  </div>
+                  <div class="ss-hero">
+                    <div class="ss-hero-grid">
+                      <div>
+                        <div class="ss-kicker"><span class="ss-kicker-dot"></span> Integrative Wellness</div>
+                        <div class="ss-title">Healthcare redesigned around the way you actually live.</div>
+                        <div class="ss-copy">Modern primary and integrative care with same-day appointments, transparent pricing, and providers who listen.</div>
+                        <div class="ss-ctas"><div class="ss-btn-green">Book Today</div><div class="ss-btn-outline">Our Approach</div></div>
+                      </div>
+                      <div class="ss-hero-img"></div>
                     </div>
                   </div>
-                  <div class="sr-listings">
-                    <div class="sr-listing"><div class="sr-listing-img"></div><div class="sr-listing-info"><div class="sr-listing-price">$2.8M</div><div class="sr-listing-addr">8 Harbor View Ct</div><div class="sr-listing-specs">4 Bed · 3 Bath · 4,100 sqft</div></div></div>
-                    <div class="sr-listing"><div class="sr-listing-img"></div><div class="sr-listing-info"><div class="sr-listing-price">$1.9M</div><div class="sr-listing-addr">22 Stone Mill Rd</div><div class="sr-listing-specs">3 Bed · 2 Bath · 3,200 sqft</div></div></div>
-                    <div class="sr-listing"><div class="sr-listing-img"></div><div class="sr-listing-info"><div class="sr-listing-price">$3.5M</div><div class="sr-listing-addr">5 Summit Terrace</div><div class="sr-listing-specs">5 Bed · 4 Bath · 5,800 sqft</div></div></div>
+                  <div class="ss-services">
+                    <div class="ss-svc"><div class="ss-svc-name">Primary Care</div><div class="ss-svc-desc">Annual wellness, chronic care management, and preventive health</div></div>
+                    <div class="ss-svc"><div class="ss-svc-name">Integrative Medicine</div><div class="ss-svc-desc">Functional testing, nutrition plans, and holistic protocols</div></div>
+                    <div class="ss-svc"><div class="ss-svc-name">Mental Wellness</div><div class="ss-svc-desc">Therapy, coaching, and psychiatry under one roof</div></div>
                   </div>
-                  <div class="sr-bottom">
-                    <div class="sr-stat-card"><div class="sr-stat-num">$340M+</div><div class="sr-stat-lbl">Sold Volume</div></div>
-                    <div class="sr-stat-card"><div class="sr-stat-num">12 Days</div><div class="sr-stat-lbl">Avg. Time to Offer</div></div>
+                  <div class="ss-stats">
+                    <div class="ss-stat"><div class="ss-stat-num">18K+</div><div class="ss-stat-lbl">Patients</div></div>
+                    <div class="ss-stat"><div class="ss-stat-num">Same Day</div><div class="ss-stat-lbl">Available</div></div>
+                    <div class="ss-stat"><div class="ss-stat-num">4.9★</div><div class="ss-stat-lbl">Rating</div></div>
+                    <div class="ss-stat"><div class="ss-stat-num">12 Min</div><div class="ss-stat-lbl">Avg Wait</div></div>
+                  </div>
+                  <div class="ss-trust">
+                    <div class="ss-trust-icon">✓</div>
+                    <div class="ss-trust-text"><strong>Board-certified physicians</strong> with 45+ years of combined experience across primary, integrative, and mental health care</div>
                   </div>
                 </div>
               </div>
@@ -742,50 +634,62 @@
           </div>
         </div>
 
-        <!-- ── 5. BLUEWATER — Clean Clinical ── -->
+        <!-- ── 3. ATLAS VENTURE GROUP — Deep Tech / Data ── -->
         <div class="portfolio">
           <div class="portfolio-grid">
             <div class="screen">
               <div class="browser-bar"><div class="dots"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div></div><div class="url-bar"></div></div>
               <div style="padding:4px;background:#0f1114">
-                <div class="site-clinic">
-                  <div class="sc-nav"><div class="sc-logo">Bluewater Wellness</div><div class="sc-links"><span>Care</span><span>Team</span><span>Book</span></div></div>
-                  <div class="sc-hero">
-                    <div class="sc-hero-inner">
+                <div class="site-atlas">
+                  <div class="sa2-nav">
+                    <div class="sa2-logo">
+                      <svg viewBox="0 0 22 22" fill="none"><polygon points="11,2 20,18 2,18" stroke="rgba(59,130,246,.5)" stroke-width="1.5" fill="rgba(59,130,246,.06)"/><polygon points="11,7 16,16 6,16" stroke="rgba(59,130,246,.3)" stroke-width="1" fill="none"/></svg>
+                      <span class="sa2-logo-text">Atlas Venture Group</span>
+                    </div>
+                    <div class="sa2-links"><span>Portfolio</span><span>Thesis</span><span>Apply</span></div>
+                  </div>
+                  <div class="sa2-hero">
+                    <div class="sa2-hero-grid">
                       <div>
-                        <div class="sc-kicker"><div class="sc-kicker-dot"></div> Private Wellness Clinic</div>
-                        <div class="sc-title">Modern care presented with clarity, calm, and confidence.</div>
-                        <div class="sc-copy">A clinical, modern brand presentation designed to feel organized, reassuring, and significantly more polished.</div>
-                        <div class="sc-ctas"><div class="sc-btn-teal">Book Visit</div><div class="sc-btn-ghost">Meet The Team</div></div>
+                        <div class="sa2-badge"><span class="sa2-badge-dot"></span> Early-Stage Deep Tech</div>
+                        <div class="sa2-title">Backing the founders rewriting the infrastructure layer.</div>
+                        <div class="sa2-copy">Seed to Series A capital for teams building at the intersection of AI, developer tooling, and enterprise infrastructure.</div>
+                        <div class="sa2-cta">Submit Your Deck</div>
                       </div>
-                      <div class="sc-hero-visual"></div>
+                      <div class="sa2-visual">
+                        <div class="sa2-visual-dot" style="top:20%;left:30%"></div>
+                        <div class="sa2-visual-dot" style="top:60%;left:70%"></div>
+                        <div class="sa2-visual-dot" style="top:40%;left:50%"></div>
+                        <div class="sa2-visual-dot" style="top:75%;left:25%"></div>
+                      </div>
                     </div>
                   </div>
-                  <div class="sc-services">
-                    <div class="sc-svc"><div class="sc-svc-bar"></div><div class="sc-svc-name">Primary Care</div><div class="sc-svc-desc">Annual exams & preventive health</div></div>
-                    <div class="sc-svc"><div class="sc-svc-bar"></div><div class="sc-svc-name">Integrative</div><div class="sc-svc-desc">Functional & holistic approaches</div></div>
-                    <div class="sc-svc"><div class="sc-svc-bar"></div><div class="sc-svc-name">Lab & Diagnostics</div><div class="sc-svc-desc">On-site testing & results</div></div>
+                  <div class="sa2-cards">
+                    <div class="sa2-card"><div class="sa2-card-num">$420M</div><div class="sa2-card-lbl">Fund III</div><div class="sa2-card-desc">Deployed across 34 portfolio companies</div></div>
+                    <div class="sa2-card"><div class="sa2-card-num">6</div><div class="sa2-card-lbl">Unicorns</div><div class="sa2-card-desc">$1B+ valuations from our portfolio</div></div>
+                    <div class="sa2-card"><div class="sa2-card-num">89%</div><div class="sa2-card-lbl">Follow-On</div><div class="sa2-card-desc">Companies that raised subsequent rounds</div></div>
                   </div>
-                  <div class="sc-metrics">
-                    <div><div class="sc-met-num">15K+</div><div class="sc-met-lbl">Patients</div></div>
-                    <div><div class="sc-met-num">Same Day</div><div class="sc-met-lbl">Appointments</div></div>
-                    <div><div class="sc-met-num">4.9★</div><div class="sc-met-lbl">Rating</div></div>
-                  </div>
-                  <div class="sc-trust">
-                    <div class="sc-trust-badge">✓</div>
-                    <div class="sc-trust-text"><strong>Board-certified physicians</strong> with 20+ years of combined clinical experience</div>
+                  <div class="sa2-bottom">
+                    <div class="sa2-bottom-card">
+                      <div class="sa2-bottom-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M2 14V6l6-4 6 4v8" stroke="rgba(59,130,246,.5)" stroke-width="1.2"/><rect x="6" y="9" width="4" height="5" stroke="rgba(59,130,246,.3)" stroke-width="1"/></svg></div>
+                      <div><div class="sa2-bottom-title">Infrastructure & DevTools</div><div class="sa2-bottom-sub">Primary thesis focus area</div></div>
+                    </div>
+                    <div class="sa2-bottom-card">
+                      <div class="sa2-bottom-icon"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="rgba(59,130,246,.5)" stroke-width="1.2"/><path d="M8 4v4l3 2" stroke="rgba(59,130,246,.3)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+                      <div><div class="sa2-bottom-title">AI & Machine Learning</div><div class="sa2-bottom-sub">Applied intelligence layer</div></div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="meta">
-              <div class="work-cat">Private Healthcare</div>
-              <h3>Bluewater Wellness Clinic</h3>
-              <p>A white-background clinical site with teal accents, service cards with color bars, metrics strip, and trust badge — clean, modern, and immediately credible.</p>
-              <div class="tags"><span class="chip">White + Teal</span><span class="chip">Service Cards</span><span class="chip">Trust Signals</span></div>
+              <div class="work-cat">Venture Capital</div>
+              <h3>Atlas Venture Group</h3>
+              <p>A data-driven deep tech VC site with grid backgrounds, glowing accents, portfolio metrics, and an interface that feels more like a Bloomberg terminal than a marketing page.</p>
+              <div class="tags"><span class="chip">Data-Driven Dark</span><span class="chip">Grid System</span><span class="chip">Portfolio Metrics</span></div>
               <div class="impact">
-                <div class="impact-item"><strong>How we helped:</strong> Created a reassuring, premium digital presence so prospective patients feel confident before making contact.</div>
-                <div class="impact-item"><strong>AI integration:</strong> Patient inquiry responses, routine communication support, and admin task reduction that keeps the front desk from being overloaded.</div>
+                <div class="impact-item"><strong>How we helped:</strong> Built a digital presence that matches the firm's technical thesis — founders visiting the site immediately understand this is a fund that gets deep tech.</div>
+                <div class="impact-item"><strong>AI integration:</strong> Automated deck intake, founder communication flow, and portfolio company updates — the partners spend time on deals, not admin.</div>
               </div>
             </div>
           </div>
