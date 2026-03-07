@@ -48,7 +48,12 @@
     .container{max-width:1320px;margin:0 auto;padding:0 28px}
     .header{position:sticky;top:0;z-index:10;background:rgba(7,7,8,.84);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
     .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:18px}
-    .brand{font-size:17px;font-weight:600;letter-spacing:.18em}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-icon{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;width:fit-content}
+    .brand-icon .d{width:6px;height:6px;background:#fff;transform:rotate(45deg);border-radius:1px}
+    .brand-text{display:flex;flex-direction:column}
+    .brand-name{font-size:15px;font-weight:800;letter-spacing:.18em}
+    .brand-sub{font-size:7px;font-weight:400;letter-spacing:.32em;color:#D4A853;margin-top:1px}
     .domain{margin-top:4px;font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted2)}
     .nav{display:flex;align-items:center;gap:30px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.62)}
     .nav a:hover{color:#fff}
@@ -320,7 +325,12 @@
     /* ─── FOOTER ─── */
     .footer{border-top:1px solid var(--line);background:var(--bg);padding:56px 0 32px}
     .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px}
-    .footer-brand{font-size:15px;font-weight:600;letter-spacing:.16em}
+    .footer-brand{display:flex;align-items:center;gap:12px}
+    .footer-brand .brand-icon{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;width:fit-content}
+    .footer-brand .brand-icon .d{width:6px;height:6px;background:#fff;transform:rotate(45deg);border-radius:1px}
+    .footer-brand .brand-text{display:flex;flex-direction:column}
+    .footer-brand .brand-name{font-size:15px;font-weight:800;letter-spacing:.16em}
+    .footer-brand .brand-sub{font-size:7px;font-weight:400;letter-spacing:.28em;color:#D4A853;margin-top:1px}
     .footer-desc{margin-top:12px;font-size:13px;line-height:1.7;color:rgba(255,255,255,.4)}
     .footer-col-title{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:16px}
     .footer-links{list-style:none;padding:0;margin:0;display:grid;gap:10px}
@@ -420,7 +430,10 @@
   <header class="header">
     <div class="container nav-wrap">
       <div>
-        <div class="brand">MAINSTAY DIGITAL</div>
+        <div class="brand">
+          <div class="brand-icon"><div></div><div class="d"></div><div class="d"></div><div></div><div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div><div></div><div class="d"></div><div class="d"></div><div></div></div>
+          <div class="brand-text"><span class="brand-name">MAINSTAY</span><span class="brand-sub">DIGITAL</span></div>
+        </div>
         <div class="domain">mainstayhq.com</div>
       </div>
       <nav class="nav">
@@ -1124,7 +1137,10 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="footer-brand">MAINSTAY DIGITAL</div>
+          <div class="footer-brand">
+            <div class="brand-icon"><div></div><div class="d"></div><div class="d"></div><div></div><div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div><div></div><div class="d"></div><div class="d"></div><div></div></div>
+            <div class="brand-text"><span class="brand-name">MAINSTAY</span><span class="brand-sub">DIGITAL</span></div>
+          </div>
           <p class="footer-desc">Ultra-premium websites and AI business management for companies that demand a higher standard online.</p>
         </div>
         <div>
