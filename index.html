@@ -84,6 +84,7 @@
     h1{margin:28px 0 0;max-width:1040px;font-size:74px;line-height:1.01;letter-spacing:-.058em;font-weight:600}
     h1 .accent{background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .hero p{margin:30px 0 0;max-width:790px;font-size:21px;line-height:1.85;color:var(--muted)}
+    .hero-sub{margin:20px 0 0;font-size:18px;line-height:1.7;color:var(--muted);letter-spacing:.01em}
     .actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:34px}
     .stats{margin-top:72px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;border-top:1px solid var(--line);padding-top:36px}
     .stat-num{font-size:44px;font-weight:600;letter-spacing:-.05em}
@@ -139,6 +140,8 @@
     .ai-hw-list li{font-size:15px;line-height:1.75;color:rgba(255,255,255,.78);padding-left:24px;position:relative}
     .ai-hw-list li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700}
     @media(max-width:980px){
+      .hero-inner{padding:80px 0 80px}
+      h1{font-size:52px}
       .ai-steps{grid-template-columns:1fr}
       .usecase-grid{grid-template-columns:1fr}
       .ai-hardware{grid-template-columns:1fr}
@@ -421,14 +424,17 @@
       .nav-wrap{padding:16px 0}
       h1{font-size:34px;letter-spacing:-.04em}
       h2{font-size:28px}
-      .hero-inner,section{padding:60px 0}
+      .hero-inner{padding:48px 0 56px}
+      section{padding:60px 0}
       .hero p,.lead{font-size:16px}
+      .hero-sub{font-size:15px;margin:14px 0 0}
+      .pill{display:none}
+      .hero-secondary{display:none}
       .btn{width:100%;padding:14px 24px;font-size:10px}
-      .actions{flex-direction:column}
-      .pill{font-size:9px;padding:8px 12px;text-align:center}
+      .actions{flex-direction:column;margin-top:26px}
       .stat-num{font-size:32px}
       .stat-label{font-size:9px}
-      .stats{gap:20px}
+      .stats{gap:20px;margin-top:48px}
       .card h3{font-size:24px}
       .card p{font-size:15px}
       .card{padding:28px 22px}
@@ -521,12 +527,12 @@
   <section class="hero">
     <div class="hero-grid-bg"></div>
     <div class="container hero-inner">
-      <div class="pill">Websites · AI Business Management · Digital Support</div>
-      <h1>We build websites and systems that make businesses look <span class="accent">significantly more premium.</span></h1>
-      <p>Mainstay Digital creates ultra-polished websites and smart business systems for companies that want stronger first impressions, better follow-up, and a more seamless operation behind the scenes.</p>
+      <div class="pill">Websites · AI Systems · Digital Operations</div>
+      <h1>Websites & systems that make your business look <span class="accent">premium.</span></h1>
+      <p class="hero-sub">Ultra-polished sites. Smart automation. Seamless operations.</p>
       <div class="actions">
         <a class="btn btn-primary" href="#contact">Book a Consultation</a>
-        <a class="btn btn-secondary" href="#work">View Our Work</a>
+        <a class="btn btn-secondary hero-secondary" href="#work">View Our Work</a>
       </div>
       <div class="stats">
         <div><div class="stat-num">47+</div><div class="stat-label">Businesses Served</div></div>
