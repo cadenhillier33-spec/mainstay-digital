@@ -142,6 +142,15 @@
       .ai-steps{grid-template-columns:1fr}
       .usecase-grid{grid-template-columns:1fr}
       .ai-hardware{grid-template-columns:1fr}
+      .site-obsidian .so-hero-grid,.site-solara .ss-hero-grid,.site-atlas .sa2-hero-grid{grid-template-columns:1fr}
+      .site-obsidian .so-featured,.site-solara .ss-services,.site-atlas .sa2-cards{grid-template-columns:1fr}
+      .site-solara .ss-stats{grid-template-columns:repeat(2,1fr)}
+      .site-atlas .sa2-bottom{grid-template-columns:1fr}
+      .site-obsidian,.site-solara,.site-atlas{min-height:auto}
+      .site-obsidian .so-visual{min-height:180px}
+      .site-solara .ss-hero-img{min-height:200px}
+      .site-atlas .sa2-visual{min-height:200px}
+      .contact-grid{grid-template-columns:1fr}
     }
     /* ─── PORTFOLIO ─── */
     .work-intro{max-width:980px}
@@ -410,18 +419,71 @@
     @media (max-width: 640px){
       .container{padding:0 18px}
       .nav-wrap{padding:16px 0}
-      h1{font-size:42px}
-      h2{font-size:34px}
-      .hero-inner,section{padding:72px 0}
-      .btn{width:100%}
+      h1{font-size:34px;letter-spacing:-.04em}
+      h2{font-size:28px}
+      .hero-inner,section{padding:60px 0}
+      .hero p,.lead{font-size:16px}
+      .btn{width:100%;padding:14px 24px;font-size:10px}
       .actions{flex-direction:column}
+      .pill{font-size:9px;padding:8px 12px;text-align:center}
+      .stat-num{font-size:32px}
+      .stat-label{font-size:9px}
+      .stats{gap:20px}
+      .card h3{font-size:24px}
+      .card p{font-size:15px}
+      .card{padding:28px 22px}
       .price-top{flex-direction:column;align-items:flex-start;gap:10px}
+      .price{font-size:36px}
+      .price-title{font-size:22px}
+      .price-card{padding:28px 22px}
+      .price-card p,.price-card li{font-size:14px}
       .url-bar{width:100%}
-      .portfolio{padding:18px}
+      .portfolio{padding:14px}
+      .portfolio-grid{gap:20px}
+      .meta h3{font-size:28px}
+      .meta p{font-size:15px}
       .feature-wrap{padding:28px}
       .feature-stats{grid-template-columns:1fr}
       .f-stat-num{font-size:28px}
       .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+      .footer-grid{gap:32px}
+      /* ── Portfolio CSS art mobile fixes ── */
+      .so-hero-grid,.ss-hero-grid,.sa2-hero-grid{grid-template-columns:1fr!important}
+      .so-featured,.ss-services,.sa2-cards{grid-template-columns:1fr!important}
+      .ss-stats{grid-template-columns:repeat(2,1fr)!important}
+      .sa2-bottom{grid-template-columns:1fr!important}
+      .site-obsidian,.site-solara,.site-atlas{min-height:auto!important}
+      .so-visual{min-height:140px}
+      .ss-hero-img{min-height:160px}
+      .sa2-visual{min-height:160px}
+      .so-title,.ss-title,.sa2-title{font-size:22px}
+      .so-nav,.ss-nav,.sa2-nav{padding:14px 18px}
+      .so-hero,.ss-hero,.sa2-hero{padding:20px 18px}
+      .so-featured,.ss-services{padding:0 18px}
+      .so-bottom{margin:10px 18px 14px;padding:10px 0 0}
+      .so-metric-num{font-size:14px}
+      .so-links,.ss-links,.sa2-links{display:none}
+      .ss-stats{padding:10px 18px}
+      .ss-trust{margin:0 18px 18px}
+      .sa2-cards{padding:0 18px}
+      .sa2-hero{padding:20px 18px 16px}
+      .sa2-bottom{padding:0 18px 18px}
+      /* ── AI section mobile ── */
+      .ai-hw-title{font-size:24px}
+      .ai-hardware{padding:28px 22px;gap:28px}
+      .ai-step h4{font-size:18px}
+      /* ── Results section mobile ── */
+      .results-big-num{font-size:44px}
+      .result-num{font-size:24px}
+      /* ── Testimonial mobile ── */
+      .testimonial-text{font-size:15px}
+      /* ── Contact form mobile ── */
+      .contact-left h2{font-size:28px}
+      /* ── FAQ mobile ── */
+      .faq-q{font-size:15px;padding:18px 20px}
+      .faq-a-inner{font-size:14px;padding:0 20px 18px}
+      /* ── Sector grid mobile ── */
+      .sector-grid{grid-template-columns:1fr!important}
     }
   </style>
 </head>
