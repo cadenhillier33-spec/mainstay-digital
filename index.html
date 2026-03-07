@@ -124,14 +124,16 @@
     .ai-intro{max-width:740px}
     .ai-intro .lead{margin-top:20px}
     .ai-steps{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-    .ai-step{border:1px solid var(--line2);border-radius:24px;padding:32px 28px;background:linear-gradient(180deg,rgba(255,255,255,.025),transparent);position:relative}
+    .ai-step{border:1px solid var(--line2);border-radius:24px;padding:32px 28px;background:linear-gradient(180deg,rgba(255,255,255,.025),transparent);position:relative;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+    .ai-step:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.3);border-color:rgba(255,255,255,.15)}
     .ai-step-num{width:36px;height:36px;border-radius:999px;background:linear-gradient(135deg,var(--gold),#a88b54);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#070708}
     .ai-step h4{margin:18px 0 0;font-size:22px;font-weight:600;letter-spacing:-.02em}
     .ai-step p{margin:12px 0 0;font-size:15px;line-height:1.85;color:var(--muted)}
     .ai-usecases{margin-top:56px}
     .ai-usecases-title{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2);margin-bottom:28px}
     .usecase-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .usecase{border:1px solid var(--line);border-radius:18px;padding:24px 26px;background:rgba(255,255,255,.02)}
+    .usecase{border:1px solid var(--line);border-radius:18px;padding:24px 26px;background:rgba(255,255,255,.02);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+    .usecase:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.3);border-color:rgba(255,255,255,.15)}
     .usecase-industry{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);margin-bottom:10px}
     .usecase-scenario{font-size:15px;line-height:1.85;color:rgba(255,255,255,.8)}
     .usecase-scenario strong{color:#fff;font-weight:600}
@@ -161,7 +163,8 @@
     /* ─── PORTFOLIO ─── */
     .work-intro{max-width:980px}
     .work-grid{margin-top:64px;display:grid;gap:42px}
-    .portfolio{border:1px solid rgba(255,255,255,.10);border-radius:38px;background:linear-gradient(180deg,#101114,#0b0c0f);padding:30px;box-shadow:var(--shadow)}
+    .portfolio{border:1px solid rgba(255,255,255,.10);border-radius:38px;background:linear-gradient(180deg,#101114,#0b0c0f);padding:30px;box-shadow:var(--shadow);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+    .portfolio:hover{transform:translateY(-8px);box-shadow:0 36px 100px rgba(0,0,0,.4);border-color:rgba(255,255,255,.18)}
     .portfolio-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:30px;align-items:center}
     .portfolio.reverse .portfolio-grid{grid-template-columns:.82fr 1.18fr}
     .meta{padding:8px 6px}
@@ -311,7 +314,8 @@
     .sector-name{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.85)}
     .sector-desc{margin-top:8px;font-size:13px;line-height:1.7;color:rgba(255,255,255,.48)}
     /* ─── WHY MAINSTAY ─── */
-    .feature-wrap{border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:34px;padding:60px;box-shadow:0 20px 80px rgba(0,0,0,.25)}
+    .feature-wrap{border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:34px;padding:60px;box-shadow:0 20px 80px rgba(0,0,0,.25);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+    .feature-wrap:hover{transform:translateY(-8px);box-shadow:0 36px 100px rgba(0,0,0,.4);border-color:rgba(255,255,255,.18)}
     .feature-stats{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
     .f-stat{text-align:center;padding:24px 16px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.03)}
     .f-stat-num{font-size:36px;font-weight:600;letter-spacing:-.04em;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -360,7 +364,8 @@
     .results-big-num{font-size:88px;font-weight:600;letter-spacing:-.06em;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
     .results-big-label{margin-top:8px;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2)}
     .results-grid{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-    .result-card{border:1px solid var(--line);border-radius:24px;padding:32px 24px;background:rgba(255,255,255,.03);text-align:center}
+    .result-card{border:1px solid var(--line);border-radius:24px;padding:32px 24px;background:rgba(255,255,255,.03);text-align:center;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+    .result-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.3);border-color:rgba(255,255,255,.15)}
     .result-num{font-size:38px;font-weight:600;letter-spacing:-.04em;color:#fff}
     .result-label{margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2)}
     .result-detail{margin-top:10px;font-size:13px;line-height:1.7;color:rgba(255,255,255,.45)}
@@ -372,7 +377,8 @@
     .results-note{margin-top:40px;text-align:center;font-size:12px;color:rgba(255,255,255,.3);font-style:italic}
     /* ─── TESTIMONIALS ─── */
     .testimonials-grid{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-    .testimonial{border:1px solid var(--line);border-radius:28px;padding:36px 28px;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent)}
+    .testimonial{border:1px solid var(--line);border-radius:28px;padding:36px 28px;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+    .testimonial:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.3);border-color:rgba(255,255,255,.15)}
     .testimonial-stars{font-size:16px;color:var(--gold);letter-spacing:4px}
     .testimonial-text{margin-top:18px;font-size:17px;line-height:1.85;color:rgba(255,255,255,.78)}
     .testimonial-author{margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
