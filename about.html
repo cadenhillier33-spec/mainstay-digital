@@ -64,11 +64,31 @@
     .btn-outline:hover{background:#fff;color:#000}
     .btn-secondary{border:1px solid rgba(255,255,255,.15);color:#fff}
     .btn-secondary:hover{background:rgba(255,255,255,.05)}
-    .hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px}
-    .hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.2s}
-    .mobile-nav{display:none;flex-direction:column;padding:0 28px 20px;gap:16px;font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7)}
-    .mobile-nav.open{display:flex}
-    .mobile-nav a:hover{color:#fff}
+    .hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;width:44px;height:44px;position:relative;z-index:101}
+    .hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s cubic-bezier(.4,0,.2,1)}
+    .hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.active span:nth-child(2){opacity:0;transform:scaleX(0)}
+    .hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .mobile-nav{position:fixed;inset:0;z-index:100;background:rgba(7,7,8,.97);backdrop-filter:blur(20px);display:flex;flex-direction:column;justify-content:center;align-items:center;opacity:0;visibility:hidden;transition:all .4s cubic-bezier(.4,0,.2,1)}
+    .mobile-nav.open{opacity:1;visibility:visible}
+    .mobile-nav-label{font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+    .mobile-nav-sub{font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:32px}
+    .mobile-nav-divider{width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin-bottom:36px}
+    .mobile-nav-links{display:flex;flex-direction:column;gap:6px;width:100%;max-width:340px;padding:0 28px}
+    .mobile-nav-links a{display:flex;align-items:center;gap:16px;padding:16px 20px;border:1px solid rgba(255,255,255,.06);border-radius:14px;background:rgba(255,255,255,.02);color:rgba(255,255,255,.75);font-size:14px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:all .25s ease;transform:translateY(20px);opacity:0}
+    .mobile-nav.open .mobile-nav-links a{transform:translateY(0);opacity:1}
+    .mobile-nav-links a:nth-child(1){transition-delay:.05s}
+    .mobile-nav-links a:nth-child(2){transition-delay:.08s}
+    .mobile-nav-links a:nth-child(3){transition-delay:.11s}
+    .mobile-nav-links a:nth-child(4){transition-delay:.14s}
+    .mobile-nav-links a:nth-child(5){transition-delay:.17s}
+    .mobile-nav-links a:nth-child(6){transition-delay:.20s}
+    .mobile-nav-links a:nth-child(7){transition-delay:.23s}
+    .mobile-nav-links a:hover,.mobile-nav-links a:active{background:rgba(255,255,255,.06);border-color:rgba(199,165,106,.25);color:#fff}
+    .mobile-nav-num{font-size:11px;font-weight:700;color:var(--gold);opacity:.5;min-width:24px;font-variant-numeric:tabular-nums}
+    .mobile-nav-cta{margin-top:32px;display:inline-flex;align-items:center;justify-content:center;padding:16px 40px;border-radius:999px;background:linear-gradient(135deg,var(--gold),#a88c55);color:#0a0a0a;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:.2s;transform:translateY(20px);opacity:0}
+    .mobile-nav.open .mobile-nav-cta{transform:translateY(0);opacity:1;transition-delay:.28s}
+    .mobile-nav-cta:hover{opacity:.9}
 
     /* ─── ABOUT HERO ─── */
     .about-hero{padding:100px 0 80px;border-bottom:1px solid var(--line)}
@@ -152,13 +172,19 @@
       <button class="hamburger" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
     <nav class="mobile-nav" id="mobileNav">
-      <a href="/#capabilities" onclick="closeMobileNav()">What We Do</a>
-      <a href="/#ai-management" onclick="closeMobileNav()">AI Management</a>
-      <a href="/#work" onclick="closeMobileNav()">Our Work</a>
-      <a href="/#packages" onclick="closeMobileNav()">Pricing</a>
-      <a href="/#faq" onclick="closeMobileNav()">FAQ</a>
-      <a href="/contact" onclick="closeMobileNav()">Contact</a>
-      <a href="/about" onclick="closeMobileNav()">About</a>
+      <div class="mobile-nav-label">Mainstay Digital</div>
+      <div class="mobile-nav-sub">Navigate</div>
+      <div class="mobile-nav-divider"></div>
+      <div class="mobile-nav-links">
+        <a href="/#capabilities" onclick="closeMobileNav()"><span class="mobile-nav-num">01</span>What We Do</a>
+        <a href="/#ai-management" onclick="closeMobileNav()"><span class="mobile-nav-num">02</span>AI Management</a>
+        <a href="/#work" onclick="closeMobileNav()"><span class="mobile-nav-num">03</span>Our Work</a>
+        <a href="/#packages" onclick="closeMobileNav()"><span class="mobile-nav-num">04</span>Pricing</a>
+        <a href="/#faq" onclick="closeMobileNav()"><span class="mobile-nav-num">05</span>FAQ</a>
+        <a href="/contact" onclick="closeMobileNav()"><span class="mobile-nav-num">06</span>Contact</a>
+        <a href="/about" onclick="closeMobileNav()"><span class="mobile-nav-num">07</span>About</a>
+      </div>
+      <a class="mobile-nav-cta" href="/#packages" onclick="closeMobileNav()">Get Started</a>
     </nav>
   </header>
 
@@ -241,9 +267,11 @@
 
 <script>
 document.getElementById('menuToggle').addEventListener('click',function(){
+  this.classList.toggle('active');
   document.getElementById('mobileNav').classList.toggle('open');
+  document.body.style.overflow=document.getElementById('mobileNav').classList.contains('open')?'hidden':'';
 });
-function closeMobileNav(){document.getElementById('mobileNav').classList.remove('open')}
+function closeMobileNav(){document.getElementById('menuToggle').classList.remove('active');document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow=''}
 </script>
 </body>
 </html>
