@@ -232,6 +232,15 @@ document.getElementById('menuToggle').addEventListener('click',function(){
 });
 function closeMobileNav(){document.getElementById('menuToggle').classList.remove('active');document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow=''}
 
+// Phone auto-format: (XXX) XXX-XXXX
+document.querySelector('[name="phone"]').addEventListener('input',function(e){
+  let v=e.target.value.replace(/\D/g,'').substring(0,10);
+  if(v.length>=7) v='('+v.substring(0,3)+') '+v.substring(3,6)+'-'+v.substring(6);
+  else if(v.length>=4) v='('+v.substring(0,3)+') '+v.substring(3);
+  else if(v.length>=1) v='('+v;
+  e.target.value=v;
+});
+
 // Contact form → Supabase Edge Function → Resend email
 document.getElementById('contactForm').addEventListener('submit',function(e){
   e.preventDefault();
