@@ -1189,6 +1189,7 @@
         </div>
         <div>
           <form class="contact-form" id="contactForm">
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
             <div class="form-row">
               <div class="form-field"><label class="form-label">Name</label><input class="form-input" name="name" type="text" placeholder="Your full name" required></div>
               <div class="form-field"><label class="form-label">Business</label><input class="form-input" name="business" type="text" placeholder="Company name"></div>
@@ -1201,6 +1202,7 @@
             <button class="form-submit" type="submit">Send Message</button>
             <div class="form-note">No commitment. No pitch. Just a conversation about your business.</div>
             <div class="form-success" id="formSuccess" style="display:none;text-align:center;padding:20px;color:var(--gold2);font-size:16px;font-weight:600">Thank you! We'll be in touch within 24 hours.</div>
+            <div class="form-error" id="formError" style="display:none;text-align:center;padding:20px;color:#e74c3c;font-size:14px;font-weight:600">Something went wrong. Please email us directly at hello@mainstayhq.com</div>
           </form>
         </div>
       </div>
@@ -1260,16 +1262,27 @@ document.getElementById('menuToggle').addEventListener('click',function(){
 });
 function closeMobileNav(){document.getElementById('mobileNav').classList.remove('open')}
 
-// Contact form → mailto fallback with formatted body
+// Contact form → Supabase Edge Function → Resend email
 document.getElementById('contactForm').addEventListener('submit',function(e){
   e.preventDefault();
   const f=this;
-  const name=f.name.value,biz=f.business.value,email=f.email.value,phone=f.phone.value,msg=f.message.value;
-  const subject=encodeURIComponent('New Lead from mainstayhq.com: '+name);
-  const body=encodeURIComponent('Name: '+name+'\nBusiness: '+(biz||'N/A')+'\nEmail: '+email+'\nPhone: '+(phone||'N/A')+'\n\nMessage:\n'+(msg||'(No message)'));
-  window.location.href='mailto:hello@mainstayhq.com?subject='+subject+'&body='+body;
-  f.style.display='none';
-  document.getElementById('formSuccess').style.display='block';
+  const btn=f.querySelector('.form-submit');
+  btn.disabled=true;btn.textContent='Sending...';
+  const data={name:f.name.value,business:f.business.value,email:f.email.value,phone:f.phone.value,message:f.message.value};
+  if(f.querySelector('[name="_gotcha"]').value){f.style.display='none';document.getElementById('formSuccess').style.display='block';return;}
+  fetch('https://slmdfgunkmvbqbzjfpdz.supabase.co/functions/v1/contact-form',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+  .then(function(r){
+    if(r.ok){
+      f.style.display='none';
+      document.getElementById('formSuccess').style.display='block';
+    } else {
+      throw new Error('Form submission failed');
+    }
+  })
+  .catch(function(){
+    btn.disabled=false;btn.textContent='Send Message';
+    document.getElementById('formError').style.display='block';
+  });
 });
 </script>
 </body>
