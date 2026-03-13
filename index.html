@@ -1615,7 +1615,7 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
 
   // Load the Sketchfab .glb model
   const loader=new THREE.GLTFLoader();
-  loader.load('./mac-mini.glb',function(gltf){
+  loader.load('https://cdn.jsdelivr.net/gh/cadenhillier33-spec/mainstay-digital@fd28f46/mac-mini.glb',function(gltf){
     const model=gltf.scene;
 
     // Auto-center and scale the model
