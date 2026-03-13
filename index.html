@@ -1569,52 +1569,46 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
   // Scene setup
   const scene=new THREE.Scene();
   const camera=new THREE.PerspectiveCamera(32,1,.1,100);
-  camera.position.set(3,2.5,5);
-  camera.lookAt(0,0.3,0);
+  camera.position.set(4,3,5);
+  camera.lookAt(0,0.4,0);
 
   const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
   renderer.setSize(400,400);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-  renderer.toneMapping=THREE.NoToneMapping;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure=1.4;
   renderer.outputEncoding=THREE.sRGBEncoding;
   container.appendChild(renderer.domElement);
 
-  // Lighting — bright studio setup so model pops against dark bg
-  const ambientLight=new THREE.AmbientLight(0xffffff,1.2);
-  scene.add(ambientLight);
+  // Create environment map for PBR metallic reflections (silver aluminum needs this)
+  var pmremGenerator=new THREE.PMREMGenerator(renderer);
+  pmremGenerator.compileEquirectangularShader();
+  var envScene=new THREE.Scene();
+  envScene.background=new THREE.Color(0x666666);
+  // Bright panel above (studio softbox)
+  var topPanel=new THREE.Mesh(new THREE.PlaneGeometry(20,20),new THREE.MeshBasicMaterial({color:0xffffff}));
+  topPanel.position.set(0,8,0);topPanel.rotation.x=Math.PI/2;envScene.add(topPanel);
+  // Side panels for edge reflections
+  var sidePanel1=new THREE.Mesh(new THREE.PlaneGeometry(10,10),new THREE.MeshBasicMaterial({color:0xcccccc}));
+  sidePanel1.position.set(8,2,0);sidePanel1.rotation.y=-Math.PI/2;envScene.add(sidePanel1);
+  var sidePanel2=new THREE.Mesh(new THREE.PlaneGeometry(10,10),new THREE.MeshBasicMaterial({color:0xaaaaaa}));
+  sidePanel2.position.set(-8,2,0);sidePanel2.rotation.y=Math.PI/2;envScene.add(sidePanel2);
+  var frontPanel=new THREE.Mesh(new THREE.PlaneGeometry(10,10),new THREE.MeshBasicMaterial({color:0xbbbbbb}));
+  frontPanel.position.set(0,2,8);frontPanel.rotation.y=Math.PI;envScene.add(frontPanel);
+  var envTexture=pmremGenerator.fromScene(envScene,0.04).texture;
+  scene.environment=envTexture;
+  pmremGenerator.dispose();
 
-  // Key light (bright warm, front-right)
-  const keyLight=new THREE.DirectionalLight(0xfff5e8,2.5);
-  keyLight.position.set(5,5,5);
-  scene.add(keyLight);
+  // Moderate lighting (env map handles most of it now)
+  scene.add(new THREE.AmbientLight(0xffffff,0.4));
+  var keyLight=new THREE.DirectionalLight(0xfff8f0,1.2);keyLight.position.set(5,6,5);scene.add(keyLight);
+  var fillLight=new THREE.DirectionalLight(0xd0e0f0,0.6);fillLight.position.set(-4,3,3);scene.add(fillLight);
+  var rimLight=new THREE.DirectionalLight(0xffffff,0.5);rimLight.position.set(0,2,-5);scene.add(rimLight);
 
-  // Fill light (bright cool, left)
-  const fillLight=new THREE.DirectionalLight(0xc8d8f0,1.5);
-  fillLight.position.set(-5,3,3);
-  scene.add(fillLight);
-
-  // Back light (strong, for edge definition)
-  const backLight=new THREE.DirectionalLight(0xffffff,1.8);
-  backLight.position.set(0,4,-5);
-  scene.add(backLight);
-
-  // Rim light (gold accent)
-  const rimLight=new THREE.DirectionalLight(0xc8a951,0.6);
-  rimLight.position.set(-3,1,-3);
-  scene.add(rimLight);
-
-  // Bottom fill (so underside isn't pure black)
-  const bottomLight=new THREE.DirectionalLight(0x8899aa,0.8);
-  bottomLight.position.set(0,-3,2);
-  scene.add(bottomLight);
-
-  // Front highlight
-  const frontLight=new THREE.PointLight(0xffffff,1.0,15);
-  frontLight.position.set(2,2,6);
-  scene.add(frontLight);
-
-  // Model group (for rotation/float)
+  // Model group — static, no spinning
   const modelGroup=new THREE.Group();
+  modelGroup.rotation.x=-0.25;
+  modelGroup.rotation.y=0.6;
   scene.add(modelGroup);
 
   // Load the Sketchfab .glb model
@@ -1622,29 +1616,20 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
   loader.load('https://cdn.jsdelivr.net/gh/cadenhillier33-spec/mainstay-digital@fd28f46/mac-mini.glb',function(gltf){
     const model=gltf.scene;
 
-    // Auto-center and scale — flip Y to fix upside-down orientation
+    // Center and scale — NO FLIPPING, model is already right-side up
     const box=new THREE.Box3().setFromObject(model);
     const center=box.getCenter(new THREE.Vector3());
     const size=box.getSize(new THREE.Vector3());
     const maxDim=Math.max(size.x,size.y,size.z);
-    const scale=3.2/maxDim;
-    model.scale.set(scale,-scale,scale);
-    model.position.set(-center.x*scale,center.y*scale,-center.z*scale);
+    const scale=3.0/maxDim;
+    model.scale.setScalar(scale);
+    model.position.set(-center.x*scale,-center.y*scale,-center.z*scale);
 
-    // Keep original materials but make them render without env maps
+    // Keep ALL original materials — env map handles metallic rendering
+    // Just ensure textures are properly set
     model.traverse(function(child){
       if(child.isMesh){
-        // Fix inverted normals from negative scale
-        child.material.side=THREE.DoubleSide;
-        // Reduce metalness so direct lights work (PBR metal needs env maps)
-        if(child.material.metalness!==undefined){
-          child.material.metalness=Math.min(child.material.metalness,0.35);
-          child.material.roughness=Math.max(child.material.roughness,0.45);
-        }
-        // Slight emissive lift so nothing is pure black
-        if(child.material.color){
-          child.material.emissive=child.material.color.clone().multiplyScalar(0.1);
-        }
+        child.material.envMapIntensity=1.2;
         child.material.needsUpdate=true;
       }
     });
@@ -1652,68 +1637,37 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
     modelGroup.add(model);
 
     // Hide loading spinner
-    const loaderEl=document.getElementById('miniLoader');
+    var loaderEl=document.getElementById('miniLoader');
     if(loaderEl)loaderEl.style.display='none';
 
-    // Start animation
+    // Gentle float animation only — no rotation
+    var time=0;
+    function animate(){
+      requestAnimationFrame(animate);
+      time+=0.008;
+      modelGroup.position.y=Math.sin(time*0.8)*0.08;
+      renderer.render(scene,camera);
+    }
     animate();
   },function(xhr){
-    // Progress callback
     if(xhr.lengthComputable){
-      const pct=Math.round(xhr.loaded/xhr.total*100);
-      const txt=document.querySelector('.mini-loader-text');
+      var pct=Math.round(xhr.loaded/xhr.total*100);
+      var txt=document.querySelector('.mini-loader-text');
       if(txt)txt.textContent='Loading '+pct+'%';
     }
   },function(err){
     console.error('GLB load error:',err);
-    const loaderEl=document.getElementById('miniLoader');
+    var loaderEl=document.getElementById('miniLoader');
     if(loaderEl){
       loaderEl.querySelector('.mini-loader-ring').style.display='none';
       loaderEl.querySelector('.mini-loader-text').textContent='Model unavailable';
     }
   });
 
-  // Initial orientation — 3/4 front view showing ports
-  modelGroup.rotation.x=0.35;
-  modelGroup.rotation.y=0.5;
-
-  // Animation
-  let time=0;
-  let targetRotY=0.5,targetRotX=0.35;
-
-  container.addEventListener('mousemove',e=>{
-    const rect=container.getBoundingClientRect();
-    const mx=((e.clientX-rect.left)/rect.width-0.5)*2;
-    const my=((e.clientY-rect.top)/rect.height-0.5)*2;
-    targetRotY=0.5+mx*0.6;
-    targetRotX=0.35-my*0.35;
-  });
-  container.addEventListener('mouseleave',()=>{
-    targetRotY=0.5;
-    targetRotX=0.35;
-  });
-
-  function animate(){
-    requestAnimationFrame(animate);
-    time+=0.008;
-
-    // Gentle float
-    modelGroup.position.y=Math.sin(time*0.8)*0.1;
-
-    // Smooth rotation
-    modelGroup.rotation.y+=(targetRotY-modelGroup.rotation.y)*0.04;
-    modelGroup.rotation.x+=(targetRotX-modelGroup.rotation.x)*0.04;
-
-    // Slow auto-rotate
-    targetRotY-=0.001;
-
-    renderer.render(scene,camera);
-  }
-
   // Resize handler
   function onResize(){
-    const w=container.clientWidth;
-    const h=container.clientHeight;
+    var w=container.clientWidth;
+    var h=container.clientHeight;
     renderer.setSize(w,h);
     camera.aspect=w/h;
     camera.updateProjectionMatrix();
