@@ -1568,46 +1568,51 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
 
   // Scene setup
   const scene=new THREE.Scene();
-  const camera=new THREE.PerspectiveCamera(35,1,.1,100);
-  camera.position.set(0,3,6);
-  camera.lookAt(0,0.5,0);
+  const camera=new THREE.PerspectiveCamera(32,1,.1,100);
+  camera.position.set(3,2.5,5);
+  camera.lookAt(0,0.3,0);
 
   const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
   renderer.setSize(400,400);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
   renderer.toneMapping=THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure=1.4;
+  renderer.toneMappingExposure=2.2;
   renderer.outputEncoding=THREE.sRGBEncoding;
   container.appendChild(renderer.domElement);
 
-  // Lighting — studio setup for the Sketchfab model
-  const ambientLight=new THREE.AmbientLight(0x606070,0.6);
+  // Lighting — bright studio setup so model pops against dark bg
+  const ambientLight=new THREE.AmbientLight(0xffffff,1.2);
   scene.add(ambientLight);
 
-  // Key light (warm, top-right)
-  const keyLight=new THREE.DirectionalLight(0xffeedd,1.4);
-  keyLight.position.set(4,6,4);
+  // Key light (bright warm, front-right)
+  const keyLight=new THREE.DirectionalLight(0xfff5e8,2.5);
+  keyLight.position.set(5,5,5);
   scene.add(keyLight);
 
-  // Fill light (cool, left)
-  const fillLight=new THREE.DirectionalLight(0x8899bb,0.6);
-  fillLight.position.set(-5,4,2);
+  // Fill light (bright cool, left)
+  const fillLight=new THREE.DirectionalLight(0xc8d8f0,1.5);
+  fillLight.position.set(-5,3,3);
   scene.add(fillLight);
 
-  // Rim light (gold accent, behind)
-  const rimLight=new THREE.DirectionalLight(0xc8a951,0.35);
-  rimLight.position.set(0,3,-5);
+  // Back light (strong, for edge definition)
+  const backLight=new THREE.DirectionalLight(0xffffff,1.8);
+  backLight.position.set(0,4,-5);
+  scene.add(backLight);
+
+  // Rim light (gold accent)
+  const rimLight=new THREE.DirectionalLight(0xc8a951,0.6);
+  rimLight.position.set(-3,1,-3);
   scene.add(rimLight);
 
-  // Bottom glow
-  const glowLight=new THREE.PointLight(0xc8a951,0.3,10);
-  glowLight.position.set(0,-2,0);
-  scene.add(glowLight);
+  // Bottom fill (so underside isn't pure black)
+  const bottomLight=new THREE.DirectionalLight(0x8899aa,0.8);
+  bottomLight.position.set(0,-3,2);
+  scene.add(bottomLight);
 
-  // Top highlight
-  const topLight=new THREE.PointLight(0xffffff,0.4,12);
-  topLight.position.set(0,5,0);
-  scene.add(topLight);
+  // Front highlight
+  const frontLight=new THREE.PointLight(0xffffff,1.0,15);
+  frontLight.position.set(2,2,6);
+  scene.add(frontLight);
 
   // Model group (for rotation/float)
   const modelGroup=new THREE.Group();
@@ -1623,9 +1628,33 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
     const center=box.getCenter(new THREE.Vector3());
     const size=box.getSize(new THREE.Vector3());
     const maxDim=Math.max(size.x,size.y,size.z);
-    const scale=3/maxDim;
+    const scale=3.2/maxDim;
     model.scale.setScalar(scale);
     model.position.set(-center.x*scale,-center.y*scale,-center.z*scale);
+
+    // Brighten materials so model pops against dark background
+    model.traverse(function(child){
+      if(child.isMesh&&child.material){
+        var mat=child.material;
+        // Reduce roughness for more shine
+        if(mat.roughness!==undefined&&mat.roughness>0.5)mat.roughness=mat.roughness*0.6;
+        // Boost metalness for aluminum look
+        if(mat.metalness!==undefined&&mat.metalness<0.5)mat.metalness=0.7;
+        // Brighten dark materials
+        if(mat.color){
+          var c=mat.color;
+          if(c.r<0.3&&c.g<0.3&&c.b<0.3){
+            // Very dark material — lighten slightly for visibility
+            c.setRGB(Math.min(c.r*1.5+0.05,1),Math.min(c.g*1.5+0.05,1),Math.min(c.b*1.5+0.05,1));
+          }else{
+            // Boost silver/gray materials to be more reflective
+            c.setRGB(Math.min(c.r*1.2,1),Math.min(c.g*1.2,1),Math.min(c.b*1.2,1));
+          }
+        }
+        mat.envMapIntensity=1.5;
+        mat.needsUpdate=true;
+      }
+    });
 
     modelGroup.add(model);
 
@@ -1651,24 +1680,24 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
     }
   });
 
-  // Initial orientation
-  modelGroup.rotation.x=0.3;
-  modelGroup.rotation.y=-0.6;
+  // Initial orientation — 3/4 front view showing ports
+  modelGroup.rotation.x=0.35;
+  modelGroup.rotation.y=0.5;
 
   // Animation
   let time=0;
-  let targetRotY=-0.6,targetRotX=0.3;
+  let targetRotY=0.5,targetRotX=0.35;
 
   container.addEventListener('mousemove',e=>{
     const rect=container.getBoundingClientRect();
     const mx=((e.clientX-rect.left)/rect.width-0.5)*2;
     const my=((e.clientY-rect.top)/rect.height-0.5)*2;
-    targetRotY=-0.6+mx*0.6;
-    targetRotX=0.3-my*0.35;
+    targetRotY=0.5+mx*0.6;
+    targetRotX=0.35-my*0.35;
   });
   container.addEventListener('mouseleave',()=>{
-    targetRotY=-0.6;
-    targetRotX=0.3;
+    targetRotY=0.5;
+    targetRotX=0.35;
   });
 
   function animate(){
