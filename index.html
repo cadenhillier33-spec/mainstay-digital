@@ -1632,24 +1632,43 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
     model.scale.setScalar(scale);
     model.position.set(-center.x*scale,-center.y*scale,-center.z*scale);
 
-    // Force-override ALL materials to bright silver aluminum
+    // Create environment map so metallic materials have something to reflect
+    var envScene=new THREE.Scene();
+    envScene.background=new THREE.Color(0x303040);
+    // Add bright panels for reflections
+    var panelGeo=new THREE.PlaneGeometry(20,20);
+    var brightPanel=new THREE.Mesh(panelGeo,new THREE.MeshBasicMaterial({color:0xddddee,side:THREE.DoubleSide}));
+    brightPanel.position.set(0,8,0);brightPanel.rotation.x=Math.PI/2;envScene.add(brightPanel);
+    var sidePanel=new THREE.Mesh(panelGeo.clone(),new THREE.MeshBasicMaterial({color:0xaaaacc,side:THREE.DoubleSide}));
+    sidePanel.position.set(8,0,0);sidePanel.rotation.y=-Math.PI/2;envScene.add(sidePanel);
+    var frontPanel=new THREE.Mesh(panelGeo.clone(),new THREE.MeshBasicMaterial({color:0x999999,side:THREE.DoubleSide}));
+    frontPanel.position.set(0,0,8);envScene.add(frontPanel);
+    var floorPanel=new THREE.Mesh(panelGeo.clone(),new THREE.MeshBasicMaterial({color:0x222233,side:THREE.DoubleSide}));
+    floorPanel.position.set(0,-4,0);floorPanel.rotation.x=-Math.PI/2;envScene.add(floorPanel);
+    var pmremGen=new THREE.PMREMGenerator(renderer);
+    pmremGen.compileCubemapShader();
+    var envMap=pmremGen.fromScene(envScene,0.04).texture;
+    pmremGen.dispose();
+
+    // Force-override ALL materials to bright silver aluminum with env map
     model.traverse(function(child){
       if(child.isMesh){
         var name=(child.material&&child.material.name)||'';
         var isBottom=name.toLowerCase().indexOf('black')>=0||name.toLowerCase().indexOf('bottom')>=0||name.toLowerCase().indexOf('botton')>=0;
         if(isBottom){
-          // Black bottom plate — keep dark but visible
           child.material=new THREE.MeshStandardMaterial({
-            color:new THREE.Color(0.12,0.12,0.12),
-            metalness:0.3,
-            roughness:0.7
+            color:new THREE.Color(0.15,0.15,0.15),
+            metalness:0.2,
+            roughness:0.8,
+            envMap:envMap
           });
         }else{
-          // Everything else → bright brushed aluminum
           child.material=new THREE.MeshStandardMaterial({
-            color:new THREE.Color(0.82,0.83,0.85),
-            metalness:0.92,
-            roughness:0.15
+            color:new THREE.Color(0.85,0.86,0.88),
+            metalness:0.85,
+            roughness:0.12,
+            envMap:envMap,
+            envMapIntensity:1.8
           });
         }
       }
