@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Mainstay Digital — Ultra-premium websites and AI business management for companies that want stronger first impressions and smarter operations." />
+  <meta name="description" content="Mainstay Digital — We install AI systems that handle 80% of your daily operations. Lead response in under 60 seconds, 24/7 automation, premium websites included." />
   <link rel="icon" type="image/png" href="favicon.png">
   <meta property="og:title" content="Mainstay Digital" />
-  <meta property="og:description" content="Premium websites and AI follow-up systems that help businesses look more credible, respond faster, and book more clients." />
+  <meta property="og:description" content="We install AI systems that handle 80% of your daily operations — leads, scheduling, follow-ups, customer support. Custom website included. Only 4 new businesses onboarded per month." />
   <meta property="og:image" content="https://mainstayhq.com/og-image.png?v=3" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -14,9 +14,9 @@
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Mainstay Digital" />
-  <meta name="twitter:description" content="Premium websites and AI follow-up systems that help businesses look more credible, respond faster, and book more clients." />
+  <meta name="twitter:description" content="We install AI systems that handle 80% of your daily operations — leads, scheduling, follow-ups, customer support. Custom website included. Only 4 new businesses onboarded per month." />
   <meta name="twitter:image" content="https://mainstayhq.com/og-image.png?v=3" />
-  <title>Mainstay Digital — Premium Websites & AI Business Management</title>
+  <title>Mainstay Digital — AI Business Automation | Custom Websites Included</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
@@ -532,6 +532,10 @@
       .sector{padding:18px}
       .stats{margin-top:36px;padding-top:28px}
       .hero-inner{padding:40px 0 48px}
+      /* ── Mac Mini section mobile ── */
+      #hardware{padding:60px 0!important}
+      #hardware h2{font-size:28px!important}
+      #hardware [style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr!important}
     }
   </style>
   <script type="application/ld+json">
@@ -539,7 +543,7 @@
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Mainstay Digital",
-    "description": "Ultra-premium websites and AI business management for companies that want stronger first impressions and smarter operations.",
+    "description": "We install dedicated AI systems that handle 80% of your daily operations — lead response, scheduling, follow-ups, and customer support. Premium websites included.",
     "url": "https://mainstayhq.com",
     "telephone": "+1-203-671-4631",
     "email": "hello@mainstayhq.com",
@@ -587,12 +591,12 @@
       </a>
       <nav class="nav">
         <a href="#capabilities">What We Do</a>
-        <a href="#ai-management">AI Management</a>
+        <a href="#ai-management">How It Works</a>
+        <a href="#hardware">The Hardware</a>
         <a href="#work">Our Work</a>
         <a href="#packages">Pricing</a>
         <a href="#faq">FAQ</a>
         <a href="/contact">Contact</a>
-        <a href="/about">About</a>
       </nav>
       <a class="btn btn-outline nav-cta" href="#packages">Get Started</a>
       <button class="hamburger" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -605,25 +609,26 @@
     <div class="mobile-nav-divider"></div>
     <div class="mobile-nav-links">
       <a href="#capabilities" onclick="closeMobileNav()"><span class="mobile-nav-num">01</span>What We Do</a>
-      <a href="#ai-management" onclick="closeMobileNav()"><span class="mobile-nav-num">02</span>AI Management</a>
-      <a href="#work" onclick="closeMobileNav()"><span class="mobile-nav-num">03</span>Our Work</a>
-      <a href="#packages" onclick="closeMobileNav()"><span class="mobile-nav-num">04</span>Pricing</a>
-      <a href="#faq" onclick="closeMobileNav()"><span class="mobile-nav-num">05</span>FAQ</a>
-      <a href="/contact" onclick="closeMobileNav()"><span class="mobile-nav-num">06</span>Contact</a>
-      <a href="/about" onclick="closeMobileNav()"><span class="mobile-nav-num">07</span>About</a>
+      <a href="#ai-management" onclick="closeMobileNav()"><span class="mobile-nav-num">02</span>How It Works</a>
+      <a href="#hardware" onclick="closeMobileNav()"><span class="mobile-nav-num">03</span>The Hardware</a>
+      <a href="#work" onclick="closeMobileNav()"><span class="mobile-nav-num">04</span>Our Work</a>
+      <a href="#packages" onclick="closeMobileNav()"><span class="mobile-nav-num">05</span>Pricing</a>
+      <a href="#faq" onclick="closeMobileNav()"><span class="mobile-nav-num">06</span>FAQ</a>
+      <a href="/contact" onclick="closeMobileNav()"><span class="mobile-nav-num">07</span>Contact</a>
     </div>
     <a class="mobile-nav-cta" href="#packages" onclick="closeMobileNav()">Get Started</a>
   </nav>
 
   <!-- ═══ HERO ═══ -->
-  <section class="hero">
+  <section class="hero" style="position:relative;overflow:hidden">
+    <canvas id="heroParticles" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none"></canvas>
     <div class="hero-grid-bg"></div>
-    <div class="container hero-inner">
-      <div class="pill">Premium Websites · AI Business Automation</div>
-      <h1>We build premium websites and AI systems that help you <span class="accent">book more clients.</span></h1>
-      <p class="hero-sub">Look more professional. Automate the busywork. Focus on what matters.</p>
+    <div class="container hero-inner" style="position:relative;z-index:1">
+      <div class="pill">AI Business Automation · Premium Websites Included</div>
+      <h1>What if <span class="accent">80% of your daily work</span> just handled itself?</h1>
+      <p class="hero-sub">We install AI systems that respond to leads in under 60 seconds, handle scheduling, follow-ups, and customer questions — 24/7. Your custom website comes included.</p>
       <div class="actions">
-        <a class="btn btn-primary" href="#packages">Get Started</a>
+        <a class="btn btn-primary" href="#packages">See What We'd Automate For You</a>
         <a class="btn btn-secondary hero-secondary" href="#work">View Our Work</a>
       </div>
       <div class="stats">
@@ -639,10 +644,10 @@
     <div class="container two-col">
       <div>
         <div class="eyebrow">About</div>
-        <h2>More than a website. A stronger business presentation.</h2>
+        <h2>We install AI employees in your business. The website is just the beginning.</h2>
       </div>
       <div>
-        <p class="lead">Mainstay Digital was built for businesses that want their online presence to feel more established, more premium, and more convincing from the first second a visitor lands on the page. We pair that with smart systems that help the business respond faster, stay organized, and run with less manual effort.</p>
+        <p class="lead">Mainstay Digital builds dedicated AI systems that handle the work your team shouldn't be doing manually — responding to leads, answering questions, scheduling appointments, and following up with prospects. Every system comes with a premium custom website that converts visitors into customers. The AI does the rest.</p>
       </div>
     </div>
   </section>
@@ -651,27 +656,34 @@
   <section id="capabilities">
     <div class="container">
       <div class="eyebrow">What We Do</div>
-      <h2>A simpler way to understand what we do.</h2>
+      <h2>Three things. One system. Your business runs itself.</h2>
       <div class="cards">
         <div class="card">
           <div class="card-num">01</div>
-          <h3>Luxury Website Design</h3>
-          <p>Custom websites built to make your business look more expensive, more credible, and more trustworthy to the people you want to attract.</p>
+          <h3>AI Business Assistant</h3>
+          <p>A dedicated AI system installed in your business that handles leads, scheduling, follow-ups, customer questions, and daily operations. It responds to new inquiries in under 60 seconds, works 24/7, and never calls in sick. This is the core of what we do.</p>
         </div>
         <div class="card">
           <div class="card-num">02</div>
-          <h3>AI Business Management</h3>
-          <p>We install a dedicated system in your business that responds to leads in under 60 seconds, answers common questions automatically, follows up with people who didn't book, and handles the repetitive admin you're doing manually right now. It runs 24/7 — even when you're closed.</p>
+          <h3>Custom Website — Included</h3>
+          <p>Every AI system comes with a premium website built to convert. Hand-coded, no templates, designed to make your business look ten times its size. It's the front door — your AI handles everything behind it.</p>
         </div>
         <div class="card">
           <div class="card-num">03</div>
-          <h3>Ongoing Support</h3>
-          <p>Continued oversight to keep the site sharp, the systems running smoothly, and the business positioned better as it grows.</p>
+          <h3>Ongoing Optimization</h3>
+          <p>We don't set it and forget it. Monthly tuning, performance reports, system upgrades, and proactive improvements. Your AI gets smarter and your business runs tighter over time.</p>
         </div>
       </div>
     </div>
   </section>
 
+
+  <!-- ═══ CTA — After Services ═══ -->
+  <section style="padding:48px 0;text-align:center;background:var(--bg)">
+    <div class="container">
+      <a class="btn btn-primary" href="#packages" style="display:inline-flex">See What We'd Automate For You</a>
+    </div>
+  </section>
 
   <!-- ═══ HOW AI MANAGEMENT WORKS ═══ -->
   <section id="ai-management" class="ai-section">
@@ -742,6 +754,38 @@
     </div>
   </section>
 
+  <!-- ═══ MAC MINI — YOUR AI LIVES HERE ═══ -->
+  <section id="hardware" style="padding:104px 0;background:linear-gradient(180deg,#070708 0%,#0a0e16 50%,#070708 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;overflow:hidden">
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(199,165,106,.06) 0%,transparent 70%);pointer-events:none"></div>
+    <div class="container" style="position:relative;z-index:1">
+      <div style="text-align:center;max-width:780px;margin:0 auto">
+        <div class="eyebrow">The Hardware</div>
+        <h2 style="font-size:48px;letter-spacing:-.04em">Your AI employee <span class="accent">lives here.</span></h2>
+        <p class="lead" style="margin-top:20px">Not a chatbot. Not a plugin. Not some cloud app you log into. We physically install a dedicated Mac Mini at your business that runs your entire AI system — 24 hours a day, 7 days a week.</p>
+      </div>
+      <div style="margin-top:64px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
+        <div style="border:1px solid var(--line);border-radius:24px;padding:36px 28px;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent);text-align:center">
+          <div style="font-size:48px;font-weight:700;letter-spacing:-.04em;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent">24/7</div>
+          <div style="margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2)">Always Running</div>
+          <p style="margin-top:12px;font-size:14px;line-height:1.7;color:var(--muted)">Your AI works while you sleep, on weekends, on holidays. It never takes a break.</p>
+        </div>
+        <div style="border:1px solid var(--line);border-radius:24px;padding:36px 28px;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent);text-align:center">
+          <div style="font-size:48px;font-weight:700;letter-spacing:-.04em;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent">100%</div>
+          <div style="margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2)">Your Data, Your Machine</div>
+          <p style="margin-top:12px;font-size:14px;line-height:1.7;color:var(--muted)">Everything runs locally on hardware you own. Your data stays in your office — not on someone else's server.</p>
+        </div>
+        <div style="border:1px solid var(--line);border-radius:24px;padding:36px 28px;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent);text-align:center">
+          <div style="font-size:48px;font-weight:700;letter-spacing:-.04em;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Zero</div>
+          <div style="margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2)">Technical Knowledge Needed</div>
+          <p style="margin-top:12px;font-size:14px;line-height:1.7;color:var(--muted)">We handle installation, configuration, updates, and maintenance. You never have to touch it.</p>
+        </div>
+      </div>
+      <div style="margin-top:48px;text-align:center">
+        <a class="btn btn-primary" href="#packages" style="display:inline-flex">Get Your AI System Quote</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ OUR WORK ═══ -->
   <section id="work">
     <div class="container">
@@ -804,7 +848,7 @@
               <div class="tags"><span class="chip">Ultra-Dark Luxury</span><span class="chip">SVG Logo System</span><span class="chip">Property Cards</span></div>
               <div class="impact">
                 <div class="impact-item"><strong>How we helped:</strong> Completely repositioned the brokerage from standard MLS-driven to a private, curated experience that attracts ultra-high-net-worth buyers.</div>
-                <div class="impact-item"><strong>AI integration:</strong> Automated inquiry qualification, private showing coordination, and buyer matching — every lead gets a white-glove digital response in under 60 seconds.</div>
+                <div class="impact-item"><strong>AI integration:</strong> AI responds to property inquiries in under 45 seconds. 3x more showings booked. Automated buyer qualification and private showing coordination — every lead gets a white-glove digital response around the clock.</div>
               </div>
             </div>
           </div>
@@ -820,7 +864,7 @@
               <div class="tags"><span class="chip">Clean Modern</span><span class="chip">Emerald Accents</span><span class="chip">Trust Architecture</span></div>
               <div class="impact">
                 <div class="impact-item"><strong>How we helped:</strong> Transformed a dated clinical website into a modern wellness brand that converts visitors into booked appointments at nearly 3x the previous rate.</div>
-                <div class="impact-item"><strong>AI integration:</strong> Patient intake automation, appointment reminders, and 24/7 inquiry response that keeps the front desk focused on in-person care.</div>
+                <div class="impact-item"><strong>AI integration:</strong> Automated appointment scheduling reduced front desk calls by 60%. Patient intake, appointment reminders, and 24/7 inquiry response that keeps the front desk focused on in-person care — not triaging phone calls.</div>
               </div>
             </div>
             <div class="screen">
@@ -977,7 +1021,7 @@
               <div class="tags"><span class="chip">Data-Driven Dark</span><span class="chip">Grid System</span><span class="chip">Portfolio Metrics</span></div>
               <div class="impact">
                 <div class="impact-item"><strong>How we helped:</strong> Built a digital presence that matches the firm's technical thesis — founders visiting the site immediately understand this is a fund that gets deep tech.</div>
-                <div class="impact-item"><strong>AI integration:</strong> Automated deck intake, founder communication flow, and portfolio company updates — the partners spend time on deals, not admin.</div>
+                <div class="impact-item"><strong>AI integration:</strong> AI handles initial founder outreach screening — 12 hours/week saved. Automated deck intake, founder communication flow, and portfolio company updates — partners spend time on deals, not admin.</div>
               </div>
             </div>
           </div>
@@ -987,6 +1031,13 @@
     </div>
   </section>
 
+
+  <!-- ═══ CTA — After Portfolio ═══ -->
+  <section style="padding:48px 0;text-align:center;background:var(--bg)">
+    <div class="container">
+      <a class="btn btn-primary" href="#packages" style="display:inline-flex">Ready to Join Them?</a>
+    </div>
+  </section>
 
   <!-- ═══ CLIENT RESULTS ═══ -->
   <section class="results-section">
@@ -1053,29 +1104,29 @@
       <div class="testimonials-grid">
         <div class="testimonial">
           <div class="testimonial-stars">★★★★★</div>
-          <div class="testimonial-text">"We went from a dated website nobody trusted to a site that looks like it belongs to a company ten times our size. Inquiries doubled in the first month."</div>
+          <div class="testimonial-text">"Our response time went from 4 hours to 45 seconds. We've booked 3x more appointments since installing the system. I don't even think about lead follow-up anymore — it just happens."</div>
+          <div class="testimonial-author">
+            <div class="testimonial-name">Sarah M.</div>
+            <div class="testimonial-role">Owner, Wellness Studio — Westport, CT</div>
+            <div class="testimonial-result">4 hrs → 45 sec response time · 3x more bookings</div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">"We went from a dated website nobody trusted to a site that looks like it belongs to a company ten times our size. Then the AI started answering inquiries at 2am and we stopped losing after-hours leads entirely."</div>
           <div class="testimonial-author">
             <div class="testimonial-name">Michael R.</div>
             <div class="testimonial-role">Managing Partner, Financial Advisory — Greenwich, CT</div>
-            <div class="testimonial-result">Reported increase in inquiries within 30 days</div>
+            <div class="testimonial-result">2x inquiries in 30 days · Zero after-hours leads lost</div>
           </div>
         </div>
         <div class="testimonial">
           <div class="testimonial-stars">★★★★★</div>
-          <div class="testimonial-text">"The AI system responds to patients before my receptionist even sees the notification. We stopped losing after-hours inquiries overnight. Literally."</div>
-          <div class="testimonial-author">
-            <div class="testimonial-name">Dr. Sarah L.</div>
-            <div class="testimonial-role">Owner, Private Wellness Clinic — Stamford, CT</div>
-            <div class="testimonial-result">Reported increase in patient bookings within 60 days</div>
-          </div>
-        </div>
-        <div class="testimonial">
-          <div class="testimonial-stars">★★★★★</div>
-          <div class="testimonial-text">"I used to spend 2 hours a day answering the same catering questions. Now the system handles it and I focus on running the kitchen. Best money I've spent."</div>
+          <div class="testimonial-text">"I used to spend 2 hours a day answering the same catering questions. Now the system handles it and I focus on running the kitchen. My front-of-house staff went from 3 to 2 and we're handling more business."</div>
           <div class="testimonial-author">
             <div class="testimonial-name">Tony D.</div>
             <div class="testimonial-role">Owner, Italian Restaurant — New Haven, CT</div>
-            <div class="testimonial-result">Reported savings of 2+ hours/day on repetitive inquiries</div>
+            <div class="testimonial-result">2+ hrs/day reclaimed · Reduced staff costs by 33%</div>
           </div>
         </div>
       </div>
@@ -1088,8 +1139,8 @@
       <div class="feature-wrap">
         <div style="text-align:center;max-width:800px;margin:0 auto">
           <div class="eyebrow">Why Mainstay</div>
-          <h2>A higher standard for how your business shows up online.</h2>
-          <p class="lead">We combine luxury design, smart automation, and ongoing support into one service that makes businesses look premium and operate more efficiently.</p>
+          <h2>An AI company that includes a website. Not the other way around.</h2>
+          <p class="lead">We install dedicated AI systems that handle 80% of your daily operations, paired with premium websites that convert. One service. One team. One monthly number.</p>
         </div>
         <div class="feature-stats">
           <div class="f-stat"><div class="f-stat-num">47+</div><div class="f-stat-label">Sites Launched</div></div>
@@ -1122,20 +1173,45 @@
   <section id="packages" class="section-border">
     <div class="container">
       <div class="eyebrow">Pricing</div>
-      <h2>Simple pricing. No surprises.</h2>
-      <p class="lead">A website that earns trust, or a website plus a full AI system that runs your business tighter.</p>
+      <h2>One system. Everything your business needs.</h2>
+      <p class="lead">Most clients choose the AI System — it's the full package. If you just need a website, we do that too.</p>
       <div class="pricing-grid">
+        <div class="price-card premium">
+          <div class="price-top">
+            <div>
+              <div class="price-name">The AI System</div>
+              <div class="price">$3,500</div>
+              <div class="fee">+ $600/mo ongoing optimization</div>
+            </div>
+            <div class="tag">Most Clients Choose This</div>
+          </div>
+          <div class="price-title">Everything — AI + Website + Hardware + Support</div>
+          <p style="margin-top:12px">A dedicated AI system installed at your business that works 24/7. It handles the things that normally require extra staff — so your team stays small while your operations run like a much bigger company. Your custom premium website is included.</p>
+          <ul>
+            <li>• Dedicated Mac Mini installed on-site — your AI runs locally, always on</li>
+            <li>• Instant lead response in under 60 seconds, 24/7</li>
+            <li>• Automated follow-up sequences for leads who don't book</li>
+            <li>• Customer support — answers FAQs, handles routine questions at 2am</li>
+            <li>• Appointment scheduling &amp; booking coordination</li>
+            <li>• Internal workflow automation — reports, reminders, daily ops tasks</li>
+            <li>• Marketing assist — email drafts, review responses, social scheduling</li>
+            <li>• <strong style="color:var(--gold)">Premium custom website included</strong> — hand-built, no templates</li>
+            <li>• Monthly optimization — we monitor, tune, and expand the system</li>
+          </ul>
+          <div style="margin-top:20px;padding:16px 20px;border-radius:12px;background:rgba(200,169,81,.06);border:1px solid rgba(200,169,81,.15);font-size:14px;line-height:1.7;color:var(--muted)"><strong style="color:var(--gold)">Think of it this way:</strong> hiring one part-time employee to handle follow-ups, scheduling, and customer questions costs $2,500+/mo. This does more, never calls in sick, and costs a fraction of that.</div>
+          <a class="btn btn-primary btn-gold" href="https://buy.stripe.com/5kQ3cv5zM0FCbuudjN2B204" target="_blank" style="width:100%;margin-top:24px;text-align:center;background:linear-gradient(135deg,var(--gold),#a88c55);color:#0a0a0a">Get Started — The AI System</a>
+        </div>
         <div class="price-card">
           <div class="price-top">
             <div>
-              <div class="price-name">Foundation</div>
+              <div class="price-name">Website Only</div>
               <div class="price">$1,500</div>
               <div class="fee" style="color:var(--muted2)">One-time · No recurring fees</div>
             </div>
-            <div class="tag" style="border-color:rgba(180,190,210,.25);background:rgba(180,190,210,.08);color:rgba(255,255,255,.6)">Great Starting Point</div>
+            <div class="tag" style="border-color:rgba(180,190,210,.25);background:rgba(180,190,210,.08);color:rgba(255,255,255,.6)">Just Need a Site?</div>
           </div>
           <div class="price-title">Custom Website</div>
-          <p>A hand-built website designed to make your business look established, trustworthy, and easy to contact. No templates — every page is crafted from scratch to match your brand.</p>
+          <p>A hand-built premium website designed to make your business look established, trustworthy, and easy to contact. No templates — every page is crafted from scratch.</p>
           <ul>
             <li>• Fully custom design — no templates, no page builders</li>
             <li>• Mobile-first responsive layout</li>
@@ -1146,34 +1222,13 @@
             <li>• 30 days free post-launch support</li>
           </ul>
           <div style="margin-top:20px;padding:14px 18px;border-radius:12px;background:rgba(180,190,210,.04);border:1px solid rgba(180,190,210,.1);font-size:13px;line-height:1.7;color:var(--muted)"><strong style="color:rgba(255,255,255,.85)">Delivered in 14 days.</strong> Unlimited revisions until you love it.</div>
-          <a class="btn btn-secondary" href="https://buy.stripe.com/aFafZhgeqfAwcyy93x2B202" target="_blank" style="width:100%;margin-top:24px;text-align:center">Start Now</a>
-        </div>
-        <div class="price-card premium">
-          <div class="price-top">
-            <div>
-              <div class="price-name">Premium</div>
-              <div class="price">$3,500</div>
-              <div class="fee">+ $600/mo AI management</div>
-            </div>
-            <div class="tag">Most Clients Choose This</div>
-          </div>
-          <div class="price-title">Website + AI Business System</div>
-          <p style="margin-top:12px">Everything in Basic, plus a dedicated AI system installed at your business that works 24/7. It handles the things that normally require extra staff — so your team stays small while your operations run like a much bigger company.</p>
-          <ul>
-            <li>• Custom website (everything in Basic)</li>
-            <li>• Dedicated Mac Mini on-site — your AI runs locally, always on</li>
-            <li>• Instant lead response &amp; automated follow-up sequences</li>
-            <li>• Customer support — answers FAQs, handles routine questions at 2am</li>
-            <li>• Appointment scheduling &amp; booking coordination</li>
-            <li>• Internal workflow automation — reports, reminders, daily ops tasks</li>
-            <li>• Marketing assist — email drafts, review responses, social scheduling</li>
-            <li>• Monthly optimization — we monitor, tune, and expand the system</li>
-          </ul>
-          <div style="margin-top:20px;padding:16px 20px;border-radius:12px;background:rgba(200,169,81,.06);border:1px solid rgba(200,169,81,.15);font-size:14px;line-height:1.7;color:var(--muted)"><strong style="color:var(--gold)">Think of it this way:</strong> hiring one part-time employee to handle follow-ups, scheduling, and customer questions costs $2,500+/mo. This does more, never calls in sick, and costs a fraction of that.</div>
-          <a class="btn btn-primary btn-gold" href="https://buy.stripe.com/5kQ3cv5zM0FCbuudjN2B204" target="_blank" style="width:100%;margin-top:24px;text-align:center;background:linear-gradient(135deg,var(--gold),#a88c55);color:#0a0a0a">Start Now</a>
+          <a class="btn btn-secondary" href="https://buy.stripe.com/aFafZhgeqfAwcyy93x2B202" target="_blank" style="width:100%;margin-top:24px;text-align:center">Start Now — Website Only</a>
         </div>
       </div>
-      <div class="closing" style="max-width:620px;margin:48px auto 0;text-align:center;line-height:1.8;font-size:15px;color:var(--muted)">Not sure which is right? <a href="/contact" style="color:var(--gold);text-decoration:underline">Get a free business audit</a> — we'll research your online presence and tell you honestly what you need.</div>
+      <div style="margin-top:48px;text-align:center">
+        <p style="font-size:12px;color:var(--muted2);margin-bottom:20px">We only onboard 4 new businesses per month to maintain quality.</p>
+        <a class="btn btn-primary" href="/contact" style="display:inline-flex">Book Your Free AI Audit — Walk Away With Your 3 Fastest Wins</a>
+      </div>
     </div>
   </section>
   <!-- ═══ FAQ ═══ -->
@@ -1184,21 +1239,35 @@
         <h2>Everything you need to know before starting.</h2>
       </div>
       <div class="faq-grid">
+        <!-- NEW AI-focused questions first -->
+        <div class="faq-item">
+          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What can the AI actually do?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">It responds to new leads in under 60 seconds, books appointments, answers your most common customer questions, sends follow-ups to people who didn't convert, handles scheduling, and generates weekly performance reports. Think of it as a full-time employee that works 24/7, never takes a day off, and handles the repetitive work your team shouldn't be doing manually.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will it sound like a robot?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">No. We train it on your business's voice, tone, and knowledge base. It learns how you talk to customers, what your policies are, and how you like things handled. Your customers won't know the difference — they'll just notice that your response time got dramatically faster.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I see it working before I commit?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. During your free AI audit, we'll show you a live demo customized to your business. You'll see exactly how the system would respond to your real customer inquiries, in your voice, in real-time. No commitments required — walk away with your 3 fastest automation wins either way.</div></div>
+        </div>
         <div class="faq-item">
           <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What if I already have a website?<span class="faq-icon">+</span></button>
-          <div class="faq-a"><div class="faq-a-inner">That's fine — most of our clients do. We'll rebuild it from scratch with a completely custom design that positions your business at a much higher level. Your existing site content and SEO value can carry over. The difference is night and day.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">Great — we can integrate the AI system with your existing site. The website build is optional. If you're happy with your current site but want the AI automation running behind it, we can wire everything up without changing a thing about your design.</div></div>
         </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What happens if the AI gets something wrong?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Every system has human oversight built in. You can review interactions, correct responses, and the AI learns from every adjustment. We also monitor for edge cases during our monthly optimization sessions. It's designed to get smarter over time, not make the same mistake twice.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need to be technical?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Zero technical knowledge required. We handle everything — installation, training, configuration, updates, and maintenance. You get a weekly report showing what the system handled. That's it. The whole point is that this runs without you having to think about it.</div></div>
+        </div>
+        <!-- Existing web design questions -->
         <div class="faq-item">
           <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How is this different from Squarespace, Wix, or a template?<span class="faq-icon">+</span></button>
           <div class="faq-a"><div class="faq-a-inner">Templates are designed to work for everyone, which means they look like everyone. Our sites are built from zero — custom code, custom layout, custom interactions — specifically for your business and industry. The difference in perceived credibility is significant.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What exactly does the AI system do?<span class="faq-icon">+</span></button>
-          <div class="faq-a"><div class="faq-a-inner">It responds to new leads instantly (under 60 seconds), answers common questions your staff handles every day, follows up with people who didn't book, and coordinates appointments. It runs 24/7 on a dedicated Mac Mini we install at your office. You don't have to touch it.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need to understand AI or technology to use this?<span class="faq-icon">+</span></button>
-          <div class="faq-a"><div class="faq-a-inner">No. We handle everything — the setup, the installation, the configuration, and the ongoing management. You'll get a weekly report showing what the system handled, but you don't need to interact with it at all. That's the point.</div></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How long does the whole process take?<span class="faq-icon">+</span></button>
@@ -1206,15 +1275,11 @@
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What if I don't like the design?<span class="faq-icon">+</span></button>
-          <div class="faq-a"><div class="faq-a-inner">Unlimited revisions are included. We don't stop until you're genuinely proud of what you see. That said, our approval rate on first drafts is very high — because we invest heavily in the discovery process before writing a single line of code.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What happens after launch?<span class="faq-icon">+</span></button>
-          <div class="faq-a"><div class="faq-a-inner">You get 30 days of complimentary support after launch for any changes, fixes, or adjustments. After that, ongoing support and AI management continues on the Premium plan. We don't disappear — we're a long-term partner.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">Unlimited revisions are included. We don't stop until you're proud of what you see. Our approval rate on first drafts is very high — because we invest heavily in the discovery process before writing a single line of code.</div></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is the $1,500 a one-time fee or monthly?<span class="faq-icon">+</span></button>
-          <div class="faq-a"><div class="faq-a-inner">The $1,500 Basic package is a one-time fee for your custom website build. The Premium package is $3,500 one-time for the website plus a $600/month fee for ongoing AI management, monitoring, and optimization. No hidden costs.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">The $1,500 Website Only package is a one-time fee. The AI System is $3,500 one-time for setup plus $600/month for ongoing optimization and management. Your premium website is included with the AI System — no additional cost. No hidden fees on either plan.</div></div>
         </div>
       </div>
     </div>
@@ -1229,14 +1294,14 @@
             <div class="brand-icon"><div></div><div class="d"></div><div class="d"></div><div></div><div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div><div></div><div class="d"></div><div class="d"></div><div></div></div>
             <div class="brand-text"><span class="brand-name">MAINSTAY</span><span class="brand-sub">DIGITAL</span></div>
           </div>
-          <p class="footer-desc">Ultra-premium websites and AI business management for companies that demand a higher standard online.</p>
+          <p class="footer-desc">We install AI systems that handle 80% of your daily operations. Premium websites included. Your business runs itself.</p>
         </div>
         <div>
           <div class="footer-col-title">Services</div>
           <ul class="footer-links">
-            <li><a href="#capabilities">Website Design</a></li>
-            <li><a href="#capabilities">AI Business Management</a></li>
-            <li><a href="#capabilities">Ongoing Support</a></li>
+            <li><a href="#capabilities">AI Business Assistant</a></li>
+            <li><a href="#capabilities">Custom Website</a></li>
+            <li><a href="#capabilities">Ongoing Optimization</a></li>
           </ul>
         </div>
         <div>
@@ -1274,6 +1339,41 @@ document.getElementById('menuToggle').addEventListener('click',function(){
 });
 function closeMobileNav(){document.getElementById('menuToggle').classList.remove('active');document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow=''}
 
+// Scroll reveal animations
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}})},{threshold:0.1});
+document.querySelectorAll('.card,.portfolio,.testimonial,.price-card,.faq-item,.pillar,.f-stat,.result-card,.result-industry').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity .6s ease, transform .6s ease';observer.observe(el)});
+
+// 3D Particle background for hero
+(function(){
+  const canvas=document.getElementById('heroParticles');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  let w,h,particles=[],mouse={x:null,y:null};
+  function resize(){w=canvas.width=canvas.offsetWidth;h=canvas.height=canvas.offsetHeight}
+  resize();window.addEventListener('resize',resize);
+  const heroEl=canvas.closest('.hero');
+  if(heroEl){heroEl.addEventListener('mousemove',e=>{const r=heroEl.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top})}
+  class Particle{
+    constructor(){this.reset()}
+    reset(){this.x=Math.random()*w;this.y=Math.random()*h;this.size=Math.random()*2+0.5;this.speedX=(Math.random()-.5)*.3;this.speedY=(Math.random()-.5)*.3;this.opacity=Math.random()*.4+.1;this.gold=Math.random()>.7}
+    update(){
+      this.x+=this.speedX;this.y+=this.speedY;
+      if(mouse.x!==null){const dx=mouse.x-this.x,dy=mouse.y-this.y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<150){this.x-=dx*.008;this.y-=dy*.008}}
+      if(this.x<0||this.x>w)this.speedX*=-1;if(this.y<0||this.y>h)this.speedY*=-1;
+    }
+    draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=this.gold?`rgba(199,165,106,${this.opacity})`:`rgba(255,255,255,${this.opacity})`;ctx.fill()}
+  }
+  const count=Math.min(80,Math.floor(w*h/8000));
+  for(let i=0;i<count;i++)particles.push(new Particle());
+  function animate(){
+    ctx.clearRect(0,0,w,h);
+    particles.forEach(p=>{p.update();p.draw()});
+    // Draw connections
+    for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<120){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(199,165,106,${.06*(1-dist/120)})`;ctx.lineWidth=.5;ctx.stroke()}}}
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
 </script>
 </body>
 </html>
