@@ -1575,8 +1575,7 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
   const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
   renderer.setSize(400,400);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-  renderer.toneMapping=THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure=2.8;
+  renderer.toneMapping=THREE.NoToneMapping;
   renderer.outputEncoding=THREE.sRGBEncoding;
   container.appendChild(renderer.domElement);
 
@@ -1632,43 +1631,23 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
     model.scale.setScalar(scale);
     model.position.set(-center.x*scale,-center.y*scale,-center.z*scale);
 
-    // Create environment map so metallic materials have something to reflect
-    var envScene=new THREE.Scene();
-    envScene.background=new THREE.Color(0x303040);
-    // Add bright panels for reflections
-    var panelGeo=new THREE.PlaneGeometry(20,20);
-    var brightPanel=new THREE.Mesh(panelGeo,new THREE.MeshBasicMaterial({color:0xddddee,side:THREE.DoubleSide}));
-    brightPanel.position.set(0,8,0);brightPanel.rotation.x=Math.PI/2;envScene.add(brightPanel);
-    var sidePanel=new THREE.Mesh(panelGeo.clone(),new THREE.MeshBasicMaterial({color:0xaaaacc,side:THREE.DoubleSide}));
-    sidePanel.position.set(8,0,0);sidePanel.rotation.y=-Math.PI/2;envScene.add(sidePanel);
-    var frontPanel=new THREE.Mesh(panelGeo.clone(),new THREE.MeshBasicMaterial({color:0x999999,side:THREE.DoubleSide}));
-    frontPanel.position.set(0,0,8);envScene.add(frontPanel);
-    var floorPanel=new THREE.Mesh(panelGeo.clone(),new THREE.MeshBasicMaterial({color:0x222233,side:THREE.DoubleSide}));
-    floorPanel.position.set(0,-4,0);floorPanel.rotation.x=-Math.PI/2;envScene.add(floorPanel);
-    var pmremGen=new THREE.PMREMGenerator(renderer);
-    pmremGen.compileCubemapShader();
-    var envMap=pmremGen.fromScene(envScene,0.04).texture;
-    pmremGen.dispose();
-
-    // Force-override ALL materials to bright silver aluminum with env map
+    // Override materials with bright Phong (doesn't need env maps)
     model.traverse(function(child){
       if(child.isMesh){
         var name=(child.material&&child.material.name)||'';
         var isBottom=name.toLowerCase().indexOf('black')>=0||name.toLowerCase().indexOf('bottom')>=0||name.toLowerCase().indexOf('botton')>=0;
         if(isBottom){
-          child.material=new THREE.MeshStandardMaterial({
-            color:new THREE.Color(0.15,0.15,0.15),
-            metalness:0.2,
-            roughness:0.8,
-            envMap:envMap
+          child.material=new THREE.MeshPhongMaterial({
+            color:0x1a1a1a,
+            specular:0x222222,
+            shininess:20
           });
         }else{
-          child.material=new THREE.MeshStandardMaterial({
-            color:new THREE.Color(0.85,0.86,0.88),
-            metalness:0.85,
-            roughness:0.12,
-            envMap:envMap,
-            envMapIntensity:1.8
+          child.material=new THREE.MeshPhongMaterial({
+            color:0xd4d5d8,
+            specular:0xffffff,
+            shininess:120,
+            reflectivity:0.9
           });
         }
       }
