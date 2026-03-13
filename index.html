@@ -1569,7 +1569,7 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
   // Scene setup
   const scene=new THREE.Scene();
   const camera=new THREE.PerspectiveCamera(32,1,.1,100);
-  camera.position.set(3,4.5,4);
+  camera.position.set(0,4,5.5);
   camera.lookAt(0,0,0);
 
   const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
@@ -1607,8 +1607,8 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
 
   // Model group — static, no spinning
   const modelGroup=new THREE.Group();
-  modelGroup.rotation.x=0.35;
-  modelGroup.rotation.y=0.5;
+  modelGroup.rotation.x=0.4;
+  modelGroup.rotation.y=0;
   scene.add(modelGroup);
 
   // Load the Sketchfab .glb model
