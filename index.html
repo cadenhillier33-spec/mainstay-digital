@@ -148,6 +148,51 @@
     .ai-hw-list{list-style:none;padding:0;margin:0;display:grid;gap:14px}
     .ai-hw-list li{font-size:15px;line-height:1.75;color:rgba(255,255,255,.78);padding-left:24px;position:relative}
     .ai-hw-list li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700}
+
+    /* ─── 3D MAC MINI ─── */
+    .mac-mini-scene{perspective:800px;width:280px;height:280px;margin:0 auto}
+    .mac-mini-wrap{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:macFloat 6s ease-in-out infinite}
+    @keyframes macFloat{0%,100%{transform:rotateX(-8deg) rotateY(-15deg) translateY(0)}50%{transform:rotateX(-8deg) rotateY(15deg) translateY(-14px)}}
+    .mac-mini-body{position:absolute;width:220px;height:28px;left:50%;top:55%;transform:translate(-50%,-50%);background:linear-gradient(180deg,#3a3a3c,#1d1d1f);border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.6),0 0 80px rgba(199,165,106,.08),inset 0 1px 0 rgba(255,255,255,.1);transform-style:preserve-3d}
+    .mac-mini-top{position:absolute;width:220px;height:220px;left:50%;bottom:100%;transform:translate(-50%,0) rotateX(90deg);transform-origin:bottom center;background:radial-gradient(circle at 50% 50%,#2a2a2c,#1d1d1f);border-radius:14px;box-shadow:inset 0 0 40px rgba(0,0,0,.3)}
+    .mac-mini-top::after{content:"";position:absolute;width:24px;height:24px;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,#0a0a0a,#1a1a1c);border:2px solid #2a2a2c}
+    .mac-mini-front{position:absolute;width:220px;height:10px;left:50%;top:100%;transform:translate(-50%,0) rotateX(-90deg);transform-origin:top center;background:linear-gradient(180deg,#1d1d1f,#111);border-radius:0 0 4px 4px}
+    .mac-mini-led{position:absolute;width:6px;height:6px;border-radius:50%;right:16px;top:50%;transform:translateY(-50%);background:#c7a56a;box-shadow:0 0 8px rgba(199,165,106,.6),0 0 20px rgba(199,165,106,.3);animation:ledPulse 3s ease-in-out infinite}
+    @keyframes ledPulse{0%,100%{opacity:1;box-shadow:0 0 8px rgba(199,165,106,.6),0 0 20px rgba(199,165,106,.3)}50%{opacity:.5;box-shadow:0 0 4px rgba(199,165,106,.3),0 0 10px rgba(199,165,106,.15)}}
+    .mac-mini-shadow{position:absolute;width:200px;height:30px;left:50%;bottom:-40px;transform:translate(-50%,0);background:radial-gradient(ellipse,rgba(199,165,106,.1),transparent 70%);filter:blur(8px)}
+    .mac-mini-label{position:absolute;width:100%;text-align:center;bottom:-60px;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);opacity:.6}
+
+    /* ─── PHONE DEMO ─── */
+    .phone-demo{width:320px;margin:0 auto;perspective:1000px}
+    .phone-frame{background:#1a1a1e;border-radius:40px;padding:12px;box-shadow:0 25px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.08),inset 0 0 0 2px rgba(255,255,255,.04);transform:rotateY(-3deg) rotateX(2deg);transition:transform .4s ease}
+    .phone-frame:hover{transform:rotateY(0) rotateX(0)}
+    .phone-notch{width:120px;height:28px;background:#1a1a1e;border-radius:0 0 16px 16px;margin:0 auto;position:relative;z-index:2}
+    .phone-screen{background:#000;border-radius:28px;padding:20px 16px;min-height:420px;position:relative;overflow:hidden}
+    .phone-status-bar{display:flex;justify-content:space-between;font-size:11px;font-weight:600;color:rgba(255,255,255,.5);margin-bottom:16px;padding:0 4px}
+    .phone-chat-header{text-align:center;margin-bottom:20px}
+    .phone-chat-header .name{font-size:14px;font-weight:700;color:#fff}
+    .phone-chat-header .sub{font-size:11px;color:rgba(255,255,255,.4);margin-top:2px}
+    .phone-msg{max-width:82%;padding:10px 14px;border-radius:18px;font-size:13px;line-height:1.5;margin-bottom:8px;opacity:0;transform:translateY(10px);animation:msgAppear .4s ease forwards}
+    .phone-msg.incoming{background:#2a2a2e;color:#fff;border-bottom-left-radius:4px;align-self:flex-start}
+    .phone-msg.outgoing{background:linear-gradient(135deg,#c7a56a,#a88c55);color:#0a0a0a;border-bottom-right-radius:4px;margin-left:auto}
+    .phone-msg .time{font-size:10px;opacity:.5;margin-top:4px}
+    .phone-typing{display:flex;gap:4px;padding:10px 14px;opacity:0;animation:msgAppear .3s ease forwards}
+    .phone-typing span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);animation:typingDot 1.2s ease-in-out infinite}
+    .phone-typing span:nth-child(2){animation-delay:.2s}
+    .phone-typing span:nth-child(3){animation-delay:.4s}
+    @keyframes typingDot{0%,60%,100%{transform:translateY(0);opacity:.3}30%{transform:translateY(-4px);opacity:.8}}
+    @keyframes msgAppear{to{opacity:1;transform:translateY(0)}}
+    .phone-msgs{display:flex;flex-direction:column;gap:6px}
+    .phone-badge{text-align:center;font-size:10px;color:rgba(255,255,255,.3);margin-bottom:12px}
+
+    /* ─── 3D PORTFOLIO TILT ─── */
+    .portfolio{transition:transform .4s ease,box-shadow .4s ease;transform-style:preserve-3d;will-change:transform}
+    .portfolio:hover{box-shadow:0 40px 80px rgba(0,0,0,.4),0 0 60px rgba(199,165,106,.06)}
+
+    /* ─── HERO GRADIENT ORB ─── */
+    .hero-orb{position:absolute;width:700px;height:700px;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 30% 40%,rgba(199,165,106,.12),rgba(120,80,40,.06) 40%,transparent 70%);filter:blur(60px);animation:orbMorph 12s ease-in-out infinite;pointer-events:none;z-index:0}
+    @keyframes orbMorph{0%,100%{transform:translate(-50%,-50%) scale(1) rotate(0deg);opacity:.7}33%{transform:translate(-48%,-52%) scale(1.08) rotate(5deg);opacity:.9}66%{transform:translate(-52%,-48%) scale(.95) rotate(-3deg);opacity:.6}}
+
     @media(max-width:980px){
       .hero-inner{padding:80px 0 80px}
       h1{font-size:52px}
@@ -430,6 +475,10 @@
       .meta h3{font-size:34px}
       .feature-stats{grid-template-columns:repeat(2,1fr)}
       .pillars{grid-template-columns:1fr}
+      .ai-hardware{grid-template-columns:1fr}
+      .mac-mini-scene{width:240px;height:240px}
+      .phone-demo{width:280px}
+      .phone-screen{min-height:380px}
     }
     @media (max-width: 640px){
       .container{padding:0 18px}
@@ -536,6 +585,17 @@
       #hardware{padding:60px 0!important}
       #hardware h2{font-size:28px!important}
       #hardware [style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr!important}
+      .mac-mini-scene{width:200px;height:200px}
+      .mac-mini-body{width:180px;height:24px}
+      .mac-mini-top{width:180px;height:180px}
+      .mac-mini-front{width:180px}
+      .phone-demo{width:100%;max-width:300px}
+      .phone-screen{min-height:360px;padding:16px 12px}
+      .phone-msg{font-size:12px}
+      .hero-orb{width:400px;height:400px}
+      #demo .lead{font-size:15px}
+      #demo [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;gap:36px!important}
+      #hardware [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;gap:36px!important}
     }
   </style>
   <script type="application/ld+json">
@@ -622,6 +682,7 @@
   <!-- ═══ HERO ═══ -->
   <section class="hero" style="position:relative;overflow:hidden">
     <canvas id="heroParticles" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none"></canvas>
+    <div class="hero-orb"></div>
     <div class="hero-grid-bg"></div>
     <div class="container hero-inner" style="position:relative;z-index:1">
       <div class="pill">AI Business Automation · Premium Websites Included</div>
@@ -763,25 +824,85 @@
         <h2 style="font-size:48px;letter-spacing:-.04em">Your AI employee <span class="accent">lives here.</span></h2>
         <p class="lead" style="margin-top:20px">Not a chatbot. Not a plugin. Not some cloud app you log into. We physically install a dedicated Mac Mini at your business that runs your entire AI system — 24 hours a day, 7 days a week.</p>
       </div>
-      <div style="margin-top:64px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
-        <div style="border:1px solid var(--line);border-radius:24px;padding:36px 28px;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent);text-align:center">
-          <div style="font-size:48px;font-weight:700;letter-spacing:-.04em;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent">24/7</div>
-          <div style="margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2)">Always Running</div>
-          <p style="margin-top:12px;font-size:14px;line-height:1.7;color:var(--muted)">Your AI works while you sleep, on weekends, on holidays. It never takes a break.</p>
+      <!-- 3D Mac Mini Visualization -->
+      <div style="margin-top:64px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
+        <div style="display:flex;justify-content:center">
+          <div class="mac-mini-scene">
+            <div class="mac-mini-wrap">
+              <div class="mac-mini-body">
+                <div class="mac-mini-led"></div>
+                <div class="mac-mini-front"></div>
+              </div>
+              <div class="mac-mini-top"></div>
+              <div class="mac-mini-shadow"></div>
+              <div class="mac-mini-label">Mac Mini — Always On</div>
+            </div>
+          </div>
         </div>
-        <div style="border:1px solid var(--line);border-radius:24px;padding:36px 28px;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent);text-align:center">
-          <div style="font-size:48px;font-weight:700;letter-spacing:-.04em;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent">100%</div>
-          <div style="margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2)">Your Data, Your Machine</div>
-          <p style="margin-top:12px;font-size:14px;line-height:1.7;color:var(--muted)">Everything runs locally on hardware you own. Your data stays in your office — not on someone else's server.</p>
-        </div>
-        <div style="border:1px solid var(--line);border-radius:24px;padding:36px 28px;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent);text-align:center">
-          <div style="font-size:48px;font-weight:700;letter-spacing:-.04em;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Zero</div>
-          <div style="margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2)">Technical Knowledge Needed</div>
-          <p style="margin-top:12px;font-size:14px;line-height:1.7;color:var(--muted)">We handle installation, configuration, updates, and maintenance. You never have to touch it.</p>
+        <div>
+          <div style="display:grid;gap:20px">
+            <div style="border:1px solid var(--line);border-radius:20px;padding:28px 24px;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent)">
+              <div style="display:flex;align-items:center;gap:14px">
+                <div style="font-size:32px;font-weight:700;letter-spacing:-.04em;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent">24/7</div>
+                <div><div style="font-size:13px;font-weight:700;color:#fff">Always Running</div><div style="font-size:13px;color:var(--muted);margin-top:2px">Never sleeps, never takes a break.</div></div>
+              </div>
+            </div>
+            <div style="border:1px solid var(--line);border-radius:20px;padding:28px 24px;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent)">
+              <div style="display:flex;align-items:center;gap:14px">
+                <div style="font-size:32px;font-weight:700;letter-spacing:-.04em;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent">100%</div>
+                <div><div style="font-size:13px;font-weight:700;color:#fff">Your Data, Your Machine</div><div style="font-size:13px;color:var(--muted);margin-top:2px">Runs locally. Nothing leaves your office.</div></div>
+              </div>
+            </div>
+            <div style="border:1px solid var(--line);border-radius:20px;padding:28px 24px;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent)">
+              <div style="display:flex;align-items:center;gap:14px">
+                <div style="font-size:32px;font-weight:700;letter-spacing:-.04em;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Zero</div>
+                <div><div style="font-size:13px;font-weight:700;color:#fff">Technical Knowledge Needed</div><div style="font-size:13px;color:var(--muted);margin-top:2px">We handle everything — setup to maintenance.</div></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div style="margin-top:48px;text-align:center">
-        <a class="btn btn-primary" href="#packages" style="display:inline-flex">Get Your AI System Quote</a>
+        <a class="btn btn-primary" href="/contact" style="display:inline-flex">Get Your AI System Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ LIVE DEMO ═══ -->
+  <section id="demo" style="padding:104px 0;position:relative;overflow:hidden">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+        <div>
+          <div class="eyebrow">See It In Action</div>
+          <h2 style="font-size:44px;letter-spacing:-.04em">A lead comes in. <span class="accent">Your AI handles it.</span></h2>
+          <p class="lead" style="margin-top:20px">While your competition takes hours to reply, your AI assistant responds in under 60 seconds — with the right answer, the right tone, and a booked appointment.</p>
+          <div style="margin-top:36px;display:grid;gap:16px">
+            <div style="display:flex;align-items:center;gap:12px"><div style="width:36px;height:36px;border-radius:10px;background:rgba(199,165,106,.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">⚡</div><div style="font-size:14px;color:var(--muted)"><strong style="color:#fff">Instant response</strong> — under 60 seconds, 24/7</div></div>
+            <div style="display:flex;align-items:center;gap:12px"><div style="width:36px;height:36px;border-radius:10px;background:rgba(199,165,106,.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🎯</div><div style="font-size:14px;color:var(--muted)"><strong style="color:#fff">Personalized replies</strong> — trained on your business</div></div>
+            <div style="display:flex;align-items:center;gap:12px"><div style="width:36px;height:36px;border-radius:10px;background:rgba(199,165,106,.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">📅</div><div style="font-size:14px;color:var(--muted)"><strong style="color:#fff">Auto-books appointments</strong> — no back and forth</div></div>
+          </div>
+          <div style="margin-top:36px">
+            <a class="btn btn-primary" href="/contact" style="display:inline-flex">See What We'd Automate For You</a>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:center">
+          <div class="phone-demo" id="phoneDemo">
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <div class="phone-status-bar"><span>9:41 AM</span><span>5G ●●●</span></div>
+                <div class="phone-chat-header">
+                  <div class="name">Mainstay AI Assistant</div>
+                  <div class="sub">Online · Typically replies instantly</div>
+                </div>
+                <div class="phone-badge">Today</div>
+                <div class="phone-msgs" id="phoneMsgs">
+                  <!-- Messages injected by JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1341,7 +1462,86 @@ function closeMobileNav(){document.getElementById('menuToggle').classList.remove
 
 // Scroll reveal animations
 const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}})},{threshold:0.1});
-document.querySelectorAll('.card,.portfolio,.testimonial,.price-card,.faq-item,.pillar,.f-stat,.result-card,.result-industry').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity .6s ease, transform .6s ease';observer.observe(el)});
+document.querySelectorAll('.card,.portfolio,.testimonial,.price-card,.faq-item,.pillar,.f-stat,.result-card,.result-industry,.mac-mini-scene,.phone-demo').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity .6s ease, transform .6s ease';observer.observe(el)});
+
+// 3D Portfolio tilt on mouse move
+document.querySelectorAll('.portfolio').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const rect=card.getBoundingClientRect();
+    const x=(e.clientX-rect.left)/rect.width-.5;
+    const y=(e.clientY-rect.top)/rect.height-.5;
+    card.style.transform=`perspective(800px) rotateY(${x*8}deg) rotateX(${-y*8}deg) scale(1.02)`;
+  });
+  card.addEventListener('mouseleave',()=>{card.style.transform='perspective(800px) rotateY(0) rotateX(0) scale(1)'});
+});
+
+// Scroll-triggered counter animation
+function animateCounter(el,target,suffix=''){
+  const isFloat=String(target).includes('.');
+  const duration=1800;
+  const start=performance.now();
+  const numTarget=parseFloat(target);
+  function tick(now){
+    const elapsed=now-start;
+    const progress=Math.min(elapsed/duration,1);
+    const eased=1-Math.pow(1-progress,3);
+    const current=eased*numTarget;
+    el.textContent=(isFloat?current.toFixed(0):Math.floor(current))+suffix;
+    if(progress<1)requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+const counterObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting&&!e.target.dataset.counted){
+      e.target.dataset.counted='true';
+      const text=e.target.textContent.trim();
+      const match=text.match(/^([\d.]+)(.*)$/);
+      if(match)animateCounter(e.target,match[1],match[2]);
+    }
+  });
+},{threshold:0.3});
+document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
+
+// Phone demo message sequence
+(function(){
+  const container=document.getElementById('phoneMsgs');
+  if(!container)return;
+  const msgs=[
+    {type:'incoming',text:'Hi! I saw your website — do you have any openings this week for a consultation?',delay:0},
+    {type:'typing',delay:1200},
+    {type:'outgoing',text:'Hi there! Thanks for reaching out. We have availability this Thursday at 2pm or Friday at 10am — would either work for you?',delay:2400},
+    {type:'incoming',text:'Thursday at 2pm works perfectly!',delay:4800},
+    {type:'typing',delay:5800},
+    {type:'outgoing',text:"You're all set! I've booked you for Thursday at 2pm. You'll receive a confirmation email shortly. Looking forward to meeting you!",delay:7000},
+  ];
+  let triggered=false;
+  const demoObserver=new IntersectionObserver((entries)=>{
+    if(entries[0].isIntersecting&&!triggered){
+      triggered=true;
+      container.innerHTML='';
+      msgs.forEach(m=>{
+        setTimeout(()=>{
+          if(m.type==='typing'){
+            const typing=document.createElement('div');
+            typing.className='phone-typing';
+            typing.innerHTML='<span></span><span></span><span></span>';
+            container.appendChild(typing);
+            setTimeout(()=>typing.remove(),1100);
+          }else{
+            const div=document.createElement('div');
+            div.className='phone-msg '+(m.type==='incoming'?'incoming':'outgoing');
+            div.textContent=m.text;
+            container.appendChild(div);
+          }
+          container.scrollTop=container.scrollHeight;
+        },m.delay);
+      });
+    }
+  },{threshold:0.3});
+  const demoSection=document.getElementById('phoneDemo');
+  if(demoSection)demoObserver.observe(demoSection);
+})();
 
 // 3D Particle background for hero
 (function(){
