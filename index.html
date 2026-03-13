@@ -149,18 +149,14 @@
     .ai-hw-list li{font-size:15px;line-height:1.75;color:rgba(255,255,255,.78);padding-left:24px;position:relative}
     .ai-hw-list li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700}
 
-    /* ─── 3D MAC MINI ─── */
-    .mac-mini-scene{perspective:800px;width:280px;height:280px;margin:0 auto}
-    .mac-mini-wrap{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:macFloat 6s ease-in-out infinite}
-    @keyframes macFloat{0%,100%{transform:rotateX(-8deg) rotateY(-15deg) translateY(0)}50%{transform:rotateX(-8deg) rotateY(15deg) translateY(-14px)}}
-    .mac-mini-body{position:absolute;width:220px;height:28px;left:50%;top:55%;transform:translate(-50%,-50%);background:linear-gradient(180deg,#3a3a3c,#1d1d1f);border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.6),0 0 80px rgba(199,165,106,.08),inset 0 1px 0 rgba(255,255,255,.1);transform-style:preserve-3d}
-    .mac-mini-top{position:absolute;width:220px;height:220px;left:50%;bottom:100%;transform:translate(-50%,0) rotateX(90deg);transform-origin:bottom center;background:radial-gradient(circle at 50% 50%,#2a2a2c,#1d1d1f);border-radius:14px;box-shadow:inset 0 0 40px rgba(0,0,0,.3)}
-    .mac-mini-top::after{content:"";position:absolute;width:24px;height:24px;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,#0a0a0a,#1a1a1c);border:2px solid #2a2a2c}
-    .mac-mini-front{position:absolute;width:220px;height:10px;left:50%;top:100%;transform:translate(-50%,0) rotateX(-90deg);transform-origin:top center;background:linear-gradient(180deg,#1d1d1f,#111);border-radius:0 0 4px 4px}
-    .mac-mini-led{position:absolute;width:6px;height:6px;border-radius:50%;right:16px;top:50%;transform:translateY(-50%);background:#c7a56a;box-shadow:0 0 8px rgba(199,165,106,.6),0 0 20px rgba(199,165,106,.3);animation:ledPulse 3s ease-in-out infinite}
-    @keyframes ledPulse{0%,100%{opacity:1;box-shadow:0 0 8px rgba(199,165,106,.6),0 0 20px rgba(199,165,106,.3)}50%{opacity:.5;box-shadow:0 0 4px rgba(199,165,106,.3),0 0 10px rgba(199,165,106,.15)}}
-    .mac-mini-shadow{position:absolute;width:200px;height:30px;left:50%;bottom:-40px;transform:translate(-50%,0);background:radial-gradient(ellipse,rgba(199,165,106,.1),transparent 70%);filter:blur(8px)}
-    .mac-mini-label{position:absolute;width:100%;text-align:center;bottom:-60px;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);opacity:.6}
+    /* ─── MAC MINI VISUAL ─── */
+    .mac-mini-visual{width:320px;margin:0 auto;animation:miniFloat 6s ease-in-out infinite;position:relative}
+    @keyframes miniFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    .mac-mini-visual svg{width:100%;height:auto;filter:drop-shadow(0 20px 60px rgba(0,0,0,.5)) drop-shadow(0 0 80px rgba(199,165,106,.06))}
+    .mac-mini-glow{position:absolute;width:100%;height:40px;bottom:-20px;left:0;background:radial-gradient(ellipse,rgba(199,165,106,.12),transparent 70%);filter:blur(12px);pointer-events:none}
+    .mac-mini-label{text-align:center;margin-top:24px;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);opacity:.6}
+    .led-glow{animation:ledPulse 3s ease-in-out infinite}
+    @keyframes ledPulse{0%,100%{opacity:1}50%{opacity:.4}}
 
     /* ─── PHONE DEMO ─── */
     .phone-demo{width:320px;margin:0 auto;perspective:1000px}
@@ -476,7 +472,7 @@
       .feature-stats{grid-template-columns:repeat(2,1fr)}
       .pillars{grid-template-columns:1fr}
       .ai-hardware{grid-template-columns:1fr}
-      .mac-mini-scene{width:240px;height:240px}
+      .mac-mini-visual{width:280px}
       .phone-demo{width:280px}
       .phone-screen{min-height:380px}
     }
@@ -585,10 +581,7 @@
       #hardware{padding:60px 0!important}
       #hardware h2{font-size:28px!important}
       #hardware [style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr!important}
-      .mac-mini-scene{width:200px;height:200px}
-      .mac-mini-body{width:180px;height:24px}
-      .mac-mini-top{width:180px;height:180px}
-      .mac-mini-front{width:180px}
+      .mac-mini-visual{width:240px}
       .phone-demo{width:100%;max-width:300px}
       .phone-screen{min-height:360px;padding:16px 12px}
       .phone-msg{font-size:12px}
@@ -826,17 +819,53 @@
       </div>
       <!-- 3D Mac Mini Visualization -->
       <div style="margin-top:64px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
-        <div style="display:flex;justify-content:center">
-          <div class="mac-mini-scene">
-            <div class="mac-mini-wrap">
-              <div class="mac-mini-body">
-                <div class="mac-mini-led"></div>
-                <div class="mac-mini-front"></div>
-              </div>
-              <div class="mac-mini-top"></div>
-              <div class="mac-mini-shadow"></div>
-              <div class="mac-mini-label">Mac Mini — Always On</div>
-            </div>
+        <div style="display:flex;justify-content:center;align-items:center">
+          <div class="mac-mini-visual">
+            <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Shadow on surface -->
+              <ellipse cx="200" cy="270" rx="140" ry="18" fill="url(#macShadow)" opacity=".4"/>
+              <!-- Bottom edge / base -->
+              <path d="M60 230 C60 230 60 245 75 250 L325 250 C340 245 340 230 340 230Z" fill="#111113"/>
+              <!-- Front face (thin side) -->
+              <rect x="60" y="210" width="280" height="22" rx="4" fill="url(#macFront)"/>
+              <!-- Power LED -->
+              <circle cx="320" cy="221" r="2.5" fill="#c7a56a" class="led-glow"/>
+              <circle cx="320" cy="221" r="6" fill="rgba(199,165,106,.15)" class="led-glow"/>
+              <!-- Top lid — the big face -->
+              <path d="M48 210 L80 80 C82 72 90 66 100 64 L300 64 C310 66 318 72 320 80 L352 210 Z" fill="url(#macTop)"/>
+              <!-- Top lid inner border / bevel -->
+              <path d="M48 210 L80 80 C82 72 90 66 100 64 L300 64 C310 66 318 72 320 80 L352 210 Z" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+              <!-- Apple logo circle indent on top -->
+              <ellipse cx="200" cy="140" rx="18" ry="14" fill="rgba(0,0,0,.15)" stroke="rgba(255,255,255,.04)" stroke-width=".5"/>
+              <!-- Subtle top reflection -->
+              <path d="M90 76 L110 68 L290 68 L310 76" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1" stroke-linecap="round"/>
+              <!-- Rear ports hint (back edge) -->
+              <rect x="120" y="66" width="8" height="3" rx="1" fill="rgba(0,0,0,.3)"/>
+              <rect x="136" y="66" width="8" height="3" rx="1" fill="rgba(0,0,0,.3)"/>
+              <rect x="152" y="66" width="8" height="3" rx="1" fill="rgba(0,0,0,.3)"/>
+              <rect x="168" y="66" width="14" height="3" rx="1" fill="rgba(0,0,0,.3)"/>
+              <rect x="240" y="66" width="12" height="3" rx="1" fill="rgba(0,0,0,.3)"/>
+              <rect x="258" y="66" width="8" height="3" rx="1" fill="rgba(0,0,0,.3)"/>
+              <!-- Ventilation line at bottom of top -->
+              <line x1="70" y1="206" x2="330" y2="206" stroke="rgba(0,0,0,.3)" stroke-width="1"/>
+              <defs>
+                <linearGradient id="macTop" x1="200" y1="64" x2="200" y2="212" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#3a3a3e"/>
+                  <stop offset=".3" stop-color="#2c2c30"/>
+                  <stop offset="1" stop-color="#1d1d21"/>
+                </linearGradient>
+                <linearGradient id="macFront" x1="200" y1="210" x2="200" y2="232" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#2a2a2e"/>
+                  <stop offset="1" stop-color="#18181b"/>
+                </linearGradient>
+                <radialGradient id="macShadow" cx="200" cy="270" rx="140" ry="18" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="rgba(199,165,106,.15)"/>
+                  <stop offset="1" stop-color="transparent"/>
+                </radialGradient>
+              </defs>
+            </svg>
+            <div class="mac-mini-glow"></div>
+            <div class="mac-mini-label">Mac Mini — Always On</div>
           </div>
         </div>
         <div>
@@ -1462,7 +1491,7 @@ function closeMobileNav(){document.getElementById('menuToggle').classList.remove
 
 // Scroll reveal animations
 const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}})},{threshold:0.1});
-document.querySelectorAll('.card,.portfolio,.testimonial,.price-card,.faq-item,.pillar,.f-stat,.result-card,.result-industry,.mac-mini-scene,.phone-demo').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity .6s ease, transform .6s ease';observer.observe(el)});
+document.querySelectorAll('.card,.portfolio,.testimonial,.price-card,.faq-item,.pillar,.f-stat,.result-card,.result-industry,.mac-mini-visual,.phone-demo').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity .6s ease, transform .6s ease';observer.observe(el)});
 
 // 3D Portfolio tilt on mouse move
 document.querySelectorAll('.portfolio').forEach(card=>{
