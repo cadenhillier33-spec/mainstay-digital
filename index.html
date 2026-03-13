@@ -1622,50 +1622,30 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
   loader.load('https://cdn.jsdelivr.net/gh/cadenhillier33-spec/mainstay-digital@fd28f46/mac-mini.glb',function(gltf){
     const model=gltf.scene;
 
-    // Auto-center and scale the model
+    // Auto-center and scale — flip Y to fix upside-down orientation
     const box=new THREE.Box3().setFromObject(model);
     const center=box.getCenter(new THREE.Vector3());
     const size=box.getSize(new THREE.Vector3());
     const maxDim=Math.max(size.x,size.y,size.z);
     const scale=3.2/maxDim;
-    model.scale.setScalar(scale);
-    model.position.set(-center.x*scale,-center.y*scale,-center.z*scale);
+    model.scale.set(scale,-scale,scale);
+    model.position.set(-center.x*scale,center.y*scale,-center.z*scale);
 
-    // Flip model right-side up (Sketchfab Y-axis is inverted)
-    model.rotation.x=Math.PI;
-
-    // Convert materials to Phong while preserving original colors
+    // Keep original materials but make them render without env maps
     model.traverse(function(child){
       if(child.isMesh){
-        var origMat=child.material;
-        var origColor=origMat.color?origMat.color.clone():new THREE.Color(0xc0c0c0);
-        var origMap=origMat.map||null;
-        var metalness=(origMat.metalness!==undefined)?origMat.metalness:0.5;
-        var roughness=(origMat.roughness!==undefined)?origMat.roughness:0.5;
-
-        // Brighten dark colors slightly so they're visible against dark bg
-        var hsl={};origColor.getHSL(hsl);
-        if(hsl.l<0.15){
-          // Very dark parts (bottom plate, vents) — keep dark but visible
-          child.material=new THREE.MeshPhongMaterial({
-            color:origColor,
-            map:origMap,
-            specular:new THREE.Color(0x333333),
-            shininess:30,
-            emissive:new THREE.Color(0x0a0a0a)
-          });
-        }else{
-          // Metallic/aluminum parts — bright with specular highlights
-          var brightness=metalness>0.5?1.3:1.1;
-          origColor.multiplyScalar(brightness);
-          child.material=new THREE.MeshPhongMaterial({
-            color:origColor,
-            map:origMap,
-            specular:new THREE.Color(0x999999),
-            shininess:metalness>0.5?100:60,
-            emissive:new THREE.Color(0x111111)
-          });
+        // Fix inverted normals from negative scale
+        child.material.side=THREE.DoubleSide;
+        // Reduce metalness so direct lights work (PBR metal needs env maps)
+        if(child.material.metalness!==undefined){
+          child.material.metalness=Math.min(child.material.metalness,0.35);
+          child.material.roughness=Math.max(child.material.roughness,0.45);
         }
+        // Slight emissive lift so nothing is pure black
+        if(child.material.color){
+          child.material.emissive=child.material.color.clone().multiplyScalar(0.1);
+        }
+        child.material.needsUpdate=true;
       }
     });
 
