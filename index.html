@@ -1608,7 +1608,7 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
   // Model group — static, no spinning
   const modelGroup=new THREE.Group();
   modelGroup.rotation.x=0.4;
-  modelGroup.rotation.y=0;
+  modelGroup.rotation.y=-Math.PI/2;
   scene.add(modelGroup);
 
   // Load the Sketchfab .glb model
