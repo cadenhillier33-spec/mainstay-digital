@@ -149,12 +149,10 @@
     .ai-hw-list li{font-size:15px;line-height:1.75;color:rgba(255,255,255,.78);padding-left:24px;position:relative}
     .ai-hw-list li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700}
 
-    /* ─── MAC MINI VISUAL ─── */
-    .mac-mini-visual{width:300px;margin:0 auto;animation:miniFloat 6s ease-in-out infinite;position:relative;text-align:center}
-    @keyframes miniFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-    .mac-mini-visual img{width:100%;height:auto;filter:drop-shadow(0 20px 60px rgba(0,0,0,.5)) drop-shadow(0 0 40px rgba(199,165,106,.08))}
-    .mac-mini-glow{position:absolute;width:80%;height:30px;bottom:0;left:10%;background:radial-gradient(ellipse,rgba(199,165,106,.15),transparent 70%);filter:blur(14px);pointer-events:none}
-    .mac-mini-label{text-align:center;margin-top:20px;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);opacity:.6}
+    /* ─── MAC MINI 3D CANVAS ─── */
+    .mac-mini-3d-wrap{width:340px;height:340px;margin:0 auto;position:relative}
+    .mac-mini-3d-wrap canvas{width:100%!important;height:100%!important;display:block}
+    .mac-mini-label{text-align:center;margin-top:12px;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);opacity:.6}
 
     /* ─── PHONE DEMO ─── */
     .phone-demo{width:320px;margin:0 auto;perspective:1000px}
@@ -470,7 +468,7 @@
       .feature-stats{grid-template-columns:repeat(2,1fr)}
       .pillars{grid-template-columns:1fr}
       .ai-hardware{grid-template-columns:1fr}
-      .mac-mini-visual{width:280px}
+      .mac-mini-3d-wrap{width:280px;height:280px}
       .phone-demo{width:280px}
       .phone-screen{min-height:380px}
     }
@@ -579,7 +577,7 @@
       #hardware{padding:60px 0!important}
       #hardware h2{font-size:28px!important}
       #hardware [style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr!important}
-      .mac-mini-visual{width:240px}
+      .mac-mini-3d-wrap{width:240px;height:240px}
       .phone-demo{width:100%;max-width:300px}
       .phone-screen{min-height:360px;padding:16px 12px}
       .phone-msg{font-size:12px}
@@ -817,12 +815,9 @@
       </div>
       <!-- 3D Mac Mini Visualization -->
       <div style="margin-top:64px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
-        <div style="display:flex;justify-content:center;align-items:center">
-          <div class="mac-mini-visual">
-            <img src="https://www.apple.com/v/mac-mini/aa/images/overview/design/design_pf__c25gukz0vwgi_large.jpg" alt="Apple Mac Mini M4" loading="lazy"/>
-            <div class="mac-mini-glow"></div>
-            <div class="mac-mini-label">Mac Mini M4 — Always On</div>
-          </div>
+        <div style="display:flex;justify-content:center;align-items:center;flex-direction:column">
+          <div class="mac-mini-3d-wrap" id="macMini3D"></div>
+          <div class="mac-mini-label">Mac Mini M4 — Always On</div>
         </div>
         <div>
           <div style="display:grid;gap:20px">
@@ -1447,7 +1442,7 @@ function closeMobileNav(){document.getElementById('menuToggle').classList.remove
 
 // Scroll reveal animations
 const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}})},{threshold:0.1});
-document.querySelectorAll('.card,.portfolio,.testimonial,.price-card,.faq-item,.pillar,.f-stat,.result-card,.result-industry,.mac-mini-visual,.phone-demo').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity .6s ease, transform .6s ease';observer.observe(el)});
+document.querySelectorAll('.card,.portfolio,.testimonial,.price-card,.faq-item,.pillar,.f-stat,.result-card,.result-industry,.mac-mini-3d-wrap,.phone-demo').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity .6s ease, transform .6s ease';observer.observe(el)});
 
 // 3D Portfolio tilt on mouse move
 document.querySelectorAll('.portfolio').forEach(card=>{
@@ -1558,6 +1553,269 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
     requestAnimationFrame(animate);
   }
   animate();
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const container=document.getElementById('macMini3D');
+  if(!container)return;
+
+  // Scene setup
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(35,1,.1,100);
+  camera.position.set(0,2.2,5.5);
+  camera.lookAt(0,0.2,0);
+
+  const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
+  renderer.setSize(340,340);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure=1.2;
+  renderer.outputEncoding=THREE.sRGBEncoding;
+  container.appendChild(renderer.domElement);
+
+  // Lighting — 3-point setup for metallic look
+  const ambientLight=new THREE.AmbientLight(0x404050,0.4);
+  scene.add(ambientLight);
+
+  // Key light (warm, top-right)
+  const keyLight=new THREE.DirectionalLight(0xffeedd,1.2);
+  keyLight.position.set(3,5,4);
+  scene.add(keyLight);
+
+  // Fill light (cool, left)
+  const fillLight=new THREE.DirectionalLight(0x8899bb,0.5);
+  fillLight.position.set(-4,3,2);
+  scene.add(fillLight);
+
+  // Rim light (gold accent, behind)
+  const rimLight=new THREE.DirectionalLight(0xc8a951,0.3);
+  rimLight.position.set(0,2,-4);
+  scene.add(rimLight);
+
+  // Bottom glow point light
+  const glowLight=new THREE.PointLight(0xc8a951,0.4,8);
+  glowLight.position.set(0,-1.5,0);
+  scene.add(glowLight);
+
+  // Mac Mini group
+  const miniGroup=new THREE.Group();
+  scene.add(miniGroup);
+
+  // --- BODY: Rounded box (main aluminum chassis) ---
+  // Mac Mini M4 proportions: ~5" x 5" x ~2" — wide, square, thin
+  const bodyW=2.6, bodyH=0.42, bodyD=2.6, bodyR=0.18;
+  const bodyShape=new THREE.Shape();
+  const r=bodyR;
+  bodyShape.moveTo(-bodyW/2+r, -bodyD/2);
+  bodyShape.lineTo(bodyW/2-r, -bodyD/2);
+  bodyShape.quadraticCurveTo(bodyW/2, -bodyD/2, bodyW/2, -bodyD/2+r);
+  bodyShape.lineTo(bodyW/2, bodyD/2-r);
+  bodyShape.quadraticCurveTo(bodyW/2, bodyD/2, bodyW/2-r, bodyD/2);
+  bodyShape.lineTo(-bodyW/2+r, bodyD/2);
+  bodyShape.quadraticCurveTo(-bodyW/2, bodyD/2, -bodyW/2, bodyD/2-r);
+  bodyShape.lineTo(-bodyW/2, -bodyD/2+r);
+  bodyShape.quadraticCurveTo(-bodyW/2, -bodyD/2, -bodyW/2+r, -bodyD/2);
+
+  const extrudeSettings={depth:bodyH,bevelEnabled:true,bevelThickness:0.06,bevelSize:0.06,bevelSegments:8};
+  const bodyGeom=new THREE.ExtrudeGeometry(bodyShape,extrudeSettings);
+  bodyGeom.rotateX(-Math.PI/2);
+  bodyGeom.translate(0,bodyH/2+0.06,0);
+
+  const bodyMat=new THREE.MeshStandardMaterial({
+    color:0xc0c0c8,
+    metalness:0.85,
+    roughness:0.18,
+    envMapIntensity:1.0
+  });
+  const bodyMesh=new THREE.Mesh(bodyGeom,bodyMat);
+  miniGroup.add(bodyMesh);
+
+  // --- TOP SURFACE: Slightly different shade for lid ---
+  const topGeom=new THREE.PlaneGeometry(bodyW-0.02,bodyD-0.02);
+  const topMat=new THREE.MeshStandardMaterial({
+    color:0xd0d0d8,
+    metalness:0.9,
+    roughness:0.12,
+    side:THREE.DoubleSide
+  });
+  const topMesh=new THREE.Mesh(topGeom,topMat);
+  topMesh.rotation.x=-Math.PI/2;
+  topMesh.position.y=bodyH+0.125;
+  miniGroup.add(topMesh);
+
+  // --- APPLE LOGO (circle indent on top) ---
+  const logoGeom=new THREE.CircleGeometry(0.2,32);
+  const logoMat=new THREE.MeshStandardMaterial({
+    color:0xa0a0a8,
+    metalness:0.95,
+    roughness:0.08,
+    side:THREE.DoubleSide
+  });
+  const logoMesh=new THREE.Mesh(logoGeom,logoMat);
+  logoMesh.rotation.x=-Math.PI/2;
+  logoMesh.position.set(0,bodyH+0.127,0);
+  miniGroup.add(logoMesh);
+
+  // --- BLACK BOTTOM PLATE ---
+  const bottomGeom=new THREE.PlaneGeometry(bodyW+0.04,bodyD+0.04);
+  const bottomMat=new THREE.MeshStandardMaterial({
+    color:0x111111,
+    metalness:0.3,
+    roughness:0.8,
+    side:THREE.DoubleSide
+  });
+  const bottomMesh=new THREE.Mesh(bottomGeom,bottomMat);
+  bottomMesh.rotation.x=-Math.PI/2;
+  bottomMesh.position.y=-0.01;
+  miniGroup.add(bottomMesh);
+
+  // --- FRONT FACE dark strip (ventilation/ports line) ---
+  const frontStripGeom=new THREE.PlaneGeometry(bodyW-0.1,0.04);
+  const frontStripMat=new THREE.MeshStandardMaterial({color:0x222222,metalness:0.2,roughness:0.9});
+  const frontStrip=new THREE.Mesh(frontStripGeom,frontStripMat);
+  frontStrip.position.set(0,bodyH*0.3,-bodyD/2-0.061);
+  miniGroup.add(frontStrip);
+
+  // --- LED INDICATOR (front, small glowing dot) ---
+  const ledGeom=new THREE.CircleGeometry(0.025,16);
+  const ledMat=new THREE.MeshBasicMaterial({color:0xffffff});
+  const ledMesh=new THREE.Mesh(ledGeom,ledMat);
+  ledMesh.position.set(0,0.12,-bodyD/2-0.065);
+  miniGroup.add(ledMesh);
+
+  // LED glow
+  const ledGlow=new THREE.PointLight(0xffffff,0.15,0.8);
+  ledGlow.position.set(0,0.12,-bodyD/2-0.1);
+  miniGroup.add(ledGlow);
+
+  // --- REAR PORTS (back face, small dark rectangles) ---
+  const portMat=new THREE.MeshStandardMaterial({color:0x1a1a1a,metalness:0.4,roughness:0.7});
+  const portPositions=[
+    {x:-0.8,w:0.18,h:0.06},  // Ethernet
+    {x:-0.45,w:0.1,h:0.055}, // USB-C
+    {x:-0.2,w:0.1,h:0.055},  // USB-C
+    {x:0.05,w:0.1,h:0.055},  // USB-C
+    {x:0.3,w:0.14,h:0.055},  // HDMI
+    {x:0.6,w:0.14,h:0.06},   // Power
+  ];
+  portPositions.forEach(p=>{
+    const pg=new THREE.PlaneGeometry(p.w,p.h);
+    const pm=new THREE.Mesh(pg,portMat);
+    pm.position.set(p.x,bodyH*0.35,bodyD/2+0.062);
+    miniGroup.add(pm);
+  });
+
+  // --- SHADOW PLANE (transparent, receives shadow-like gradient) ---
+  const shadowGeom=new THREE.PlaneGeometry(4,4);
+  const shadowMat=new THREE.MeshBasicMaterial({
+    color:0x000000,
+    transparent:true,
+    opacity:0.15,
+    side:THREE.DoubleSide
+  });
+  const shadowMesh=new THREE.Mesh(shadowGeom,shadowMat);
+  shadowMesh.rotation.x=-Math.PI/2;
+  shadowMesh.position.y=-0.04;
+  shadowMesh.scale.set(0.8,0.8,0.8);
+  scene.add(shadowMesh);
+
+  // Environment map (fake cubemap for reflections)
+  const cubeRT=new THREE.WebGLCubeRenderTarget(256);
+  const cubeCamera=new THREE.CubeCamera(0.1,10,cubeRT);
+  // Create a gradient background sphere for reflections
+  const envGeom=new THREE.SphereGeometry(8,32,32);
+  const envMat=new THREE.MeshBasicMaterial({
+    color:0x0a1628,
+    side:THREE.BackSide
+  });
+  const envSphere=new THREE.Mesh(envGeom,envMat);
+  scene.add(envSphere);
+
+  // Add some bright spots for reflection highlights
+  const hlGeom=new THREE.PlaneGeometry(2,2);
+  const hlMat=new THREE.MeshBasicMaterial({color:0x444466,side:THREE.DoubleSide});
+  const hl1=new THREE.Mesh(hlGeom,hlMat);
+  hl1.position.set(3,4,0);
+  hl1.lookAt(0,0,0);
+  scene.add(hl1);
+  const hl2=new THREE.Mesh(hlGeom.clone(),new THREE.MeshBasicMaterial({color:0x333344,side:THREE.DoubleSide}));
+  hl2.position.set(-3,3,2);
+  hl2.lookAt(0,0,0);
+  scene.add(hl2);
+
+  // Capture env map
+  miniGroup.visible=false;
+  cubeCamera.position.set(0,0.3,0);
+  cubeCamera.update(renderer,scene);
+  miniGroup.visible=true;
+  bodyMat.envMap=cubeRT.texture;
+  topMat.envMap=cubeRT.texture;
+  logoMat.envMap=cubeRT.texture;
+
+  // Hide env objects from main render
+  envSphere.visible=false;
+  hl1.visible=false;
+  hl2.visible=false;
+
+  // Initial tilt
+  miniGroup.rotation.x=0.25;
+  miniGroup.rotation.y=-0.6;
+
+  // Float animation + slow rotation
+  let time=0;
+  let mouseX=0,mouseY=0;
+  let targetRotY=-0.6,targetRotX=0.25;
+
+  container.addEventListener('mousemove',e=>{
+    const rect=container.getBoundingClientRect();
+    mouseX=((e.clientX-rect.left)/rect.width-0.5)*2;
+    mouseY=((e.clientY-rect.top)/rect.height-0.5)*2;
+    targetRotY=-0.6+mouseX*0.5;
+    targetRotX=0.25-mouseY*0.3;
+  });
+  container.addEventListener('mouseleave',()=>{
+    targetRotY=-0.6;
+    targetRotX=0.25;
+  });
+
+  function animate(){
+    requestAnimationFrame(animate);
+    time+=0.008;
+
+    // Gentle float
+    miniGroup.position.y=Math.sin(time*0.8)*0.08;
+
+    // Smooth rotation toward target (or auto-rotate if no hover)
+    miniGroup.rotation.y+=(targetRotY-miniGroup.rotation.y)*0.04;
+    miniGroup.rotation.x+=(targetRotX-miniGroup.rotation.x)*0.04;
+
+    // Slow auto-rotate
+    targetRotY-=0.0008;
+
+    // LED pulse
+    const pulse=0.1+Math.sin(time*3)*0.05;
+    ledGlow.intensity=pulse;
+    ledMat.color.setRGB(0.8+Math.sin(time*3)*0.2,0.8+Math.sin(time*3)*0.2,0.8+Math.sin(time*3)*0.2);
+
+    // Shadow pulse
+    shadowMesh.material.opacity=0.12+Math.sin(time*0.8)*0.03;
+
+    renderer.render(scene,camera);
+  }
+  animate();
+
+  // Resize handler
+  function onResize(){
+    const w=container.clientWidth;
+    const h=container.clientHeight;
+    renderer.setSize(w,h);
+    camera.aspect=w/h;
+    camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize',onResize);
+  setTimeout(onResize,100);
 })();
 </script>
 </body>
