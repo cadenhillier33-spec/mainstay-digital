@@ -1569,14 +1569,14 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
   // Scene setup
   const scene=new THREE.Scene();
   const camera=new THREE.PerspectiveCamera(32,1,.1,100);
-  camera.position.set(4,3,5);
-  camera.lookAt(0,0.4,0);
+  camera.position.set(3,4.5,4);
+  camera.lookAt(0,0,0);
 
   const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
   renderer.setSize(400,400);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
   renderer.toneMapping=THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure=0.9;
+  renderer.toneMappingExposure=0.7;
   renderer.outputEncoding=THREE.sRGBEncoding;
   container.appendChild(renderer.domElement);
 
@@ -1584,31 +1584,31 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
   var pmremGenerator=new THREE.PMREMGenerator(renderer);
   pmremGenerator.compileEquirectangularShader();
   var envScene=new THREE.Scene();
-  envScene.background=new THREE.Color(0x333333);
-  // Soft panel above (studio softbox — not too bright)
-  var topPanel=new THREE.Mesh(new THREE.PlaneGeometry(20,20),new THREE.MeshBasicMaterial({color:0x888888}));
+  envScene.background=new THREE.Color(0x222222);
+  // Soft overhead panel for subtle top reflections
+  var topPanel=new THREE.Mesh(new THREE.PlaneGeometry(20,20),new THREE.MeshBasicMaterial({color:0x666666}));
   topPanel.position.set(0,8,0);topPanel.rotation.x=Math.PI/2;envScene.add(topPanel);
-  // Side panels for subtle edge reflections
-  var sidePanel1=new THREE.Mesh(new THREE.PlaneGeometry(10,10),new THREE.MeshBasicMaterial({color:0x666666}));
+  // Side panels for edge definition
+  var sidePanel1=new THREE.Mesh(new THREE.PlaneGeometry(10,10),new THREE.MeshBasicMaterial({color:0x444444}));
   sidePanel1.position.set(8,2,0);sidePanel1.rotation.y=-Math.PI/2;envScene.add(sidePanel1);
-  var sidePanel2=new THREE.Mesh(new THREE.PlaneGeometry(10,10),new THREE.MeshBasicMaterial({color:0x555555}));
+  var sidePanel2=new THREE.Mesh(new THREE.PlaneGeometry(10,10),new THREE.MeshBasicMaterial({color:0x383838}));
   sidePanel2.position.set(-8,2,0);sidePanel2.rotation.y=Math.PI/2;envScene.add(sidePanel2);
-  var frontPanel=new THREE.Mesh(new THREE.PlaneGeometry(10,10),new THREE.MeshBasicMaterial({color:0x666666}));
+  var frontPanel=new THREE.Mesh(new THREE.PlaneGeometry(10,10),new THREE.MeshBasicMaterial({color:0x444444}));
   frontPanel.position.set(0,2,8);frontPanel.rotation.y=Math.PI;envScene.add(frontPanel);
   var envTexture=pmremGenerator.fromScene(envScene,0.04).texture;
   scene.environment=envTexture;
   pmremGenerator.dispose();
 
-  // Soft lighting — env map does the heavy lifting for metallic surfaces
-  scene.add(new THREE.AmbientLight(0xffffff,0.25));
-  var keyLight=new THREE.DirectionalLight(0xfff8f0,0.8);keyLight.position.set(5,6,5);scene.add(keyLight);
-  var fillLight=new THREE.DirectionalLight(0xd0e0f0,0.35);fillLight.position.set(-4,3,3);scene.add(fillLight);
-  var rimLight=new THREE.DirectionalLight(0xffffff,0.3);rimLight.position.set(0,2,-5);scene.add(rimLight);
+  // Subtle lighting — env map does the heavy lifting, lights add accents
+  scene.add(new THREE.AmbientLight(0xffffff,0.15));
+  var keyLight=new THREE.DirectionalLight(0xfff8f0,0.6);keyLight.position.set(4,8,4);scene.add(keyLight);
+  var fillLight=new THREE.DirectionalLight(0xd0e0f0,0.25);fillLight.position.set(-4,3,3);scene.add(fillLight);
+  var rimLight=new THREE.DirectionalLight(0xffffff,0.4);rimLight.position.set(-2,1,-4);scene.add(rimLight);
 
   // Model group — static, no spinning
   const modelGroup=new THREE.Group();
-  modelGroup.rotation.x=-0.25;
-  modelGroup.rotation.y=0.6;
+  modelGroup.rotation.x=0.35;
+  modelGroup.rotation.y=0.5;
   scene.add(modelGroup);
 
   // Load the Sketchfab .glb model
@@ -1625,11 +1625,11 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
     model.scale.setScalar(scale);
     model.position.set(-center.x*scale,-center.y*scale,-center.z*scale);
 
-    // Keep ALL original materials — env map handles metallic rendering
-    // Just ensure textures are properly set
+    // Keep ALL original materials with their textures intact
+    // Boost env map intensity for richer metallic reflections
     model.traverse(function(child){
       if(child.isMesh){
-        child.material.envMapIntensity=1.2;
+        child.material.envMapIntensity=1.8;
         child.material.needsUpdate=true;
       }
     });
