@@ -1631,23 +1631,39 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
     model.scale.setScalar(scale);
     model.position.set(-center.x*scale,-center.y*scale,-center.z*scale);
 
-    // Override materials with bright Phong (doesn't need env maps)
+    // Flip model right-side up (Sketchfab Y-axis is inverted)
+    model.rotation.x=Math.PI;
+
+    // Convert materials to Phong while preserving original colors
     model.traverse(function(child){
       if(child.isMesh){
-        var name=(child.material&&child.material.name)||'';
-        var isBottom=name.toLowerCase().indexOf('black')>=0||name.toLowerCase().indexOf('bottom')>=0||name.toLowerCase().indexOf('botton')>=0;
-        if(isBottom){
+        var origMat=child.material;
+        var origColor=origMat.color?origMat.color.clone():new THREE.Color(0xc0c0c0);
+        var origMap=origMat.map||null;
+        var metalness=(origMat.metalness!==undefined)?origMat.metalness:0.5;
+        var roughness=(origMat.roughness!==undefined)?origMat.roughness:0.5;
+
+        // Brighten dark colors slightly so they're visible against dark bg
+        var hsl={};origColor.getHSL(hsl);
+        if(hsl.l<0.15){
+          // Very dark parts (bottom plate, vents) — keep dark but visible
           child.material=new THREE.MeshPhongMaterial({
-            color:0x1a1a1a,
-            specular:0x222222,
-            shininess:20
+            color:origColor,
+            map:origMap,
+            specular:new THREE.Color(0x333333),
+            shininess:30,
+            emissive:new THREE.Color(0x0a0a0a)
           });
         }else{
+          // Metallic/aluminum parts — bright with specular highlights
+          var brightness=metalness>0.5?1.3:1.1;
+          origColor.multiplyScalar(brightness);
           child.material=new THREE.MeshPhongMaterial({
-            color:0xd4d5d8,
-            specular:0xffffff,
-            shininess:120,
-            reflectivity:0.9
+            color:origColor,
+            map:origMap,
+            specular:new THREE.Color(0x999999),
+            shininess:metalness>0.5?100:60,
+            emissive:new THREE.Color(0x111111)
           });
         }
       }
