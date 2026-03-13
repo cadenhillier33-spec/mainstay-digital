@@ -1576,7 +1576,7 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
   renderer.setSize(400,400);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
   renderer.toneMapping=THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure=2.2;
+  renderer.toneMappingExposure=2.8;
   renderer.outputEncoding=THREE.sRGBEncoding;
   container.appendChild(renderer.domElement);
 
@@ -1632,27 +1632,26 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
     model.scale.setScalar(scale);
     model.position.set(-center.x*scale,-center.y*scale,-center.z*scale);
 
-    // Brighten materials so model pops against dark background
+    // Force-override ALL materials to bright silver aluminum
     model.traverse(function(child){
-      if(child.isMesh&&child.material){
-        var mat=child.material;
-        // Reduce roughness for more shine
-        if(mat.roughness!==undefined&&mat.roughness>0.5)mat.roughness=mat.roughness*0.6;
-        // Boost metalness for aluminum look
-        if(mat.metalness!==undefined&&mat.metalness<0.5)mat.metalness=0.7;
-        // Brighten dark materials
-        if(mat.color){
-          var c=mat.color;
-          if(c.r<0.3&&c.g<0.3&&c.b<0.3){
-            // Very dark material — lighten slightly for visibility
-            c.setRGB(Math.min(c.r*1.5+0.05,1),Math.min(c.g*1.5+0.05,1),Math.min(c.b*1.5+0.05,1));
-          }else{
-            // Boost silver/gray materials to be more reflective
-            c.setRGB(Math.min(c.r*1.2,1),Math.min(c.g*1.2,1),Math.min(c.b*1.2,1));
-          }
+      if(child.isMesh){
+        var name=(child.material&&child.material.name)||'';
+        var isBottom=name.toLowerCase().indexOf('black')>=0||name.toLowerCase().indexOf('bottom')>=0||name.toLowerCase().indexOf('botton')>=0;
+        if(isBottom){
+          // Black bottom plate — keep dark but visible
+          child.material=new THREE.MeshStandardMaterial({
+            color:new THREE.Color(0.12,0.12,0.12),
+            metalness:0.3,
+            roughness:0.7
+          });
+        }else{
+          // Everything else → bright brushed aluminum
+          child.material=new THREE.MeshStandardMaterial({
+            color:new THREE.Color(0.82,0.83,0.85),
+            metalness:0.92,
+            roughness:0.15
+          });
         }
-        mat.envMapIntensity=1.5;
-        mat.needsUpdate=true;
       }
     });
 
