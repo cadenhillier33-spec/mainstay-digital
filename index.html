@@ -182,43 +182,56 @@
     .phone-msgs::-webkit-scrollbar{display:none}
     .phone-badge{text-align:center;font-size:10px;color:rgba(255,255,255,.3);margin-bottom:12px}
 
-    /* ─── 24-HOUR TIMELINE DEMO ─── */
-    .tl-header{max-width:720px;margin-bottom:56px}
-    .tl-header h2{font-size:44px;letter-spacing:-.04em}
-    .tl-header .lead{margin-top:20px}
-    .tl-counter{display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:10px 18px;background:rgba(199,165,106,.06);border:1px solid rgba(199,165,106,.14);border-radius:999px}
-    .tl-counter-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)}
-    .tl-counter-num{font-size:15px;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums}
-    .tl-wrap{position:relative;padding-left:48px}
-    .tl-line{position:absolute;left:18px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,rgba(199,165,106,.3),rgba(199,165,106,.06));z-index:0}
-    .tl-item{position:relative;padding:0 0 40px;opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
-    .tl-item.visible{opacity:1;transform:translateY(0)}
-    .tl-dot{position:absolute;left:-38px;top:4px;width:12px;height:12px;border-radius:50%;border:2px solid rgba(199,165,106,.4);background:var(--bg);z-index:1;transition:all .4s ease}
-    .tl-item.visible .tl-dot{border-color:var(--gold);box-shadow:0 0 12px rgba(199,165,106,.25)}
-    .tl-time{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.04em;margin-bottom:6px}
-    .tl-card{background:#0d0e11;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px 24px;transition:border-color .3s ease}
-    .tl-item.visible .tl-card{border-color:rgba(255,255,255,.12)}
-    .tl-card-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-    .tl-channel{display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:999px;flex-shrink:0}
-    .tl-ch-web{background:rgba(99,132,255,.12);color:#7b9cff}
-    .tl-ch-email{background:rgba(80,200,120,.12);color:#5fd47a}
-    .tl-ch-sms{background:rgba(199,165,106,.12);color:#c7a56a}
-    .tl-ch-google{background:rgba(255,120,100,.12);color:#ff8a7a}
-    .tl-ch-internal{background:rgba(160,120,255,.12);color:#b89cff}
-    .tl-ch-social{background:rgba(255,160,80,.12);color:#ffb060}
-    .tl-card-title{font-size:16px;font-weight:600;color:#fff;line-height:1.4}
-    .tl-card-desc{font-size:14px;line-height:1.7;color:var(--muted);margin-top:6px}
-    .tl-card-desc strong{color:#fff}
-    .tl-card-result{margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,.06);font-size:12px;color:var(--gold2);display:flex;align-items:center;gap:6px}
-    .tl-summary{background:linear-gradient(135deg,rgba(199,165,106,.06),rgba(199,165,106,.02));border:1px solid rgba(199,165,106,.18);border-radius:20px;padding:28px 32px;margin-top:16px;margin-left:48px;opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;box-shadow:0 12px 40px rgba(0,0,0,.3)}
-    .tl-summary.visible{opacity:1;transform:translateY(0)}
-    .tl-summary-title{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
-    .tl-summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .tl-summary-stat{text-align:center}
-    .tl-summary-num{font-size:28px;font-weight:700;color:#fff;line-height:1}
-    .tl-summary-label{font-size:11px;color:rgba(255,255,255,.4);margin-top:4px}
-    .tl-summary-bottom{margin-top:18px;padding-top:14px;border-top:1px solid rgba(199,165,106,.12);font-size:13px;color:rgba(255,255,255,.5);text-align:center}
-    .tl-summary-bottom strong{color:var(--gold2)}
+    /* ─── iPHONE DEMO ─── */
+    .demo-layout{display:grid;grid-template-columns:1fr auto;gap:64px;align-items:center;max-width:1100px;margin:0 auto}
+    .demo-copy{max-width:480px}
+    .demo-copy h2{font-size:44px;letter-spacing:-.04em;line-height:1.08;margin:16px 0 0}
+    .demo-copy .lead{margin-top:20px}
+    .demo-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+    .demo-stat{padding:16px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.02);text-align:center}
+    .demo-stat-num{font-size:28px;font-weight:700;letter-spacing:-.02em;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .demo-stat-label{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted2);margin-top:4px}
+    /* iPhone Frame */
+    .iphone{position:relative;width:300px;height:620px;border-radius:48px;background:#1a1a1e;border:3px solid #2a2a2e;box-shadow:0 40px 120px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06),inset 0 0 0 1px rgba(255,255,255,.04);overflow:hidden;flex-shrink:0}
+    .iphone::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:100px;height:28px;background:#1a1a1e;border-radius:0 0 18px 18px;z-index:10}
+    .iphone::after{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);width:52px;height:5px;background:#0a0a0a;border-radius:20px;z-index:11}
+    .iphone-screen{position:absolute;inset:3px;border-radius:44px;background:#000;overflow:hidden;display:flex;flex-direction:column}
+    .iphone-status{display:flex;justify-content:space-between;align-items:center;padding:14px 28px 8px;font-size:12px;font-weight:600;color:rgba(255,255,255,.8);flex-shrink:0}
+    .iphone-status-icons{display:flex;align-items:center;gap:5px}
+    .iphone-status-icons svg{width:15px;height:15px;fill:rgba(255,255,255,.8)}
+    /* App Header inside phone */
+    .app-header{padding:10px 20px 12px;background:#000;flex-shrink:0;border-bottom:1px solid rgba(255,255,255,.06)}
+    .app-header-top{display:flex;align-items:center;justify-content:space-between}
+    .app-title{font-size:18px;font-weight:700;letter-spacing:-.02em;color:#fff}
+    .app-live{display:flex;align-items:center;gap:5px;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+    .app-live-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:livePulse 2s infinite}
+    @keyframes livePulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(199,165,106,.4)}50%{opacity:.7;box-shadow:0 0 0 4px rgba(199,165,106,0)}}
+    .app-date{font-size:10px;color:rgba(255,255,255,.35);margin-top:2px}
+    .app-counter{display:flex;align-items:center;gap:6px;margin-top:8px;padding:6px 10px;background:rgba(199,165,106,.06);border:1px solid rgba(199,165,106,.12);border-radius:10px}
+    .app-counter-label{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+    .app-counter-num{font-size:13px;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums;margin-left:auto}
+    /* Notification Feed */
+    .notif-feed{flex:1;overflow:hidden;position:relative;padding:6px 0}
+    .notif-feed::after{content:"";position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,#000);z-index:5;pointer-events:none}
+    .notif-feed::before{content:"";position:absolute;top:0;left:0;right:0;height:20px;background:linear-gradient(#000,transparent);z-index:5;pointer-events:none}
+    .notif-scroll{display:flex;flex-direction:column;gap:8px;padding:8px 14px;animation:notifScroll 28s linear infinite}
+    .notif-scroll:hover{animation-play-state:paused}
+    @keyframes notifScroll{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+    .notif{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:12px 14px;flex-shrink:0;transition:border-color .3s ease}
+    .notif-top{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+    .notif-ch{font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border-radius:6px;flex-shrink:0}
+    .n-web{background:rgba(99,132,255,.15);color:#7b9cff}
+    .n-email{background:rgba(80,200,120,.15);color:#5fd47a}
+    .n-sms{background:rgba(199,165,106,.15);color:#c7a56a}
+    .n-google{background:rgba(255,120,100,.15);color:#ff8a7a}
+    .n-internal{background:rgba(160,120,255,.15);color:#b89cff}
+    .n-social{background:rgba(255,160,80,.15);color:#ffb060}
+    .notif-time{font-size:9px;color:rgba(255,255,255,.25);margin-left:auto;white-space:nowrap}
+    .notif-title{font-size:12px;font-weight:600;color:#fff;line-height:1.35}
+    .notif-desc{font-size:10px;line-height:1.55;color:rgba(255,255,255,.4);margin-top:3px}
+    .notif-result{margin-top:6px;font-size:9px;color:var(--gold);display:flex;align-items:center;gap:4px}
+    /* iPhone glow effect */
+    .iphone-glow{position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(199,165,106,.08),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:-1;filter:blur(40px)}
 
     /* ─── 3D PORTFOLIO TILT ─── */
     .portfolio{transition:transform .4s ease,box-shadow .4s ease;transform-style:preserve-3d;will-change:transform}
@@ -514,8 +527,10 @@
       .mac-mini-3d-wrap{width:320px;height:320px}
       .phone-demo{width:280px}
       .phone-screen{min-height:380px}
-      .tl-header h2{font-size:36px}
-      .tl-summary-grid{grid-template-columns:repeat(2,1fr)}
+      .demo-layout{grid-template-columns:1fr;text-align:center;gap:48px}
+      .demo-copy{max-width:100%;margin:0 auto}
+      .iphone{margin:0 auto}
+      .demo-copy h2{font-size:36px}
       #ai-management [style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}
       #ai-management [style*="border-left"]{border-left:none!important;border-right:none!important;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
       #work [style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}
@@ -575,6 +590,16 @@
       .sa2-cards{padding:0 18px}
       .sa2-hero{padding:20px 18px 16px}
       .sa2-bottom{padding:0 18px 18px}
+      /* ── iPhone demo mobile ── */
+      .demo-copy h2{font-size:28px}
+      .demo-stats{grid-template-columns:1fr;gap:10px}
+      .iphone{width:260px;height:540px;border-radius:42px}
+      .iphone::before{width:86px;height:24px;border-radius:0 0 16px 16px}
+      .iphone::after{width:44px;height:4px;top:7px}
+      .iphone-screen{border-radius:38px}
+      .app-title{font-size:16px}
+      .notif-title{font-size:11px}
+      .notif-desc{font-size:9px}
       /* ── AI section mobile ── */
       .ai-hw-title{font-size:24px}
       .ai-hardware{padding:28px 22px;gap:28px}
@@ -631,18 +656,6 @@
       .phone-msg{font-size:12px}
       .hero-orb{width:400px;height:400px}
       #demo .lead{font-size:15px}
-      .tl-header h2{font-size:28px}
-      .tl-wrap{padding-left:36px}
-      .tl-dot{left:-26px}
-      .tl-line{left:12px}
-      .tl-card{padding:16px 18px}
-      .tl-card-title{font-size:14px}
-      .tl-summary{margin-left:0;padding:20px 22px}
-      .tl-summary-grid{grid-template-columns:repeat(2,1fr);gap:12px}
-      .tl-summary-num{font-size:22px}
-      .tl-counter{padding:8px 14px}
-      .tl-counter-label{font-size:10px}
-      .tl-counter-num{font-size:13px}
       #hardware [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;gap:36px!important}
     }
   </style>
@@ -856,122 +869,151 @@
     </div>
   </section>
 
-  <!-- ═══ LIVE DEMO — 24 HOURS ═══ -->
+  <!-- ═══ LIVE DEMO — iPHONE ═══ -->
   <section id="demo" style="padding:104px 0;position:relative;overflow:hidden">
     <div class="container">
-      <div class="tl-header">
-        <div class="eyebrow">See It In Action</div>
-        <h2>24 hours. Zero employees. <span class="accent">Everything handled.</span></h2>
-        <p class="lead">This isn't a chatbot that waits for someone to type. This is an AI system that runs your entire business — across email, text, web, reviews, and internal ops — while you focus on what you're actually good at.</p>
-        <div class="tl-counter"><span class="tl-counter-label">Tasks handled today</span><span class="tl-counter-num" id="tlCounter">0</span></div>
-      </div>
-
-      <div class="tl-wrap" id="tlWrap">
-        <div class="tl-line"></div>
-
-        <div class="tl-item" data-tl>
-          <div class="tl-dot"></div>
-          <div class="tl-time">6:00 AM</div>
-          <div class="tl-card">
-            <div class="tl-card-top"><span class="tl-channel tl-ch-internal">Internal</span></div>
-            <div class="tl-card-title">Morning systems check & daily prep</div>
-            <div class="tl-card-desc">AI scans overnight analytics — flags that website traffic spiked 3x from a local news mention. <strong>Drafts a social media post</strong> capitalizing on the exposure and queues it for owner approval.</div>
-            <div class="tl-card-result">✅ Social post drafted · Traffic spike identified</div>
+      <div class="demo-layout">
+        <div class="demo-copy">
+          <div class="eyebrow">See It In Action</div>
+          <h2>This is what your phone looks like <span class="accent">when AI runs your business.</span></h2>
+          <p class="lead">No chatbot. No widget. A full operations engine that handles leads, reviews, follow-ups, scheduling, and reporting — across every channel — while you focus on what you do best.</p>
+          <div class="demo-stats">
+            <div class="demo-stat"><div class="demo-stat-num">23</div><div class="demo-stat-label">Tasks / Day</div></div>
+            <div class="demo-stat"><div class="demo-stat-num">38s</div><div class="demo-stat-label">Avg Response</div></div>
+            <div class="demo-stat"><div class="demo-stat-num">0</div><div class="demo-stat-label">Things You Do</div></div>
+          </div>
+          <div style="margin-top:36px">
+            <a class="btn btn-primary" href="/contact" style="display:inline-flex">See What We'd Automate For You</a>
           </div>
         </div>
-
-        <div class="tl-item" data-tl>
-          <div class="tl-dot"></div>
-          <div class="tl-time">8:15 AM</div>
-          <div class="tl-card">
-            <div class="tl-card-top"><span class="tl-channel tl-ch-google">Google</span></div>
-            <div class="tl-card-title">3-star Google review detected & responded to</div>
-            <div class="tl-card-desc">Customer leaves a review mentioning slow wait times. AI <strong>drafts a professional, empathetic response</strong> in your brand voice, acknowledges the issue, and offers to make it right — sent to owner for one-click approval.</div>
-            <div class="tl-card-result">✅ Review response drafted in 12 seconds</div>
+        <div style="position:relative">
+          <div class="iphone-glow"></div>
+          <div class="iphone">
+            <div class="iphone-screen">
+              <div class="iphone-status">
+                <span>9:41</span>
+                <div class="iphone-status-icons">
+                  <svg viewBox="0 0 16 16"><path d="M1 12h2v3H1zm4-3h2v6H5zm4-3h2v9H9zm4-4h2v13h-2z"/></svg>
+                  <svg viewBox="0 0 16 16"><path d="M8 2a8.5 8.5 0 0 1 6 2.5l-1.2 1.2A6.8 6.8 0 0 0 8 3.7a6.8 6.8 0 0 0-4.8 2l-1.2-1.2A8.5 8.5 0 0 1 8 2zm0 3.4a5.1 5.1 0 0 1 3.6 1.5L10.4 8A3.4 3.4 0 0 0 8 7.1 3.4 3.4 0 0 0 5.6 8L4.4 6.9A5.1 5.1 0 0 1 8 5.4zM8 8.8a1.7 1.7 0 0 1 1.2.5L8 10.5 6.8 9.3A1.7 1.7 0 0 1 8 8.8z"/></svg>
+                  <svg viewBox="0 0 24 12"><rect x="0" y="0" width="21" height="12" rx="2.5" stroke="currentColor" stroke-width="1.2" fill="none"/><rect x="22" y="3.5" width="1.5" height="5" rx=".8" fill="currentColor" opacity=".4"/><rect x="1.5" y="1.5" width="16" height="9" rx="1.2" fill="currentColor"/></svg>
+                </div>
+              </div>
+              <div class="app-header">
+                <div class="app-header-top">
+                  <div class="app-title">Mainstay AI</div>
+                  <div class="app-live"><span class="app-live-dot"></span> Live</div>
+                </div>
+                <div class="app-date">Thursday, March 14</div>
+                <div class="app-counter">
+                  <span class="app-counter-label">Tasks handled</span>
+                  <span class="app-counter-num" id="phoneCounter">23</span>
+                </div>
+              </div>
+              <div class="notif-feed">
+                <div class="notif-scroll" id="notifScroll">
+                  <!-- Set 1 -->
+                  <div class="notif">
+                    <div class="notif-top"><span class="notif-ch n-internal">Internal</span><span class="notif-time">6:00 AM</span></div>
+                    <div class="notif-title">Morning systems check</div>
+                    <div class="notif-desc">Traffic spiked 3x overnight from local news mention. Social post drafted for approval.</div>
+                    <div class="notif-result">&#10003; Post queued &middot; Spike flagged</div>
+                  </div>
+                  <div class="notif">
+                    <div class="notif-top"><span class="notif-ch n-google">Google</span><span class="notif-time">8:15 AM</span></div>
+                    <div class="notif-title">3-star review responded to</div>
+                    <div class="notif-desc">Professional response drafted in your brand voice. Sent to you for one-click approval.</div>
+                    <div class="notif-result">&#10003; Drafted in 12 seconds</div>
+                  </div>
+                  <div class="notif">
+                    <div class="notif-top"><span class="notif-ch n-email">Email</span><span class="notif-time">9:30 AM</span></div>
+                    <div class="notif-title">4 overnight inquiries answered</div>
+                    <div class="notif-desc">Personalized responses with pricing and booking links sent in your voice. Avg response: 38s.</div>
+                    <div class="notif-result">&#10003; 4 leads responded</div>
+                  </div>
+                  <div class="notif">
+                    <div class="notif-top"><span class="notif-ch n-sms">SMS</span><span class="notif-time">11:00 AM</span></div>
+                    <div class="notif-title">Cold lead re-engaged</div>
+                    <div class="notif-desc">Sarah visited Tuesday but didn't book. Personalized follow-up text sent automatically.</div>
+                    <div class="notif-result">&#10003; Sarah booked at 11:42 AM</div>
+                  </div>
+                  <div class="notif">
+                    <div class="notif-top"><span class="notif-ch n-internal">Internal</span><span class="notif-time">2:00 PM</span></div>
+                    <div class="notif-title">Cancellation &rarr; waitlist activated</div>
+                    <div class="notif-desc">3pm slot cancelled. Next 2 waitlisted clients texted. Slot filled in 8 minutes.</div>
+                    <div class="notif-result">&#10003; $0 revenue lost</div>
+                  </div>
+                  <div class="notif">
+                    <div class="notif-top"><span class="notif-ch n-social">Social</span><span class="notif-time">5:30 PM</span></div>
+                    <div class="notif-title">Review requests sent</div>
+                    <div class="notif-desc">6 customers texted post-visit with direct Google review link. Timed for peak satisfaction.</div>
+                    <div class="notif-result">&#10003; 2 five-star reviews by 9pm</div>
+                  </div>
+                  <div class="notif">
+                    <div class="notif-top"><span class="notif-ch n-internal">Internal</span><span class="notif-time">6:00 PM</span></div>
+                    <div class="notif-title">Daily report delivered</div>
+                    <div class="notif-desc">Revenue, leads, bookings, reviews, and tomorrow's schedule — compiled and sent to your inbox.</div>
+                    <div class="notif-result">&#10003; 2-minute read</div>
+                  </div>
+                  <div class="notif">
+                    <div class="notif-top"><span class="notif-ch n-web">Website</span><span class="notif-time">11:47 PM</span></div>
+                    <div class="notif-title">Late-night lead captured</div>
+                    <div class="notif-desc">New inquiry at midnight. Responded in 38s, booked for Friday, sent intake forms, updated CRM.</div>
+                    <div class="notif-result">&#10003; Booked &middot; CRM updated</div>
+                  </div>
+                  <!-- Set 2 (duplicate for seamless loop) -->
+                  <div class="notif">
+                    <div class="notif-top"><span class="notif-ch n-internal">Internal</span><span class="notif-time">6:00 AM</span></div>
+                    <div class="notif-title">Morning systems check</div>
+                    <div class="notif-desc">Traffic spiked 3x overnight from local news mention. Social post drafted for approval.</div>
+                    <div class="notif-result">&#10003; Post queued &middot; Spike flagged</div>
+                  </div>
+                  <div class="notif">
+                    <div class="notif-top"><span class="notif-ch n-google">Google</span><span class="notif-time">8:15 AM</span></div>
+                    <div class="notif-title">3-star review responded to</div>
+                    <div class="notif-desc">Professional response drafted in your brand voice. Sent to you for one-click approval.</div>
+                    <div class="notif-result">&#10003; Drafted in 12 seconds</div>
+                  </div>
+                  <div class="notif">
+                    <div class="notif-top"><span class="notif-ch n-email">Email</span><span class="notif-time">9:30 AM</span></div>
+                    <div class="notif-title">4 overnight inquiries answered</div>
+                    <div class="notif-desc">Personalized responses with pricing and booking links sent in your voice. Avg response: 38s.</div>
+                    <div class="notif-result">&#10003; 4 leads responded</div>
+                  </div>
+                  <div class="notif">
+                    <div class="notif-top"><span class="notif-ch n-sms">SMS</span><span class="notif-time">11:00 AM</span></div>
+                    <div class="notif-title">Cold lead re-engaged</div>
+                    <div class="notif-desc">Sarah visited Tuesday but didn't book. Personalized follow-up text sent automatically.</div>
+                    <div class="notif-result">&#10003; Sarah booked at 11:42 AM</div>
+                  </div>
+                  <div class="notif">
+                    <div class="notif-top"><span class="notif-ch n-internal">Internal</span><span class="notif-time">2:00 PM</span></div>
+                    <div class="notif-title">Cancellation &rarr; waitlist activated</div>
+                    <div class="notif-desc">3pm slot cancelled. Next 2 waitlisted clients texted. Slot filled in 8 minutes.</div>
+                    <div class="notif-result">&#10003; $0 revenue lost</div>
+                  </div>
+                  <div class="notif">
+                    <div class="notif-top"><span class="notif-ch n-social">Social</span><span class="notif-time">5:30 PM</span></div>
+                    <div class="notif-title">Review requests sent</div>
+                    <div class="notif-desc">6 customers texted post-visit with direct Google review link. Timed for peak satisfaction.</div>
+                    <div class="notif-result">&#10003; 2 five-star reviews by 9pm</div>
+                  </div>
+                  <div class="notif">
+                    <div class="notif-top"><span class="notif-ch n-internal">Internal</span><span class="notif-time">6:00 PM</span></div>
+                    <div class="notif-title">Daily report delivered</div>
+                    <div class="notif-desc">Revenue, leads, bookings, reviews, and tomorrow's schedule — compiled and sent to your inbox.</div>
+                    <div class="notif-result">&#10003; 2-minute read</div>
+                  </div>
+                  <div class="notif">
+                    <div class="notif-top"><span class="notif-ch n-web">Website</span><span class="notif-time">11:47 PM</span></div>
+                    <div class="notif-title">Late-night lead captured</div>
+                    <div class="notif-desc">New inquiry at midnight. Responded in 38s, booked for Friday, sent intake forms, updated CRM.</div>
+                    <div class="notif-result">&#10003; Booked &middot; CRM updated</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="tl-item" data-tl>
-          <div class="tl-dot"></div>
-          <div class="tl-time">9:30 AM</div>
-          <div class="tl-card">
-            <div class="tl-card-top"><span class="tl-channel tl-ch-email">Email</span></div>
-            <div class="tl-card-title">4 overnight email inquiries — all answered</div>
-            <div class="tl-card-desc">Four new inquiries came in between 11pm and 7am. AI sent <strong>personalized responses to each one</strong> with relevant service info, pricing, and a booking link — all in your voice, all within 60 seconds of receipt.</div>
-            <div class="tl-card-result">✅ 4 leads responded · Avg response time: 38 sec</div>
-          </div>
-        </div>
-
-        <div class="tl-item" data-tl>
-          <div class="tl-dot"></div>
-          <div class="tl-time">11:00 AM</div>
-          <div class="tl-card">
-            <div class="tl-card-top"><span class="tl-channel tl-ch-sms">SMS</span></div>
-            <div class="tl-card-title">Proactive follow-up — re-engaging a cold lead</div>
-            <div class="tl-card-desc">Sarah visited your website last Tuesday but never booked. AI <strong>sends a personalized text</strong>: "Hi Sarah, just following up — we still have availability Thursday if you'd like to come in." No human involvement needed.</div>
-            <div class="tl-card-result">✅ Re-engagement sent · Sarah books at 11:42 AM</div>
-          </div>
-        </div>
-
-        <div class="tl-item" data-tl>
-          <div class="tl-dot"></div>
-          <div class="tl-time">2:00 PM</div>
-          <div class="tl-card">
-            <div class="tl-card-top"><span class="tl-channel tl-ch-internal">Internal</span></div>
-            <div class="tl-card-title">Cancellation detected — waitlist activated</div>
-            <div class="tl-card-desc">A 3pm appointment cancels. AI immediately <strong>texts the next 2 people on the waitlist</strong> with the open slot. First respondent books within 8 minutes. Revenue preserved, no staff intervention.</div>
-            <div class="tl-card-result">✅ Slot filled in 8 min · $0 revenue lost</div>
-          </div>
-        </div>
-
-        <div class="tl-item" data-tl>
-          <div class="tl-dot"></div>
-          <div class="tl-time">5:30 PM</div>
-          <div class="tl-card">
-            <div class="tl-card-top"><span class="tl-channel tl-ch-social">Social</span></div>
-            <div class="tl-card-title">Review request sent to today's customers</div>
-            <div class="tl-card-desc">AI identifies 6 customers from today's appointments and <strong>sends a personalized review request</strong> via text with a direct link to your Google Business page. Timed for 2 hours post-visit — peak satisfaction window.</div>
-            <div class="tl-card-result">✅ 6 review requests sent · 2 five-star reviews received by 9pm</div>
-          </div>
-        </div>
-
-        <div class="tl-item" data-tl>
-          <div class="tl-dot"></div>
-          <div class="tl-time">6:00 PM</div>
-          <div class="tl-card">
-            <div class="tl-card-top"><span class="tl-channel tl-ch-internal">Internal</span></div>
-            <div class="tl-card-title">Daily owner report generated</div>
-            <div class="tl-card-desc">AI compiles the full day: <strong>revenue, new leads, bookings, cancellations, review scores, marketing performance, and tomorrow's schedule</strong> — delivered to your inbox in a clean summary. You read it over dinner.</div>
-            <div class="tl-card-result">✅ Report delivered · 2-minute read</div>
-          </div>
-        </div>
-
-        <div class="tl-item" data-tl>
-          <div class="tl-dot"></div>
-          <div class="tl-time">11:47 PM</div>
-          <div class="tl-card">
-            <div class="tl-card-top"><span class="tl-channel tl-ch-web">Website</span></div>
-            <div class="tl-card-title">Late-night inquiry — handled while you sleep</div>
-            <div class="tl-card-desc">A new lead fills out your contact form at midnight. AI responds in <strong>38 seconds with a personalized reply</strong>, books them for Friday at 10am, sends confirmation + intake forms, and adds them to your CRM. You find out in tomorrow's report.</div>
-            <div class="tl-card-result">✅ Lead captured · Appointment booked · CRM updated</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Day Summary -->
-      <div class="tl-summary" id="tlSummary">
-        <div class="tl-summary-title">End of Day Summary</div>
-        <div class="tl-summary-grid">
-          <div class="tl-summary-stat"><div class="tl-summary-num">23</div><div class="tl-summary-label">Tasks handled</div></div>
-          <div class="tl-summary-stat"><div class="tl-summary-num">6</div><div class="tl-summary-label">Leads responded</div></div>
-          <div class="tl-summary-stat"><div class="tl-summary-num">3</div><div class="tl-summary-label">Appointments booked</div></div>
-          <div class="tl-summary-stat"><div class="tl-summary-num">0</div><div class="tl-summary-label">Things you had to do</div></div>
-        </div>
-        <div class="tl-summary-bottom">Your AI handled <strong>an entire day of operations</strong> across 5 channels — while you ran your business.</div>
-      </div>
-
-      <div style="margin-top:48px;text-align:center">
-        <a class="btn btn-primary" href="/contact" style="display:inline-flex">See What We'd Automate For You</a>
       </div>
     </div>
   </section>
@@ -1337,7 +1379,7 @@ function closeMobileNav(){document.getElementById('menuToggle').classList.remove
 
 // Scroll reveal animations
 const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}})},{threshold:0.1});
-document.querySelectorAll('.card,.portfolio,.testimonial,.price-card,.faq-item,.pillar,.f-stat,.result-card,.result-industry,.mac-mini-3d-wrap,.tl-header').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity .6s ease, transform .6s ease';observer.observe(el)});
+document.querySelectorAll('.card,.portfolio,.testimonial,.price-card,.faq-item,.pillar,.f-stat,.result-card,.result-industry,.mac-mini-3d-wrap,.demo-layout').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity .6s ease, transform .6s ease';observer.observe(el)});
 
 // 3D Portfolio tilt on mouse move
 document.querySelectorAll('.portfolio').forEach(card=>{
@@ -1378,53 +1420,12 @@ const counterObserver=new IntersectionObserver((entries)=>{
 },{threshold:0.3});
 document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
 
-// 24-Hour Timeline — scroll-triggered reveal + counter
+// iPhone notification scroll — pause on hover, resume on leave
 (function(){
-  var items=document.querySelectorAll('[data-tl]');
-  var summary=document.getElementById('tlSummary');
-  var counter=document.getElementById('tlCounter');
-  if(!items.length)return;
-
-  var taskCounts=[3,5,9,11,14,17,20,23];
-  var revealed=0;
-
-  function animateCounter(target){
-    var current=parseInt(counter.textContent)||0;
-    var step=Math.ceil((target-current)/10);
-    function tick(){
-      current+=step;
-      if(current>=target){counter.textContent=target;return}
-      counter.textContent=current;
-      requestAnimationFrame(tick);
-    }
-    tick();
-  }
-
-  var tlObs=new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
-        var idx=[].indexOf.call(items,entry.target);
-        if(idx>=0&&idx>=revealed){
-          revealed=idx+1;
-          animateCounter(taskCounts[idx]||revealed*3);
-        }
-        tlObs.unobserve(entry.target);
-      }
-    });
-  },{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
-
-  items.forEach(function(item){tlObs.observe(item)});
-
-  if(summary){
-    var sumObs=new IntersectionObserver(function(entries){
-      if(entries[0].isIntersecting){
-        summary.classList.add('visible');
-        sumObs.unobserve(summary);
-      }
-    },{threshold:0.2});
-    sumObs.observe(summary);
-  }
+  var scroll=document.getElementById('notifScroll');
+  if(!scroll)return;
+  scroll.addEventListener('mouseenter',function(){scroll.style.animationPlayState='paused'});
+  scroll.addEventListener('mouseleave',function(){scroll.style.animationPlayState='running'});
 })();
 
 // 3D Particle background for hero
