@@ -210,19 +210,13 @@
     .app-counter{display:flex;align-items:center;gap:6px;margin-top:8px;padding:6px 10px;background:rgba(199,165,106,.06);border:1px solid rgba(199,165,106,.12);border-radius:10px}
     .app-counter-label{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35)}
     .app-counter-num{font-size:13px;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums;margin-left:auto}
-    /* Notification Feed */
-    .notif-feed{flex:1;overflow:hidden;position:relative;padding:6px 0}
+    /* Notification Feed — JS-driven auto-scroll on all devices */
+    .notif-feed{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;position:relative;padding:6px 0}
+    .notif-feed::-webkit-scrollbar{display:none}
+    .notif-feed{scrollbar-width:none}
     .notif-feed::after{content:"";position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,#000);z-index:5;pointer-events:none}
     .notif-feed::before{content:"";position:absolute;top:0;left:0;right:0;height:20px;background:linear-gradient(#000,transparent);z-index:5;pointer-events:none}
-    .notif-scroll{display:flex;flex-direction:column;gap:8px;padding:8px 14px;animation:notifScroll 28s linear infinite}
-    .notif-scroll:hover{animation-play-state:paused}
-    @keyframes notifScroll{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
-    /* Touch-scroll mode (activated by JS on touch devices) */
-    .notif-feed.touch-mode{overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
-    .notif-feed.touch-mode::-webkit-scrollbar{display:none}
-    .notif-feed.touch-mode{scrollbar-width:none}
-    .notif-feed.touch-mode .notif-scroll{animation:none}
-    .notif-feed.touch-mode .notif-dupe{display:none}
+    .notif-scroll{display:flex;flex-direction:column;gap:8px;padding:8px 14px}
     .notif{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:12px 14px;flex-shrink:0;transition:border-color .3s ease}
     .notif-top{display:flex;align-items:center;gap:8px;margin-bottom:6px}
     .notif-ch{font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border-radius:6px;flex-shrink:0}
@@ -1426,19 +1420,47 @@ const counterObserver=new IntersectionObserver((entries)=>{
 },{threshold:0.3});
 document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
 
-// iPhone notification scroll — touch-scroll on mobile, auto-scroll on desktop
+// iPhone notification scroll — auto-scrolls + interactive on all devices
 (function(){
   var feed=document.querySelector('.notif-feed');
-  var scroll=document.getElementById('notifScroll');
-  if(!feed||!scroll)return;
-  // Detect touch device
-  var isTouch='ontouchstart' in window||navigator.maxTouchPoints>0;
-  if(isTouch){
-    feed.classList.add('touch-mode');
-  }else{
-    scroll.addEventListener('mouseenter',function(){scroll.style.animationPlayState='paused'});
-    scroll.addEventListener('mouseleave',function(){scroll.style.animationPlayState='running'});
+  if(!feed)return;
+  var speed=0.5; // px per frame
+  var paused=false;
+  var resumeTimer=null;
+  var raf=null;
+
+  // Auto-scroll loop
+  function tick(){
+    if(!paused){
+      feed.scrollTop+=speed;
+      // Loop: when we hit the duplicate set, snap back
+      var half=feed.scrollHeight/2;
+      if(feed.scrollTop>=half){feed.scrollTop-=half}
+    }
+    raf=requestAnimationFrame(tick);
   }
+
+  // Start when section is visible
+  var obs=new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting&&!raf){tick()}
+  },{threshold:0.1});
+  obs.observe(feed);
+
+  // Pause on interaction, resume after delay
+  function pauseScroll(){
+    paused=true;
+    clearTimeout(resumeTimer);
+    resumeTimer=setTimeout(function(){paused=false},2500);
+  }
+
+  // Touch: pause while finger is down, resume 2.5s after lift
+  feed.addEventListener('touchstart',function(){paused=true;clearTimeout(resumeTimer)},{passive:true});
+  feed.addEventListener('touchend',function(){resumeTimer=setTimeout(function(){paused=false},2500)},{passive:true});
+
+  // Mouse: pause on hover/wheel
+  feed.addEventListener('mouseenter',function(){paused=true;clearTimeout(resumeTimer)});
+  feed.addEventListener('mouseleave',function(){resumeTimer=setTimeout(function(){paused=false},1500)});
+  feed.addEventListener('wheel',pauseScroll,{passive:true});
 })();
 
 // 3D Particle background for hero
