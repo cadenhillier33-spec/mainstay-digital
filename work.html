@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="See the work — premium websites and AI business systems built by Mainstay Digital for real businesses across Connecticut and beyond." />
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta property="og:title" content="Our Work — Mainstay Digital" />
+  <meta property="og:description" content="Premium websites and AI business systems. See our case studies — pure CSS art, dark luxury aesthetic, and real client results." />
+  <meta property="og:image" content="https://mainstayhq.com/og-image.png?v=3" />
+  <meta property="og:url" content="https://mainstayhq.com/work" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Our Work — Mainstay Digital" />
+  <meta name="twitter:description" content="Premium websites and AI business systems. See our case studies." />
+  <meta name="twitter:image" content="https://mainstayhq.com/og-image.png?v=3" />
+  <title>Our Work — Mainstay Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#070708;
+      --bg2:#0d0e11;
+      --bg3:#121316;
+      --panel:#131417;
+      --line:rgba(255,255,255,.10);
+      --line2:rgba(255,255,255,.14);
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.68);
+      --muted2:rgba(255,255,255,.46);
+      --gold:#c7a56a;
+      --gold2:#ead2a4;
+      --gold3:#f5e7c8;
+      --shadow:0 30px 100px rgba(0,0,0,.38);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{max-width:1320px;margin:0 auto;padding:0 28px}
+
+    /* ─── HEADER ─── */
+    .header{position:sticky;top:0;z-index:10;background:rgba(7,7,8,.84);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:18px}
+    .brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:#fff;cursor:pointer}
+    .brand-icon{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;width:fit-content}
+    .brand-icon .d{width:8px;height:8px;background:#fff;transform:rotate(45deg);border-radius:1px}
+    .brand-text{display:flex;flex-direction:column}
+    .brand-name{font-size:18px;font-weight:800;letter-spacing:.18em}
+    .brand-sub{font-size:8px;font-weight:400;letter-spacing:.32em;color:#D4A853;margin-top:2px}
+    .nav{display:flex;align-items:center;gap:30px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+    .nav a:hover{color:#fff}
+    .nav a.active{color:#fff}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:15px 28px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:.2s ease}
+    .btn-outline{border:1px solid rgba(255,255,255,.15);padding:10px 20px}
+    .btn-outline:hover{background:#fff;color:#000}
+    .btn-primary{background:linear-gradient(135deg,var(--gold),#a88c55);color:#0a0a0a;box-shadow:0 10px 32px rgba(199,165,106,.25)}
+    .btn-primary:hover{opacity:.9}
+    .btn-secondary{border:1px solid rgba(255,255,255,.15);color:#fff}
+    .btn-secondary:hover{background:rgba(255,255,255,.05)}
+    .hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;width:44px;height:44px;position:relative;z-index:10001}
+    .hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .4s cubic-bezier(.4,0,.2,1);transform-origin:center}
+    .hamburger.active span:nth-child(1){width:16px;transform:translateX(3px);background:var(--gold)}
+    .hamburger.active span:nth-child(2){width:22px;background:var(--gold)}
+    .hamburger.active span:nth-child(3){width:12px;transform:translateX(5px);background:var(--gold)}
+    .mobile-nav{position:fixed;inset:0;z-index:10000;background:rgba(7,7,8,.98);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;flex-direction:column;justify-content:center;align-items:center;opacity:0;visibility:hidden;pointer-events:none;transition:all .4s cubic-bezier(.4,0,.2,1)}
+    .mobile-nav.open{opacity:1;visibility:visible;pointer-events:auto}
+    .mobile-nav-close{position:absolute;top:20px;right:20px;background:none;border:1px solid rgba(255,255,255,.08);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:24px;color:rgba(255,255,255,.5);transition:all .25s ease;line-height:1}
+    .mobile-nav-close:hover{color:var(--gold);border-color:rgba(199,165,106,.3);background:rgba(199,165,106,.06)}
+    .mobile-nav-label{font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+    .mobile-nav-sub{font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:32px}
+    .mobile-nav-divider{width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin-bottom:36px}
+    .mobile-nav-links{display:flex;flex-direction:column;gap:6px;width:100%;max-width:340px;padding:0 28px}
+    .mobile-nav-links a{display:flex;align-items:center;gap:16px;padding:16px 20px;border:1px solid rgba(255,255,255,.06);border-radius:14px;background:rgba(255,255,255,.02);color:rgba(255,255,255,.75);font-size:14px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:all .25s ease;transform:translateY(20px);opacity:0}
+    .mobile-nav.open .mobile-nav-links a{transform:translateY(0);opacity:1}
+    .mobile-nav-links a:nth-child(1){transition-delay:.05s}
+    .mobile-nav-links a:nth-child(2){transition-delay:.08s}
+    .mobile-nav-links a:nth-child(3){transition-delay:.11s}
+    .mobile-nav-links a:nth-child(4){transition-delay:.14s}
+    .mobile-nav-links a:nth-child(5){transition-delay:.17s}
+    .mobile-nav-links a:nth-child(6){transition-delay:.20s}
+    .mobile-nav-links a:hover,.mobile-nav-links a:active{background:rgba(255,255,255,.06);border-color:rgba(199,165,106,.25);color:#fff}
+    .mobile-nav-num{font-size:11px;font-weight:700;color:var(--gold);opacity:.5;min-width:24px;font-variant-numeric:tabular-nums}
+    .mobile-nav-cta{margin-top:32px;display:inline-flex;align-items:center;justify-content:center;padding:16px 40px;border-radius:999px;background:linear-gradient(135deg,var(--gold),#a88c55);color:#0a0a0a;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:.2s;transform:translateY(20px);opacity:0}
+    .mobile-nav.open .mobile-nav-cta{transform:translateY(0);opacity:1;transition-delay:.24s}
+    .mobile-nav-cta:hover{opacity:.9}
+
+    /* ─── WORK PAGE HERO ─── */
+    .eyebrow{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted2)}
+    .work-hero{padding:100px 0 80px;border-bottom:1px solid var(--line);text-align:center}
+    .work-hero h1{font-family:'Playfair Display',serif;font-size:56px;font-weight:600;letter-spacing:-.04em;line-height:1.05;margin:20px 0 0}
+    .work-hero p{font-size:18px;line-height:1.8;color:var(--muted);max-width:640px;margin:24px auto 0}
+
+    /* ─── PORTFOLIO LAYOUT ─── */
+    .work-grid{display:flex;flex-direction:column;gap:80px;padding:80px 0}
+    .portfolio{border:1px solid var(--line);border-radius:30px;padding:24px;background:rgba(255,255,255,.02);transition:border-color .3s ease}
+    .portfolio:hover{border-color:rgba(255,255,255,.18)}
+    .portfolio-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+    .portfolio.reverse .portfolio-grid{direction:rtl}
+    .portfolio.reverse .portfolio-grid > *{direction:ltr}
+    .meta h3{font-family:'Playfair Display',serif;font-size:34px;font-weight:600;letter-spacing:-.03em;margin:14px 0 0}
+    .meta p{margin:14px 0 0;font-size:16px;line-height:1.85;color:var(--muted)}
+    .work-cat{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+    .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+    .chip{padding:6px 14px;border-radius:999px;border:1px solid var(--line);font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--muted);background:rgba(255,255,255,.03)}
+    .impact{display:grid;gap:16px;margin-top:24px}
+    .impact-item{border-left:2px solid rgba(199,165,106,.55);padding-left:16px;color:rgba(255,255,255,.76);font-size:14px;line-height:1.85}
+    .impact-item strong{color:var(--gold3);font-weight:600}
+    .screen{position:relative;overflow:hidden;border-radius:30px;border:1px solid rgba(255,255,255,.12);background:#0f1114;box-shadow:0 26px 80px rgba(0,0,0,.38)}
+    .browser-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.10);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02))}
+    .dots{display:flex;gap:8px}
+    .dot{width:10px;height:10px;border-radius:999px}
+    .url-bar{width:46%;height:12px;border-radius:999px;background:rgba(255,255,255,.08)}
+
+    /* ── SITE 1: Obsidian & Co ── */
+    .site-obsidian{border-radius:24px;overflow:hidden;min-height:620px;background:#08080a;color:#e8e4dc;font-family:Inter,sans-serif;position:relative}
+    .site-obsidian::before{content:"";position:absolute;top:0;left:0;right:0;height:280px;background:linear-gradient(180deg,rgba(180,155,110,.06),transparent);pointer-events:none}
+    .site-obsidian .so-nav{display:flex;align-items:center;justify-content:space-between;padding:22px 28px;position:relative;z-index:1}
+    .site-obsidian .so-logo{display:flex;align-items:center;gap:12px}
+    .site-obsidian .so-logo svg{width:28px;height:28px}
+    .site-obsidian .so-logo-text{font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,228,220,.8)}
+    .site-obsidian .so-links{display:flex;gap:24px;font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+    .site-obsidian .so-hero{padding:32px 28px 24px;position:relative;z-index:1}
+    .site-obsidian .so-hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .site-obsidian .so-tag{display:inline-flex;align-items:center;gap:8px;font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(199,165,106,.65)}
+    .site-obsidian .so-tag::before{content:"";width:20px;height:1px;background:rgba(199,165,106,.4)}
+    .site-obsidian .so-title{margin-top:16px;font-size:30px;font-weight:500;letter-spacing:-.04em;line-height:1.1;font-family:'Playfair Display',serif;color:#f0ece4}
+    .site-obsidian .so-copy{margin-top:14px;font-size:12px;line-height:1.85;color:rgba(255,255,255,.38)}
+    .site-obsidian .so-cta{margin-top:20px;display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border:1px solid rgba(199,165,106,.25);border-radius:0;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(199,165,106,.8);background:rgba(199,165,106,.05)}
+    .site-obsidian .so-visual{border-radius:4px;min-height:220px;background:url('house.jpg') center/cover no-repeat;position:relative;overflow:hidden;border:1px solid rgba(199,165,106,.25)}
+    .site-obsidian .so-visual::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.15) 40%,rgba(0,0,0,.05) 100%)}
+    .site-obsidian .so-visual-label{display:none}
+    .site-obsidian .so-img-price{position:absolute;top:12px;right:12px;background:rgba(199,165,106,.95);color:#0a0a0a;font-size:11px;font-weight:800;padding:4px 10px;border-radius:2px;letter-spacing:.02em;z-index:1}
+    .site-obsidian .so-img-specs{position:absolute;bottom:10px;left:12px;color:rgba(255,255,255,.95);font-size:8px;font-weight:600;letter-spacing:.1em;z-index:1;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);padding:3px 8px;border-radius:2px}
+    .site-obsidian .so-img-tag{position:absolute;top:12px;left:12px;border:1px solid rgba(199,165,106,.7);color:rgba(199,165,106,.95);font-size:6px;font-weight:700;padding:2px 6px;border-radius:1px;letter-spacing:.15em;text-transform:uppercase;z-index:1;background:rgba(0,0,0,.4);backdrop-filter:blur(4px)}
+    .site-obsidian .so-featured{padding:0 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}
+    .site-obsidian .so-prop{border:1px solid rgba(255,255,255,.06);padding:16px;background:rgba(255,255,255,.02)}
+    .site-obsidian .so-prop-price{font-size:16px;font-weight:600;letter-spacing:-.02em;color:rgba(199,165,106,.75)}
+    .site-obsidian .so-prop-addr{margin-top:6px;font-size:10px;color:rgba(255,255,255,.35);letter-spacing:.04em}
+    .site-obsidian .so-prop-specs{margin-top:4px;font-size:8px;color:rgba(255,255,255,.25);letter-spacing:.08em;text-transform:uppercase}
+    .site-obsidian .so-bottom{display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.05);margin:14px 28px 0;padding:14px 0 0}
+    .site-obsidian .so-metric{text-align:center}
+    .site-obsidian .so-metric-num{font-size:18px;font-weight:500;letter-spacing:-.02em;color:rgba(199,165,106,.65);font-family:'Playfair Display',serif}
+    .site-obsidian .so-metric-lbl{margin-top:4px;font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+    .site-obsidian .so-divider{width:1px;height:36px;background:rgba(255,255,255,.07)}
+
+    /* ── SITE 2: Solara Health ── */
+    .site-solara{border-radius:24px;overflow:hidden;min-height:620px;background:#fafbfa;color:#0f1a14;font-family:Inter,sans-serif}
+    .site-solara .ss-nav{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;border-bottom:1px solid rgba(0,0,0,.05)}
+    .site-solara .ss-logo{display:flex;align-items:center;gap:10px}
+    .site-solara .ss-logo svg{width:24px;height:24px}
+    .site-solara .ss-logo-text{font-size:14px;font-weight:600;letter-spacing:.04em;color:#1a3d2b}
+    .site-solara .ss-links{display:flex;gap:22px;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.35)}
+    .site-solara .ss-hero{padding:40px 28px 24px}
+    .site-solara .ss-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+    .site-solara .ss-kicker{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:rgba(26,82,55,.06);font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#1a5237}
+    .site-solara .ss-kicker-dot{width:5px;height:5px;border-radius:999px;background:#2d8a56}
+    .site-solara .ss-title{margin-top:16px;font-size:30px;font-weight:700;letter-spacing:-.04em;line-height:1.1;color:#0a1a10}
+    .site-solara .ss-copy{margin-top:14px;font-size:12px;line-height:1.8;color:rgba(0,0,0,.45)}
+    .site-solara .ss-ctas{display:flex;gap:10px;margin-top:18px}
+    .site-solara .ss-btn-green{padding:11px 22px;border-radius:12px;background:#1a5237;color:#e8f5ee;font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase}
+    .site-solara .ss-btn-outline{padding:11px 22px;border-radius:12px;border:1.5px solid rgba(26,82,55,.15);color:#1a5237;font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase}
+    .site-solara .ss-hero-img{border-radius:20px;min-height:200px;background:linear-gradient(160deg,#dceade,#b5d4be);position:relative;overflow:hidden}
+    .site-solara .ss-hero-img::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(45,138,86,.15),transparent 60%)}
+    .site-solara .ss-card-tl{position:absolute;top:12px;left:12px;background:#fff;border-radius:10px;padding:10px 12px;box-shadow:0 4px 16px rgba(0,0,0,.08);border:1px solid rgba(26,82,55,.18)}
+    .site-solara .ss-card-tr{position:absolute;top:12px;right:12px;background:#fff;border-radius:10px;padding:10px 12px;box-shadow:0 4px 16px rgba(0,0,0,.08);border:1px solid rgba(26,82,55,.18)}
+    .site-solara .ss-card-bl{position:absolute;bottom:12px;left:12px;background:#fff;border-radius:10px;padding:10px 12px;box-shadow:0 4px 16px rgba(0,0,0,.08);border:1px solid rgba(26,82,55,.18)}
+    .site-solara .ss-card-br{position:absolute;bottom:12px;right:12px;background:#fff;border-radius:10px;padding:10px 12px;box-shadow:0 4px 16px rgba(0,0,0,.08);border:1px solid rgba(26,82,55,.18)}
+    .site-solara .ss-mc-title{font-size:6px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(26,82,55,.55);margin-bottom:3px}
+    .site-solara .ss-mc-val{font-size:14px;font-weight:700;color:#1a5237}
+    .site-solara .ss-mc-sub{font-size:6px;color:rgba(26,82,55,.5);margin-top:2px}
+    .site-solara .ss-mc-dots{display:flex;gap:3px;margin-top:4px}
+    .site-solara .ss-mc-dot{width:5px;height:5px;border-radius:999px;background:rgba(45,138,86,.2)}
+    .site-solara .ss-mc-dot.active{background:#2d8a56}
+    .site-solara .ss-center-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:999px;background:#fff;box-shadow:0 4px 24px rgba(26,82,55,.2),0 0 0 8px rgba(45,138,86,.08);display:flex;align-items:center;justify-content:center}
+    .site-solara .ss-center-icon svg{width:28px;height:28px}
+    .site-solara .ss-pulse-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90px;height:90px;border-radius:999px;border:2px solid rgba(45,138,86,.2)}
+    .site-solara .ss-pulse-ring2{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:120px;height:120px;border-radius:999px;border:1.5px solid rgba(45,138,86,.12)}
+    .site-solara .ss-connect{position:absolute;background:rgba(45,138,86,.12)}
+    .site-solara .ss-services{padding:0 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .site-solara .ss-svc{border:1px solid rgba(0,0,0,.05);border-radius:16px;padding:20px;background:#fff;position:relative;overflow:hidden}
+    .site-solara .ss-svc::before{content:"";position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,#2d8a56,#1a5237);border-radius:0 2px 2px 0}
+    .site-solara .ss-svc-name{font-size:13px;font-weight:700;letter-spacing:-.01em;padding-left:8px}
+    .site-solara .ss-svc-desc{margin-top:6px;font-size:10px;line-height:1.65;color:rgba(0,0,0,.4);padding-left:8px}
+    .site-solara .ss-stats{padding:14px 28px 14px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .site-solara .ss-stat{text-align:center;padding:14px 8px;border:1px solid rgba(0,0,0,.04);border-radius:14px;background:#fff}
+    .site-solara .ss-stat-num{font-size:18px;font-weight:700;letter-spacing:-.02em;color:#1a5237}
+    .site-solara .ss-stat-lbl{margin-top:3px;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.3)}
+    .site-solara .ss-trust{margin:0 28px 28px;border:1px solid rgba(26,82,55,.08);border-radius:16px;padding:16px 20px;background:rgba(26,82,55,.02);display:flex;align-items:center;gap:14px}
+    .site-solara .ss-trust-icon{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,#2d8a56,#1a5237);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700;flex-shrink:0}
+    .site-solara .ss-trust-text{font-size:11px;line-height:1.6;color:rgba(0,0,0,.5)}
+    .site-solara .ss-trust-text strong{color:#0a1a10}
+
+    /* ── SITE 3: Atlas Venture Group ── */
+    .site-atlas{border-radius:24px;overflow:hidden;min-height:620px;background:#060a12;color:#c8d0e0;font-family:Inter,sans-serif;position:relative}
+    .site-atlas::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(59,130,246,.04),transparent 60%);pointer-events:none}
+    .site-atlas .sa2-nav{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;position:relative;z-index:1;border-bottom:1px solid rgba(255,255,255,.04)}
+    .site-atlas .sa2-logo{display:flex;align-items:center;gap:10px}
+    .site-atlas .sa2-logo svg{width:22px;height:22px}
+    .site-atlas .sa2-logo-text{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(200,208,224,.7)}
+    .site-atlas .sa2-links{display:flex;gap:22px;font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+    .site-atlas .sa2-hero{padding:36px 28px 20px;position:relative;z-index:1}
+    .site-atlas .sa2-hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center}
+    .site-atlas .sa2-badge{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border-radius:999px;border:1px solid rgba(59,130,246,.15);background:rgba(59,130,246,.05);font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(59,130,246,.7)}
+    .site-atlas .sa2-badge-dot{width:5px;height:5px;border-radius:999px;background:#3b82f6;box-shadow:0 0 8px rgba(59,130,246,.4)}
+    .site-atlas .sa2-title{margin-top:16px;font-size:28px;font-weight:700;letter-spacing:-.04em;line-height:1.12;color:#e4e8f0}
+    .site-atlas .sa2-copy{margin-top:12px;font-size:12px;line-height:1.8;color:rgba(255,255,255,.35)}
+    .site-atlas .sa2-cta{margin-top:18px;display:inline-flex;padding:11px 24px;border-radius:10px;background:linear-gradient(135deg,#2563eb,#1d4ed8);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;box-shadow:0 4px 20px rgba(37,99,235,.25)}
+    .site-atlas .sa2-visual{border-radius:16px;min-height:200px;background:#0c1225;border:1px solid rgba(59,130,246,.18);position:relative;overflow:hidden}
+    .site-atlas .sa2-visual::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 29px,rgba(59,130,246,.1) 29px,rgba(59,130,246,.1) 30px),repeating-linear-gradient(90deg,transparent,transparent 29px,rgba(59,130,246,.1) 29px,rgba(59,130,246,.1) 30px)}
+    .site-atlas .sa2-node{position:absolute;width:10px;height:10px;border-radius:999px;background:rgba(59,130,246,.3);border:1.5px solid rgba(59,130,246,.55)}
+    .site-atlas .sa2-node.bright{background:rgba(59,130,246,.55);box-shadow:0 0 14px rgba(59,130,246,.4),0 0 4px rgba(59,130,246,.6)}
+    .site-atlas .sa2-node-label{position:absolute;font-size:6px;font-weight:700;letter-spacing:.1em;color:rgba(59,130,246,.6);white-space:nowrap;transform:translateY(-14px)}
+    .site-atlas .sa2-edge{position:absolute;height:1px;background:linear-gradient(90deg,rgba(59,130,246,.2),rgba(59,130,246,.06));transform-origin:left center}
+    .site-atlas .sa2-chart-box{position:absolute;bottom:10px;left:10px;right:10px;height:60px;border:1px solid rgba(59,130,246,.12);border-radius:8px;background:rgba(59,130,246,.04);padding:6px 10px;display:flex;flex-direction:column}
+    .site-atlas .sa2-chart-title{font-size:6px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(59,130,246,.5);margin-bottom:4px}
+    .site-atlas .sa2-chart-bars{display:flex;align-items:flex-end;gap:3px;flex:1}
+    .site-atlas .sa2-cbar{flex:1;background:rgba(59,130,246,.18);border-radius:2px 2px 0 0;min-width:0}
+    .site-atlas .sa2-cbar.hi{background:rgba(59,130,246,.5);box-shadow:0 0 4px rgba(59,130,246,.2)}
+    .site-atlas .sa2-fund-tag{position:absolute;top:10px;right:10px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.22);border-radius:6px;padding:6px 10px}
+    .site-atlas .sa2-fund-val{font-size:13px;font-weight:700;color:rgba(59,130,246,.85)}
+    .site-atlas .sa2-fund-lbl{font-size:6px;letter-spacing:.1em;text-transform:uppercase;color:rgba(59,130,246,.45);margin-top:2px}
+    .site-atlas .sa2-irr-tag{position:absolute;top:10px;left:10px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.22);border-radius:6px;padding:6px 10px}
+    .site-atlas .sa2-irr-val{font-size:13px;font-weight:700;color:rgba(59,130,246,.85)}
+    .site-atlas .sa2-irr-lbl{font-size:6px;letter-spacing:.1em;text-transform:uppercase;color:rgba(59,130,246,.45);margin-top:2px}
+    .site-atlas .sa2-cards{padding:0 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .site-atlas .sa2-card{border:1px solid rgba(255,255,255,.04);border-radius:14px;padding:18px;background:rgba(255,255,255,.015);position:relative;overflow:hidden}
+    .site-atlas .sa2-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(59,130,246,.2),transparent)}
+    .site-atlas .sa2-card-num{font-size:22px;font-weight:700;letter-spacing:-.02em;color:rgba(59,130,246,.6)}
+    .site-atlas .sa2-card-lbl{margin-top:4px;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+    .site-atlas .sa2-card-desc{margin-top:8px;font-size:10px;line-height:1.6;color:rgba(255,255,255,.3)}
+    .site-atlas .sa2-bottom{padding:14px 28px 28px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .site-atlas .sa2-bottom-card{border:1px solid rgba(255,255,255,.04);border-radius:14px;padding:16px 18px;background:rgba(255,255,255,.015);display:flex;align-items:center;gap:14px}
+    .site-atlas .sa2-bottom-icon{width:34px;height:34px;border-radius:10px;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .site-atlas .sa2-bottom-icon svg{width:16px;height:16px}
+    .site-atlas .sa2-bottom-title{font-size:11px;font-weight:700;letter-spacing:-.01em;color:rgba(255,255,255,.7)}
+    .site-atlas .sa2-bottom-sub{margin-top:2px;font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.04em}
+
+    /* ─── CTA ─── */
+    .work-cta{padding:100px 0;text-align:center;border-top:1px solid var(--line)}
+    .work-cta h2{font-family:'Playfair Display',serif;font-size:46px;font-weight:600;letter-spacing:-.04em;margin:0 0 16px}
+    .work-cta p{font-size:18px;line-height:1.8;color:var(--muted);margin:0 auto 40px;max-width:600px}
+
+    /* ─── FOOTER ─── */
+    .footer{border-top:1px solid var(--line);padding:48px 0 32px}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;border-top:1px solid var(--line);margin-top:28px}
+    .footer-copy{font-size:12px;color:rgba(255,255,255,.3)}
+    .footer-legal{display:flex;gap:24px;font-size:12px;color:rgba(255,255,255,.3)}
+    .footer-legal a:hover{color:rgba(255,255,255,.6)}
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 980px){
+      .nav{display:none}
+      .hamburger{display:flex}
+      .nav-cta{display:none}
+      .portfolio-grid{grid-template-columns:1fr}
+      .portfolio.reverse .portfolio-grid{direction:ltr}
+      .work-hero h1{font-size:42px}
+      .site-obsidian .so-hero-grid,.site-solara .ss-hero-grid,.site-atlas .sa2-hero-grid{grid-template-columns:1fr}
+      .site-obsidian .so-featured,.site-solara .ss-services,.site-atlas .sa2-cards{grid-template-columns:1fr}
+      .site-solara .ss-stats{grid-template-columns:repeat(2,1fr)}
+      .site-atlas .sa2-bottom{grid-template-columns:1fr}
+      .site-obsidian,.site-solara,.site-atlas{min-height:auto}
+      .site-obsidian .so-visual{min-height:180px}
+      .site-solara .ss-hero-img{min-height:200px}
+      .site-atlas .sa2-visual{min-height:200px}
+    }
+    @media (max-width: 640px){
+      .container{padding:0 18px}
+      .work-hero{padding:60px 0 50px}
+      .work-hero h1{font-size:36px}
+      .work-cta h2{font-size:34px}
+      .work-cta{padding:60px 0}
+      .work-grid{gap:48px;padding:48px 0}
+      .portfolio{padding:14px}
+      .portfolio-grid{gap:20px}
+      .meta h3{font-size:28px}
+      .meta p{font-size:15px}
+      .url-bar{width:100%}
+      .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+      .so-hero-grid,.ss-hero-grid,.sa2-hero-grid{grid-template-columns:1fr!important}
+      .so-featured,.ss-services,.sa2-cards{grid-template-columns:1fr!important}
+      .ss-stats{grid-template-columns:repeat(2,1fr)!important}
+      .sa2-bottom{grid-template-columns:1fr!important}
+      .site-obsidian,.site-solara,.site-atlas{min-height:auto!important}
+      .so-visual{min-height:140px}
+      .ss-hero-img{min-height:160px}
+      .sa2-visual{min-height:160px}
+      .so-title,.ss-title,.sa2-title{font-size:22px}
+      .so-nav,.ss-nav,.sa2-nav{padding:14px 18px}
+      .so-hero,.ss-hero,.sa2-hero{padding:20px 18px}
+      .so-featured,.ss-services{padding:0 18px}
+      .so-bottom{margin:10px 18px 14px;padding:10px 0 0}
+      .so-metric-num{font-size:14px}
+      .so-links,.ss-links,.sa2-links{display:none}
+      .ss-stats{padding:10px 18px}
+      .ss-trust{margin:0 18px 18px}
+      .sa2-cards{padding:0 18px}
+      .sa2-hero{padding:20px 18px 16px}
+      .sa2-bottom{padding:0 18px 18px}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container nav-wrap">
+      <a href="/" class="brand">
+        <div class="brand-icon"><div></div><div class="d"></div><div class="d"></div><div></div><div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div><div></div><div class="d"></div><div class="d"></div><div></div></div>
+        <div class="brand-text"><span class="brand-name">MAINSTAY</span><span class="brand-sub">DIGITAL</span></div>
+      </a>
+      <nav class="nav">
+        <a href="/#capabilities">What We Do</a>
+        <a href="/#demo">See It Live</a>
+        <a class="active" href="/work">Our Work</a>
+        <a href="/#packages">Pricing</a>
+        <a href="/contact">Contact</a>
+        <a href="/about">About</a>
+      </nav>
+      <a class="btn btn-outline nav-cta" href="/#packages">Get Started</a>
+      <button class="hamburger" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <nav class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Close menu">&times;</button>
+    <div class="mobile-nav-label">Mainstay Digital</div>
+    <div class="mobile-nav-sub">Navigate</div>
+    <div class="mobile-nav-divider"></div>
+    <div class="mobile-nav-links">
+      <a href="/#capabilities" onclick="closeMobileNav()"><span class="mobile-nav-num">01</span>What We Do</a>
+      <a href="/#demo" onclick="closeMobileNav()"><span class="mobile-nav-num">02</span>See It Live</a>
+      <a href="/work" onclick="closeMobileNav()"><span class="mobile-nav-num">03</span>Our Work</a>
+      <a href="/#packages" onclick="closeMobileNav()"><span class="mobile-nav-num">04</span>Pricing</a>
+      <a href="/contact" onclick="closeMobileNav()"><span class="mobile-nav-num">05</span>Contact</a>
+      <a href="/about" onclick="closeMobileNav()"><span class="mobile-nav-num">06</span>About</a>
+    </div>
+    <a class="mobile-nav-cta" href="/#packages" onclick="closeMobileNav()">Get Started</a>
+  </nav>
+
+  <!-- ═══ WORK HERO ═══ -->
+  <section class="work-hero">
+    <div class="container">
+      <div class="eyebrow">Our Work</div>
+      <h1>Websites that work <span style="color:var(--gold)">as hard as you do.</span></h1>
+      <p>Every site we build is a one-of-a-kind, hand-coded design with AI automation baked in. No templates. No page builders. Just premium digital experiences that convert visitors into customers.</p>
+    </div>
+  </section>
+
+  <!-- ═══ PORTFOLIO ═══ -->
+  <div class="container">
+    <div class="work-grid">
+
+      <!-- ── 1. OBSIDIAN & CO — Ultra-Dark Luxury Real Estate ── -->
+      <div class="portfolio">
+        <div class="portfolio-grid">
+          <div class="screen">
+            <div class="browser-bar"><div class="dots"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div></div><div class="url-bar"></div></div>
+            <div style="padding:4px;background:#0f1114">
+              <div class="site-obsidian">
+                <div class="so-nav">
+                  <div class="so-logo">
+                    <svg viewBox="0 0 28 28" fill="none"><rect x="2" y="2" width="24" height="24" rx="2" stroke="rgba(199,165,106,.4)" stroke-width="1.5"/><path d="M8 8h12v12H8z" fill="rgba(199,165,106,.15)"/><path d="M14 8v12M8 14h12" stroke="rgba(199,165,106,.3)" stroke-width="1"/></svg>
+                    <span class="so-logo-text">Obsidian & Co</span>
+                  </div>
+                  <div class="so-links"><span>Portfolio</span><span>Advisory</span><span>Private</span></div>
+                </div>
+                <div class="so-hero">
+                  <div class="so-hero-grid">
+                    <div>
+                      <div class="so-tag">Private Real Estate Collective</div>
+                      <div class="so-title">Curated properties for the discerning few.</div>
+                      <div class="so-copy">Ultra-private luxury brokerage connecting select buyers with extraordinary estates across the Eastern seaboard.</div>
+                      <div class="so-cta">Request Private Access &rarr;</div>
+                    </div>
+                    <div class="so-visual">
+                      <span class="so-visual-label">Featured Estate</span>
+                      <div class="so-img-tag">Exclusive</div>
+                      <div class="so-img-price">$12.8M</div>
+                      <div class="so-img-specs">9 Lighthouse Point &middot; 7 BD &middot; 9 BA &middot; 11,200 SQFT</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="so-featured">
+                  <div class="so-prop"><div class="so-prop-price">$12.8M</div><div class="so-prop-addr">9 Lighthouse Point</div><div class="so-prop-specs">7 Bed &middot; 9 Bath &middot; 11,200 sqft</div></div>
+                  <div class="so-prop"><div class="so-prop-price">$8.4M</div><div class="so-prop-addr">The Ridgeline Estate</div><div class="so-prop-specs">5 Bed &middot; 6 Bath &middot; 8,600 sqft</div></div>
+                  <div class="so-prop"><div class="so-prop-price">$6.2M</div><div class="so-prop-addr">44 Harbour Walk</div><div class="so-prop-specs">4 Bed &middot; 5 Bath &middot; 6,100 sqft</div></div>
+                </div>
+                <div class="so-bottom">
+                  <div class="so-metric"><div class="so-metric-num">$2.1B</div><div class="so-metric-lbl">Lifetime Sales</div></div>
+                  <div class="so-divider"></div>
+                  <div class="so-metric"><div class="so-metric-num">340+</div><div class="so-metric-lbl">Estates Closed</div></div>
+                  <div class="so-divider"></div>
+                  <div class="so-metric"><div class="so-metric-num">Private</div><div class="so-metric-lbl">By Invitation</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="meta">
+            <div class="work-cat">Luxury Real Estate</div>
+            <h3>Obsidian & Co</h3>
+            <p>An ultra-dark, invitation-only luxury brokerage site with gold accents, property cards, and a visual hierarchy that whispers exclusivity — designed to make $10M+ listings feel like the baseline.</p>
+            <div class="tags"><span class="chip">Ultra-Dark Luxury</span><span class="chip">SVG Logo System</span><span class="chip">Property Cards</span></div>
+            <div class="impact">
+              <div class="impact-item"><strong>How we helped:</strong> Completely repositioned the brokerage from standard MLS-driven to a private, curated experience that attracts ultra-high-net-worth buyers.</div>
+              <div class="impact-item"><strong>AI integration:</strong> AI responds to property inquiries in under 45 seconds. 3x more showings booked. Automated buyer qualification and private showing coordination — every lead gets a white-glove digital response around the clock.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 2. SOLARA HEALTH — Clean Emerald Wellness ── -->
+      <div class="portfolio reverse">
+        <div class="portfolio-grid">
+          <div class="meta">
+            <div class="work-cat">Modern Healthcare</div>
+            <h3>Solara Health</h3>
+            <p>A pristine white-and-emerald wellness platform with vertical accent bars, rounded service cards, and a calming color system that builds trust before a single word is read.</p>
+            <div class="tags"><span class="chip">Clean Modern</span><span class="chip">Emerald Accents</span><span class="chip">Trust Architecture</span></div>
+            <div class="impact">
+              <div class="impact-item"><strong>How we helped:</strong> Transformed a dated clinical website into a modern wellness brand that converts visitors into booked appointments at nearly 3x the previous rate.</div>
+              <div class="impact-item"><strong>AI integration:</strong> Automated appointment scheduling reduced front desk calls by 60%. Patient intake, appointment reminders, and 24/7 inquiry response that keeps the front desk focused on in-person care — not triaging phone calls.</div>
+            </div>
+          </div>
+          <div class="screen">
+            <div class="browser-bar"><div class="dots"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div></div><div class="url-bar"></div></div>
+            <div style="padding:4px;background:#0f1114">
+              <div class="site-solara">
+                <div class="ss-nav">
+                  <div class="ss-logo">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#1a5237" stroke-width="1.5"/><circle cx="12" cy="12" r="5" fill="rgba(45,138,86,.15)" stroke="#2d8a56" stroke-width="1"/><circle cx="12" cy="5" r="1.5" fill="#2d8a56"/><circle cx="12" cy="19" r="1.5" fill="#2d8a56"/><circle cx="5" cy="12" r="1.5" fill="#2d8a56"/><circle cx="19" cy="12" r="1.5" fill="#2d8a56"/></svg>
+                    <span class="ss-logo-text">Solara Health</span>
+                  </div>
+                  <div class="ss-links"><span>Services</span><span>Providers</span><span>Book</span></div>
+                </div>
+                <div class="ss-hero">
+                  <div class="ss-hero-grid">
+                    <div>
+                      <div class="ss-kicker"><span class="ss-kicker-dot"></span> Integrative Wellness</div>
+                      <div class="ss-title">Healthcare redesigned around the way you actually live.</div>
+                      <div class="ss-copy">Modern primary and integrative care with same-day appointments, transparent pricing, and providers who listen.</div>
+                      <div class="ss-ctas"><div class="ss-btn-green">Book Today</div><div class="ss-btn-outline">Our Approach</div></div>
+                    </div>
+                    <div class="ss-hero-img">
+                      <div class="ss-pulse-ring2"></div>
+                      <div class="ss-pulse-ring"></div>
+                      <div class="ss-center-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#1a5237" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                      </div>
+                      <div class="ss-connect" style="width:1px;height:24px;top:12px;left:50%"></div>
+                      <div class="ss-connect" style="width:1px;height:24px;bottom:12px;left:50%"></div>
+                      <div class="ss-connect" style="height:1px;width:24px;top:50%;left:12px"></div>
+                      <div class="ss-connect" style="height:1px;width:24px;top:50%;right:12px"></div>
+                      <div class="ss-card-tl">
+                        <div class="ss-mc-title">Heart Rate</div>
+                        <div class="ss-mc-val">72 <span style="font-size:7px;font-weight:500;color:rgba(26,82,55,.5)">bpm</span></div>
+                        <div class="ss-mc-dots"><div class="ss-mc-dot active"></div><div class="ss-mc-dot active"></div><div class="ss-mc-dot active"></div><div class="ss-mc-dot"></div><div class="ss-mc-dot"></div></div>
+                      </div>
+                      <div class="ss-card-tr">
+                        <div class="ss-mc-title">Sleep Score</div>
+                        <div class="ss-mc-val">94</div>
+                        <div class="ss-mc-sub">Excellent</div>
+                      </div>
+                      <div class="ss-card-bl">
+                        <div class="ss-mc-title">Blood Pressure</div>
+                        <div class="ss-mc-val" style="font-size:12px">118/76</div>
+                        <div class="ss-mc-sub">Normal Range</div>
+                      </div>
+                      <div class="ss-card-br">
+                        <div class="ss-mc-title">Next Visit</div>
+                        <div class="ss-mc-val" style="font-size:11px">Mar 14</div>
+                        <div class="ss-mc-sub">Annual Wellness</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ss-services">
+                  <div class="ss-svc"><div class="ss-svc-name">Primary Care</div><div class="ss-svc-desc">Annual wellness, chronic care management, and preventive health</div></div>
+                  <div class="ss-svc"><div class="ss-svc-name">Integrative Medicine</div><div class="ss-svc-desc">Functional testing, nutrition plans, and holistic protocols</div></div>
+                  <div class="ss-svc"><div class="ss-svc-name">Mental Wellness</div><div class="ss-svc-desc">Therapy, coaching, and psychiatry under one roof</div></div>
+                </div>
+                <div class="ss-stats">
+                  <div class="ss-stat"><div class="ss-stat-num">18K+</div><div class="ss-stat-lbl">Patients</div></div>
+                  <div class="ss-stat"><div class="ss-stat-num">Same Day</div><div class="ss-stat-lbl">Available</div></div>
+                  <div class="ss-stat"><div class="ss-stat-num">4.9&#9733;</div><div class="ss-stat-lbl">Rating</div></div>
+                  <div class="ss-stat"><div class="ss-stat-num">12 Min</div><div class="ss-stat-lbl">Avg Wait</div></div>
+                </div>
+                <div class="ss-trust">
+                  <div class="ss-trust-icon">&#10003;</div>
+                  <div class="ss-trust-text"><strong>Board-certified physicians</strong> with 45+ years of combined experience across primary, integrative, and mental health care</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 3. ATLAS VENTURE GROUP — Deep Tech / Data ── -->
+      <div class="portfolio">
+        <div class="portfolio-grid">
+          <div class="screen">
+            <div class="browser-bar"><div class="dots"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div></div><div class="url-bar"></div></div>
+            <div style="padding:4px;background:#0f1114">
+              <div class="site-atlas">
+                <div class="sa2-nav">
+                  <div class="sa2-logo">
+                    <svg viewBox="0 0 22 22" fill="none"><polygon points="11,2 20,18 2,18" stroke="rgba(59,130,246,.5)" stroke-width="1.5" fill="rgba(59,130,246,.06)"/><polygon points="11,7 16,16 6,16" stroke="rgba(59,130,246,.3)" stroke-width="1" fill="none"/></svg>
+                    <span class="sa2-logo-text">Atlas Venture Group</span>
+                  </div>
+                  <div class="sa2-links"><span>Portfolio</span><span>Thesis</span><span>Apply</span></div>
+                </div>
+                <div class="sa2-hero">
+                  <div class="sa2-hero-grid">
+                    <div>
+                      <div class="sa2-badge"><span class="sa2-badge-dot"></span> Early-Stage Deep Tech</div>
+                      <div class="sa2-title">Backing the founders rewriting the infrastructure layer.</div>
+                      <div class="sa2-copy">Seed to Series A capital for teams building at the intersection of AI, developer tooling, and enterprise infrastructure.</div>
+                      <div class="sa2-cta">Submit Your Deck</div>
+                    </div>
+                    <div class="sa2-visual">
+                      <div class="sa2-irr-tag"><div class="sa2-irr-val">3.2x</div><div class="sa2-irr-lbl">Avg MOIC</div></div>
+                      <div class="sa2-fund-tag"><div class="sa2-fund-val">41%</div><div class="sa2-fund-lbl">Net IRR</div></div>
+                      <div class="sa2-node bright" style="top:28%;left:35%"><span class="sa2-node-label">Series A</span></div>
+                      <div class="sa2-node" style="top:22%;left:58%"><span class="sa2-node-label">Seed</span></div>
+                      <div class="sa2-node bright" style="top:38%;left:72%"><span class="sa2-node-label">Series B</span></div>
+                      <div class="sa2-node" style="top:45%;left:48%"></div>
+                      <div class="sa2-node" style="top:32%;left:22%"></div>
+                      <div class="sa2-node bright" style="top:48%;left:30%"></div>
+                      <div class="sa2-edge" style="top:30%;left:37%;width:80px;transform:rotate(-8deg)"></div>
+                      <div class="sa2-edge" style="top:26%;left:55%;width:65px;transform:rotate(25deg)"></div>
+                      <div class="sa2-edge" style="top:40%;left:50%;width:85px;transform:rotate(5deg)"></div>
+                      <div class="sa2-edge" style="top:35%;left:25%;width:40px;transform:rotate(-15deg)"></div>
+                      <div class="sa2-edge" style="top:46%;left:33%;width:55px;transform:rotate(10deg)"></div>
+                      <div class="sa2-chart-box">
+                        <div class="sa2-chart-title">Fund III Deployment by Quarter</div>
+                        <div class="sa2-chart-bars">
+                          <div class="sa2-cbar" style="height:25%"></div>
+                          <div class="sa2-cbar" style="height:40%"></div>
+                          <div class="sa2-cbar hi" style="height:65%"></div>
+                          <div class="sa2-cbar" style="height:50%"></div>
+                          <div class="sa2-cbar hi" style="height:80%"></div>
+                          <div class="sa2-cbar hi" style="height:100%"></div>
+                          <div class="sa2-cbar" style="height:70%"></div>
+                          <div class="sa2-cbar hi" style="height:90%"></div>
+                          <div class="sa2-cbar" style="height:55%"></div>
+                          <div class="sa2-cbar" style="height:45%"></div>
+                          <div class="sa2-cbar hi" style="height:75%"></div>
+                          <div class="sa2-cbar" style="height:60%"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="sa2-cards">
+                  <div class="sa2-card"><div class="sa2-card-num">$420M</div><div class="sa2-card-lbl">Fund III</div><div class="sa2-card-desc">Deployed across 34 portfolio companies</div></div>
+                  <div class="sa2-card"><div class="sa2-card-num">6</div><div class="sa2-card-lbl">Unicorns</div><div class="sa2-card-desc">$1B+ valuations from our portfolio</div></div>
+                  <div class="sa2-card"><div class="sa2-card-num">89%</div><div class="sa2-card-lbl">Follow-On</div><div class="sa2-card-desc">Companies that raised subsequent rounds</div></div>
+                </div>
+                <div class="sa2-bottom">
+                  <div class="sa2-bottom-card">
+                    <div class="sa2-bottom-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M2 14V6l6-4 6 4v8" stroke="rgba(59,130,246,.5)" stroke-width="1.2"/><rect x="6" y="9" width="4" height="5" stroke="rgba(59,130,246,.3)" stroke-width="1"/></svg></div>
+                    <div><div class="sa2-bottom-title">Infrastructure & DevTools</div><div class="sa2-bottom-sub">Primary thesis focus area</div></div>
+                  </div>
+                  <div class="sa2-bottom-card">
+                    <div class="sa2-bottom-icon"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="rgba(59,130,246,.5)" stroke-width="1.2"/><path d="M8 4v4l3 2" stroke="rgba(59,130,246,.3)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+                    <div><div class="sa2-bottom-title">AI & Machine Learning</div><div class="sa2-bottom-sub">Applied intelligence layer</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="meta">
+            <div class="work-cat">Venture Capital</div>
+            <h3>Atlas Venture Group</h3>
+            <p>A data-driven deep tech VC site with grid backgrounds, glowing accents, portfolio metrics, and an interface that feels more like a Bloomberg terminal than a marketing page.</p>
+            <div class="tags"><span class="chip">Data-Driven Dark</span><span class="chip">Grid System</span><span class="chip">Portfolio Metrics</span></div>
+            <div class="impact">
+              <div class="impact-item"><strong>How we helped:</strong> Built a digital presence that matches the firm's technical thesis — founders visiting the site immediately understand this is a fund that gets deep tech.</div>
+              <div class="impact-item"><strong>AI integration:</strong> AI handles initial founder outreach screening — 12 hours/week saved. Automated deck intake, founder communication flow, and portfolio company updates — partners spend time on deals, not admin.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="work-cta">
+    <div class="container">
+      <h2>Ready for a site this good?</h2>
+      <p>Every project starts with a conversation. Tell us about your business and we'll show you exactly what we'd build.</p>
+      <a class="btn btn-primary" href="/contact" style="font-size:12px;padding:18px 36px">Start Your Project</a>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2026 Mainstay Digital. All rights reserved.</div>
+        <div class="footer-legal">
+          <a href="mailto:hello@mainstayhq.com?subject=Privacy%20Policy%20Request">Privacy</a>
+          <a href="mailto:hello@mainstayhq.com?subject=Terms%20of%20Service%20Request">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script>
+document.getElementById('menuToggle').addEventListener('click',function(){
+  this.classList.toggle('active');
+  document.getElementById('mobileNav').classList.toggle('open');
+  document.body.style.overflow=document.getElementById('mobileNav').classList.contains('open')?'hidden':'';
+});
+function closeMobileNav(){document.getElementById('menuToggle').classList.remove('active');document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow=''}
+</script>
+</body>
+</html>
