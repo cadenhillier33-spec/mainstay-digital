@@ -217,6 +217,12 @@
     .notif-scroll{display:flex;flex-direction:column;gap:8px;padding:8px 14px;animation:notifScroll 28s linear infinite}
     .notif-scroll:hover{animation-play-state:paused}
     @keyframes notifScroll{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+    /* Touch-scroll mode (activated by JS on touch devices) */
+    .notif-feed.touch-mode{overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
+    .notif-feed.touch-mode::-webkit-scrollbar{display:none}
+    .notif-feed.touch-mode{scrollbar-width:none}
+    .notif-feed.touch-mode .notif-scroll{animation:none}
+    .notif-feed.touch-mode .notif-dupe{display:none}
     .notif{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:12px 14px;flex-shrink:0;transition:border-color .3s ease}
     .notif-top{display:flex;align-items:center;gap:8px;margin-bottom:6px}
     .notif-ch{font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border-radius:6px;flex-shrink:0}
@@ -960,50 +966,50 @@
                     <div class="notif-desc">New inquiry at midnight. Responded in 38s, booked for Friday, sent intake forms, updated CRM.</div>
                     <div class="notif-result">&#10003; Booked &middot; CRM updated</div>
                   </div>
-                  <!-- Set 2 (duplicate for seamless loop) -->
-                  <div class="notif">
+                  <!-- Set 2 (duplicate for seamless loop — hidden in touch mode) -->
+                  <div class="notif notif-dupe">
                     <div class="notif-top"><span class="notif-ch n-internal">Internal</span><span class="notif-time">6:00 AM</span></div>
                     <div class="notif-title">Morning systems check</div>
                     <div class="notif-desc">Traffic spiked 3x overnight from local news mention. Social post drafted for approval.</div>
                     <div class="notif-result">&#10003; Post queued &middot; Spike flagged</div>
                   </div>
-                  <div class="notif">
+                  <div class="notif notif-dupe">
                     <div class="notif-top"><span class="notif-ch n-google">Google</span><span class="notif-time">8:15 AM</span></div>
                     <div class="notif-title">3-star review responded to</div>
                     <div class="notif-desc">Professional response drafted in your brand voice. Sent to you for one-click approval.</div>
                     <div class="notif-result">&#10003; Drafted in 12 seconds</div>
                   </div>
-                  <div class="notif">
+                  <div class="notif notif-dupe">
                     <div class="notif-top"><span class="notif-ch n-email">Email</span><span class="notif-time">9:30 AM</span></div>
                     <div class="notif-title">4 overnight inquiries answered</div>
                     <div class="notif-desc">Personalized responses with pricing and booking links sent in your voice. Avg response: 38s.</div>
                     <div class="notif-result">&#10003; 4 leads responded</div>
                   </div>
-                  <div class="notif">
+                  <div class="notif notif-dupe">
                     <div class="notif-top"><span class="notif-ch n-sms">SMS</span><span class="notif-time">11:00 AM</span></div>
                     <div class="notif-title">Cold lead re-engaged</div>
                     <div class="notif-desc">Sarah visited Tuesday but didn't book. Personalized follow-up text sent automatically.</div>
                     <div class="notif-result">&#10003; Sarah booked at 11:42 AM</div>
                   </div>
-                  <div class="notif">
+                  <div class="notif notif-dupe">
                     <div class="notif-top"><span class="notif-ch n-internal">Internal</span><span class="notif-time">2:00 PM</span></div>
                     <div class="notif-title">Cancellation &rarr; waitlist activated</div>
                     <div class="notif-desc">3pm slot cancelled. Next 2 waitlisted clients texted. Slot filled in 8 minutes.</div>
                     <div class="notif-result">&#10003; $0 revenue lost</div>
                   </div>
-                  <div class="notif">
+                  <div class="notif notif-dupe">
                     <div class="notif-top"><span class="notif-ch n-social">Social</span><span class="notif-time">5:30 PM</span></div>
                     <div class="notif-title">Review requests sent</div>
                     <div class="notif-desc">6 customers texted post-visit with direct Google review link. Timed for peak satisfaction.</div>
                     <div class="notif-result">&#10003; 2 five-star reviews by 9pm</div>
                   </div>
-                  <div class="notif">
+                  <div class="notif notif-dupe">
                     <div class="notif-top"><span class="notif-ch n-internal">Internal</span><span class="notif-time">6:00 PM</span></div>
                     <div class="notif-title">Daily report delivered</div>
                     <div class="notif-desc">Revenue, leads, bookings, reviews, and tomorrow's schedule — compiled and sent to your inbox.</div>
                     <div class="notif-result">&#10003; 2-minute read</div>
                   </div>
-                  <div class="notif">
+                  <div class="notif notif-dupe">
                     <div class="notif-top"><span class="notif-ch n-web">Website</span><span class="notif-time">11:47 PM</span></div>
                     <div class="notif-title">Late-night lead captured</div>
                     <div class="notif-desc">New inquiry at midnight. Responded in 38s, booked for Friday, sent intake forms, updated CRM.</div>
@@ -1420,12 +1426,19 @@ const counterObserver=new IntersectionObserver((entries)=>{
 },{threshold:0.3});
 document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
 
-// iPhone notification scroll — pause on hover, resume on leave
+// iPhone notification scroll — touch-scroll on mobile, auto-scroll on desktop
 (function(){
+  var feed=document.querySelector('.notif-feed');
   var scroll=document.getElementById('notifScroll');
-  if(!scroll)return;
-  scroll.addEventListener('mouseenter',function(){scroll.style.animationPlayState='paused'});
-  scroll.addEventListener('mouseleave',function(){scroll.style.animationPlayState='running'});
+  if(!feed||!scroll)return;
+  // Detect touch device
+  var isTouch='ontouchstart' in window||navigator.maxTouchPoints>0;
+  if(isTouch){
+    feed.classList.add('touch-mode');
+  }else{
+    scroll.addEventListener('mouseenter',function(){scroll.style.animationPlayState='paused'});
+    scroll.addEventListener('mouseleave',function(){scroll.style.animationPlayState='running'});
+  }
 })();
 
 // 3D Particle background for hero
