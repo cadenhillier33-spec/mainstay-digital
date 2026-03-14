@@ -1622,54 +1622,53 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
   var key=new THREE.DirectionalLight(0xfff8e8,0.8);key.position.set(2,3,4);scene.add(key);
   var rim=new THREE.DirectionalLight(0xc8a951,0.4);rim.position.set(-2,1,-2);scene.add(rim);
 
-  /* Logo plane */
+  /* Coin group — logo on front & back */
+  var coinGroup=new THREE.Group();
+  scene.add(coinGroup);
+
   var loader=new THREE.TextureLoader();
   loader.load('https://iili.io/qHhHnCx.png',function(tex){
     tex.encoding=THREE.sRGBEncoding;
     tex.anisotropy=renderer.capabilities.getMaxAnisotropy();
-    var mat=new THREE.MeshStandardMaterial({
-      map:tex,
-      transparent:true,
-      alphaTest:0.05,
-      roughness:0.3,
-      metalness:0.5,
-      side:THREE.DoubleSide,
-      emissive:new THREE.Color(0xc8a951),
-      emissiveIntensity:0.15,
-      emissiveMap:tex
-    });
-    var geo=new THREE.PlaneGeometry(1.6,1.6);
-    var mesh=new THREE.Mesh(geo,mat);
-    scene.add(mesh);
 
-    /* Glow ring behind logo */
-    var ringGeo=new THREE.RingGeometry(0.9,1.05,64);
-    var ringMat=new THREE.MeshBasicMaterial({
-      color:0xc8a951,
-      transparent:true,
-      opacity:0.12,
-      side:THREE.DoubleSide
+    /* Front face */
+    var frontMat=new THREE.MeshStandardMaterial({
+      map:tex,transparent:true,alphaTest:0.05,
+      roughness:0.25,metalness:0.6,
+      emissive:new THREE.Color(0xc8a951),emissiveIntensity:0.12,emissiveMap:tex
     });
-    var ring=new THREE.Mesh(ringGeo,ringMat);
-    ring.position.z=-0.05;
-    scene.add(ring);
+    var frontGeo=new THREE.PlaneGeometry(1.5,1.5);
+    var front=new THREE.Mesh(frontGeo,frontMat);
+    front.position.z=0.026;
+    coinGroup.add(front);
+
+    /* Back face (mirrored) */
+    var backMat=frontMat.clone();
+    var back=new THREE.Mesh(frontGeo,backMat);
+    back.position.z=-0.026;
+    back.rotation.y=Math.PI;
+    coinGroup.add(back);
+
+    /* Coin edge — thin cylinder between faces */
+    var edgeGeo=new THREE.CylinderGeometry(0.82,0.82,0.052,64,1,true);
+    var edgeMat=new THREE.MeshStandardMaterial({
+      color:0xc8a951,roughness:0.2,metalness:0.8
+    });
+    var edge=new THREE.Mesh(edgeGeo,edgeMat);
+    edge.rotation.x=Math.PI/2;
+    coinGroup.add(edge);
+
+    /* Slight downward tilt so top edge is visible */
+    coinGroup.rotation.x=0.15;
 
     var time=0;
     function animate(){
       requestAnimationFrame(animate);
-      time+=0.012;
-      /* Slow Y rotation */
-      mesh.rotation.y=Math.sin(time*0.5)*0.25;
-      /* Gentle tilt */
-      mesh.rotation.x=Math.sin(time*0.3)*0.08;
-      /* Float up and down */
-      mesh.position.y=Math.sin(time*0.7)*0.06;
-      /* Glow ring follows */
-      ring.rotation.y=mesh.rotation.y;
-      ring.rotation.x=mesh.rotation.x;
-      ring.position.y=mesh.position.y;
-      /* Subtle glow pulse */
-      ringMat.opacity=0.08+Math.sin(time)*0.05;
+      time+=0.008;
+      /* Continuous coin spin */
+      coinGroup.rotation.y+=0.008;
+      /* Gentle float */
+      coinGroup.position.y=Math.sin(time*0.7)*0.05;
       renderer.render(scene,camera);
     }
     animate();
