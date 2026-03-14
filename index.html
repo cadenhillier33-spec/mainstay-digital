@@ -150,7 +150,7 @@
     .ai-hw-list li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700}
 
     /* ─── MAC MINI 3D CANVAS ─── */
-    .mac-mini-3d-wrap{width:400px;height:400px;margin:0 auto;position:relative}
+    .mac-mini-3d-wrap{width:160px;height:160px;margin:0 auto;position:relative}
     .mac-mini-3d-wrap canvas{width:100%!important;height:100%!important;display:block}
     .mac-mini-label{text-align:center;margin-top:12px;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);opacity:.6}
     .mini-loader{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
@@ -522,7 +522,7 @@
       .feature-stats{grid-template-columns:repeat(2,1fr)}
       .pillars{grid-template-columns:1fr}
       .ai-hardware{grid-template-columns:1fr}
-      .mac-mini-3d-wrap{width:320px;height:320px}
+      .mac-mini-3d-wrap{width:140px;height:140px}
       .phone-demo{width:280px}
       .phone-screen{min-height:380px}
       .demo-layout{grid-template-columns:1fr;text-align:center;gap:48px}
@@ -648,7 +648,7 @@
       #hardware{padding:60px 0!important}
       #hardware h2{font-size:28px!important}
       #hardware [style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr!important}
-      .mac-mini-3d-wrap{width:260px;height:260px}
+      .mac-mini-3d-wrap{width:120px;height:120px}
       .phone-demo{width:100%;max-width:300px}
       .phone-screen{min-height:360px;padding:16px 12px}
       .phone-msg{font-size:12px}
@@ -815,13 +815,12 @@
             <div style="font-size:13px;line-height:1.7;color:var(--muted)">Leads, follow-ups, reviews, scheduling, and daily reports — all automated.</div>
           </div>
         </div>
-        <!-- Mac Mini compact aside -->
-        <div style="margin-top:48px;max-width:720px;margin-left:auto;margin-right:auto;border:1px solid var(--line);border-radius:20px;padding:24px 32px;background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:center">
-          <div style="display:flex;align-items:center;gap:14px">
-            <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,rgba(199,165,106,.15),rgba(199,165,106,.05));display:flex;align-items:center;justify-content:center">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><rect x="2" y="4" width="20" height="12" rx="2"/><line x1="6" y1="20" x2="18" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>
-            </div>
-            <div><div style="font-size:13px;font-weight:700;color:#fff">Powered by Mac Mini M4</div><div style="font-size:12px;color:var(--muted);margin-top:2px">Dedicated hardware installed at your office — runs 24/7, your data never leaves</div></div>
+        <!-- Mac Mini compact aside with 3D model -->
+        <div style="margin-top:48px;max-width:780px;margin-left:auto;margin-right:auto;border:1px solid var(--line);border-radius:20px;padding:28px 36px;background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);display:flex;align-items:center;gap:28px;flex-wrap:wrap;justify-content:center">
+          <div class="mac-mini-3d-wrap" id="macMini3D" style="width:160px;height:160px;flex-shrink:0"><div class="mini-loader" id="miniLoader"><div class="mini-loader-ring"></div><div class="mini-loader-text" style="font-size:9px">Loading</div></div></div>
+          <div style="flex:1;min-width:200px">
+            <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:6px">Powered by Mac Mini M4</div>
+            <div style="font-size:13px;line-height:1.7;color:var(--muted)">Not a cloud app. We physically install a dedicated machine at your office that runs your entire AI system — 24/7, your data never leaves.</div>
           </div>
         </div>
       </div>
@@ -1475,6 +1474,96 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
     requestAnimationFrame(animate);
   }
   animate();
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script>
+(function(){
+  const container=document.getElementById('macMini3D');
+  if(!container)return;
+  const w=160,h=160;
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(32,1,.1,100);
+  camera.position.set(0,4,5.5);
+  camera.lookAt(0,0,0);
+  const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
+  renderer.setSize(w,h);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure=0.7;
+  renderer.outputEncoding=THREE.sRGBEncoding;
+  container.appendChild(renderer.domElement);
+  var pmremGenerator=new THREE.PMREMGenerator(renderer);
+  pmremGenerator.compileEquirectangularShader();
+  var envScene=new THREE.Scene();
+  envScene.background=new THREE.Color(0x222222);
+  var topPanel=new THREE.Mesh(new THREE.PlaneGeometry(20,20),new THREE.MeshBasicMaterial({color:0x666666}));
+  topPanel.position.set(0,8,0);topPanel.rotation.x=Math.PI/2;envScene.add(topPanel);
+  var sidePanel1=new THREE.Mesh(new THREE.PlaneGeometry(10,10),new THREE.MeshBasicMaterial({color:0x444444}));
+  sidePanel1.position.set(8,2,0);sidePanel1.rotation.y=-Math.PI/2;envScene.add(sidePanel1);
+  var sidePanel2=new THREE.Mesh(new THREE.PlaneGeometry(10,10),new THREE.MeshBasicMaterial({color:0x383838}));
+  sidePanel2.position.set(-8,2,0);sidePanel2.rotation.y=Math.PI/2;envScene.add(sidePanel2);
+  var frontPanel=new THREE.Mesh(new THREE.PlaneGeometry(10,10),new THREE.MeshBasicMaterial({color:0x444444}));
+  frontPanel.position.set(0,2,8);frontPanel.rotation.y=Math.PI;envScene.add(frontPanel);
+  var envTexture=pmremGenerator.fromScene(envScene,0.04).texture;
+  scene.environment=envTexture;
+  pmremGenerator.dispose();
+  scene.add(new THREE.AmbientLight(0xffffff,0.15));
+  var keyLight=new THREE.DirectionalLight(0xfff8f0,0.6);keyLight.position.set(4,8,4);scene.add(keyLight);
+  var fillLight=new THREE.DirectionalLight(0xd0e0f0,0.25);fillLight.position.set(-4,3,3);scene.add(fillLight);
+  var rimLight=new THREE.DirectionalLight(0xffffff,0.4);rimLight.position.set(-2,1,-4);scene.add(rimLight);
+  const modelGroup=new THREE.Group();
+  modelGroup.rotation.x=0.4;
+  modelGroup.rotation.y=-Math.PI/2+Math.PI;
+  scene.add(modelGroup);
+  const loader=new THREE.GLTFLoader();
+  loader.load('https://cdn.jsdelivr.net/gh/cadenhillier33-spec/mainstay-digital@fd28f46/mac-mini.glb',function(gltf){
+    const model=gltf.scene;
+    const box=new THREE.Box3().setFromObject(model);
+    const center=box.getCenter(new THREE.Vector3());
+    const size=box.getSize(new THREE.Vector3());
+    const maxDim=Math.max(size.x,size.y,size.z);
+    const scale=3.0/maxDim;
+    model.scale.setScalar(scale);
+    model.position.set(-center.x*scale,-center.y*scale,-center.z*scale);
+    model.traverse(function(child){
+      if(child.isMesh){child.material.envMapIntensity=1.8;child.material.needsUpdate=true}
+    });
+    modelGroup.add(model);
+    var loaderEl=document.getElementById('miniLoader');
+    if(loaderEl)loaderEl.style.display='none';
+    var time=0;
+    function animate(){
+      requestAnimationFrame(animate);
+      time+=0.008;
+      modelGroup.position.y=Math.sin(time*0.8)*0.08;
+      renderer.render(scene,camera);
+    }
+    animate();
+  },function(xhr){
+    if(xhr.lengthComputable){
+      var pct=Math.round(xhr.loaded/xhr.total*100);
+      var txt=document.querySelector('.mini-loader-text');
+      if(txt)txt.textContent='Loading '+pct+'%';
+    }
+  },function(err){
+    console.error('GLB load error:',err);
+    var loaderEl=document.getElementById('miniLoader');
+    if(loaderEl){
+      loaderEl.querySelector('.mini-loader-ring').style.display='none';
+      loaderEl.querySelector('.mini-loader-text').textContent='';
+    }
+  });
+  function onResize(){
+    var cw=container.clientWidth;
+    var ch=container.clientHeight;
+    renderer.setSize(cw,ch);
+    camera.aspect=cw/ch;
+    camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize',onResize);
+  setTimeout(onResize,100);
 })();
 </script>
 </body>
