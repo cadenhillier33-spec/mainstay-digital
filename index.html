@@ -182,50 +182,43 @@
     .phone-msgs::-webkit-scrollbar{display:none}
     .phone-badge{text-align:center;font-size:10px;color:rgba(255,255,255,.3);margin-bottom:12px}
 
-    /* ─── COMMAND CENTER DEMO ─── */
-    .demo-layout{display:grid;gap:40px}
-    .demo-header{max-width:720px}
-    .demo-header h2{font-size:44px;letter-spacing:-.04em}
-    .demo-header .lead{margin-top:20px}
-    .demo-features{margin-top:36px;display:grid;gap:16px}
-    .demo-feat{display:flex;align-items:center;gap:12px}
-    .demo-feat-icon{width:36px;height:36px;border-radius:10px;background:rgba(199,165,106,.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-    .demo-feat-text{font-size:14px;color:var(--muted)}
-    .demo-feat-text strong{color:#fff}
-    .demo-split{display:grid;grid-template-columns:1fr 1.3fr;gap:48px;align-items:start;margin-top:48px}
-    .ops-panel{background:#0d0e11;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:24px;min-height:480px;position:relative;overflow:hidden}
-    .ops-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.06)}
-    .ops-title{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
-    .ops-live{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(80,220,120,.8)}
-    .ops-live-dot{width:6px;height:6px;border-radius:50%;background:rgba(80,220,120,.9);animation:opsPulse 2s ease-in-out infinite}
-    @keyframes opsPulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(80,220,120,.4)}50%{opacity:.6;box-shadow:0 0 0 6px rgba(80,220,120,0)}}
-    .ops-events{display:flex;flex-direction:column;gap:0}
-    .ops-event{display:flex;align-items:flex-start;gap:12px;padding:10px 0;opacity:0;transform:translateY(8px);transition:opacity .4s ease,transform .4s ease}
-    .ops-event.visible{opacity:1;transform:translateY(0)}
-    .ops-time{font-size:11px;color:rgba(255,255,255,.28);min-width:58px;padding-top:2px;font-variant-numeric:tabular-nums}
-    .ops-icon{font-size:14px;flex-shrink:0;width:20px;text-align:center;padding-top:1px}
-    .ops-desc{font-size:13px;line-height:1.5;color:rgba(255,255,255,.7)}
-    .ops-desc strong{color:#fff;font-weight:600}
-    .ops-badge{display:inline-block;background:rgba(199,165,106,.12);color:#c7a56a;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:999px;margin-left:8px;vertical-align:middle}
-    .ops-divider{display:flex;align-items:center;gap:16px;padding:14px 0;opacity:0;transform:translateY(8px);transition:opacity .4s ease,transform .4s ease}
-    .ops-divider.visible{opacity:1;transform:translateY(0)}
-    .ops-divider-line{flex:1;height:1px;background:rgba(255,255,255,.06)}
-    .ops-divider-text{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.2);white-space:nowrap}
-    .ops-briefing{background:linear-gradient(135deg,rgba(199,165,106,.06),rgba(199,165,106,.02));border:1px solid rgba(199,165,106,.18);border-radius:16px;padding:22px 24px;margin-top:8px;margin-left:70px;opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease;box-shadow:0 8px 32px rgba(0,0,0,.3),0 0 0 1px rgba(199,165,106,.06) inset}
-    .ops-briefing.visible{opacity:1;transform:translateY(0)}
-    .ops-briefing-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-    .ops-briefing-title{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
-    .ops-briefing-time{font-size:10px;color:rgba(255,255,255,.25)}
-    .ops-briefing-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px}
-    .ops-briefing-stat{font-size:13px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:8px}
-    .ops-briefing-stat strong{color:#fff;font-weight:700;font-size:18px}
-    .ops-briefing-stat .stat-icon{font-size:14px}
-    .ops-briefing-next{margin-top:14px;padding-top:12px;border-top:1px solid rgba(199,165,106,.12);font-size:13px;color:var(--gold2);font-weight:500}
-    .phone-time-skip{text-align:center;padding:12px 0 4px;opacity:0;animation:msgAppear .4s ease forwards}
-    .phone-time-skip span{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.2);background:rgba(255,255,255,.04);padding:4px 10px;border-radius:999px}
-    .demo-replay{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.4);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px;border-radius:999px;cursor:pointer;transition:all .3s ease;margin-top:24px;opacity:0;transform:translateY(8px);transition:opacity .4s ease,transform .4s ease,border-color .3s ease,color .3s ease}
-    .demo-replay.visible{opacity:1;transform:translateY(0)}
-    .demo-replay:hover{border-color:rgba(199,165,106,.4);color:var(--gold)}
+    /* ─── 24-HOUR TIMELINE DEMO ─── */
+    .tl-header{max-width:720px;margin-bottom:56px}
+    .tl-header h2{font-size:44px;letter-spacing:-.04em}
+    .tl-header .lead{margin-top:20px}
+    .tl-counter{display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:10px 18px;background:rgba(199,165,106,.06);border:1px solid rgba(199,165,106,.14);border-radius:999px}
+    .tl-counter-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+    .tl-counter-num{font-size:15px;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums}
+    .tl-wrap{position:relative;padding-left:48px}
+    .tl-line{position:absolute;left:18px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,rgba(199,165,106,.3),rgba(199,165,106,.06));z-index:0}
+    .tl-item{position:relative;padding:0 0 40px;opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+    .tl-item.visible{opacity:1;transform:translateY(0)}
+    .tl-dot{position:absolute;left:-38px;top:4px;width:12px;height:12px;border-radius:50%;border:2px solid rgba(199,165,106,.4);background:var(--bg);z-index:1;transition:all .4s ease}
+    .tl-item.visible .tl-dot{border-color:var(--gold);box-shadow:0 0 12px rgba(199,165,106,.25)}
+    .tl-time{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.04em;margin-bottom:6px}
+    .tl-card{background:#0d0e11;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px 24px;transition:border-color .3s ease}
+    .tl-item.visible .tl-card{border-color:rgba(255,255,255,.12)}
+    .tl-card-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .tl-channel{display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:999px;flex-shrink:0}
+    .tl-ch-web{background:rgba(99,132,255,.12);color:#7b9cff}
+    .tl-ch-email{background:rgba(80,200,120,.12);color:#5fd47a}
+    .tl-ch-sms{background:rgba(199,165,106,.12);color:#c7a56a}
+    .tl-ch-google{background:rgba(255,120,100,.12);color:#ff8a7a}
+    .tl-ch-internal{background:rgba(160,120,255,.12);color:#b89cff}
+    .tl-ch-social{background:rgba(255,160,80,.12);color:#ffb060}
+    .tl-card-title{font-size:16px;font-weight:600;color:#fff;line-height:1.4}
+    .tl-card-desc{font-size:14px;line-height:1.7;color:var(--muted);margin-top:6px}
+    .tl-card-desc strong{color:#fff}
+    .tl-card-result{margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,.06);font-size:12px;color:var(--gold2);display:flex;align-items:center;gap:6px}
+    .tl-summary{background:linear-gradient(135deg,rgba(199,165,106,.06),rgba(199,165,106,.02));border:1px solid rgba(199,165,106,.18);border-radius:20px;padding:28px 32px;margin-top:16px;margin-left:48px;opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;box-shadow:0 12px 40px rgba(0,0,0,.3)}
+    .tl-summary.visible{opacity:1;transform:translateY(0)}
+    .tl-summary-title{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+    .tl-summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .tl-summary-stat{text-align:center}
+    .tl-summary-num{font-size:28px;font-weight:700;color:#fff;line-height:1}
+    .tl-summary-label{font-size:11px;color:rgba(255,255,255,.4);margin-top:4px}
+    .tl-summary-bottom{margin-top:18px;padding-top:14px;border-top:1px solid rgba(199,165,106,.12);font-size:13px;color:rgba(255,255,255,.5);text-align:center}
+    .tl-summary-bottom strong{color:var(--gold2)}
 
     /* ─── 3D PORTFOLIO TILT ─── */
     .portfolio{transition:transform .4s ease,box-shadow .4s ease;transform-style:preserve-3d;will-change:transform}
@@ -521,8 +514,8 @@
       .mac-mini-3d-wrap{width:320px;height:320px}
       .phone-demo{width:280px}
       .phone-screen{min-height:380px}
-      .demo-split{grid-template-columns:1fr;gap:36px}
-      .demo-header h2{font-size:36px}
+      .tl-header h2{font-size:36px}
+      .tl-summary-grid{grid-template-columns:repeat(2,1fr)}
     }
     @media (max-width: 640px){
       .container{padding:0 18px}
@@ -635,12 +628,18 @@
       .phone-msg{font-size:12px}
       .hero-orb{width:400px;height:400px}
       #demo .lead{font-size:15px}
-      .demo-header h2{font-size:28px}
-      .ops-panel{padding:18px;min-height:auto}
-      .ops-briefing{margin-left:0;padding:16px 18px}
-      .ops-briefing-grid{grid-template-columns:1fr}
-      .ops-briefing-stat strong{font-size:16px}
-      .demo-features{gap:12px}
+      .tl-header h2{font-size:28px}
+      .tl-wrap{padding-left:36px}
+      .tl-dot{left:-26px}
+      .tl-line{left:12px}
+      .tl-card{padding:16px 18px}
+      .tl-card-title{font-size:14px}
+      .tl-summary{margin-left:0;padding:20px 22px}
+      .tl-summary-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+      .tl-summary-num{font-size:22px}
+      .tl-counter{padding:8px 14px}
+      .tl-counter-label{font-size:10px}
+      .tl-counter-num{font-size:13px}
       #hardware [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;gap:36px!important}
     }
   </style>
@@ -905,54 +904,122 @@
     </div>
   </section>
 
-  <!-- ═══ LIVE DEMO ═══ -->
+  <!-- ═══ LIVE DEMO — 24 HOURS ═══ -->
   <section id="demo" style="padding:104px 0;position:relative;overflow:hidden">
     <div class="container">
-      <div class="demo-layout">
-        <div class="demo-header">
-          <div class="eyebrow">See It In Action</div>
-          <h2>One inquiry. An entire pipeline — <span class="accent">handled.</span></h2>
-          <p class="lead">A lead comes in at 11:47pm. Your AI doesn't just reply — it captures the contact, books the appointment, sends intake forms, follows up when they're not completed, and briefs you the next morning. No chatbot does this.</p>
-          <div class="demo-features">
-            <div class="demo-feat"><div class="demo-feat-icon">⚡</div><div class="demo-feat-text"><strong>Full pipeline automation</strong> — not just a reply, an entire workflow</div></div>
-            <div class="demo-feat"><div class="demo-feat-icon">🧠</div><div class="demo-feat-text"><strong>Context-aware responses</strong> — trained on your business, your voice, your policies</div></div>
-            <div class="demo-feat"><div class="demo-feat-icon">📊</div><div class="demo-feat-text"><strong>Daily owner briefing</strong> — know exactly what happened while you slept</div></div>
+      <div class="tl-header">
+        <div class="eyebrow">See It In Action</div>
+        <h2>24 hours. Zero employees. <span class="accent">Everything handled.</span></h2>
+        <p class="lead">This isn't a chatbot that waits for someone to type. This is an AI system that runs your entire business — across email, text, web, reviews, and internal ops — while you focus on what you're actually good at.</p>
+        <div class="tl-counter"><span class="tl-counter-label">Tasks handled today</span><span class="tl-counter-num" id="tlCounter">0</span></div>
+      </div>
+
+      <div class="tl-wrap" id="tlWrap">
+        <div class="tl-line"></div>
+
+        <div class="tl-item" data-tl>
+          <div class="tl-dot"></div>
+          <div class="tl-time">6:00 AM</div>
+          <div class="tl-card">
+            <div class="tl-card-top"><span class="tl-channel tl-ch-internal">Internal</span></div>
+            <div class="tl-card-title">Morning systems check & daily prep</div>
+            <div class="tl-card-desc">AI scans overnight analytics — flags that website traffic spiked 3x from a local news mention. <strong>Drafts a social media post</strong> capitalizing on the exposure and queues it for owner approval.</div>
+            <div class="tl-card-result">✅ Social post drafted · Traffic spike identified</div>
           </div>
         </div>
 
-        <div class="demo-split">
-          <!-- Phone Chat -->
-          <div style="display:flex;justify-content:center">
-            <div class="phone-demo" id="phoneDemo">
-              <div class="phone-frame">
-                <div class="phone-notch"></div>
-                <div class="phone-screen">
-                  <div class="phone-status-bar"><span>11:47 PM</span><span>5G ●●●</span></div>
-                  <div class="phone-chat-header">
-                    <div class="name">Mainstay AI Assistant</div>
-                    <div class="sub">Online · Typically replies instantly</div>
-                  </div>
-                  <div class="phone-badge">Today</div>
-                  <div class="phone-msgs" id="phoneMsgs"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Operations Panel -->
-          <div class="ops-panel" id="opsPanel">
-            <div class="ops-header">
-              <div class="ops-title">System Activity</div>
-              <div class="ops-live"><div class="ops-live-dot"></div>LIVE</div>
-            </div>
-            <div class="ops-events" id="opsEvents"></div>
+        <div class="tl-item" data-tl>
+          <div class="tl-dot"></div>
+          <div class="tl-time">8:15 AM</div>
+          <div class="tl-card">
+            <div class="tl-card-top"><span class="tl-channel tl-ch-google">Google</span></div>
+            <div class="tl-card-title">3-star Google review detected & responded to</div>
+            <div class="tl-card-desc">Customer leaves a review mentioning slow wait times. AI <strong>drafts a professional, empathetic response</strong> in your brand voice, acknowledges the issue, and offers to make it right — sent to owner for one-click approval.</div>
+            <div class="tl-card-result">✅ Review response drafted in 12 seconds</div>
           </div>
         </div>
 
-        <div style="margin-top:40px;text-align:center">
-          <a class="btn btn-primary" href="/contact" style="display:inline-flex">See What We'd Automate For You</a>
-          <div><button class="demo-replay" id="demoReplay" style="display:none">↻ Replay Demo</button></div>
+        <div class="tl-item" data-tl>
+          <div class="tl-dot"></div>
+          <div class="tl-time">9:30 AM</div>
+          <div class="tl-card">
+            <div class="tl-card-top"><span class="tl-channel tl-ch-email">Email</span></div>
+            <div class="tl-card-title">4 overnight email inquiries — all answered</div>
+            <div class="tl-card-desc">Four new inquiries came in between 11pm and 7am. AI sent <strong>personalized responses to each one</strong> with relevant service info, pricing, and a booking link — all in your voice, all within 60 seconds of receipt.</div>
+            <div class="tl-card-result">✅ 4 leads responded · Avg response time: 38 sec</div>
+          </div>
         </div>
+
+        <div class="tl-item" data-tl>
+          <div class="tl-dot"></div>
+          <div class="tl-time">11:00 AM</div>
+          <div class="tl-card">
+            <div class="tl-card-top"><span class="tl-channel tl-ch-sms">SMS</span></div>
+            <div class="tl-card-title">Proactive follow-up — re-engaging a cold lead</div>
+            <div class="tl-card-desc">Sarah visited your website last Tuesday but never booked. AI <strong>sends a personalized text</strong>: "Hi Sarah, just following up — we still have availability Thursday if you'd like to come in." No human involvement needed.</div>
+            <div class="tl-card-result">✅ Re-engagement sent · Sarah books at 11:42 AM</div>
+          </div>
+        </div>
+
+        <div class="tl-item" data-tl>
+          <div class="tl-dot"></div>
+          <div class="tl-time">2:00 PM</div>
+          <div class="tl-card">
+            <div class="tl-card-top"><span class="tl-channel tl-ch-internal">Internal</span></div>
+            <div class="tl-card-title">Cancellation detected — waitlist activated</div>
+            <div class="tl-card-desc">A 3pm appointment cancels. AI immediately <strong>texts the next 2 people on the waitlist</strong> with the open slot. First respondent books within 8 minutes. Revenue preserved, no staff intervention.</div>
+            <div class="tl-card-result">✅ Slot filled in 8 min · $0 revenue lost</div>
+          </div>
+        </div>
+
+        <div class="tl-item" data-tl>
+          <div class="tl-dot"></div>
+          <div class="tl-time">5:30 PM</div>
+          <div class="tl-card">
+            <div class="tl-card-top"><span class="tl-channel tl-ch-social">Social</span></div>
+            <div class="tl-card-title">Review request sent to today's customers</div>
+            <div class="tl-card-desc">AI identifies 6 customers from today's appointments and <strong>sends a personalized review request</strong> via text with a direct link to your Google Business page. Timed for 2 hours post-visit — peak satisfaction window.</div>
+            <div class="tl-card-result">✅ 6 review requests sent · 2 five-star reviews received by 9pm</div>
+          </div>
+        </div>
+
+        <div class="tl-item" data-tl>
+          <div class="tl-dot"></div>
+          <div class="tl-time">6:00 PM</div>
+          <div class="tl-card">
+            <div class="tl-card-top"><span class="tl-channel tl-ch-internal">Internal</span></div>
+            <div class="tl-card-title">Daily owner report generated</div>
+            <div class="tl-card-desc">AI compiles the full day: <strong>revenue, new leads, bookings, cancellations, review scores, marketing performance, and tomorrow's schedule</strong> — delivered to your inbox in a clean summary. You read it over dinner.</div>
+            <div class="tl-card-result">✅ Report delivered · 2-minute read</div>
+          </div>
+        </div>
+
+        <div class="tl-item" data-tl>
+          <div class="tl-dot"></div>
+          <div class="tl-time">11:47 PM</div>
+          <div class="tl-card">
+            <div class="tl-card-top"><span class="tl-channel tl-ch-web">Website</span></div>
+            <div class="tl-card-title">Late-night inquiry — handled while you sleep</div>
+            <div class="tl-card-desc">A new lead fills out your contact form at midnight. AI responds in <strong>38 seconds with a personalized reply</strong>, books them for Friday at 10am, sends confirmation + intake forms, and adds them to your CRM. You find out in tomorrow's report.</div>
+            <div class="tl-card-result">✅ Lead captured · Appointment booked · CRM updated</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day Summary -->
+      <div class="tl-summary" id="tlSummary">
+        <div class="tl-summary-title">End of Day Summary</div>
+        <div class="tl-summary-grid">
+          <div class="tl-summary-stat"><div class="tl-summary-num">23</div><div class="tl-summary-label">Tasks handled</div></div>
+          <div class="tl-summary-stat"><div class="tl-summary-num">6</div><div class="tl-summary-label">Leads responded</div></div>
+          <div class="tl-summary-stat"><div class="tl-summary-num">3</div><div class="tl-summary-label">Appointments booked</div></div>
+          <div class="tl-summary-stat"><div class="tl-summary-num">0</div><div class="tl-summary-label">Things you had to do</div></div>
+        </div>
+        <div class="tl-summary-bottom">Your AI handled <strong>an entire day of operations</strong> across 5 channels — while you ran your business.</div>
+      </div>
+
+      <div style="margin-top:48px;text-align:center">
+        <a class="btn btn-primary" href="/contact" style="display:inline-flex">See What We'd Automate For You</a>
       </div>
     </div>
   </section>
@@ -1512,7 +1579,7 @@ function closeMobileNav(){document.getElementById('menuToggle').classList.remove
 
 // Scroll reveal animations
 const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}})},{threshold:0.1});
-document.querySelectorAll('.card,.portfolio,.testimonial,.price-card,.faq-item,.pillar,.f-stat,.result-card,.result-industry,.mac-mini-3d-wrap,.phone-demo,.ops-panel,.demo-header').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity .6s ease, transform .6s ease';observer.observe(el)});
+document.querySelectorAll('.card,.portfolio,.testimonial,.price-card,.faq-item,.pillar,.f-stat,.result-card,.result-industry,.mac-mini-3d-wrap,.tl-header').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity .6s ease, transform .6s ease';observer.observe(el)});
 
 // 3D Portfolio tilt on mouse move
 document.querySelectorAll('.portfolio').forEach(card=>{
@@ -1553,128 +1620,53 @@ const counterObserver=new IntersectionObserver((entries)=>{
 },{threshold:0.3});
 document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
 
-// Command Center demo sequence
+// 24-Hour Timeline — scroll-triggered reveal + counter
 (function(){
-  var msgContainer=document.getElementById('phoneMsgs');
-  var opsContainer=document.getElementById('opsEvents');
-  var replayBtn=document.getElementById('demoReplay');
-  if(!msgContainer||!opsContainer)return;
-  var timeouts=[];
+  var items=document.querySelectorAll('[data-tl]');
+  var summary=document.getElementById('tlSummary');
+  var counter=document.getElementById('tlCounter');
+  if(!items.length)return;
 
-  function addMsg(type,text){
-    if(type==='typing'){
-      var t=document.createElement('div');
-      t.className='phone-typing';
-      t.innerHTML='<span></span><span></span><span></span>';
-      msgContainer.appendChild(t);
-      timeouts.push(setTimeout(function(){t.remove()},1100));
-    }else{
-      var d=document.createElement('div');
-      d.className='phone-msg '+(type==='incoming'?'incoming':'outgoing');
-      d.textContent=text;
-      msgContainer.appendChild(d);
+  var taskCounts=[3,5,9,11,14,17,20,23];
+  var revealed=0;
+
+  function animateCounter(target){
+    var current=parseInt(counter.textContent)||0;
+    var step=Math.ceil((target-current)/10);
+    function tick(){
+      current+=step;
+      if(current>=target){counter.textContent=target;return}
+      counter.textContent=current;
+      requestAnimationFrame(tick);
     }
-    msgContainer.scrollTop=msgContainer.scrollHeight;
+    tick();
   }
 
-  function addPhoneSkip(text){
-    var s=document.createElement('div');
-    s.className='phone-time-skip';
-    s.innerHTML='<span>'+text+'</span>';
-    msgContainer.appendChild(s);
-    msgContainer.scrollTop=msgContainer.scrollHeight;
-  }
-
-  function addOps(time,icon,html){
-    var row=document.createElement('div');
-    row.className='ops-event';
-    row.innerHTML='<div class="ops-time">'+time+'</div><div class="ops-icon">'+icon+'</div><div class="ops-desc">'+html+'</div>';
-    opsContainer.appendChild(row);
-    requestAnimationFrame(function(){requestAnimationFrame(function(){row.classList.add('visible')})});
-  }
-
-  function addDivider(text){
-    var d=document.createElement('div');
-    d.className='ops-divider';
-    d.innerHTML='<div class="ops-divider-line"></div><div class="ops-divider-text">'+text+'</div><div class="ops-divider-line"></div>';
-    opsContainer.appendChild(d);
-    requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.add('visible')})});
-  }
-
-  function addBriefing(){
-    var b=document.createElement('div');
-    b.className='ops-briefing';
-    b.innerHTML='<div class="ops-briefing-header"><div class="ops-briefing-title">Morning Briefing</div><div class="ops-briefing-time">Thursday, 7:00 AM</div></div><div class="ops-briefing-grid"><div class="ops-briefing-stat"><span class="stat-icon">📬</span> <strong>3</strong> new leads</div><div class="ops-briefing-stat"><span class="stat-icon">✅</span> <strong>1</strong> booked</div><div class="ops-briefing-stat"><span class="stat-icon">🔄</span> <strong>2</strong> in follow-up</div><div class="ops-briefing-stat"><span class="stat-icon">🟢</span> <strong>0</strong> need attention</div></div><div class="ops-briefing-next">▶ Next: Thursday 2:00 PM — New Client Consultation</div>';
-    opsContainer.appendChild(b);
-    requestAnimationFrame(function(){requestAnimationFrame(function(){b.classList.add('visible')})});
-  }
-
-  function showReplay(){
-    if(!replayBtn)return;
-    replayBtn.style.display='inline-flex';
-    requestAnimationFrame(function(){requestAnimationFrame(function(){replayBtn.classList.add('visible')})});
-  }
-
-  // Timeline: [delay_ms, action] — paced at ~400ms between ops events
-  var timeline=[
-    // Step 1: Lead comes in
-    [0,     function(){addMsg('incoming','Hi! I saw your website — do you have any openings this week for a consultation?')}],
-    [400,   function(){addOps('11:47 PM','⚡','<strong>New lead captured</strong><span class="ops-badge">Inbound</span>')}],
-    [800,   function(){addOps('11:47 PM','📋','Contact created in CRM — tagged <strong>"Consultation Request"</strong>')}],
-
-    // Step 2: AI processes and replies
-    [1800,  function(){addMsg('typing')}],
-    [2000,  function(){addOps('11:47 PM','🧠','Business context matched — pulled <strong>calendar availability</strong>')}],
-    [3200,  function(){addMsg('outgoing','Hi there! Thanks for reaching out. We have availability this Thursday at 2pm or Friday at 10am — would either work for you?')}],
-    [3600,  function(){addOps('11:47 PM','💬','Personalized response sent<span class="ops-badge">38 sec</span>')}],
-
-    // Step 3: Lead books
-    [5200,  function(){addMsg('incoming','Thursday at 2pm works perfectly!')}],
-    [6200,  function(){addMsg('typing')}],
-    [7400,  function(){addMsg('outgoing',"You're all set! I've sent your confirmation and intake forms to your email. See you Thursday at 2pm!")}],
-    [7800,  function(){addOps('11:48 PM','✅','<strong>Appointment confirmed</strong> — Thursday 2:00 PM')}],
-    [8200,  function(){addOps('11:48 PM','📧','Confirmation + intake forms sent to <strong>client email</strong>')}],
-    [8600,  function(){addOps('11:48 PM','📅','Google Calendar updated — reminder set for <strong>Wed 6:00 PM</strong>')}],
-
-    // Step 4: Time skip — 2 hours later (automated follow-up)
-    [10400, function(){addDivider('2 Hours Later')}],
-    [10400, function(){addPhoneSkip('2 hours later')}],
-    [11000, function(){addOps('1:48 AM','🔄','<strong>Follow-up triggered</strong> — intake forms not yet completed')}],
-    [11400, function(){addOps('1:48 AM','📩','Reminder sent — <strong>"Complete your forms before Thursday"</strong>')}],
-
-    // Step 5: Time skip — next morning (proactive AI text + briefing)
-    [13200, function(){addDivider('Next Morning')}],
-    [13200, function(){addPhoneSkip('Wednesday · 6:00 PM')}],
-    [13800, function(){addMsg('outgoing','Hi! Just a quick reminder — your consultation is tomorrow at 2:00 PM. Here\'s what to have ready: photo ID, recent financial statements, and any questions you\'d like to cover. See you then!')}],
-    [14200, function(){addOps('6:00 PM','🔔','<strong>Pre-appointment prep</strong> sent — checklist + reminder')}],
-    [15800, function(){addPhoneSkip('Thursday · 7:00 AM')}],
-    [16200, function(){addOps('7:00 AM','📊','<strong>Daily briefing generated</strong> for business owner')}],
-    [17000, function(){addBriefing()}],
-    [18000, function(){showReplay()}]
-  ];
-
-  function runDemo(){
-    timeouts.forEach(clearTimeout);
-    timeouts=[];
-    msgContainer.innerHTML='';
-    opsContainer.innerHTML='';
-    if(replayBtn){replayBtn.style.display='none';replayBtn.classList.remove('visible')}
-    timeline.forEach(function(step){
-      timeouts.push(setTimeout(step[1],step[0]));
+  var tlObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        var idx=[].indexOf.call(items,entry.target);
+        if(idx>=0&&idx>=revealed){
+          revealed=idx+1;
+          animateCounter(taskCounts[idx]||revealed*3);
+        }
+        tlObs.unobserve(entry.target);
+      }
     });
+  },{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+
+  items.forEach(function(item){tlObs.observe(item)});
+
+  if(summary){
+    var sumObs=new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting){
+        summary.classList.add('visible');
+        sumObs.unobserve(summary);
+      }
+    },{threshold:0.2});
+    sumObs.observe(summary);
   }
-
-  if(replayBtn){replayBtn.addEventListener('click',function(){runDemo()})}
-
-  var triggered=false;
-  var obs=new IntersectionObserver(function(entries){
-    if(entries[0].isIntersecting&&!triggered){
-      triggered=true;
-      runDemo();
-    }
-  },{threshold:0.2});
-  var demoSection=document.getElementById('phoneDemo');
-  if(demoSection)obs.observe(demoSection);
 })();
 
 // 3D Particle background for hero
