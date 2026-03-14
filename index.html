@@ -211,7 +211,7 @@
     .app-counter-label{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35)}
     .app-counter-num{font-size:13px;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums;margin-left:auto}
     /* Notification Feed — JS-driven auto-scroll on all devices */
-    .notif-feed{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;position:relative;padding:6px 0}
+    .notif-feed{flex:1;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;position:relative;padding:6px 0}
     .notif-feed::-webkit-scrollbar{display:none}
     .notif-feed{scrollbar-width:none}
     .notif-feed::after{content:"";position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,#000);z-index:5;pointer-events:none}
@@ -1424,43 +1424,61 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
 (function(){
   var feed=document.querySelector('.notif-feed');
   if(!feed)return;
-  var speed=0.5; // px per frame
+  var speed=0.5;
   var paused=false;
   var resumeTimer=null;
-  var raf=null;
+  var touching=false;
+  var started=false;
 
-  // Auto-scroll loop
+  // Auto-scroll loop — always running, respects pause flag
   function tick(){
-    if(!paused){
+    if(!paused&&!touching){
       feed.scrollTop+=speed;
-      // Loop: when we hit the duplicate set, snap back
+      // Seamless loop: snap back when reaching duplicate content
       var half=feed.scrollHeight/2;
-      if(feed.scrollTop>=half){feed.scrollTop-=half}
+      if(feed.scrollTop>=half)feed.scrollTop-=half;
     }
-    raf=requestAnimationFrame(tick);
+    requestAnimationFrame(tick);
   }
 
-  // Start when section is visible
+  // Start auto-scroll when section enters viewport
   var obs=new IntersectionObserver(function(entries){
-    if(entries[0].isIntersecting&&!raf){tick()}
+    if(entries[0].isIntersecting&&!started){started=true;tick()}
   },{threshold:0.1});
   obs.observe(feed);
 
-  // Pause on interaction, resume after delay
-  function pauseScroll(){
-    paused=true;
+  function scheduleResume(ms){
     clearTimeout(resumeTimer);
-    resumeTimer=setTimeout(function(){paused=false},2500);
+    resumeTimer=setTimeout(function(){paused=false},ms);
   }
 
-  // Touch: pause while finger is down, resume 2.5s after lift
-  feed.addEventListener('touchstart',function(){paused=true;clearTimeout(resumeTimer)},{passive:true});
-  feed.addEventListener('touchend',function(){resumeTimer=setTimeout(function(){paused=false},2500)},{passive:true});
+  // ── TOUCH: finger down = pause, finger up = resume after 2.5s ──
+  feed.addEventListener('touchstart',function(e){
+    touching=true;
+    paused=true;
+    clearTimeout(resumeTimer);
+    // Prevent page from stealing the scroll gesture
+    e.stopPropagation();
+  },{passive:true});
 
-  // Mouse: pause on hover/wheel
+  feed.addEventListener('touchmove',function(e){
+    e.stopPropagation();
+  },{passive:true});
+
+  feed.addEventListener('touchend',function(){
+    touching=false;
+    scheduleResume(2500);
+  },{passive:true});
+
+  feed.addEventListener('touchcancel',function(){
+    touching=false;
+    scheduleResume(2500);
+  },{passive:true});
+
+  // ── MOUSE: hover = pause, leave = resume after 1.5s ──
   feed.addEventListener('mouseenter',function(){paused=true;clearTimeout(resumeTimer)});
-  feed.addEventListener('mouseleave',function(){resumeTimer=setTimeout(function(){paused=false},1500)});
-  feed.addEventListener('wheel',pauseScroll,{passive:true});
+  feed.addEventListener('mouseleave',function(){scheduleResume(1500)});
+  feed.addEventListener('wheel',function(){paused=true;scheduleResume(2500)},{passive:true});
 })();
 
 // 3D Particle background for hero
