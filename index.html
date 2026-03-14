@@ -211,7 +211,7 @@
     .app-counter-label{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35)}
     .app-counter-num{font-size:13px;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums;margin-left:auto}
     /* Notification Feed — JS-driven auto-scroll on all devices */
-    .notif-feed{flex:1;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;position:relative;padding:6px 0}
+    .notif-feed{flex:1;min-height:0;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;position:relative;padding:6px 0}
     .notif-feed::-webkit-scrollbar{display:none}
     .notif-feed{scrollbar-width:none}
     .notif-feed::after{content:"";position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,#000);z-index:5;pointer-events:none}
