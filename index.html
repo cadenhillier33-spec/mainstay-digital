@@ -178,8 +178,54 @@
     .phone-typing span:nth-child(3){animation-delay:.4s}
     @keyframes typingDot{0%,60%,100%{transform:translateY(0);opacity:.3}30%{transform:translateY(-4px);opacity:.8}}
     @keyframes msgAppear{to{opacity:1;transform:translateY(0)}}
-    .phone-msgs{display:flex;flex-direction:column;gap:6px}
+    .phone-msgs{display:flex;flex-direction:column;gap:6px;max-height:340px;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
+    .phone-msgs::-webkit-scrollbar{display:none}
     .phone-badge{text-align:center;font-size:10px;color:rgba(255,255,255,.3);margin-bottom:12px}
+
+    /* ─── COMMAND CENTER DEMO ─── */
+    .demo-layout{display:grid;gap:40px}
+    .demo-header{max-width:720px}
+    .demo-header h2{font-size:44px;letter-spacing:-.04em}
+    .demo-header .lead{margin-top:20px}
+    .demo-features{margin-top:36px;display:grid;gap:16px}
+    .demo-feat{display:flex;align-items:center;gap:12px}
+    .demo-feat-icon{width:36px;height:36px;border-radius:10px;background:rgba(199,165,106,.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+    .demo-feat-text{font-size:14px;color:var(--muted)}
+    .demo-feat-text strong{color:#fff}
+    .demo-split{display:grid;grid-template-columns:1fr 1.3fr;gap:48px;align-items:start;margin-top:48px}
+    .ops-panel{background:#0d0e11;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:24px;min-height:480px;position:relative;overflow:hidden}
+    .ops-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.06)}
+    .ops-title{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+    .ops-live{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(80,220,120,.8)}
+    .ops-live-dot{width:6px;height:6px;border-radius:50%;background:rgba(80,220,120,.9);animation:opsPulse 2s ease-in-out infinite}
+    @keyframes opsPulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(80,220,120,.4)}50%{opacity:.6;box-shadow:0 0 0 6px rgba(80,220,120,0)}}
+    .ops-events{display:flex;flex-direction:column;gap:0}
+    .ops-event{display:flex;align-items:flex-start;gap:12px;padding:10px 0;opacity:0;transform:translateY(8px);transition:opacity .4s ease,transform .4s ease}
+    .ops-event.visible{opacity:1;transform:translateY(0)}
+    .ops-time{font-size:11px;color:rgba(255,255,255,.28);min-width:58px;padding-top:2px;font-variant-numeric:tabular-nums}
+    .ops-icon{font-size:14px;flex-shrink:0;width:20px;text-align:center;padding-top:1px}
+    .ops-desc{font-size:13px;line-height:1.5;color:rgba(255,255,255,.7)}
+    .ops-desc strong{color:#fff;font-weight:600}
+    .ops-badge{display:inline-block;background:rgba(199,165,106,.12);color:#c7a56a;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:999px;margin-left:8px;vertical-align:middle}
+    .ops-divider{display:flex;align-items:center;gap:16px;padding:14px 0;opacity:0;transform:translateY(8px);transition:opacity .4s ease,transform .4s ease}
+    .ops-divider.visible{opacity:1;transform:translateY(0)}
+    .ops-divider-line{flex:1;height:1px;background:rgba(255,255,255,.06)}
+    .ops-divider-text{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.2);white-space:nowrap}
+    .ops-briefing{background:linear-gradient(135deg,rgba(199,165,106,.06),rgba(199,165,106,.02));border:1px solid rgba(199,165,106,.18);border-radius:16px;padding:22px 24px;margin-top:8px;margin-left:70px;opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease;box-shadow:0 8px 32px rgba(0,0,0,.3),0 0 0 1px rgba(199,165,106,.06) inset}
+    .ops-briefing.visible{opacity:1;transform:translateY(0)}
+    .ops-briefing-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+    .ops-briefing-title{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+    .ops-briefing-time{font-size:10px;color:rgba(255,255,255,.25)}
+    .ops-briefing-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px}
+    .ops-briefing-stat{font-size:13px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:8px}
+    .ops-briefing-stat strong{color:#fff;font-weight:700;font-size:18px}
+    .ops-briefing-stat .stat-icon{font-size:14px}
+    .ops-briefing-next{margin-top:14px;padding-top:12px;border-top:1px solid rgba(199,165,106,.12);font-size:13px;color:var(--gold2);font-weight:500}
+    .phone-time-skip{text-align:center;padding:12px 0 4px;opacity:0;animation:msgAppear .4s ease forwards}
+    .phone-time-skip span{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.2);background:rgba(255,255,255,.04);padding:4px 10px;border-radius:999px}
+    .demo-replay{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.4);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px;border-radius:999px;cursor:pointer;transition:all .3s ease;margin-top:24px;opacity:0;transform:translateY(8px);transition:opacity .4s ease,transform .4s ease,border-color .3s ease,color .3s ease}
+    .demo-replay.visible{opacity:1;transform:translateY(0)}
+    .demo-replay:hover{border-color:rgba(199,165,106,.4);color:var(--gold)}
 
     /* ─── 3D PORTFOLIO TILT ─── */
     .portfolio{transition:transform .4s ease,box-shadow .4s ease;transform-style:preserve-3d;will-change:transform}
@@ -475,6 +521,8 @@
       .mac-mini-3d-wrap{width:320px;height:320px}
       .phone-demo{width:280px}
       .phone-screen{min-height:380px}
+      .demo-split{grid-template-columns:1fr;gap:36px}
+      .demo-header h2{font-size:36px}
     }
     @media (max-width: 640px){
       .container{padding:0 18px}
@@ -587,7 +635,12 @@
       .phone-msg{font-size:12px}
       .hero-orb{width:400px;height:400px}
       #demo .lead{font-size:15px}
-      #demo [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;gap:36px!important}
+      .demo-header h2{font-size:28px}
+      .ops-panel{padding:18px;min-height:auto}
+      .ops-briefing{margin-left:0;padding:16px 18px}
+      .ops-briefing-grid{grid-template-columns:1fr}
+      .ops-briefing-stat strong{font-size:16px}
+      .demo-features{gap:12px}
       #hardware [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;gap:36px!important}
     }
   </style>
@@ -855,37 +908,50 @@
   <!-- ═══ LIVE DEMO ═══ -->
   <section id="demo" style="padding:104px 0;position:relative;overflow:hidden">
     <div class="container">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
-        <div>
+      <div class="demo-layout">
+        <div class="demo-header">
           <div class="eyebrow">See It In Action</div>
-          <h2 style="font-size:44px;letter-spacing:-.04em">A lead comes in. <span class="accent">Your AI handles it.</span></h2>
-          <p class="lead" style="margin-top:20px">While your competition takes hours to reply, your AI assistant responds in under 60 seconds — with the right answer, the right tone, and a booked appointment.</p>
-          <div style="margin-top:36px;display:grid;gap:16px">
-            <div style="display:flex;align-items:center;gap:12px"><div style="width:36px;height:36px;border-radius:10px;background:rgba(199,165,106,.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">⚡</div><div style="font-size:14px;color:var(--muted)"><strong style="color:#fff">Instant response</strong> — under 60 seconds, 24/7</div></div>
-            <div style="display:flex;align-items:center;gap:12px"><div style="width:36px;height:36px;border-radius:10px;background:rgba(199,165,106,.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🎯</div><div style="font-size:14px;color:var(--muted)"><strong style="color:#fff">Personalized replies</strong> — trained on your business</div></div>
-            <div style="display:flex;align-items:center;gap:12px"><div style="width:36px;height:36px;border-radius:10px;background:rgba(199,165,106,.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">📅</div><div style="font-size:14px;color:var(--muted)"><strong style="color:#fff">Auto-books appointments</strong> — no back and forth</div></div>
-          </div>
-          <div style="margin-top:36px">
-            <a class="btn btn-primary" href="/contact" style="display:inline-flex">See What We'd Automate For You</a>
+          <h2>One inquiry. An entire pipeline — <span class="accent">handled.</span></h2>
+          <p class="lead">A lead comes in at 11:47pm. Your AI doesn't just reply — it captures the contact, books the appointment, sends intake forms, follows up when they're not completed, and briefs you the next morning. No chatbot does this.</p>
+          <div class="demo-features">
+            <div class="demo-feat"><div class="demo-feat-icon">⚡</div><div class="demo-feat-text"><strong>Full pipeline automation</strong> — not just a reply, an entire workflow</div></div>
+            <div class="demo-feat"><div class="demo-feat-icon">🧠</div><div class="demo-feat-text"><strong>Context-aware responses</strong> — trained on your business, your voice, your policies</div></div>
+            <div class="demo-feat"><div class="demo-feat-icon">📊</div><div class="demo-feat-text"><strong>Daily owner briefing</strong> — know exactly what happened while you slept</div></div>
           </div>
         </div>
-        <div style="display:flex;justify-content:center">
-          <div class="phone-demo" id="phoneDemo">
-            <div class="phone-frame">
-              <div class="phone-notch"></div>
-              <div class="phone-screen">
-                <div class="phone-status-bar"><span>9:41 AM</span><span>5G ●●●</span></div>
-                <div class="phone-chat-header">
-                  <div class="name">Mainstay AI Assistant</div>
-                  <div class="sub">Online · Typically replies instantly</div>
-                </div>
-                <div class="phone-badge">Today</div>
-                <div class="phone-msgs" id="phoneMsgs">
-                  <!-- Messages injected by JS -->
+
+        <div class="demo-split">
+          <!-- Phone Chat -->
+          <div style="display:flex;justify-content:center">
+            <div class="phone-demo" id="phoneDemo">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                  <div class="phone-status-bar"><span>11:47 PM</span><span>5G ●●●</span></div>
+                  <div class="phone-chat-header">
+                    <div class="name">Mainstay AI Assistant</div>
+                    <div class="sub">Online · Typically replies instantly</div>
+                  </div>
+                  <div class="phone-badge">Today</div>
+                  <div class="phone-msgs" id="phoneMsgs"></div>
                 </div>
               </div>
             </div>
           </div>
+
+          <!-- Operations Panel -->
+          <div class="ops-panel" id="opsPanel">
+            <div class="ops-header">
+              <div class="ops-title">System Activity</div>
+              <div class="ops-live"><div class="ops-live-dot"></div>LIVE</div>
+            </div>
+            <div class="ops-events" id="opsEvents"></div>
+          </div>
+        </div>
+
+        <div style="margin-top:40px;text-align:center">
+          <a class="btn btn-primary" href="/contact" style="display:inline-flex">See What We'd Automate For You</a>
+          <div><button class="demo-replay" id="demoReplay" style="display:none">↻ Replay Demo</button></div>
         </div>
       </div>
     </div>
@@ -1446,7 +1512,7 @@ function closeMobileNav(){document.getElementById('menuToggle').classList.remove
 
 // Scroll reveal animations
 const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}})},{threshold:0.1});
-document.querySelectorAll('.card,.portfolio,.testimonial,.price-card,.faq-item,.pillar,.f-stat,.result-card,.result-industry,.mac-mini-3d-wrap,.phone-demo').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity .6s ease, transform .6s ease';observer.observe(el)});
+document.querySelectorAll('.card,.portfolio,.testimonial,.price-card,.faq-item,.pillar,.f-stat,.result-card,.result-industry,.mac-mini-3d-wrap,.phone-demo,.ops-panel,.demo-header').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity .6s ease, transform .6s ease';observer.observe(el)});
 
 // 3D Portfolio tilt on mouse move
 document.querySelectorAll('.portfolio').forEach(card=>{
@@ -1487,44 +1553,128 @@ const counterObserver=new IntersectionObserver((entries)=>{
 },{threshold:0.3});
 document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
 
-// Phone demo message sequence
+// Command Center demo sequence
 (function(){
-  const container=document.getElementById('phoneMsgs');
-  if(!container)return;
-  const msgs=[
-    {type:'incoming',text:'Hi! I saw your website — do you have any openings this week for a consultation?',delay:0},
-    {type:'typing',delay:1200},
-    {type:'outgoing',text:'Hi there! Thanks for reaching out. We have availability this Thursday at 2pm or Friday at 10am — would either work for you?',delay:2400},
-    {type:'incoming',text:'Thursday at 2pm works perfectly!',delay:4800},
-    {type:'typing',delay:5800},
-    {type:'outgoing',text:"You're all set! I've booked you for Thursday at 2pm. You'll receive a confirmation email shortly. Looking forward to meeting you!",delay:7000},
+  var msgContainer=document.getElementById('phoneMsgs');
+  var opsContainer=document.getElementById('opsEvents');
+  var replayBtn=document.getElementById('demoReplay');
+  if(!msgContainer||!opsContainer)return;
+  var timeouts=[];
+
+  function addMsg(type,text){
+    if(type==='typing'){
+      var t=document.createElement('div');
+      t.className='phone-typing';
+      t.innerHTML='<span></span><span></span><span></span>';
+      msgContainer.appendChild(t);
+      timeouts.push(setTimeout(function(){t.remove()},1100));
+    }else{
+      var d=document.createElement('div');
+      d.className='phone-msg '+(type==='incoming'?'incoming':'outgoing');
+      d.textContent=text;
+      msgContainer.appendChild(d);
+    }
+    msgContainer.scrollTop=msgContainer.scrollHeight;
+  }
+
+  function addPhoneSkip(text){
+    var s=document.createElement('div');
+    s.className='phone-time-skip';
+    s.innerHTML='<span>'+text+'</span>';
+    msgContainer.appendChild(s);
+    msgContainer.scrollTop=msgContainer.scrollHeight;
+  }
+
+  function addOps(time,icon,html){
+    var row=document.createElement('div');
+    row.className='ops-event';
+    row.innerHTML='<div class="ops-time">'+time+'</div><div class="ops-icon">'+icon+'</div><div class="ops-desc">'+html+'</div>';
+    opsContainer.appendChild(row);
+    requestAnimationFrame(function(){requestAnimationFrame(function(){row.classList.add('visible')})});
+  }
+
+  function addDivider(text){
+    var d=document.createElement('div');
+    d.className='ops-divider';
+    d.innerHTML='<div class="ops-divider-line"></div><div class="ops-divider-text">'+text+'</div><div class="ops-divider-line"></div>';
+    opsContainer.appendChild(d);
+    requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.add('visible')})});
+  }
+
+  function addBriefing(){
+    var b=document.createElement('div');
+    b.className='ops-briefing';
+    b.innerHTML='<div class="ops-briefing-header"><div class="ops-briefing-title">Morning Briefing</div><div class="ops-briefing-time">Thursday, 7:00 AM</div></div><div class="ops-briefing-grid"><div class="ops-briefing-stat"><span class="stat-icon">📬</span> <strong>3</strong> new leads</div><div class="ops-briefing-stat"><span class="stat-icon">✅</span> <strong>1</strong> booked</div><div class="ops-briefing-stat"><span class="stat-icon">🔄</span> <strong>2</strong> in follow-up</div><div class="ops-briefing-stat"><span class="stat-icon">🟢</span> <strong>0</strong> need attention</div></div><div class="ops-briefing-next">▶ Next: Thursday 2:00 PM — New Client Consultation</div>';
+    opsContainer.appendChild(b);
+    requestAnimationFrame(function(){requestAnimationFrame(function(){b.classList.add('visible')})});
+  }
+
+  function showReplay(){
+    if(!replayBtn)return;
+    replayBtn.style.display='inline-flex';
+    requestAnimationFrame(function(){requestAnimationFrame(function(){replayBtn.classList.add('visible')})});
+  }
+
+  // Timeline: [delay_ms, action] — paced at ~400ms between ops events
+  var timeline=[
+    // Step 1: Lead comes in
+    [0,     function(){addMsg('incoming','Hi! I saw your website — do you have any openings this week for a consultation?')}],
+    [400,   function(){addOps('11:47 PM','⚡','<strong>New lead captured</strong><span class="ops-badge">Inbound</span>')}],
+    [800,   function(){addOps('11:47 PM','📋','Contact created in CRM — tagged <strong>"Consultation Request"</strong>')}],
+
+    // Step 2: AI processes and replies
+    [1800,  function(){addMsg('typing')}],
+    [2000,  function(){addOps('11:47 PM','🧠','Business context matched — pulled <strong>calendar availability</strong>')}],
+    [3200,  function(){addMsg('outgoing','Hi there! Thanks for reaching out. We have availability this Thursday at 2pm or Friday at 10am — would either work for you?')}],
+    [3600,  function(){addOps('11:47 PM','💬','Personalized response sent<span class="ops-badge">38 sec</span>')}],
+
+    // Step 3: Lead books
+    [5200,  function(){addMsg('incoming','Thursday at 2pm works perfectly!')}],
+    [6200,  function(){addMsg('typing')}],
+    [7400,  function(){addMsg('outgoing',"You're all set! I've sent your confirmation and intake forms to your email. See you Thursday at 2pm!")}],
+    [7800,  function(){addOps('11:48 PM','✅','<strong>Appointment confirmed</strong> — Thursday 2:00 PM')}],
+    [8200,  function(){addOps('11:48 PM','📧','Confirmation + intake forms sent to <strong>client email</strong>')}],
+    [8600,  function(){addOps('11:48 PM','📅','Google Calendar updated — reminder set for <strong>Wed 6:00 PM</strong>')}],
+
+    // Step 4: Time skip — 2 hours later (automated follow-up)
+    [10400, function(){addDivider('2 Hours Later')}],
+    [10400, function(){addPhoneSkip('2 hours later')}],
+    [11000, function(){addOps('1:48 AM','🔄','<strong>Follow-up triggered</strong> — intake forms not yet completed')}],
+    [11400, function(){addOps('1:48 AM','📩','Reminder sent — <strong>"Complete your forms before Thursday"</strong>')}],
+
+    // Step 5: Time skip — next morning (proactive AI text + briefing)
+    [13200, function(){addDivider('Next Morning')}],
+    [13200, function(){addPhoneSkip('Wednesday · 6:00 PM')}],
+    [13800, function(){addMsg('outgoing','Hi! Just a quick reminder — your consultation is tomorrow at 2:00 PM. Here\'s what to have ready: photo ID, recent financial statements, and any questions you\'d like to cover. See you then!')}],
+    [14200, function(){addOps('6:00 PM','🔔','<strong>Pre-appointment prep</strong> sent — checklist + reminder')}],
+    [15800, function(){addPhoneSkip('Thursday · 7:00 AM')}],
+    [16200, function(){addOps('7:00 AM','📊','<strong>Daily briefing generated</strong> for business owner')}],
+    [17000, function(){addBriefing()}],
+    [18000, function(){showReplay()}]
   ];
-  let triggered=false;
-  const demoObserver=new IntersectionObserver((entries)=>{
+
+  function runDemo(){
+    timeouts.forEach(clearTimeout);
+    timeouts=[];
+    msgContainer.innerHTML='';
+    opsContainer.innerHTML='';
+    if(replayBtn){replayBtn.style.display='none';replayBtn.classList.remove('visible')}
+    timeline.forEach(function(step){
+      timeouts.push(setTimeout(step[1],step[0]));
+    });
+  }
+
+  if(replayBtn){replayBtn.addEventListener('click',function(){runDemo()})}
+
+  var triggered=false;
+  var obs=new IntersectionObserver(function(entries){
     if(entries[0].isIntersecting&&!triggered){
       triggered=true;
-      container.innerHTML='';
-      msgs.forEach(m=>{
-        setTimeout(()=>{
-          if(m.type==='typing'){
-            const typing=document.createElement('div');
-            typing.className='phone-typing';
-            typing.innerHTML='<span></span><span></span><span></span>';
-            container.appendChild(typing);
-            setTimeout(()=>typing.remove(),1100);
-          }else{
-            const div=document.createElement('div');
-            div.className='phone-msg '+(m.type==='incoming'?'incoming':'outgoing');
-            div.textContent=m.text;
-            container.appendChild(div);
-          }
-          container.scrollTop=container.scrollHeight;
-        },m.delay);
-      });
+      runDemo();
     }
-  },{threshold:0.3});
-  const demoSection=document.getElementById('phoneDemo');
-  if(demoSection)demoObserver.observe(demoSection);
+  },{threshold:0.2});
+  var demoSection=document.getElementById('phoneDemo');
+  if(demoSection)obs.observe(demoSection);
 })();
 
 // 3D Particle background for hero
