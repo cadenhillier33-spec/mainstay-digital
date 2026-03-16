@@ -231,7 +231,35 @@
     .notif-desc{font-size:10px;line-height:1.55;color:rgba(255,255,255,.4);margin-top:3px}
     .notif-result{margin-top:6px;font-size:9px;color:var(--gold);display:flex;align-items:center;gap:4px}
     /* iPhone glow effect */
-    .iphone-glow{position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(199,165,106,.08),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:-1;filter:blur(40px)}
+    .iphone-glow{position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(199,165,106,.08),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:-1;filter:blur(40px);animation:glowPulse 3s ease-in-out infinite}
+    @keyframes glowPulse{0%,100%{filter:blur(40px);opacity:.8}50%{filter:blur(50px);opacity:1}}
+    /* Pulse rings around iPhone */
+    .iphone-pulse-wrapper{position:relative;display:inline-block}
+    .iphone-pulse-ring{position:absolute;top:50%;left:50%;width:100%;height:100%;border-radius:48px;border:1px solid rgba(199,165,106,.4);transform:translate(-50%,-50%);pointer-events:none;z-index:0}
+    .iphone-pulse-ring:nth-child(1){animation:iphonePulse 2.5s ease-out infinite}
+    .iphone-pulse-ring:nth-child(2){animation:iphonePulse 2.5s ease-out infinite 1.25s}
+    @keyframes iphonePulse{0%{width:100%;height:100%;opacity:.6;border-color:rgba(199,165,106,.5)}100%{width:120%;height:110%;opacity:0;border-color:rgba(199,165,106,0)}}
+    .iphone-hint{text-align:center;margin-top:16px;font-size:11px;color:rgba(199,165,106,.5);letter-spacing:.5px;text-transform:uppercase;animation:hintFade 2.5s ease-in-out infinite}
+    @keyframes hintFade{0%,100%{opacity:.4}50%{opacity:1}}
+    /* Before/After Slider */
+    .ba-slider{position:relative;width:100%;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:rgba(255,255,255,.03);user-select:none;-webkit-user-select:none;touch-action:none}
+    .ba-before{position:absolute;top:0;left:0;width:50%;height:100%;overflow:hidden;z-index:2;background:var(--bg)}
+    .ba-before .ba-inner{width:860px;max-width:none}
+    .ba-after{position:relative;width:100%;z-index:1}
+    .ba-inner{padding:40px 36px}
+    .ba-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;margin-bottom:28px;display:flex;align-items:center;gap:8px}
+    .ba-label-dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+    .ba-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:22px}
+    .ba-item:last-child{margin-bottom:0}
+    .ba-item-icon{font-size:18px;line-height:1.4;flex-shrink:0}
+    .ba-item-title{font-size:14px;font-weight:600;color:#fff;margin-bottom:3px}
+    .ba-item-desc{font-size:13px;color:var(--muted);line-height:1.5}
+    .ba-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--gold);z-index:10;cursor:ew-resize;transform:translateX(-50%)}
+    .ba-handle::before{content:'';position:absolute;top:0;bottom:0;left:-16px;right:-16px;z-index:10}
+    .ba-handle-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 16px rgba(199,165,106,.4);transition:transform .2s,box-shadow .2s;cursor:ew-resize}
+    .ba-handle-knob:hover,.ba-slider.dragging .ba-handle-knob{transform:translate(-50%,-50%) scale(1.12);box-shadow:0 2px 24px rgba(199,165,106,.6)}
+    .ba-handle-knob svg{width:18px;height:18px;fill:none;stroke:var(--bg);stroke-width:2.5;stroke-linecap:round}
+    .ba-drag-hint{text-align:center;margin-top:14px;font-size:11px;color:rgba(199,165,106,.5);letter-spacing:.5px;text-transform:uppercase;animation:hintFade 2.5s ease-in-out infinite}
 
     /* ─── 3D PORTFOLIO TILT ─── */
     .portfolio{transition:transform .4s ease,box-shadow .4s ease;transform-style:preserve-3d;will-change:transform}
@@ -846,6 +874,9 @@
         </div>
         <div style="position:relative">
           <div class="iphone-glow"></div>
+          <div class="iphone-pulse-wrapper">
+          <div class="iphone-pulse-ring"></div>
+          <div class="iphone-pulse-ring"></div>
           <div class="iphone">
             <div class="iphone-screen">
               <div class="iphone-status">
@@ -971,6 +1002,8 @@
               </div>
             </div>
           </div>
+          <p class="iphone-hint">Live AI notifications</p>
+          </div><!-- /iphone-pulse-wrapper -->
         </div>
       </div>
     </div>
@@ -1149,58 +1182,67 @@
         <h2>What changes when Mainstay moves in.</h2>
         <p class="lead">Real results from real businesses — here's what the first 30 days look like.</p>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:860px;margin:56px auto 0;border:1px solid var(--line);border-radius:20px;overflow:hidden">
-        <!-- BEFORE column -->
-        <div style="padding:40px 36px;background:rgba(255,60,60,.03);border-right:1px solid var(--line)">
-          <div style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#ff6b6b;font-weight:700;margin-bottom:28px;display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:50%;background:#ff6b6b;display:inline-block"></span> Before Mainstay</div>
-          <div class="ba-item" style="display:flex;align-items:flex-start;gap:12px;margin-bottom:22px">
-            <span style="color:#ff6b6b;font-size:18px;line-height:1.4;flex-shrink:0">✕</span>
-            <div><div style="font-size:14px;font-weight:600;color:#fff;margin-bottom:3px">Missed leads daily</div><div style="font-size:13px;color:var(--muted);line-height:1.5">Voicemails pile up, forms go unanswered, revenue walks out the door</div></div>
-          </div>
-          <div class="ba-item" style="display:flex;align-items:flex-start;gap:12px;margin-bottom:22px">
-            <span style="color:#ff6b6b;font-size:18px;line-height:1.4;flex-shrink:0">✕</span>
-            <div><div style="font-size:14px;font-weight:600;color:#fff;margin-bottom:3px">3+ hours on admin</div><div style="font-size:13px;color:var(--muted);line-height:1.5">Scheduling, follow-ups, invoicing — all manual, all eating your day</div></div>
-          </div>
-          <div class="ba-item" style="display:flex;align-items:flex-start;gap:12px;margin-bottom:22px">
-            <span style="color:#ff6b6b;font-size:18px;line-height:1.4;flex-shrink:0">✕</span>
-            <div><div style="font-size:14px;font-weight:600;color:#fff;margin-bottom:3px">Outdated website</div><div style="font-size:13px;color:var(--muted);line-height:1.5">Template site from 2019 that doesn't convert or represent your brand</div></div>
-          </div>
-          <div class="ba-item" style="display:flex;align-items:flex-start;gap:12px;margin-bottom:22px">
-            <span style="color:#ff6b6b;font-size:18px;line-height:1.4;flex-shrink:0">✕</span>
-            <div><div style="font-size:14px;font-weight:600;color:#fff;margin-bottom:3px">No after-hours coverage</div><div style="font-size:13px;color:var(--muted);line-height:1.5">Customers call at 9pm — nobody answers, they call your competitor</div></div>
-          </div>
-          <div class="ba-item" style="display:flex;align-items:flex-start;gap:12px">
-            <span style="color:#ff6b6b;font-size:18px;line-height:1.4;flex-shrink:0">✕</span>
-            <div><div style="font-size:14px;font-weight:600;color:#fff;margin-bottom:3px">Growth = more staff</div><div style="font-size:13px;color:var(--muted);line-height:1.5">Every new client means more overhead, more payroll, thinner margins</div></div>
+      <div class="ba-slider" id="baSlider" style="max-width:860px;margin:56px auto 0">
+        <!-- BEFORE (clipped left side) -->
+        <div class="ba-before" id="baBefore">
+          <div class="ba-inner" style="background:rgba(255,60,60,.03)">
+            <div class="ba-label" style="color:#ff6b6b"><span class="ba-label-dot" style="background:#ff6b6b"></span> Before Mainstay</div>
+            <div class="ba-item">
+              <span class="ba-item-icon" style="color:#ff6b6b">✕</span>
+              <div><div class="ba-item-title">Missed leads daily</div><div class="ba-item-desc">Voicemails pile up, forms go unanswered, revenue walks out the door</div></div>
+            </div>
+            <div class="ba-item">
+              <span class="ba-item-icon" style="color:#ff6b6b">✕</span>
+              <div><div class="ba-item-title">3+ hours on admin</div><div class="ba-item-desc">Scheduling, follow-ups, invoicing — all manual, all eating your day</div></div>
+            </div>
+            <div class="ba-item">
+              <span class="ba-item-icon" style="color:#ff6b6b">✕</span>
+              <div><div class="ba-item-title">Outdated website</div><div class="ba-item-desc">Template site from 2019 that doesn't convert or represent your brand</div></div>
+            </div>
+            <div class="ba-item">
+              <span class="ba-item-icon" style="color:#ff6b6b">✕</span>
+              <div><div class="ba-item-title">No after-hours coverage</div><div class="ba-item-desc">Customers call at 9pm — nobody answers, they call your competitor</div></div>
+            </div>
+            <div class="ba-item">
+              <span class="ba-item-icon" style="color:#ff6b6b">✕</span>
+              <div><div class="ba-item-title">Growth = more staff</div><div class="ba-item-desc">Every new client means more overhead, more payroll, thinner margins</div></div>
+            </div>
           </div>
         </div>
-        <!-- AFTER column -->
-        <div style="padding:40px 36px;background:rgba(200,169,81,.03)">
-          <div style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:28px;display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block"></span> After Mainstay</div>
-          <div class="ba-item" style="display:flex;align-items:flex-start;gap:12px;margin-bottom:22px">
-            <span style="color:var(--gold);font-size:18px;line-height:1.4;flex-shrink:0">✓</span>
-            <div><div style="font-size:14px;font-weight:600;color:#fff;margin-bottom:3px">Every lead captured</div><div style="font-size:13px;color:var(--muted);line-height:1.5">AI responds in under 60 seconds — calls, texts, emails, web forms</div></div>
+        <!-- AFTER (full width behind) -->
+        <div class="ba-after">
+          <div class="ba-inner" style="background:rgba(200,169,81,.03)">
+            <div class="ba-label" style="color:var(--gold)"><span class="ba-label-dot" style="background:var(--gold)"></span> After Mainstay</div>
+            <div class="ba-item">
+              <span class="ba-item-icon" style="color:var(--gold)">✓</span>
+              <div><div class="ba-item-title">Every lead captured</div><div class="ba-item-desc">AI responds in under 60 seconds — calls, texts, emails, web forms</div></div>
+            </div>
+            <div class="ba-item">
+              <span class="ba-item-icon" style="color:var(--gold)">✓</span>
+              <div><div class="ba-item-title">2+ hours reclaimed</div><div class="ba-item-desc">Scheduling, follow-ups, and invoicing run on autopilot — you focus on clients</div></div>
+            </div>
+            <div class="ba-item">
+              <span class="ba-item-icon" style="color:var(--gold)">✓</span>
+              <div><div class="ba-item-title">Premium website</div><div class="ba-item-desc">Custom-designed site that converts visitors into paying customers</div></div>
+            </div>
+            <div class="ba-item">
+              <span class="ba-item-icon" style="color:var(--gold)">✓</span>
+              <div><div class="ba-item-title">24/7 AI receptionist</div><div class="ba-item-desc">Never miss a call again — your AI handles it at 2am the same as 2pm</div></div>
+            </div>
+            <div class="ba-item">
+              <span class="ba-item-icon" style="color:var(--gold)">✓</span>
+              <div><div class="ba-item-title">Growth without headcount</div><div class="ba-item-desc">Scale to 2x, 5x, 10x — the system handles the volume, not new hires</div></div>
+            </div>
           </div>
-          <div class="ba-item" style="display:flex;align-items:flex-start;gap:12px;margin-bottom:22px">
-            <span style="color:var(--gold);font-size:18px;line-height:1.4;flex-shrink:0">✓</span>
-            <div><div style="font-size:14px;font-weight:600;color:#fff;margin-bottom:3px">2+ hours reclaimed</div><div style="font-size:13px;color:var(--muted);line-height:1.5">Scheduling, follow-ups, and invoicing run on autopilot — you focus on clients</div></div>
-          </div>
-          <div class="ba-item" style="display:flex;align-items:flex-start;gap:12px;margin-bottom:22px">
-            <span style="color:var(--gold);font-size:18px;line-height:1.4;flex-shrink:0">✓</span>
-            <div><div style="font-size:14px;font-weight:600;color:#fff;margin-bottom:3px">Premium website</div><div style="font-size:13px;color:var(--muted);line-height:1.5">Custom-designed site that converts visitors into paying customers</div></div>
-          </div>
-          <div class="ba-item" style="display:flex;align-items:flex-start;gap:12px;margin-bottom:22px">
-            <span style="color:var(--gold);font-size:18px;line-height:1.4;flex-shrink:0">✓</span>
-            <div><div style="font-size:14px;font-weight:600;color:#fff;margin-bottom:3px">24/7 AI receptionist</div><div style="font-size:13px;color:var(--muted);line-height:1.5">Never miss a call again — your AI handles it at 2am the same as 2pm</div></div>
-          </div>
-          <div class="ba-item" style="display:flex;align-items:flex-start;gap:12px">
-            <span style="color:var(--gold);font-size:18px;line-height:1.4;flex-shrink:0">✓</span>
-            <div><div style="font-size:14px;font-weight:600;color:#fff;margin-bottom:3px">Growth without headcount</div><div style="font-size:13px;color:var(--muted);line-height:1.5">Scale to 2x, 5x, 10x — the system handles the volume, not new hires</div></div>
+        </div>
+        <!-- DRAG HANDLE -->
+        <div class="ba-handle" id="baHandle">
+          <div class="ba-handle-knob">
+            <svg viewBox="0 0 24 24"><polyline points="8,5 3,12 8,19"/><polyline points="16,5 21,12 16,19"/></svg>
           </div>
         </div>
       </div>
-      <!-- Mobile responsive style for before/after grid -->
-      <style>.ba-grid-responsive{} @media(max-width:640px){.container>[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important}.container>[style*="grid-template-columns:1fr 1fr"]>div:first-child{border-right:none !important;border-bottom:1px solid var(--line)}}</style>
+      <p class="ba-drag-hint">Drag to compare</p>
     </div>
   </section>
 
@@ -1578,6 +1620,42 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
     requestAnimationFrame(animate);
   }
   animate();
+})();
+
+// Before/After Slider
+(function(){
+  var slider=document.getElementById('baSlider');
+  var before=document.getElementById('baBefore');
+  var handle=document.getElementById('baHandle');
+  if(!slider||!before||!handle)return;
+  var isDragging=false;
+  function updatePosition(x){
+    var rect=slider.getBoundingClientRect();
+    var pct=((x-rect.left)/rect.width)*100;
+    pct=Math.max(5,Math.min(95,pct));
+    before.style.width=pct+'%';
+    handle.style.left=pct+'%';
+  }
+  slider.addEventListener('mousedown',function(e){isDragging=true;slider.classList.add('dragging');updatePosition(e.clientX)});
+  window.addEventListener('mousemove',function(e){if(!isDragging)return;e.preventDefault();updatePosition(e.clientX)});
+  window.addEventListener('mouseup',function(){isDragging=false;slider.classList.remove('dragging')});
+  slider.addEventListener('touchstart',function(e){isDragging=true;slider.classList.add('dragging');updatePosition(e.touches[0].clientX)},{passive:true});
+  window.addEventListener('touchmove',function(e){if(!isDragging)return;updatePosition(e.touches[0].clientX)},{passive:true});
+  window.addEventListener('touchend',function(){isDragging=false;slider.classList.remove('dragging')});
+  // Auto-animate hint on load
+  setTimeout(function(){
+    var start=50,target=30,dur=800,startTime=null;
+    function animIn(ts){
+      if(!startTime)startTime=ts;
+      var p=Math.min((ts-startTime)/dur,1);
+      var ease=p<.5?2*p*p:-1+(4-2*p)*p;
+      var c=start+(target-start)*ease;
+      before.style.width=c+'%';handle.style.left=c+'%';
+      if(p<1)requestAnimationFrame(animIn);
+      else{startTime=null;setTimeout(function(){requestAnimationFrame(function animOut(ts){if(!startTime)startTime=ts;var p=Math.min((ts-startTime)/dur,1);var ease=p<.5?2*p*p:-1+(4-2*p)*p;var c=target+(start-target)*ease;before.style.width=c+'%';handle.style.left=c+'%';if(p<1)requestAnimationFrame(animOut)})},400)}
+    }
+    requestAnimationFrame(animIn);
+  },1200);
 })();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
