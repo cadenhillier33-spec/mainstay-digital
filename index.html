@@ -261,6 +261,43 @@
     .ba-handle-knob svg{width:18px;height:18px;fill:none;stroke:var(--bg);stroke-width:2.5;stroke-linecap:round}
     .ba-drag-hint{text-align:center;margin-top:14px;font-size:11px;color:rgba(199,165,106,.5);letter-spacing:.5px;text-transform:uppercase;animation:hintFade 2.5s ease-in-out infinite}
 
+    /* ─── PRICING CARD HOVER GLOW ─── */
+    .price-card{transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+    .price-card:hover{box-shadow:0 32px 100px rgba(0,0,0,.35),0 0 40px rgba(180,190,210,.06)}
+    .price-card.premium:hover{box-shadow:0 36px 110px rgba(0,0,0,.45),0 0 60px rgba(199,165,106,.12);border-color:rgba(199,165,106,.7)}
+    .price-card.premium::after{content:'';position:absolute;inset:-1px;border-radius:34px;background:linear-gradient(135deg,rgba(199,165,106,.3),transparent 40%,transparent 60%,rgba(199,165,106,.15));z-index:-1;opacity:0;transition:opacity .4s ease}
+    .price-card.premium:hover::after{opacity:1}
+
+    /* ─── TESTIMONIAL CAROUSEL ─── */
+    .testimonial-carousel{position:relative;overflow:hidden;margin-top:56px}
+    .testimonial-track{display:flex;transition:transform .6s cubic-bezier(.22,1,.36,1)}
+    .testimonial-slide{min-width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .carousel-dots{display:flex;justify-content:center;gap:10px;margin-top:32px}
+    .carousel-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.15);cursor:pointer;transition:all .3s ease;border:none;padding:0}
+    .carousel-dot.active{background:var(--gold);box-shadow:0 0 12px rgba(199,165,106,.4)}
+    .carousel-nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:rgba(7,7,8,.8);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:18px;transition:all .3s ease;z-index:3}
+    .carousel-nav:hover{border-color:var(--gold);color:var(--gold)}
+    .carousel-prev{left:-20px}
+    .carousel-next{right:-20px}
+
+    /* ─── MAGNETIC BUTTON ─── */
+    .btn-magnetic{transition:transform .3s cubic-bezier(.22,1,.36,1)}
+
+    /* ─── STAGGERED REVEALS ─── */
+    .reveal-stagger{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+    .reveal-stagger.revealed{opacity:1;transform:translateY(0)}
+
+    /* ─── HERO GRADIENT MESH ─── */
+    .hero-mesh{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+    .hero-mesh-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;animation:meshFloat 15s ease-in-out infinite}
+    .hero-mesh-blob:nth-child(1){width:500px;height:500px;background:rgba(199,165,106,.12);top:10%;left:15%;animation-delay:0s}
+    .hero-mesh-blob:nth-child(2){width:400px;height:400px;background:rgba(59,130,246,.08);top:40%;right:10%;animation-delay:-5s}
+    .hero-mesh-blob:nth-child(3){width:350px;height:350px;background:rgba(147,51,234,.06);bottom:10%;left:40%;animation-delay:-10s}
+    @keyframes meshFloat{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(30px,-20px) scale(1.1)}50%{transform:translate(-20px,30px) scale(.9)}75%{transform:translate(20px,20px) scale(1.05)}}
+
+    /* ─── TRUST BAR COUNTER ─── */
+    .trust-counter{font-size:22px;font-weight:700;letter-spacing:-.02em;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-variant-numeric:tabular-nums}
+
     /* ─── 3D PORTFOLIO TILT ─── */
     .portfolio{transition:transform .4s ease,box-shadow .4s ease;transform-style:preserve-3d;will-change:transform}
     .portfolio:hover{box-shadow:0 40px 80px rgba(0,0,0,.4),0 0 60px rgba(199,165,106,.06)}
@@ -502,6 +539,9 @@
       .results-grid{grid-template-columns:repeat(2,1fr)}
       .results-industries{grid-template-columns:1fr}
       .testimonials-grid{grid-template-columns:1fr}
+      .testimonial-slide{grid-template-columns:1fr}
+      .carousel-prev{left:4px}
+      .carousel-next{right:4px}
     }
     @media(max-width:640px){
       .results-big-num{font-size:56px}
@@ -783,6 +823,7 @@
   <!-- ═══ HERO ═══ -->
   <section class="hero" style="position:relative;overflow:hidden">
     <canvas id="heroParticles" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none"></canvas>
+    <div class="hero-mesh"><div class="hero-mesh-blob"></div><div class="hero-mesh-blob"></div><div class="hero-mesh-blob"></div></div>
     <div class="hero-orb"></div>
     <div class="hero-grid-bg"></div>
     <div class="container hero-inner" style="position:relative;z-index:1">
@@ -791,8 +832,8 @@
       <h1>What if <span class="accent">80% of your daily work</span> just handled itself?</h1>
       <p class="hero-sub">We install AI agents that answer customer questions, book appointments, follow up with leads, request reviews, handle after-hours inquiries, send reminders, and manage your inbox — all on autopilot, 24/7. Your custom website comes included.</p>
       <div class="actions">
-        <a class="btn btn-primary" href="/contact">See What We'd Automate For You</a>
-        <a class="btn btn-secondary hero-secondary" href="/work">View Our Work</a>
+        <a class="btn btn-primary btn-magnetic" href="/contact">See What We'd Automate For You</a>
+        <a class="btn btn-secondary btn-magnetic hero-secondary" href="/work">View Our Work</a>
       </div>
     </div>
   </section>
@@ -800,13 +841,13 @@
   <!-- ═══ TRUST BAR ═══ -->
   <div style="border-bottom:1px solid var(--line);background:var(--bg2)">
     <div class="container" style="display:flex;align-items:center;justify-content:center;gap:48px;padding:28px 28px;flex-wrap:wrap">
-      <div style="display:flex;align-items:center;gap:10px"><span style="font-size:22px;font-weight:700;letter-spacing:-.02em;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">47+</span><span style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2)">Businesses Served</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><span class="trust-counter" data-target="47" data-suffix="+">0</span><span style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2)">Businesses Served</span></div>
       <div style="width:1px;height:24px;background:var(--line)"></div>
-      <div style="display:flex;align-items:center;gap:10px"><span style="font-size:22px;font-weight:700;letter-spacing:-.02em;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">&lt;60s</span><span style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2)">Avg Lead Response</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><span class="trust-counter" data-prefix="<" data-target="60" data-suffix="s">0</span><span style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2)">Avg Lead Response</span></div>
       <div style="width:1px;height:24px;background:var(--line)"></div>
-      <div style="display:flex;align-items:center;gap:10px"><span style="font-size:22px;font-weight:700;letter-spacing:-.02em;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">100%</span><span style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2)">Client Satisfaction</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><span class="trust-counter" data-target="100" data-suffix="%">0</span><span style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2)">Client Satisfaction</span></div>
       <div style="width:1px;height:24px;background:var(--line)"></div>
-      <div style="display:flex;align-items:center;gap:10px"><span style="font-size:22px;font-weight:700;letter-spacing:-.02em;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">$480K+</span><span style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2)">Est. Revenue Generated For Clients</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><span class="trust-counter" data-prefix="$" data-target="480" data-suffix="K+">0</span><span style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2)">Est. Revenue Generated For Clients</span></div>
     </div>
   </div>
 
@@ -1154,33 +1195,72 @@
         <div class="eyebrow">What Clients Say</div>
         <h2>The businesses behind the numbers.</h2>
       </div>
-      <div class="testimonials-grid">
-        <div class="testimonial">
-          <div class="testimonial-stars">★★★★★</div>
-          <div class="testimonial-text">"Our response time went from 4 hours to 45 seconds. We've booked 3x more appointments since installing the system. I don't even think about lead follow-up anymore — it just happens."</div>
-          <div class="testimonial-author">
-            <div class="testimonial-name">Sarah M.</div>
-            <div class="testimonial-role">Owner, Wellness Studio — Westport, CT</div>
-            <div class="testimonial-result">4 hrs → 45 sec response time · 3x more bookings</div>
+      <div class="testimonial-carousel" id="testimonialCarousel">
+        <button class="carousel-nav carousel-prev" onclick="moveCarousel(-1)">&#8249;</button>
+        <button class="carousel-nav carousel-next" onclick="moveCarousel(1)">&#8250;</button>
+        <div class="testimonial-track" id="testimonialTrack">
+          <div class="testimonial-slide">
+            <div class="testimonial">
+              <div class="testimonial-stars">★★★★★</div>
+              <div class="testimonial-text">"Our response time went from 4 hours to 45 seconds. We've booked 3x more appointments since installing the system. I don't even think about lead follow-up anymore — it just happens."</div>
+              <div class="testimonial-author">
+                <div class="testimonial-name">Sarah M.</div>
+                <div class="testimonial-role">Owner, Wellness Studio — Westport, CT</div>
+                <div class="testimonial-result">4 hrs → 45 sec response time · 3x more bookings</div>
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial-stars">★★★★★</div>
+              <div class="testimonial-text">"We went from a dated website nobody trusted to a site that looks like it belongs to a company ten times our size. Then the AI started answering inquiries at 2am and we stopped losing after-hours leads entirely."</div>
+              <div class="testimonial-author">
+                <div class="testimonial-name">Michael R.</div>
+                <div class="testimonial-role">Managing Partner, Financial Advisory — Greenwich, CT</div>
+                <div class="testimonial-result">2x inquiries in 30 days · Zero after-hours leads lost</div>
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial-stars">★★★★★</div>
+              <div class="testimonial-text">"I used to spend 2 hours a day answering the same catering questions. Now the system handles it and I focus on running the kitchen. My front-of-house staff went from 3 to 2 and we're handling more business."</div>
+              <div class="testimonial-author">
+                <div class="testimonial-name">Tony D.</div>
+                <div class="testimonial-role">Owner, Italian Restaurant — New Haven, CT</div>
+                <div class="testimonial-result">2+ hrs/day reclaimed · Reduced staff costs by 33%</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-slide">
+            <div class="testimonial">
+              <div class="testimonial-stars">★★★★★</div>
+              <div class="testimonial-text">"We were losing leads every single night. Now our AI picks up at 11pm, 2am, 5am — doesn't matter. Last month it booked 14 appointments while I was asleep. I didn't even know some of those people existed."</div>
+              <div class="testimonial-author">
+                <div class="testimonial-name">James K.</div>
+                <div class="testimonial-role">Owner, Roofing Company — Milford, CT</div>
+                <div class="testimonial-result">14 after-hours bookings in 30 days</div>
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial-stars">★★★★★</div>
+              <div class="testimonial-text">"The website alone doubled our credibility. When clients Google us now, they see a Fortune 500-level site. Add the AI handling intake and follow-ups? We've onboarded 40% more clients without adding staff."</div>
+              <div class="testimonial-author">
+                <div class="testimonial-name">Dr. Patel</div>
+                <div class="testimonial-role">Director, Physical Therapy Clinic — Stamford, CT</div>
+                <div class="testimonial-result">40% more clients · Zero new hires</div>
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial-stars">★★★★★</div>
+              <div class="testimonial-text">"I was skeptical about AI. Then it saved me from losing a $12,000 contract by following up with a lead I'd completely forgotten about. Paid for itself in the first week."</div>
+              <div class="testimonial-author">
+                <div class="testimonial-name">Lisa C.</div>
+                <div class="testimonial-role">Owner, Interior Design Studio — Madison, CT</div>
+                <div class="testimonial-result">$12K contract saved · ROI in week one</div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="testimonial">
-          <div class="testimonial-stars">★★★★★</div>
-          <div class="testimonial-text">"We went from a dated website nobody trusted to a site that looks like it belongs to a company ten times our size. Then the AI started answering inquiries at 2am and we stopped losing after-hours leads entirely."</div>
-          <div class="testimonial-author">
-            <div class="testimonial-name">Michael R.</div>
-            <div class="testimonial-role">Managing Partner, Financial Advisory — Greenwich, CT</div>
-            <div class="testimonial-result">2x inquiries in 30 days · Zero after-hours leads lost</div>
-          </div>
-        </div>
-        <div class="testimonial">
-          <div class="testimonial-stars">★★★★★</div>
-          <div class="testimonial-text">"I used to spend 2 hours a day answering the same catering questions. Now the system handles it and I focus on running the kitchen. My front-of-house staff went from 3 to 2 and we're handling more business."</div>
-          <div class="testimonial-author">
-            <div class="testimonial-name">Tony D.</div>
-            <div class="testimonial-role">Owner, Italian Restaurant — New Haven, CT</div>
-            <div class="testimonial-result">2+ hrs/day reclaimed · Reduced staff costs by 33%</div>
-          </div>
+        <div class="carousel-dots" id="carouselDots">
+          <button class="carousel-dot active" onclick="goToSlide(0)"></button>
+          <button class="carousel-dot" onclick="goToSlide(1)"></button>
         </div>
       </div>
     </div>
@@ -1669,6 +1749,106 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
     requestAnimationFrame(animIn);
   },1200);
 })();
+
+// ─── TRUST BAR COUNTERS ───
+(function(){
+  var counters=document.querySelectorAll('.trust-counter');
+  if(!counters.length)return;
+  var counted=false;
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting&&!counted){
+        counted=true;
+        counters.forEach(function(el){
+          var target=parseInt(el.getAttribute('data-target'));
+          var prefix=el.getAttribute('data-prefix')||'';
+          var suffix=el.getAttribute('data-suffix')||'';
+          var duration=1800;
+          var start=performance.now();
+          function tick(now){
+            var elapsed=now-start;
+            var progress=Math.min(elapsed/duration,1);
+            var ease=1-Math.pow(1-progress,3);
+            var current=Math.round(target*ease);
+            el.textContent=prefix+current+suffix;
+            if(progress<1)requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+        });
+      }
+    });
+  },{threshold:0.3});
+  obs.observe(counters[0].closest('div[style]'));
+})();
+
+// ─── TESTIMONIAL CAROUSEL ───
+var currentSlide=0;
+var autoSlideTimer;
+function moveCarousel(dir){
+  var track=document.getElementById('testimonialTrack');
+  var dots=document.querySelectorAll('.carousel-dot');
+  var totalSlides=track.children.length;
+  currentSlide=(currentSlide+dir+totalSlides)%totalSlides;
+  track.style.transform='translateX(-'+currentSlide*100+'%)';
+  dots.forEach(function(d,i){d.classList.toggle('active',i===currentSlide)});
+  resetAutoSlide();
+}
+function goToSlide(i){
+  var track=document.getElementById('testimonialTrack');
+  var dots=document.querySelectorAll('.carousel-dot');
+  currentSlide=i;
+  track.style.transform='translateX(-'+currentSlide*100+'%)';
+  dots.forEach(function(d,j){d.classList.toggle('active',j===currentSlide)});
+  resetAutoSlide();
+}
+function resetAutoSlide(){
+  clearInterval(autoSlideTimer);
+  autoSlideTimer=setInterval(function(){moveCarousel(1)},6000);
+}
+resetAutoSlide();
+
+// ─── MAGNETIC BUTTONS ───
+(function(){
+  document.querySelectorAll('.btn-magnetic').forEach(function(btn){
+    btn.addEventListener('mousemove',function(e){
+      var rect=btn.getBoundingClientRect();
+      var x=e.clientX-rect.left-rect.width/2;
+      var y=e.clientY-rect.top-rect.height/2;
+      btn.style.transform='translate('+x*.2+'px,'+y*.2+'px)';
+    });
+    btn.addEventListener('mouseleave',function(){
+      btn.style.transform='translate(0,0)';
+    });
+  });
+})();
+
+// ─── STAGGERED REVEAL ANIMATIONS ───
+(function(){
+  // Apply to ba-items, price-card lis, result-cards
+  var staggerGroups=[
+    {parent:'.ba-slider',children:'.ba-item'},
+    {parent:'.pricing-grid',children:'.price-card li'},
+    {parent:'.results-grid',children:'.result-card'},
+    {parent:'.results-industries',children:'.result-industry'}
+  ];
+  staggerGroups.forEach(function(g){
+    var parent=document.querySelector(g.parent);
+    if(!parent)return;
+    var items=parent.querySelectorAll(g.children);
+    items.forEach(function(item){item.classList.add('reveal-stagger')});
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          items.forEach(function(item,i){
+            setTimeout(function(){item.classList.add('revealed')},i*100);
+          });
+          obs.disconnect();
+        }
+      });
+    },{threshold:0.15});
+    obs.observe(parent);
+  });
+})();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
@@ -1773,16 +1953,65 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
   renderer.setSize(w,h);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
   renderer.outputEncoding=THREE.sRGBEncoding;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure=1.2;
   container.appendChild(renderer.domElement);
 
-  /* Lighting */
-  scene.add(new THREE.AmbientLight(0xffffff,0.6));
-  var key=new THREE.DirectionalLight(0xfff8e8,0.8);key.position.set(2,3,4);scene.add(key);
-  var rim=new THREE.DirectionalLight(0xc8a951,0.4);rim.position.set(-2,1,-2);scene.add(rim);
+  /* Environment map for reflections */
+  var pmrem=new THREE.PMREMGenerator(renderer);
+  pmrem.compileEquirectangularShader();
+  var envScene=new THREE.Scene();
+  envScene.background=new THREE.Color(0x111111);
+  var p1=new THREE.Mesh(new THREE.PlaneGeometry(20,20),new THREE.MeshBasicMaterial({color:0x888888}));
+  p1.position.set(0,8,0);p1.rotation.x=Math.PI/2;envScene.add(p1);
+  var p2=new THREE.Mesh(new THREE.PlaneGeometry(10,10),new THREE.MeshBasicMaterial({color:0xc8a951}));
+  p2.position.set(6,2,0);p2.rotation.y=-Math.PI/2;envScene.add(p2);
+  var p3=new THREE.Mesh(new THREE.PlaneGeometry(10,10),new THREE.MeshBasicMaterial({color:0x444444}));
+  p3.position.set(-6,2,0);p3.rotation.y=Math.PI/2;envScene.add(p3);
+  var envTex=pmrem.fromScene(envScene,0.04).texture;
+  scene.environment=envTex;
+  pmrem.dispose();
 
-  /* Coin group — logo on front & back */
+  /* Lighting */
+  scene.add(new THREE.AmbientLight(0xffffff,0.3));
+  var key=new THREE.DirectionalLight(0xfff8e8,1.0);key.position.set(2,3,4);scene.add(key);
+  var rim=new THREE.DirectionalLight(0xc8a951,0.6);rim.position.set(-3,1,-2);scene.add(rim);
+  var bottom=new THREE.DirectionalLight(0x4466ff,0.15);bottom.position.set(0,-3,2);scene.add(bottom);
+
+  /* Coin group */
   var coinGroup=new THREE.Group();
   scene.add(coinGroup);
+
+  /* Sparkle particles */
+  var sparkles=[];
+  var sparkGeo=new THREE.BufferGeometry();
+  var sparkCount=40;
+  var sparkPositions=new Float32Array(sparkCount*3);
+  var sparkSizes=new Float32Array(sparkCount);
+  for(var i=0;i<sparkCount;i++){
+    sparkPositions[i*3]=(Math.random()-0.5)*3;
+    sparkPositions[i*3+1]=(Math.random()-0.5)*3;
+    sparkPositions[i*3+2]=(Math.random()-0.5)*2;
+    sparkSizes[i]=Math.random()*3+1;
+    sparkles.push({speed:Math.random()*0.02+0.005,offset:Math.random()*Math.PI*2});
+  }
+  sparkGeo.setAttribute('position',new THREE.BufferAttribute(sparkPositions,3));
+  sparkGeo.setAttribute('size',new THREE.BufferAttribute(sparkSizes,1));
+  var sparkMat=new THREE.PointsMaterial({color:0xc8a951,size:0.03,transparent:true,opacity:0.6,blending:THREE.AdditiveBlending,sizeAttenuation:true});
+  var sparkPoints=new THREE.Points(sparkGeo,sparkMat);
+  scene.add(sparkPoints);
+
+  /* Mouse tracking for tilt */
+  var mouseX=0,mouseY=0;
+  var heroEl=container.closest('.hero');
+  if(heroEl){
+    heroEl.addEventListener('mousemove',function(e){
+      var rect=heroEl.getBoundingClientRect();
+      mouseX=((e.clientX-rect.left)/rect.width-0.5)*2;
+      mouseY=((e.clientY-rect.top)/rect.height-0.5)*2;
+    });
+    heroEl.addEventListener('mouseleave',function(){mouseX=0;mouseY=0});
+  }
 
   var loader=new THREE.TextureLoader();
   loader.load('favicon.png',function(tex){
@@ -1792,41 +2021,69 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
     /* Front face */
     var frontMat=new THREE.MeshStandardMaterial({
       map:tex,transparent:true,alphaTest:0.05,
-      roughness:0.25,metalness:0.6,
-      emissive:new THREE.Color(0xc8a951),emissiveIntensity:0.12,emissiveMap:tex
+      roughness:0.15,metalness:0.85,
+      emissive:new THREE.Color(0xc8a951),emissiveIntensity:0.15,emissiveMap:tex,
+      envMapIntensity:1.5
     });
     var frontGeo=new THREE.PlaneGeometry(1.5,1.5);
     var front=new THREE.Mesh(frontGeo,frontMat);
-    front.position.z=0.026;
+    front.position.z=0.06;
     coinGroup.add(front);
 
-    /* Back face (mirrored) */
+    /* Back face */
     var backMat=frontMat.clone();
     var back=new THREE.Mesh(frontGeo,backMat);
-    back.position.z=-0.026;
+    back.position.z=-0.06;
     back.rotation.y=Math.PI;
     coinGroup.add(back);
 
-    /* Coin edge — thin cylinder between faces */
-    var edgeGeo=new THREE.CylinderGeometry(0.82,0.82,0.052,64,1,true);
+    /* Thicker coin edge with bevels */
     var edgeMat=new THREE.MeshStandardMaterial({
-      color:0xc8a951,roughness:0.2,metalness:0.8
+      color:0xc8a951,roughness:0.12,metalness:0.95,envMapIntensity:2.0
     });
+    var edgeGeo=new THREE.CylinderGeometry(0.82,0.82,0.12,64,1,true);
     var edge=new THREE.Mesh(edgeGeo,edgeMat);
     edge.rotation.x=Math.PI/2;
     coinGroup.add(edge);
 
-    /* Slight downward tilt so top edge is visible */
+    /* Top bevel ring */
+    var bevelGeo=new THREE.TorusGeometry(0.82,0.02,8,64);
+    var bevelFront=new THREE.Mesh(bevelGeo,edgeMat);
+    bevelFront.position.z=0.06;
+    coinGroup.add(bevelFront);
+    var bevelBack=new THREE.Mesh(bevelGeo,edgeMat);
+    bevelBack.position.z=-0.06;
+    coinGroup.add(bevelBack);
+
     coinGroup.rotation.x=0.15;
 
     var time=0;
+    var targetRotX=0.15,targetRotY=0;
     function animate(){
       requestAnimationFrame(animate);
       time+=0.008;
-      /* Continuous coin spin */
-      coinGroup.rotation.y+=0.008;
+
+      /* Continuous spin + mouse-reactive tilt */
+      coinGroup.rotation.y+=0.01;
+      targetRotX=0.15+mouseY*0.3;
+      coinGroup.rotation.x+=(targetRotX-coinGroup.rotation.x)*0.05;
+
       /* Gentle float */
-      coinGroup.position.y=Math.sin(time*0.7)*0.05;
+      coinGroup.position.y=Math.sin(time*0.7)*0.06;
+
+      /* Animate sparkles */
+      var pos=sparkGeo.attributes.position.array;
+      for(var i=0;i<sparkCount;i++){
+        var s=sparkles[i];
+        pos[i*3]+=Math.sin(time*10+s.offset)*0.003;
+        pos[i*3+1]+=Math.cos(time*8+s.offset)*0.003;
+        // Keep within bounds
+        if(Math.abs(pos[i*3])>1.5)pos[i*3]*=0.99;
+        if(Math.abs(pos[i*3+1])>1.5)pos[i*3+1]*=0.99;
+      }
+      sparkGeo.attributes.position.needsUpdate=true;
+      sparkMat.opacity=0.3+Math.sin(time*2)*0.2;
+
       renderer.render(scene,camera);
     }
     animate();
