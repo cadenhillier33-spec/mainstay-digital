@@ -560,7 +560,6 @@
       .demo-copy{max-width:100%;margin:0 auto}
       .iphone{margin:0 auto}
       .demo-copy h2{font-size:36px}
-      .ba-before .ba-inner{width:100vw}
       #ai-management [style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}
       #ai-management [style*="border-left"]{border-left:none!important;border-right:none!important;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
       #work [style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}
@@ -630,9 +629,13 @@
       .app-title{font-size:16px}
       .notif-title{font-size:11px}
       .notif-desc{font-size:9px}
-      /* ── Before/After slider mobile ── */
-      .ba-slider{touch-action:pan-y}
-      .ba-before .ba-inner{width:100vw;max-width:none}
+      /* ── Before/After slider mobile: stack vertically ── */
+      .ba-slider{border-radius:16px}
+      .ba-before{position:relative!important;width:100%!important;height:auto!important;overflow:visible!important;border-bottom:1px solid var(--line)}
+      .ba-before .ba-inner{width:100%!important}
+      .ba-after{width:100%}
+      .ba-handle{display:none!important}
+      .ba-drag-hint{display:none!important}
       .ba-inner{padding:28px 20px}
       .ba-item-title{font-size:13px}
       .ba-item-desc{font-size:12px}
