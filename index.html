@@ -670,7 +670,7 @@
       .notif-title{font-size:11px}
       .notif-desc{font-size:9px}
       /* ── Before/After slider mobile: stack vertically ── */
-      .ba-slider{border-radius:16px}
+      .ba-slider{border-radius:16px;touch-action:auto!important;user-select:auto!important;-webkit-user-select:auto!important}
       .ba-before{position:relative!important;width:100%!important;height:auto!important;overflow:visible!important;border-bottom:1px solid var(--line)}
       .ba-before .ba-inner{width:100%!important}
       .ba-after{width:100%;padding-left:0!important}
@@ -706,9 +706,11 @@
       .results-note{margin-top:20px}
       .results-hero{margin-bottom:0}
       .results-big-label{font-size:11px}
-      .testimonials-grid{gap:16px}
-      .testimonials-grid .testimonial:nth-child(3){display:none}
+      .testimonial-carousel{margin-top:32px}
+      .testimonial-slide{grid-template-columns:1fr!important;gap:16px}
+      .carousel-nav{display:none}
       .testimonial{padding:24px 20px;border-radius:20px}
+      .testimonial-text{font-size:15px}
       .usecase-grid{display:none}
       .ai-usecases{display:none}
       .ai-steps{gap:14px;margin-top:32px}
@@ -736,6 +738,7 @@
       .phone-screen{min-height:360px;padding:16px 12px}
       .phone-msg{font-size:12px}
       .hero-orb{width:400px;height:400px}
+      .hero-mesh-blob{width:200px!important;height:200px!important;filter:blur(50px)}
       #demo .lead{font-size:15px}
       #hardware [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;gap:36px!important}
     }
@@ -1721,6 +1724,7 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
   var handle=document.getElementById('baHandle');
   if(!slider||!before||!handle)return;
   var isDragging=false;
+  function isMobile(){return window.getComputedStyle(handle).display==='none'}
   function updatePosition(x){
     var rect=slider.getBoundingClientRect();
     var pct=((x-rect.left)/rect.width)*100;
@@ -1728,10 +1732,10 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
     before.style.width=pct+'%';
     handle.style.left=pct+'%';
   }
-  slider.addEventListener('mousedown',function(e){isDragging=true;slider.classList.add('dragging');updatePosition(e.clientX)});
+  slider.addEventListener('mousedown',function(e){if(isMobile())return;isDragging=true;slider.classList.add('dragging');updatePosition(e.clientX)});
   window.addEventListener('mousemove',function(e){if(!isDragging)return;e.preventDefault();updatePosition(e.clientX)});
   window.addEventListener('mouseup',function(){isDragging=false;slider.classList.remove('dragging')});
-  slider.addEventListener('touchstart',function(e){isDragging=true;slider.classList.add('dragging');updatePosition(e.touches[0].clientX)},{passive:true});
+  slider.addEventListener('touchstart',function(e){if(isMobile())return;isDragging=true;slider.classList.add('dragging');updatePosition(e.touches[0].clientX)},{passive:true});
   window.addEventListener('touchmove',function(e){if(!isDragging)return;updatePosition(e.touches[0].clientX)},{passive:true});
   window.addEventListener('touchend',function(){isDragging=false;slider.classList.remove('dragging')});
   // Auto-animate hint on load
@@ -1806,6 +1810,19 @@ function resetAutoSlide(){
   autoSlideTimer=setInterval(function(){moveCarousel(1)},6000);
 }
 resetAutoSlide();
+
+// Carousel touch swipe
+(function(){
+  var carousel=document.getElementById('testimonialCarousel');
+  if(!carousel)return;
+  var startX=0,startY=0,diffX=0;
+  carousel.addEventListener('touchstart',function(e){startX=e.touches[0].clientX;startY=e.touches[0].clientY},{passive:true});
+  carousel.addEventListener('touchmove',function(e){diffX=e.touches[0].clientX-startX},{passive:true});
+  carousel.addEventListener('touchend',function(){
+    if(Math.abs(diffX)>50){moveCarousel(diffX<0?1:-1)}
+    diffX=0;
+  });
+})();
 
 // ─── MAGNETIC BUTTONS ───
 (function(){
