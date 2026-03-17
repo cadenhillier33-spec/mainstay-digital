@@ -1789,7 +1789,6 @@ document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
 
 // ─── TESTIMONIAL CAROUSEL ───
 var currentSlide=0;
-var autoSlideTimer;
 function moveCarousel(dir){
   var track=document.getElementById('testimonialTrack');
   var dots=document.querySelectorAll('.carousel-dot');
@@ -1797,7 +1796,6 @@ function moveCarousel(dir){
   currentSlide=(currentSlide+dir+totalSlides)%totalSlides;
   track.style.transform='translateX(-'+currentSlide*100+'%)';
   dots.forEach(function(d,i){d.classList.toggle('active',i===currentSlide)});
-  resetAutoSlide();
 }
 function goToSlide(i){
   var track=document.getElementById('testimonialTrack');
@@ -1805,13 +1803,7 @@ function goToSlide(i){
   currentSlide=i;
   track.style.transform='translateX(-'+currentSlide*100+'%)';
   dots.forEach(function(d,j){d.classList.toggle('active',j===currentSlide)});
-  resetAutoSlide();
 }
-function resetAutoSlide(){
-  clearInterval(autoSlideTimer);
-  autoSlideTimer=setInterval(function(){moveCarousel(1)},6000);
-}
-resetAutoSlide();
 
 // Carousel touch swipe
 (function(){
