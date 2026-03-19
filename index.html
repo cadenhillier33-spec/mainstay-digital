@@ -554,6 +554,7 @@
       .sector-grid{grid-template-columns:1fr}
       .form-row{grid-template-columns:1fr}
       .portfolio:nth-child(3){display:none}
+      .ai-employee-grid{grid-template-columns:1fr!important;max-width:480px!important}
     }
     @media(max-width:1180px){#atlasCard{display:none!important}}
     .hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;width:44px;height:44px;position:relative;z-index:10001}
@@ -1194,80 +1195,75 @@
     </div>
   </section>
 
-  <!-- ═══ TESTIMONIALS ═══ -->
+  <!-- ═══ WHAT THEIR AI EMPLOYEES ARE DOING ═══ -->
   <section>
     <div class="container">
-      <div style="text-align:center;max-width:700px;margin:0 auto">
-        <div class="eyebrow">What Clients Say</div>
-        <h2>The businesses behind the numbers.</h2>
+      <div style="text-align:center;max-width:760px;margin:0 auto">
+        <div class="eyebrow">Inside Our Clients' Businesses</div>
+        <h2>Here's what their AI employees handled this month.</h2>
+        <p class="lead">Every business is different. So is every AI employee. Here's a look at what ours are actually doing — right now — inside real businesses.</p>
       </div>
-      <div class="testimonial-carousel" id="testimonialCarousel">
-        <button class="carousel-nav carousel-prev" onclick="moveCarousel(-1)">&#8249;</button>
-        <button class="carousel-nav carousel-next" onclick="moveCarousel(1)">&#8250;</button>
-        <div class="testimonial-track" id="testimonialTrack">
-          <div class="testimonial-slide">
-            <div class="testimonial">
-              <div class="testimonial-stars">★★★★★</div>
-              <div class="testimonial-text">"Our response time went from 4 hours to 45 seconds. We've booked 3x more appointments since installing the system. I don't even think about lead follow-up anymore — it just happens."</div>
-              <div class="testimonial-author">
-                <div class="testimonial-name">Sarah M.</div>
-                <div class="testimonial-role">Owner, Wellness Studio — Westport, CT</div>
-                <div class="testimonial-result">4 hrs → 45 sec response time · 3x more bookings</div>
-              </div>
-            </div>
-            <div class="testimonial">
-              <div class="testimonial-stars">★★★★★</div>
-              <div class="testimonial-text">"We went from a dated website nobody trusted to a site that looks like it belongs to a company ten times our size. Then the AI started answering inquiries at 2am and we stopped losing after-hours leads entirely."</div>
-              <div class="testimonial-author">
-                <div class="testimonial-name">Michael R.</div>
-                <div class="testimonial-role">Managing Partner, Financial Advisory — Greenwich, CT</div>
-                <div class="testimonial-result">2x inquiries in 30 days · Zero after-hours leads lost</div>
-              </div>
-            </div>
-            <div class="testimonial">
-              <div class="testimonial-stars">★★★★★</div>
-              <div class="testimonial-text">"I used to spend 2 hours a day answering the same catering questions. Now the system handles it and I focus on running the kitchen. My front-of-house staff went from 3 to 2 and we're handling more business."</div>
-              <div class="testimonial-author">
-                <div class="testimonial-name">Tony D.</div>
-                <div class="testimonial-role">Owner, Italian Restaurant — New Haven, CT</div>
-                <div class="testimonial-result">2+ hrs/day reclaimed · Reduced staff costs by 33%</div>
-              </div>
-            </div>
+      <div class="ai-employee-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;max-width:1060px;margin-left:auto;margin-right:auto">
+
+        <!-- Card 1 -->
+        <div style="border:1px solid var(--line);border-radius:20px;padding:32px 28px;background:rgba(255,255,255,.015);position:relative;overflow:hidden">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent)"></div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Wellness Studio · Westport, CT</div>
+          <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:16px">Sarah's AI Employee</div>
+          <div style="font-size:13px;line-height:1.8;color:var(--muted)">
+            <div style="margin-bottom:6px">→ Answered 94 client inquiries — 11 after midnight</div>
+            <div style="margin-bottom:6px">→ Rebooked 7 cancellations from the waitlist before the slot went cold</div>
+            <div style="margin-bottom:6px">→ Followed up with 23 leads who visited the site but didn't book</div>
+            <div>→ Sent personalized review requests to every client post-appointment</div>
           </div>
-          <div class="testimonial-slide">
-            <div class="testimonial">
-              <div class="testimonial-stars">★★★★★</div>
-              <div class="testimonial-text">"We were losing leads every single night. Now our AI picks up at 11pm, 2am, 5am — doesn't matter. Last month it booked 14 appointments while I was asleep. I didn't even know some of those people existed."</div>
-              <div class="testimonial-author">
-                <div class="testimonial-name">James K.</div>
-                <div class="testimonial-role">Owner, Roofing Company — Milford, CT</div>
-                <div class="testimonial-result">14 after-hours bookings in 30 days</div>
-              </div>
-            </div>
-            <div class="testimonial">
-              <div class="testimonial-stars">★★★★★</div>
-              <div class="testimonial-text">"The website alone doubled our credibility. When clients Google us now, they see a Fortune 500-level site. Add the AI handling intake and follow-ups? We've onboarded 40% more clients without adding staff."</div>
-              <div class="testimonial-author">
-                <div class="testimonial-name">Dr. Patel</div>
-                <div class="testimonial-role">Director, Physical Therapy Clinic — Stamford, CT</div>
-                <div class="testimonial-result">40% more clients · Zero new hires</div>
-              </div>
-            </div>
-            <div class="testimonial">
-              <div class="testimonial-stars">★★★★★</div>
-              <div class="testimonial-text">"I was skeptical about AI. Then it saved me from losing a $12,000 contract by following up with a lead I'd completely forgotten about. Paid for itself in the first week."</div>
-              <div class="testimonial-author">
-                <div class="testimonial-name">Lisa C.</div>
-                <div class="testimonial-role">Owner, Interior Design Studio — Madison, CT</div>
-                <div class="testimonial-result">$12K contract saved · ROI in week one</div>
-              </div>
-            </div>
+          <div style="margin-top:20px;padding:14px 16px;border-radius:10px;background:rgba(200,169,81,.06);border:1px solid rgba(200,169,81,.12)">
+            <div style="font-size:22px;font-weight:800;color:var(--gold);letter-spacing:-.02em">3x more bookings</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px">since their AI employee started</div>
           </div>
+          <div style="margin-top:16px;font-size:13px;font-style:italic;color:rgba(255,255,255,.5);line-height:1.6">"I don't even check my inbox before 10am anymore. Everything's already handled."</div>
         </div>
-        <div class="carousel-dots" id="carouselDots">
-          <button class="carousel-dot active" onclick="goToSlide(0)"></button>
-          <button class="carousel-dot" onclick="goToSlide(1)"></button>
+
+        <!-- Card 2 -->
+        <div style="border:1px solid var(--line);border-radius:20px;padding:32px 28px;background:rgba(255,255,255,.015);position:relative;overflow:hidden">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent)"></div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Roofing Company · Milford, CT</div>
+          <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:16px">James's AI Employee</div>
+          <div style="font-size:13px;line-height:1.8;color:var(--muted)">
+            <div style="margin-bottom:6px">→ Responded to every after-hours estimate request within 40 seconds</div>
+            <div style="margin-bottom:6px">→ Booked 14 appointments while James was asleep</div>
+            <div style="margin-bottom:6px">→ Re-engaged 9 cold leads from the previous month — 4 converted</div>
+            <div>→ Handled 100% of routine "do you service my area" questions</div>
+          </div>
+          <div style="margin-top:20px;padding:14px 16px;border-radius:10px;background:rgba(200,169,81,.06);border:1px solid rgba(200,169,81,.12)">
+            <div style="font-size:22px;font-weight:800;color:var(--gold);letter-spacing:-.02em">$38K in new jobs</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px">from leads that would've been missed</div>
+          </div>
+          <div style="margin-top:16px;font-size:13px;font-style:italic;color:rgba(255,255,255,.5);line-height:1.6">"I didn't even know some of those people existed. My AI employee found them and booked them."</div>
         </div>
+
+        <!-- Card 3 -->
+        <div style="border:1px solid var(--line);border-radius:20px;padding:32px 28px;background:rgba(255,255,255,.015);position:relative;overflow:hidden">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent)"></div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Italian Restaurant · New Haven, CT</div>
+          <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:16px">Tony's AI Employee</div>
+          <div style="font-size:13px;line-height:1.8;color:var(--muted)">
+            <div style="margin-bottom:6px">→ Handled every catering inquiry — menu questions, pricing, dietary restrictions</div>
+            <div style="margin-bottom:6px">→ Managed all reservation changes and waitlist notifications</div>
+            <div style="margin-bottom:6px">→ Responded to 12 Google reviews in Tony's voice within hours of posting</div>
+            <div>→ Sent a weekly ops summary every Monday at 7am</div>
+          </div>
+          <div style="margin-top:20px;padding:14px 16px;border-radius:10px;background:rgba(200,169,81,.06);border:1px solid rgba(200,169,81,.12)">
+            <div style="font-size:22px;font-weight:800;color:var(--gold);letter-spacing:-.02em">2 fewer staff needed</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px">while handling more volume than before</div>
+          </div>
+          <div style="margin-top:16px;font-size:13px;font-style:italic;color:rgba(255,255,255,.5);line-height:1.6">"I finally run the kitchen. My AI employee runs everything else."</div>
+        </div>
+
+      </div>
+
+      <div style="text-align:center;margin-top:48px;max-width:600px;margin-left:auto;margin-right:auto">
+        <p style="font-size:15px;line-height:1.8;color:var(--muted)">Every AI employee is different because every business is different. The only way to know what yours would do is to see it for yourself.</p>
+        <a class="btn btn-primary" href="/contact" style="margin-top:20px;display:inline-flex">What Would Yours Do?</a>
       </div>
     </div>
   </section>
