@@ -2053,28 +2053,9 @@ function goToSlide(i){
   var rim=new THREE.DirectionalLight(0xc8a951,0.6);rim.position.set(-3,1,-2);scene.add(rim);
   var bottom=new THREE.DirectionalLight(0x4466ff,0.15);bottom.position.set(0,-3,2);scene.add(bottom);
 
-  /* Coin group */
-  var coinGroup=new THREE.Group();
-  scene.add(coinGroup);
-
-  /* Sparkle particles */
-  var sparkles=[];
-  var sparkGeo=new THREE.BufferGeometry();
-  var sparkCount=40;
-  var sparkPositions=new Float32Array(sparkCount*3);
-  var sparkSizes=new Float32Array(sparkCount);
-  for(var i=0;i<sparkCount;i++){
-    sparkPositions[i*3]=(Math.random()-0.5)*3;
-    sparkPositions[i*3+1]=(Math.random()-0.5)*3;
-    sparkPositions[i*3+2]=(Math.random()-0.5)*2;
-    sparkSizes[i]=Math.random()*3+1;
-    sparkles.push({speed:Math.random()*0.02+0.005,offset:Math.random()*Math.PI*2});
-  }
-  sparkGeo.setAttribute('position',new THREE.BufferAttribute(sparkPositions,3));
-  sparkGeo.setAttribute('size',new THREE.BufferAttribute(sparkSizes,1));
-  var sparkMat=new THREE.PointsMaterial({color:0xc8a951,size:0.03,transparent:true,opacity:0.6,blending:THREE.AdditiveBlending,sizeAttenuation:true});
-  var sparkPoints=new THREE.Points(sparkGeo,sparkMat);
-  scene.add(sparkPoints);
+  /* Logo group */
+  var logoGroup=new THREE.Group();
+  scene.add(logoGroup);
 
   /* Mouse tracking for tilt */
   var mouseX=0,mouseY=0;
@@ -2093,71 +2074,35 @@ function goToSlide(i){
     tex.encoding=THREE.sRGBEncoding;
     tex.anisotropy=renderer.capabilities.getMaxAnisotropy();
 
-    /* Front face */
-    var frontMat=new THREE.MeshStandardMaterial({
+    /* Logo face */
+    var logoMat=new THREE.MeshStandardMaterial({
       map:tex,transparent:true,alphaTest:0.05,
-      roughness:0.15,metalness:0.85,
-      emissive:new THREE.Color(0xc8a951),emissiveIntensity:0.15,emissiveMap:tex,
+      roughness:0.2,metalness:0.8,
+      emissive:new THREE.Color(0xc8a951),emissiveIntensity:0.1,emissiveMap:tex,
       envMapIntensity:1.5
     });
-    var frontGeo=new THREE.PlaneGeometry(1.5,1.5);
-    var front=new THREE.Mesh(frontGeo,frontMat);
-    front.position.z=0.06;
-    coinGroup.add(front);
+    var logoGeo=new THREE.PlaneGeometry(1.6,1.6);
+    var logoFace=new THREE.Mesh(logoGeo,logoMat);
+    logoGroup.add(logoFace);
 
-    /* Back face */
-    var backMat=frontMat.clone();
-    var back=new THREE.Mesh(frontGeo,backMat);
-    back.position.z=-0.06;
-    back.rotation.y=Math.PI;
-    coinGroup.add(back);
-
-    /* Thicker coin edge with bevels */
-    var edgeMat=new THREE.MeshStandardMaterial({
-      color:0xc8a951,roughness:0.12,metalness:0.95,envMapIntensity:2.0
-    });
-    var edgeGeo=new THREE.CylinderGeometry(0.82,0.82,0.12,64,1,true);
-    var edge=new THREE.Mesh(edgeGeo,edgeMat);
-    edge.rotation.x=Math.PI/2;
-    coinGroup.add(edge);
-
-    /* Top bevel ring */
-    var bevelGeo=new THREE.TorusGeometry(0.82,0.02,8,64);
-    var bevelFront=new THREE.Mesh(bevelGeo,edgeMat);
-    bevelFront.position.z=0.06;
-    coinGroup.add(bevelFront);
-    var bevelBack=new THREE.Mesh(bevelGeo,edgeMat);
-    bevelBack.position.z=-0.06;
-    coinGroup.add(bevelBack);
-
-    coinGroup.rotation.x=0.15;
+    logoGroup.rotation.x=0.05;
 
     var time=0;
-    var targetRotX=0.15,targetRotY=0;
+    var currentRotX=0.05,currentRotY=0;
     function animate(){
       requestAnimationFrame(animate);
       time+=0.008;
 
-      /* Continuous spin + mouse-reactive tilt */
-      coinGroup.rotation.y+=0.01;
-      targetRotX=0.15+mouseY*0.3;
-      coinGroup.rotation.x+=(targetRotX-coinGroup.rotation.x)*0.05;
+      /* Mouse-reactive tilt only — no spin */
+      var targetRotX=0.05+mouseY*0.15;
+      var targetRotY=mouseX*0.15;
+      currentRotX+=(targetRotX-currentRotX)*0.04;
+      currentRotY+=(targetRotY-currentRotY)*0.04;
+      logoGroup.rotation.x=currentRotX;
+      logoGroup.rotation.y=currentRotY;
 
-      /* Gentle float */
-      coinGroup.position.y=Math.sin(time*0.7)*0.06;
-
-      /* Animate sparkles */
-      var pos=sparkGeo.attributes.position.array;
-      for(var i=0;i<sparkCount;i++){
-        var s=sparkles[i];
-        pos[i*3]+=Math.sin(time*10+s.offset)*0.003;
-        pos[i*3+1]+=Math.cos(time*8+s.offset)*0.003;
-        // Keep within bounds
-        if(Math.abs(pos[i*3])>1.5)pos[i*3]*=0.99;
-        if(Math.abs(pos[i*3+1])>1.5)pos[i*3+1]*=0.99;
-      }
-      sparkGeo.attributes.position.needsUpdate=true;
-      sparkMat.opacity=0.3+Math.sin(time*2)*0.2;
+      /* Very subtle float */
+      logoGroup.position.y=Math.sin(time*0.5)*0.03;
 
       renderer.render(scene,camera);
     }
