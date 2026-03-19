@@ -554,7 +554,6 @@
       .sector-grid{grid-template-columns:1fr}
       .form-row{grid-template-columns:1fr}
       .portfolio:nth-child(3){display:none}
-      .ai-employee-grid{grid-template-columns:1fr!important;max-width:480px!important}
     }
     @media(max-width:1180px){#atlasCard{display:none!important}}
     .hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;width:44px;height:44px;position:relative;z-index:10001}
@@ -1203,127 +1202,137 @@
         <h2>Here's what their AI employees handled this month.</h2>
         <p class="lead">Every AI employee is built for a different business. Here's what six of ours are actually doing right now — and the daily briefs their owners wake up to.</p>
       </div>
-      <div class="ai-employee-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;max-width:1060px;margin-left:auto;margin-right:auto">
+      <div class="testimonial-carousel" id="testimonialCarousel">
+        <button class="carousel-nav carousel-prev" onclick="moveCarousel(-1)">&#8249;</button>
+        <button class="carousel-nav carousel-next" onclick="moveCarousel(1)">&#8250;</button>
+        <div class="testimonial-track" id="testimonialTrack">
+          <!-- SLIDE 1: Cards 1-3 -->
+          <div class="testimonial-slide">
 
-        <!-- Card 1: Sarah — CALENDAR & SCHEDULE OWNERSHIP -->
-        <div style="border:1px solid var(--line);border-radius:20px;padding:32px 28px;background:rgba(255,255,255,.015);position:relative;overflow:hidden">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent)"></div>
-          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Wellness Studio · Westport, CT</div>
-          <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:16px">Sarah's AI Employee</div>
-          <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:10px">Owns: Scheduling &amp; Calendar</div>
-          <div style="font-size:13px;line-height:1.8;color:var(--muted)">
-            <div style="margin-bottom:6px">→ Manages her entire book — 4 practitioners, 120+ weekly slots</div>
-            <div style="margin-bottom:6px">→ Fills cancellations from the waitlist before Sarah even knows a slot opened</div>
-            <div style="margin-bottom:6px">→ Sends day-before confirmations and handles all reschedules</div>
-            <div>→ No-show rate dropped from 18% to under 4%</div>
+            <!-- Card 1: Sarah — CALENDAR & SCHEDULE OWNERSHIP -->
+            <div class="testimonial" style="padding:28px 24px">
+              <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Wellness Studio · Westport, CT</div>
+              <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:4px">Sarah's AI Employee</div>
+              <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:14px">Owns: Scheduling &amp; Calendar</div>
+              <div style="font-size:12.5px;line-height:1.75;color:var(--muted)">
+                <div style="margin-bottom:4px">→ Manages 4 practitioners, 120+ weekly slots</div>
+                <div style="margin-bottom:4px">→ Fills cancellations from waitlist automatically</div>
+                <div style="margin-bottom:4px">→ Handles all reschedules &amp; confirmations</div>
+                <div>→ No-show rate: 18% → under 4%</div>
+              </div>
+              <div style="margin-top:16px;padding:12px 14px;border-radius:10px;background:rgba(10,10,15,.5);border:1px solid var(--line)">
+                <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">☀ Tuesday Morning Brief</div>
+                <div style="font-size:11.5px;line-height:1.65;color:var(--muted);font-style:italic">"Today's book is full — 32/32 slots. One cancellation at 2pm, already refilled. 3 new requests overnight, all confirmed. Tomorrow has 4 gaps, I've texted waitlisted clients."</div>
+              </div>
+              <div style="margin-top:14px;font-size:12.5px;font-style:italic;color:rgba(255,255,255,.45);line-height:1.5">"I haven't touched my calendar in 3 months. She runs it better than I ever did."</div>
+            </div>
+
+            <!-- Card 2: James — REVENUE RECOVERY -->
+            <div class="testimonial" style="padding:28px 24px">
+              <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Roofing Company · Milford, CT</div>
+              <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:4px">James's AI Employee</div>
+              <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:14px">Owns: Revenue Recovery &amp; Lead Rescue</div>
+              <div style="font-size:12.5px;line-height:1.75;color:var(--muted)">
+                <div style="margin-bottom:4px">→ Catches every after-hours lead in under 40 seconds</div>
+                <div style="margin-bottom:4px">→ Re-engages cold estimates — 4 closed last month</div>
+                <div style="margin-bottom:4px">→ Reaches out to past customers due for maintenance</div>
+                <div>→ Recovered $38K James didn't know he was losing</div>
+              </div>
+              <div style="margin-top:16px;padding:12px 14px;border-radius:10px;background:rgba(10,10,15,.5);border:1px solid var(--line)">
+                <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">☀ Wednesday Morning Brief</div>
+                <div style="font-size:11.5px;line-height:1.65;color:var(--muted);font-style:italic">"3 estimate requests after 9pm — all responded to, 2 booked. Re-engaged the Henderson estimate from February — they want to move forward. That's $8,200."</div>
+              </div>
+              <div style="margin-top:14px;font-size:12.5px;font-style:italic;color:rgba(255,255,255,.45);line-height:1.5">"I used to lose every lead that called after 5. Now I wake up to booked jobs."</div>
+            </div>
+
+            <!-- Card 3: Tony — REPUTATION & CUSTOMER EXPERIENCE -->
+            <div class="testimonial" style="padding:28px 24px">
+              <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Italian Restaurant · New Haven, CT</div>
+              <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:4px">Tony's AI Employee</div>
+              <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:14px">Owns: Reputation &amp; Guest Experience</div>
+              <div style="font-size:12.5px;line-height:1.75;color:var(--muted)">
+                <div style="margin-bottom:4px">→ Responds to every Google &amp; Yelp review in Tony's voice</div>
+                <div style="margin-bottom:4px">→ Sends post-visit thank-yous with review links</div>
+                <div style="margin-bottom:4px">→ Handles all catering inquiries end-to-end</div>
+                <div>→ Google rating: 4.1 → 4.7 in 60 days</div>
+              </div>
+              <div style="margin-top:16px;padding:12px 14px;border-radius:10px;background:rgba(10,10,15,.5);border:1px solid var(--line)">
+                <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">☀ Monday Morning Brief</div>
+                <div style="font-size:11.5px;line-height:1.65;color:var(--muted);font-style:italic">"Weekend recap: 6 new Google reviews (all 5-star, all responded to). 2 catering inquiries handled — one corporate lunch for 40. 3-star review flagged for your eyes."</div>
+              </div>
+              <div style="margin-top:14px;font-size:12.5px;font-style:italic;color:rgba(255,255,255,.45);line-height:1.5">"My Google page looks like I have a PR team. It's just my AI employee."</div>
+            </div>
+
           </div>
-          <div style="margin-top:20px;padding:14px 16px;border-radius:10px;background:rgba(10,10,15,.5);border:1px solid var(--line)">
-            <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">☀ Tuesday Morning Brief</div>
-            <div style="font-size:12px;line-height:1.7;color:var(--muted);font-style:italic">"Today's book is full — 32/32 slots. One cancellation at 2pm, already refilled from waitlist. 3 new booking requests overnight, all confirmed. Tomorrow has 4 gaps, I've texted waitlisted clients."</div>
+
+          <!-- SLIDE 2: Cards 4-6 -->
+          <div class="testimonial-slide">
+
+            <!-- Card 4: Dr. Patel — PATIENT REACTIVATION & RETENTION -->
+            <div class="testimonial" style="padding:28px 24px">
+              <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Physical Therapy · Stamford, CT</div>
+              <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:4px">Dr. Patel's AI Employee</div>
+              <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:14px">Owns: Patient Reactivation &amp; Retention</div>
+              <div style="font-size:12.5px;line-height:1.75;color:var(--muted)">
+                <div style="margin-bottom:4px">→ Finds patients who dropped off mid-treatment</div>
+                <div style="margin-bottom:4px">→ Brought back 19 lapsed patients — $14K reactivated</div>
+                <div style="margin-bottom:4px">→ Sends milestone check-ins between appointments</div>
+                <div>→ Handles all intake so front desk focuses on care</div>
+              </div>
+              <div style="margin-top:16px;padding:12px 14px;border-radius:10px;background:rgba(10,10,15,.5);border:1px solid var(--line)">
+                <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">☀ Thursday Morning Brief</div>
+                <div style="font-size:11.5px;line-height:1.65;color:var(--muted);font-style:italic">"Reactivated 3 patients this week (60+ days inactive). Mrs. Torres rebooked her full 6-visit plan. 8 intake forms pre-filled for tomorrow. Zero phone interruptions at front desk yesterday."</div>
+              </div>
+              <div style="margin-top:14px;font-size:12.5px;font-style:italic;color:rgba(255,255,255,.45);line-height:1.5">"We were losing patients we didn't even know had stopped coming. Now nobody slips through."</div>
+            </div>
+
+            <!-- Card 5: Lisa — CLIENT INTAKE & PROJECT QUALIFICATION -->
+            <div class="testimonial" style="padding:28px 24px">
+              <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Interior Design · Madison, CT</div>
+              <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:4px">Lisa's AI Employee</div>
+              <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:14px">Owns: Client Intake &amp; Project Screening</div>
+              <div style="font-size:12.5px;line-height:1.75;color:var(--muted)">
+                <div style="margin-bottom:4px">→ Pre-qualifies every inquiry — budget, timeline, scope</div>
+                <div style="margin-bottom:4px">→ Sends welcome packets to qualified leads instantly</div>
+                <div style="margin-bottom:4px">→ Follows up with quiet prospects — saved a $12K project</div>
+                <div>→ Lisa only talks to clients who are ready to start</div>
+              </div>
+              <div style="margin-top:16px;padding:12px 14px;border-radius:10px;background:rgba(10,10,15,.5);border:1px solid var(--line)">
+                <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">☀ Friday Morning Brief</div>
+                <div style="font-size:11.5px;line-height:1.65;color:var(--muted);font-style:italic">"4 new inquiries this week. 2 qualified (both $15K+ full-home projects). 1 disqualified — budget under $3K. The Moretti project confirmed — they're ready to start."</div>
+              </div>
+              <div style="margin-top:14px;font-size:12.5px;font-style:italic;color:rgba(255,255,255,.45);line-height:1.5">"I used to spend half my week on calls that went nowhere. Now I only talk to people who are ready."</div>
+            </div>
+
+            <!-- Card 6: Michael — RELATIONSHIP NURTURING & REFERRALS -->
+            <div class="testimonial" style="padding:28px 24px">
+              <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Financial Advisory · Greenwich, CT</div>
+              <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:4px">Michael's AI Employee</div>
+              <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:14px">Owns: Client Relationships &amp; Referrals</div>
+              <div style="font-size:12.5px;line-height:1.75;color:var(--muted)">
+                <div style="margin-bottom:4px">→ Sends check-ins on birthdays, milestones, life events</div>
+                <div style="margin-bottom:4px">→ Nurtures referrals with a 90-day drip in Michael's voice</div>
+                <div style="margin-bottom:4px">→ Flags clients overdue for contact (45+ days)</div>
+                <div>→ 3 new referrals last month from AI-managed touchpoints</div>
+              </div>
+              <div style="margin-top:16px;padding:12px 14px;border-radius:10px;background:rgba(10,10,15,.5);border:1px solid var(--line)">
+                <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">☀ Monday Morning Brief</div>
+                <div style="font-size:11.5px;line-height:1.65;color:var(--muted);font-style:italic">"Birthday messages sent to 2 clients. The Andersons replied — their son just sold his startup. Flagged as referral opportunity. 6 drip touches sent. No clients overdue for contact."</div>
+              </div>
+              <div style="margin-top:14px;font-size:12.5px;font-style:italic;color:rgba(255,255,255,.45);line-height:1.5">"My clients think I'm the most attentive advisor they've ever had. I'm not — my AI employee is."</div>
+            </div>
+
           </div>
-          <div style="margin-top:16px;font-size:13px;font-style:italic;color:rgba(255,255,255,.5);line-height:1.6">"I haven't touched my calendar in 3 months. She runs it better than I ever did."</div>
         </div>
-
-        <!-- Card 2: James — REVENUE RECOVERY -->
-        <div style="border:1px solid var(--line);border-radius:20px;padding:32px 28px;background:rgba(255,255,255,.015);position:relative;overflow:hidden">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent)"></div>
-          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Roofing Company · Milford, CT</div>
-          <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:16px">James's AI Employee</div>
-          <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:10px">Owns: Revenue Recovery &amp; Lead Rescue</div>
-          <div style="font-size:13px;line-height:1.8;color:var(--muted)">
-            <div style="margin-bottom:6px">→ Catches every lead that comes in after hours — responds in under 40 seconds</div>
-            <div style="margin-bottom:6px">→ Follows up with old estimates that went cold — 4 closed last month alone</div>
-            <div style="margin-bottom:6px">→ Identifies past customers due for maintenance and reaches out proactively</div>
-            <div>→ Recovered $38K in revenue James didn't know he was losing</div>
-          </div>
-          <div style="margin-top:20px;padding:14px 16px;border-radius:10px;background:rgba(10,10,15,.5);border:1px solid var(--line)">
-            <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">☀ Wednesday Morning Brief</div>
-            <div style="font-size:12px;line-height:1.7;color:var(--muted);font-style:italic">"3 estimate requests came in after 9pm — all responded to and 2 already booked for site visits. Also re-engaged the Henderson estimate from February — they want to move forward. That's $8,200."</div>
-          </div>
-          <div style="margin-top:16px;font-size:13px;font-style:italic;color:rgba(255,255,255,.5);line-height:1.6">"I used to lose every lead that called after 5. Now I wake up to booked jobs."</div>
+        <div class="carousel-dots" id="carouselDots">
+          <button class="carousel-dot active" onclick="goToSlide(0)"></button>
+          <button class="carousel-dot" onclick="goToSlide(1)"></button>
         </div>
-
-        <!-- Card 3: Tony — REPUTATION & CUSTOMER EXPERIENCE -->
-        <div style="border:1px solid var(--line);border-radius:20px;padding:32px 28px;background:rgba(255,255,255,.015);position:relative;overflow:hidden">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent)"></div>
-          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Italian Restaurant · New Haven, CT</div>
-          <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:16px">Tony's AI Employee</div>
-          <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:10px">Owns: Reputation &amp; Guest Experience</div>
-          <div style="font-size:13px;line-height:1.8;color:var(--muted)">
-            <div style="margin-bottom:6px">→ Responds to every Google and Yelp review in Tony's voice — within hours</div>
-            <div style="margin-bottom:6px">→ Sends post-visit thank-you texts with a review link to every dine-in guest</div>
-            <div style="margin-bottom:6px">→ Handles all catering inquiries — menus, pricing, dietary accommodations</div>
-            <div>→ Google rating went from 4.1 to 4.7 in 60 days</div>
-          </div>
-          <div style="margin-top:20px;padding:14px 16px;border-radius:10px;background:rgba(10,10,15,.5);border:1px solid var(--line)">
-            <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">☀ Monday Morning Brief</div>
-            <div style="font-size:12px;line-height:1.7;color:var(--muted);font-style:italic">"Weekend recap: 6 new Google reviews (all 5-star, all responded to). 2 catering inquiries handled — one corporate lunch for 40, proposal sent. 14 post-visit thank-yous sent. One 3-star review flagged for your eyes."</div>
-          </div>
-          <div style="margin-top:16px;font-size:13px;font-style:italic;color:rgba(255,255,255,.5);line-height:1.6">"My Google page looks like I have a PR team. It's just my AI employee."</div>
-        </div>
-
-        <!-- Card 4: Dr. Patel — PATIENT REACTIVATION & RETENTION -->
-        <div style="border:1px solid var(--line);border-radius:20px;padding:32px 28px;background:rgba(255,255,255,.015);position:relative;overflow:hidden">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent)"></div>
-          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Physical Therapy Clinic · Stamford, CT</div>
-          <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:16px">Dr. Patel's AI Employee</div>
-          <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:10px">Owns: Patient Reactivation &amp; Retention</div>
-          <div style="font-size:13px;line-height:1.8;color:var(--muted)">
-            <div style="margin-bottom:6px">→ Identifies patients who dropped off mid-treatment and reaches out personally</div>
-            <div style="margin-bottom:6px">→ Brought back 19 lapsed patients last month — $14K in reactivated revenue</div>
-            <div style="margin-bottom:6px">→ Sends treatment milestone check-ins between appointments</div>
-            <div>→ Handles all intake questions so front desk focuses on in-person care</div>
-          </div>
-          <div style="margin-top:20px;padding:14px 16px;border-radius:10px;background:rgba(10,10,15,.5);border:1px solid var(--line)">
-            <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">☀ Thursday Morning Brief</div>
-            <div style="font-size:12px;line-height:1.7;color:var(--muted);font-style:italic">"Reactivated 3 patients this week who hadn't been in 60+ days. Mrs. Torres rebooked her full 6-visit plan. 8 intake forms pre-filled before tomorrow's new patients arrive. Front desk had zero phone interruptions yesterday."</div>
-          </div>
-          <div style="margin-top:16px;font-size:13px;font-style:italic;color:rgba(255,255,255,.5);line-height:1.6">"We were losing patients we didn't even know had stopped coming. Now nobody slips through."</div>
-        </div>
-
-        <!-- Card 5: Lisa — CLIENT INTAKE & PROJECT QUALIFICATION -->
-        <div style="border:1px solid var(--line);border-radius:20px;padding:32px 28px;background:rgba(255,255,255,.015);position:relative;overflow:hidden">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent)"></div>
-          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Interior Design Studio · Madison, CT</div>
-          <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:16px">Lisa's AI Employee</div>
-          <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:10px">Owns: Client Intake &amp; Project Screening</div>
-          <div style="font-size:13px;line-height:1.8;color:var(--muted)">
-            <div style="margin-bottom:6px">→ Pre-qualifies every inquiry — budget, timeline, scope — before Lisa sees it</div>
-            <div style="margin-bottom:6px">→ Sends a branded welcome packet and questionnaire to qualified leads instantly</div>
-            <div style="margin-bottom:6px">→ Follows up with prospects who went quiet — saved a $12K project last month</div>
-            <div>→ Lisa only takes calls with clients who are ready to start</div>
-          </div>
-          <div style="margin-top:20px;padding:14px 16px;border-radius:10px;background:rgba(10,10,15,.5);border:1px solid var(--line)">
-            <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">☀ Friday Morning Brief</div>
-            <div style="font-size:12px;line-height:1.7;color:var(--muted);font-style:italic">"4 new inquiries this week. 2 qualified (both $15K+ full-home projects, questionnaires complete). 1 disqualified — budget under $3K. 1 pending follow-up. The Moretti project from last week just confirmed — they're ready to start."</div>
-          </div>
-          <div style="margin-top:16px;font-size:13px;font-style:italic;color:rgba(255,255,255,.5);line-height:1.6">"I used to spend half my week on discovery calls that went nowhere. Now I only talk to people who are ready."</div>
-        </div>
-
-        <!-- Card 6: Michael — RELATIONSHIP NURTURING & REFERRALS -->
-        <div style="border:1px solid var(--line);border-radius:20px;padding:32px 28px;background:rgba(255,255,255,.015);position:relative;overflow:hidden">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent)"></div>
-          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Financial Advisory · Greenwich, CT</div>
-          <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:16px">Michael's AI Employee</div>
-          <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:10px">Owns: Client Relationships &amp; Referral Pipeline</div>
-          <div style="font-size:13px;line-height:1.8;color:var(--muted)">
-            <div style="margin-bottom:6px">→ Sends personalized check-ins to every client on birthdays, milestones, and life events</div>
-            <div style="margin-bottom:6px">→ Nurtures referral leads with a 90-day drip sequence that sounds like Michael wrote it</div>
-            <div style="margin-bottom:6px">→ Flags clients who haven't been contacted in 45+ days for a personal touchpoint</div>
-            <div>→ 3 new referrals came in last month directly from AI-managed touchpoints</div>
-          </div>
-          <div style="margin-top:20px;padding:14px 16px;border-radius:10px;background:rgba(10,10,15,.5);border:1px solid var(--line)">
-            <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">☀ Monday Morning Brief</div>
-            <div style="font-size:12px;line-height:1.7;color:var(--muted);font-style:italic">"Sent birthday messages to 2 clients over the weekend. The Andersons replied — mentioned their son just sold his startup. Flagged as referral opportunity. 6 drip touches sent to warm leads. No clients overdue for contact."</div>
-          </div>
-          <div style="margin-top:16px;font-size:13px;font-style:italic;color:rgba(255,255,255,.5);line-height:1.6">"My clients think I'm the most attentive advisor they've ever had. I'm not — my AI employee is."</div>
-        </div>
-
       </div>
 
-      <div style="text-align:center;margin-top:56px;max-width:640px;margin-left:auto;margin-right:auto">
-        <p style="font-size:16px;line-height:1.8;color:var(--muted)">Six businesses. Six completely different AI employees. Yours would be built around what <em>your</em> business actually needs — and the only way to see that is the free audit.</p>
-        <a class="btn btn-primary" href="/contact" style="margin-top:24px;display:inline-flex">What Would Yours Do?</a>
+      <div style="text-align:center;margin-top:48px;max-width:640px;margin-left:auto;margin-right:auto">
+        <p style="font-size:15px;line-height:1.8;color:var(--muted)">Six businesses. Six completely different AI employees. Yours would be built around what <em>your</em> business actually needs — and the only way to see that is the free audit.</p>
+        <a class="btn btn-primary" href="/contact" style="margin-top:20px;display:inline-flex">What Would Yours Do?</a>
       </div>
     </div>
   </section>
