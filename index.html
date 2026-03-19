@@ -2074,16 +2074,16 @@ function goToSlide(i){
     tex.encoding=THREE.sRGBEncoding;
     tex.anisotropy=renderer.capabilities.getMaxAnisotropy();
 
-    /* Logo face */
-    var logoMat=new THREE.MeshStandardMaterial({
-      map:tex,transparent:true,alphaTest:0.05,
-      roughness:0.2,metalness:0.8,
-      emissive:new THREE.Color(0xc8a951),emissiveIntensity:0.1,emissiveMap:tex,
-      envMapIntensity:1.5
+    /* Gold metallic sphere with logo texture */
+    var sphereMat=new THREE.MeshStandardMaterial({
+      map:tex,
+      roughness:0.15,metalness:0.9,
+      emissive:new THREE.Color(0xc8a951),emissiveIntensity:0.08,emissiveMap:tex,
+      envMapIntensity:2.0
     });
-    var logoGeo=new THREE.PlaneGeometry(1.6,1.6);
-    var logoFace=new THREE.Mesh(logoGeo,logoMat);
-    logoGroup.add(logoFace);
+    var sphereGeo=new THREE.SphereGeometry(0.9,64,64);
+    var sphere=new THREE.Mesh(sphereGeo,sphereMat);
+    logoGroup.add(sphere);
 
     logoGroup.rotation.x=0.05;
 
@@ -2093,13 +2093,13 @@ function goToSlide(i){
       requestAnimationFrame(animate);
       time+=0.008;
 
-      /* Mouse-reactive tilt only — no spin */
-      var targetRotX=0.05+mouseY*0.15;
-      var targetRotY=mouseX*0.15;
+      /* Slow idle rotation + mouse-reactive tilt */
+      var targetRotX=0.05+mouseY*0.2;
+      var targetRotY=mouseX*0.2;
       currentRotX+=(targetRotX-currentRotX)*0.04;
       currentRotY+=(targetRotY-currentRotY)*0.04;
       logoGroup.rotation.x=currentRotX;
-      logoGroup.rotation.y=currentRotY;
+      logoGroup.rotation.y=currentRotY+time*0.15;
 
       /* Very subtle float */
       logoGroup.position.y=Math.sin(time*0.5)*0.03;
