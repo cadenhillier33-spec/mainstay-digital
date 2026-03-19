@@ -2069,45 +2069,76 @@ function goToSlide(i){
     heroEl.addEventListener('mouseleave',function(){mouseX=0;mouseY=0});
   }
 
-  var loader=new THREE.TextureLoader();
-  loader.load('favicon.png',function(tex){
-    tex.encoding=THREE.sRGBEncoding;
-    tex.anisotropy=renderer.capabilities.getMaxAnisotropy();
-
-    /* Gold metallic sphere with logo texture */
-    var sphereMat=new THREE.MeshStandardMaterial({
-      map:tex,
-      roughness:0.15,metalness:0.9,
-      emissive:new THREE.Color(0xc8a951),emissiveIntensity:0.08,emissiveMap:tex,
-      envMapIntensity:2.0
-    });
-    var sphereGeo=new THREE.SphereGeometry(0.9,64,64);
-    var sphere=new THREE.Mesh(sphereGeo,sphereMat);
-    logoGroup.add(sphere);
-
-    logoGroup.rotation.x=0.05;
-
-    var time=0;
-    var currentRotX=0.05,currentRotY=0;
-    function animate(){
-      requestAnimationFrame(animate);
-      time+=0.008;
-
-      /* Slow idle rotation + mouse-reactive tilt */
-      var targetRotX=0.05+mouseY*0.2;
-      var targetRotY=mouseX*0.2;
-      currentRotX+=(targetRotX-currentRotX)*0.04;
-      currentRotY+=(targetRotY-currentRotY)*0.04;
-      logoGroup.rotation.x=currentRotX;
-      logoGroup.rotation.y=currentRotY+time*0.15;
-
-      /* Very subtle float */
-      logoGroup.position.y=Math.sin(time*0.5)*0.03;
-
-      renderer.render(scene,camera);
-    }
-    animate();
+  /* Mainstay checkered logo as extruded 3D blocks */
+  var goldMat=new THREE.MeshStandardMaterial({
+    color:0xc8a951,roughness:0.12,metalness:0.95,envMapIntensity:2.0
   });
+  var darkMat=new THREE.MeshStandardMaterial({
+    color:0x1a1a2e,roughness:0.3,metalness:0.7,envMapIntensity:1.0
+  });
+
+  /* 4x4 grid pattern matching the Mainstay diamond logo
+     1 = gold raised block, 0 = dark recessed block */
+  var pattern=[
+    [0,1,1,0],
+    [1,0,0,1],
+    [1,0,0,1],
+    [0,1,1,0]
+  ];
+
+  var blockSize=0.32;
+  var goldHeight=0.18;
+  var darkHeight=0.06;
+  var gap=0.04;
+  var totalWidth=4*blockSize+3*gap;
+  var offset=totalWidth/2-blockSize/2;
+
+  for(var row=0;row<4;row++){
+    for(var col=0;col<4;col++){
+      var isGold=pattern[row][col]===1;
+      var h=isGold?goldHeight:darkHeight;
+      var geo=new THREE.BoxGeometry(blockSize,h,blockSize);
+      var mat=isGold?goldMat:darkMat;
+      var block=new THREE.Mesh(geo,mat);
+      block.position.x=col*(blockSize+gap)-offset;
+      block.position.z=row*(blockSize+gap)-offset;
+      block.position.y=isGold?h/2:darkHeight/2;
+      logoGroup.add(block);
+    }
+  }
+
+  /* Thin base plate */
+  var baseMat=new THREE.MeshStandardMaterial({
+    color:0x0d0d15,roughness:0.4,metalness:0.6,envMapIntensity:0.8
+  });
+  var baseGeo=new THREE.BoxGeometry(totalWidth+0.08,0.03,totalWidth+0.08);
+  baseGeo.translate(0,-0.01,0);
+  var base=new THREE.Mesh(baseGeo,baseMat);
+  logoGroup.add(base);
+
+  logoGroup.rotation.x=0.55;
+  logoGroup.rotation.y=0.4;
+
+  var time=0;
+  var currentRotX=0.55,currentRotY=0.4;
+  function animate(){
+    requestAnimationFrame(animate);
+    time+=0.008;
+
+    /* Mouse-reactive tilt */
+    var targetRotX=0.55+mouseY*0.2;
+    var targetRotY=0.4+mouseX*0.2;
+    currentRotX+=(targetRotX-currentRotX)*0.04;
+    currentRotY+=(targetRotY-currentRotY)*0.04;
+    logoGroup.rotation.x=currentRotX;
+    logoGroup.rotation.y=currentRotY;
+
+    /* Very subtle float */
+    logoGroup.position.y=Math.sin(time*0.5)*0.03;
+
+    renderer.render(scene,camera);
+  }
+  animate();
 
   function onResize(){
     var cw=container.clientWidth;
